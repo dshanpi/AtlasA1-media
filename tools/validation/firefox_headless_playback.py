@@ -250,7 +250,10 @@ def collect(args, record):
         identity = (dict(user=user.pw_uid,group=user.pw_gid,
                          extra_groups=os.getgrouplist(user.pw_name,user.pw_gid)) if uid == 0 else {})
         geometry = ['--kiosk', '--width', str(width), '--height', str(height)] if args.screen else []
-        proc = subprocess.Popen([args.launcher, '--headless', *geometry, f'http://127.0.0.1:{srv.server_port}{srv.prefix}'],
+        # The Cedar launcher consumes T736_CEDAR_PROFILE. A stock Firefox
+        # needs the same isolated profile and its own process explicitly.
+        isolated = ['--no-remote', '--profile', profile] if args.launcher.name == 'firefox' else []
+        proc = subprocess.Popen([args.launcher, *isolated, '--headless', *geometry, f'http://127.0.0.1:{srv.server_port}{srv.prefix}'],
                                 stdout=log, stderr=subprocess.STDOUT, env=env, cwd=profile,
                                 start_new_session=True, **identity)
         try:

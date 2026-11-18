@@ -65,14 +65,21 @@ def play(args, record):
                 env.update(DISPLAY=':'+sock.name[1:], XAUTHORITY=f'/run/user/{user.pw_uid}/gdm/Xauthority')
                 break
     if args.mode == 'cedar':
+        # The Resolute player ships its complete FFmpeg 7 runtime alongside
+        # the binary. Ubuntu system applications use FFmpeg 8.
+        if (args.ffmpeg_lib / 'libavformat.so.61').is_file():
+            env['LD_LIBRARY_PATH'] = os.pathsep.join(filter(None, [
+                str(args.ffmpeg_lib), env.get('LD_LIBRARY_PATH')]))
         libs = [args.client_lib, args.ffmpeg_lib/'libavutil.so.59', args.ffmpeg_lib/'libavcodec.so.61']
         for lib in libs:
             lib.resolve(strict=True)
         env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_TEST_CLIENT='1', T736_CEDAR_TRACE='1',
                    LD_PRELOAD=':'.join(map(str, libs)))
-        if args.native_fit or args.omx_fit:
+        if args.native_fit or args.omx_fit or args.player == Path('/opt/atlasa1-player/bin/ffplay'):
             del env['T736_CEDAR_TEST_CLIENT']
-            env.update(T736_CEDAR_NATIVE_PLAYER='1', T736_CEDAR_PANEL='1920x1080')
+            env['T736_CEDAR_NATIVE_PLAYER'] = '1'
+        if args.native_fit or args.omx_fit:
+            env['T736_CEDAR_PANEL'] = '1920x1080'
     if args.present_trace:
         tracer = str(args.present_trace.resolve(strict=True))
         env['LD_PRELOAD'] = ':'.join(filter(None, [tracer, env.get('LD_PRELOAD')]))

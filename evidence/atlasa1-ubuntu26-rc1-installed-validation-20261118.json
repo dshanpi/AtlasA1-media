@@ -1,0 +1,510 @@
+{
+  "board": "DshanPI AtlasA1 (T736)",
+  "release_tag": "v2026.11.18-ubuntu26.04-rc1",
+  "raw_image_sha256": "01235d344087d299e70cf4581d18385b76db1cac02cf3a9471055bc0ca9c1232",
+  "fes_and_cold_boot": {
+    "board": "AtlasA1 / T736",
+    "date": "2026-11-18",
+    "release_tag": "v2026.11.18-ubuntu26.04-rc1",
+    "emmc_raw_sha256": "01235d344087d299e70cf4581d18385b76db1cac02cf3a9471055bc0ca9c1232",
+    "ram_fes_loader_sha256": "565436e6d6f4370d05788afa3397a7e2368b5d5d2cef9a6490700b9b944cee08",
+    "mode": "OpenixCLI raw command, eMMC user area, verification enabled, post-action none",
+    "initial_reconnect": {
+      "taskId": "flash-1795013882632104200",
+      "state": "failed",
+      "phase": "reconnecting",
+      "transferredBytes": 0,
+      "writtenBytes": null,
+      "committedBytes": null,
+      "totalBytes": 0,
+      "verifyState": "not_run",
+      "verifyErrorCode": null,
+      "startedAt": 1795013883,
+      "finishedAt": 1795013931
+    },
+    "reconnect_note": "The first task transferred no disk bytes. After the task exited, the same bound USB device was confirmed online with the FES loader running, then the second task wrote the image.",
+    "completed_flash": {
+      "taskId": "flash-1795014064046487700",
+      "state": "success",
+      "phase": "complete",
+      "transferredBytes": 8589934592,
+      "writtenBytes": 8589934592,
+      "committedBytes": 8589934592,
+      "totalBytes": 8589934592,
+      "verifyState": "success",
+      "verifyErrorCode": 0,
+      "startedAt": 1795014065,
+      "finishedAt": 1795014511
+    },
+    "boot": {
+      "power_off_ms": 5000,
+      "default_emmc_boot": true,
+      "uboot_console_interrupted": false,
+      "serial_username": "t736",
+      "serial_login_passed": true,
+      "host_key_enrolled_via_uart": true,
+      "ssh_sudo_uid": 0,
+      "uart_private_log_sha256": "aeebbf0d773645e26c43da6d98d2162fef3eb95a22cf48395f395d8d37bc712b",
+      "uart_selected_lines": [
+        "DRAM Type =8 (8:LPDDR4,9:LPDDR5)",
+        "SPL eMMC open rc=0 sectors=122142720 irq=0 r1=900",
+        "SPL load addr=47000000 bytes=5040 LBA=24577",
+        "SPL load addr=48000000 bytes=53924 LBA=24587",
+        "SPL load addr=52000000 bytes=265640 LBA=24693",
+        "SPL payload CRCs passed; source AArch64 handoff",
+        "NOTICE:  BL31: v2.15.0(debug):t736-independent-candidate-7d322909",
+        "NOTICE:  BL31: Detected Allwinner A733 SoC (1903)",
+        "U-Boot 2026.10-t736-bringup (Nov 18 2026 - 00:00:00 +0000)",
+        "DRAM:  8 GiB",
+        "Hit any key to stop autoboot: 3Hit any key to stop autoboot: 2Hit any key to stop autoboot: 1Hit any key to stop autoboot: 0",
+        "5058908 bytes read in 1001 ms (4.8 MiB/s)",
+        "18499702 bytes read in 3657 ms (4.8 MiB/s)",
+        "13012 bytes read in 4 ms (3.1 MiB/s)",
+        "Starting kernel ...",
+        "Linux version 6.18.63-t736-media-v30 (ubuntu@ubuntu2404) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #30 SMP 2026-11-18 00:00:00 UTC",
+        "GPT:Primary header thinks Alt. header is not at the end of the disk.",
+        "GPT:16777215 != 122142719",
+        "GPT:Alternate GPT header not at the end of the disk.",
+        "GPT:16777215 != 122142719",
+        "GPT: Use GNU Parted to correct GPT errors.",
+        "EXT4-fs (mmcblk0p4): mounted filesystem 4d8c73ce-75f9-4794-bef2-664d7cecbbbb r/w with ordered data mode. Quota mode: disabled.",
+        "Armbian-unofficial 26.11.0-trunk resolute ttyS0",
+        "atlasa1 login:"
+      ]
+    },
+    "runtime": {
+      "model": "T736 custom board mainline bring-up",
+      "release": "6.18.63-t736-media-v30",
+      "kernel_cmdline": "earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256",
+      "distribution": {
+        "PRETTY_NAME": "Ubuntu 26.04 LTS",
+        "VERSION_ID": "26.04",
+        "VERSION_CODENAME": "resolute"
+      },
+      "root_source": "/dev/mmcblk0p4",
+      "root_fs_uuid": "4d8c73ce-75f9-4794-bef2-664d7cecbbbb",
+      "root_partuuid": "a0085546-4166-744a-a353-fca9272b8e48",
+      "root_mount_options": "rw,noatime,errors=remount-ro",
+      "emmc_product": "A31Y5C",
+      "emmc_total_sectors": 122142720,
+      "emmc_timing": "clock:\t\t200000000 Hz\nactual clock:\t200000000 Hz\nvdd:\t\t21 (3.3 ~ 3.4 V)\nbus mode:\t2 (push-pull)\nchip select:\t0 (don't care)\npower mode:\t2 (on)\nbus width:\t3 (8 bits)\ntiming spec:\t10 (mmc HS400)\nsignal voltage:\t1 (1.80 V)\ndriver type:\t0 (driver type B)",
+      "emmc_boot_regions": {
+        "spl_sha256": "a1d821eaee602fdf8b481c38cf4790d0f8a6f31539dd9fc6c1a714c1e92bd0ea",
+        "boot_package_sha256": "d8e285a172f70b0b4c0028972657cf5ebec9f32946a112a27c44cc638faf8f5e",
+        "stage64_bl31_uboot_sha256": [
+          "44aeb8e56f64f2ccd80a1cd286460eda6d0232f9cc1e82618866826b23298535",
+          "81f53c1d1f571c74bd907317d813a5ed56c64382479caa75edd3cec43ada6dc6",
+          "fd3ffd3d5584642ad0eb0be645941b671591d47d1e2fc575c8a30d3b539c00c3"
+        ]
+      },
+      "gpt_mirror_matches": true,
+      "gpt_backup_lba": 16777215,
+      "boot_files": {
+        "boot/vmlinuz-6.18.63-t736-media-v30": "3d9e2475cef78841572b0f138508fe0460dc301e4fdfcfe77e39e8193a3fb335",
+        "boot/initrd.img-6.18.63-t736-media-v30": "062b16d9d2551cb2360ea8984d3ef9ebcc0f4466f5d266600d6f5aa2c7f70f75",
+        "boot/dtb/allwinner/t736-mainline-bringup.dtb": "45012aeb86d657fca568417e831067170d12e224ebe71720c1956989af6f3626"
+      },
+      "boot_identity_checks": {
+        "release": true,
+        "ubuntu": true,
+        "rootfs_uuid": true,
+        "root_partuuid": true,
+        "spl": true,
+        "boot_package": true,
+        "stage64_bl31_uboot": true,
+        "boot_files": true
+      },
+      "emmc_4m_fsync_direct_read": true,
+      "network": {
+        "operstate": "up",
+        "carrier": "1",
+        "speed": "100",
+        "duplex": "full"
+      },
+      "drm": {
+        "card0-HDMI-A-1": "connected",
+        "card0-Writeback-1": "unknown"
+      },
+      "systemd": {
+        "running": "degraded",
+        "failed": "run-rpc_pipefs.mount  loaded failed failed RPC Pipe File System\nsmartmontools.service loaded failed failed Self Monitoring and Reporting Technology (SMART) Daemon",
+        "units": {
+          "lightdm.service": "active",
+          "display-manager.service": "active",
+          "NetworkManager.service": "active",
+          "ssh.socket": "active",
+          "ssh.service": "active",
+          "t736-cedar.socket": "active"
+        }
+      },
+      "display": {
+        "sessions": "c1  109 lightdm seat0 1313 greeter       -     no -\nc10 1000 t736    -     4347 user          -     no -\n c2  109 lightdm -     1357 manager-early -     no -\n c3 1000 t736    -     1044 user          ttyS0 no -\n c4 1000 t736    -     2054 manager       -     no -",
+        "xorg": "1042",
+        "lightdm": "1032\n1313\n1713",
+        "dri": [
+          "card0",
+          "card1",
+          "renderD128"
+        ]
+      },
+      "irq_drivers": {
+        "t736-cedar-wc": true
+      }
+    },
+    "lightdm_greeter_randr": {
+      "output": "HDMI-1",
+      "connected": true,
+      "primary": true,
+      "width": 1920,
+      "height": 1080,
+      "refresh_hz": 60.0,
+      "method": "Read-only XRandR current-mode query on the running greeter; no physical monitor observation."
+    }
+  },
+  "runtime_checks": {
+    "ubuntu_resolute": true,
+    "released_kernel": true,
+    "boot_files": true,
+    "raw_boot_stages": true,
+    "rootfs_uuid": true,
+    "emmc_file_fsync_readback": true,
+    "initialized_identity": true,
+    "generated_ssh_host_keys": true,
+    "display_manager": true,
+    "hdmi_connector_enabled": true,
+    "cedar_socket": true,
+    "powervr_render_node": true,
+    "package_db_clean": true
+  },
+  "active_drm_mode": [
+    "\"\": 60 148500 1920 2008 2052 2200 1080 1084 1089 1125 0x0 0x5"
+  ],
+  "network": {
+    "link_mbps": 100,
+    "duplex": "full",
+    "ubuntu_archive_dns": "passed",
+    "ubuntu_archive_https": 200
+  },
+  "first_boot_failures": [
+    "run-rpc_pipefs.mount  loaded failed failed RPC Pipe File System",
+    "smartmontools.service loaded failed failed Self Monitoring and Reporting Technology (SMART) Daemon"
+  ],
+  "hardware_inventory": {
+    "kernel": "6.18.63-t736-media-v30",
+    "mmc_hosts": {
+      "mmc0": {
+        "host_driver": "t736-smhc3-pio",
+        "cards": [
+          {
+            "type": "MMC",
+            "name": "A31Y5C"
+          }
+        ]
+      }
+    },
+    "sdio": {},
+    "wireless_interfaces": {},
+    "bluetooth_controllers": {},
+    "rfkill": [],
+    "pci_host_devices": {},
+    "pci_functions": {},
+    "nvme_namespaces": []
+  },
+  "gpt_after_install": {
+    "before_backup_lba": 16777215,
+    "after_backup_lba": 122142719,
+    "disk_last_lba": 122142719,
+    "primary_and_backup_crc_valid": true,
+    "vendor_mirror_matches": true,
+    "partition_entries_unchanged": true,
+    "changed": true,
+    "partition_array_sha256": "750938222976776900b49d1782ee976c52db16fc42f1ab04ceeaffb3aaa4125f"
+  },
+  "powervr": {
+    "sdl": [
+      "SDL_VIDEODRIVER=offscreen",
+      "GL_VENDOR=Imagination Technologies",
+      "GL_RENDERER=PowerVR B-Series BXM-4-64",
+      "GL_VERSION=OpenGL ES 3.2 build 24.2@6603887",
+      "color0=255,0,0,255 gl_error=0x0",
+      "color1=0,255,0,255 gl_error=0x0",
+      "color2=0,0,255,255 gl_error=0x0",
+      "color3=255,255,0,255 gl_error=0x0",
+      "PASS PowerVR offscreen GLES color readback"
+    ],
+    "gbm": [
+      "LIBRARY /opt/t736-img-ddk-24.2-x11/lib/libEGL.so.1",
+      "LIBRARY /opt/t736-img-ddk-24.2-x11/lib/libGLESv2.so.2",
+      "LIBRARY /opt/t736-img-ddk-24.2-x11/lib/libgbm.so.1",
+      "EGL 1.5 vendor=Mesa Project",
+      "GL_VENDOR=Imagination Technologies",
+      "GL_RENDERER=PowerVR B-Series BXM-4-64",
+      "GL_VERSION=OpenGL ES 3.2 build 24.2@6603887",
+      "GPU_PROBE_PASS frames=60 quadrants=4 readback=verified (not a GNOME or physical-monitor test)"
+    ]
+  },
+  "playback": {
+    "method": "Unprivileged Ubuntu FFplay, Cedar broker on the installed image, PowerVR offscreen GLES2; audio master clock from SDL dummy, HDMI scanout tested separately.",
+    "hevc_4k30_to_1080p_first": {
+      "status": "not_verified",
+      "wall_seconds": 29.689,
+      "irq_delta": 750,
+      "frames_at_player_filter": 750,
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.031,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": false,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 25025.566,
+        "gap_p95_ms": 37.56,
+        "gap_max_ms": 64.128
+      },
+      "diagnostics": [],
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "display": "SDL offscreen GLES2",
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    },
+    "hevc_4k30_to_1080p_warm": {
+      "status": "passed",
+      "wall_seconds": 25.516,
+      "irq_delta": 750,
+      "frames_at_player_filter": 750,
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.029,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 24979.01,
+        "gap_p95_ms": 37.644,
+        "gap_max_ms": 49.792
+      },
+      "diagnostics": [],
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "display": "SDL offscreen GLES2",
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    },
+    "h264_1080p60_after_hevc": {
+      "status": "not_verified",
+      "wall_seconds": 43.313,
+      "irq_delta": 0,
+      "frames_at_player_filter": 1500,
+      "player_drops": 0,
+      "av_offset_p95_seconds": 9.244,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": false,
+        "realtime_wall": false,
+        "decoder_path": false,
+        "pvr_loaded": true,
+        "audio_video_sync": false,
+        "presented_every_frame": true,
+        "p95_presentation_gap": false
+      },
+      "sdl_present": {
+        "frames": 1500,
+        "span_ms": 42832.668,
+        "gap_p95_ms": 42.323,
+        "gap_max_ms": 51.393
+      },
+      "diagnostics": [
+        "[h264_cedar @ 0xffff941c37e0] T736_CEDAR_PROXY: native fallback=h264 reason=-28 replay=0"
+      ],
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "duration": "25.000000",
+        "nb_frames": "1500",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "display": "SDL offscreen GLES2",
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    },
+    "h264_1080p60_after_restart": {
+      "status": "not_verified",
+      "wall_seconds": 28.401,
+      "irq_delta": 1500,
+      "frames_at_player_filter": 1500,
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.036,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": false,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "sdl_present": {
+        "frames": 1500,
+        "span_ms": 24796.12,
+        "gap_p95_ms": 21.562,
+        "gap_max_ms": 38.232
+      },
+      "diagnostics": [],
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "duration": "25.000000",
+        "nb_frames": "1500",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "display": "SDL offscreen GLES2",
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    },
+    "h264_1080p60_warm": {
+      "status": "passed",
+      "wall_seconds": 25.538,
+      "irq_delta": 1500,
+      "frames_at_player_filter": 1500,
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.038,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "sdl_present": {
+        "frames": 1500,
+        "span_ms": 25115.57,
+        "gap_p95_ms": 21.436,
+        "gap_max_ms": 37.383
+      },
+      "diagnostics": [],
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "duration": "25.000000",
+        "nb_frames": "1500",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "display": "SDL offscreen GLES2",
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    }
+  },
+  "stock_firefox": {
+    "description": "Fresh profile on installed Firefox, headless 1920x1080, local 1080p60 H.264; browser counters and Cedar IRQs.",
+    "result": {
+      "status": "not_verified",
+      "checks": {
+        "window_completed": true,
+        "dimensions": true,
+        "normal_speed": true,
+        "browser_frame_rate": false,
+        "hardware_irq_rate": false,
+        "matching_hardware_session": false,
+        "rdd_seccomp_filter": true,
+        "rdd_hardware_output": false,
+        "no_fallback_logged": true
+      },
+      "wall_seconds": 19.792,
+      "media_seconds": 19.78315,
+      "total_delta": 1187,
+      "dropped_delta": 527,
+      "presented_delta": 660,
+      "browser_retained_fps": 33.34680679062247,
+      "irq_delta": 0,
+      "broker_sessions": [],
+      "broker_frame_markers": []
+    }
+  },
+  "audio": "No ALSA card or /dev/snd on the released kernel.",
+  "physical_display": "Read-only DRM and XRandR checks confirmed the HDMI greeter. Physical observation of pixels, flicker or speaker output was unavailable.",
+  "changes_after_first_boot": [
+    "Relocated the backup GPT to the physical device end and synchronized the vendor mirror. The six partition definitions remained identical.",
+    "Added conditional rpc_pipefs mount and configured smartd to tolerate zero SMART drives. Both systemd unit results were success after applying the fix."
+  ]
+}

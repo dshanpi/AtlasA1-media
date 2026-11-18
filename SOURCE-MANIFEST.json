@@ -116,6 +116,13 @@
       "sha256": "0b352b71c86f8114c713a918fae0a95ddab95230d621df5d9655c15205e43734"
     },
     {
+      "path": "evidence/atlasa1-ubuntu26-rc1-installed-validation-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-ubuntu26-rc1-installed-validation-20261118.json",
+      "size": 18186,
+      "sha256": "d90ada8c92d8e27c34cb84df810886dfd781562ec28f4fbf0e1762782678e4ed"
+    },
+    {
       "path": "evidence/cedar-direct-slot-build-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/cedar-direct-slot-build-20261118.json",
@@ -1029,8 +1036,8 @@
       "path": "tools/validation/ffplay_offscreen.py",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_offscreen.py",
-      "size": 14561,
-      "sha256": "d5a5d53b01b6d77418298cb32da542906eea8911a847a4bc68491781521b5aff"
+      "size": 15016,
+      "sha256": "7cc75e8530a5214d9861ce1b79a05d29731aa02d3603a2a64162674e1da4024d"
     },
     {
       "path": "tools/validation/ffplay_present_trace.c",
@@ -1057,8 +1064,8 @@
       "path": "tools/validation/firefox_headless_playback.py",
       "kind": "source",
       "source": "mainline/tools/validation/firefox_headless_playback.py",
-      "size": 14812,
-      "sha256": "b4e6d120e13b26706a306e4e9ba5c38e022856534ccf829a89a6baec0e31ba2f"
+      "size": 15071,
+      "sha256": "ca2722f519e3af5dce89d39a523c4f7e50c22f55683f75fce4724e70cdd780a9"
     },
     {
       "path": "tools/validation/gpu_runtime_view.py",
