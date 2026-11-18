@@ -63,8 +63,8 @@
       "path": "docs/PLAYBACK.md",
       "kind": "source",
       "source": "mainline/docs/PLAYBACK.md",
-      "size": 8112,
-      "sha256": "0c4c862d45e45b8250ca1ad0bae70206887acacb45b97c25a785be11f370fd5f"
+      "size": 9349,
+      "sha256": "5c6d31e13fd2e470e353c31bd512683d6e55cfed2a0878fd7223ed8285c30202"
     },
     {
       "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
@@ -79,6 +79,13 @@
       "source": "mainline/evidence/atlas-ubuntu26-board-rebuild-20261118.json",
       "size": 5526,
       "sha256": "d5b9eecdfc3352b221130390d9ae64dc91c0c8dc215da23a77b5eeba08e81bb6"
+    },
+    {
+      "path": "evidence/atlasa1-cedar-format-switch-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-cedar-format-switch-20261118.json",
+      "size": 5959,
+      "sha256": "241ecb1604942b05c0fe43a3477a78741fcec60fc96fec959020f2a42bdc3539"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -571,11 +578,18 @@
       "sha256": "672f53a43bb1c019f9fc986005d9104c68c4ccd1c546848d5175bfba0869edc4"
     },
     {
+      "path": "tools/browser/omx_scale_candidate/broker-two-formats.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/omx_scale_candidate/broker-two-formats.patch",
+      "size": 1386,
+      "sha256": "83db5433e7a3886de5587c5f6561ee6c624b22a40723b075e95337be577118fe"
+    },
+    {
       "path": "tools/browser/omx_scale_candidate/build_omx_panel.sh",
       "kind": "source",
       "source": "mainline/tools/browser/omx_scale_candidate/build_omx_panel.sh",
-      "size": 2692,
-      "sha256": "64bd241495861fa468f11648fbcdd7bac8d017b218aef4d590876dd6a33bde63"
+      "size": 2780,
+      "sha256": "31897712264891a64f44da75a8ebfc7328dee02dbdd03f1aef475ea289eeb519"
     },
     {
       "path": "tools/browser/omx_scale_candidate/omx-panel.patch",
@@ -588,8 +602,8 @@
       "path": "tools/browser/omx_scale_candidate/test_omx_panel.c",
       "kind": "source",
       "source": "mainline/tools/browser/omx_scale_candidate/test_omx_panel.c",
-      "size": 2299,
-      "sha256": "73879c9bc61e108e3f1efacb4e9d1e181bc47be09e6c6d623284e11c74f82e5d"
+      "size": 2817,
+      "sha256": "512c26023f4a6a7ac96360ab739d9c2d5ad56412dd13551e0a278a1680ea9792"
     },
     {
       "path": "tools/browser/panel_candidate/README.md",
@@ -751,6 +765,13 @@
       "source": "mainline/tools/build_atlasa1_player.py",
       "size": 6619,
       "sha256": "dbfce2062eb65d3e5f8b2e5e986f180e0c98f28984d1551309b83edf827bd016"
+    },
+    {
+      "path": "tools/build_atlasa1_rc1_broker_update.sh",
+      "kind": "source",
+      "source": "mainline/tools/build_atlasa1_rc1_broker_update.sh",
+      "size": 1500,
+      "sha256": "6995a9945c1ff6fc4caa6fac085f5ec8f7991dfc0224aa5d0136a8183cc752a7"
     },
     {
       "path": "tools/build_atlasa1_resolute_player.sh",
@@ -931,8 +952,8 @@
       "path": "tools/prepare_atlasa1_resolute_media.py",
       "kind": "source",
       "source": "mainline/tools/prepare_atlasa1_resolute_media.py",
-      "size": 7308,
-      "sha256": "9f71e9862b82b1c59594eed1ea045926feb83300c7aa78fabf01b2b1c4e1bcde"
+      "size": 7435,
+      "sha256": "4d5f1bc95a56759919949e9a9e03e530e0b56c2533c45f4a03d7a538ea7c32e0"
     },
     {
       "path": "tools/prepare_atlasa1_sdl_sysroot.sh",
@@ -1106,8 +1127,8 @@
       "path": "tools/verify_atlasa1_resolute_media.sh",
       "kind": "source",
       "source": "mainline/tools/verify_atlasa1_resolute_media.sh",
-      "size": 2930,
-      "sha256": "d83b22a41696d94ffa69666eb9ada20b04984101a3898839f015ed6c643143d7"
+      "size": 2925,
+      "sha256": "1814c4f957756c21934b0ce05487b91ddd6f151cae442345f5c08dff08af0b24"
     }
   ]
 }

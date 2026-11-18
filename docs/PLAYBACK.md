@@ -1,5 +1,15 @@
 # AtlasA1 播放与显示实测
 
+## Ubuntu 26.04 的本地播放器
+
+RC1 的本地播放器版本为 `0.1-5~resolute1`。在整盘烧录后，H.264 1080p60 与 HEVC 4K30（硬件缩至 1080p）分别以 PowerVR 离屏提交了 1500 和 750 帧。原版服务只保留一种格式，播放上述 4K 后再开 1080p 会回退软件解码。[RC1 整盘实测](../evidence/atlasa1-ubuntu26-rc1-installed-validation-20261118.json)
+
+更新后的 Cedar 服务最多保留两种解码配置，其中最多一种为 UHD。不同编码、尺寸或缩放模式会占用不同配置，硬件每次处理一个播放会话。在同一次启动中切换 HEVC 4K30 → H.264 1080p60 → HEVC 4K30，三段均使用硬件解码，累计 3000 次 VE 中断，全部帧提交至 PowerVR。两次切换后播放 25 秒片段分别耗时 25.63 秒和 25.53 秒，零丢帧。测试使用虚拟音频设备。[切流实板记录](../evidence/atlasa1-cedar-format-switch-20261118.json)
+
+已有 RC1 可安装 `atlasa1-cedar-format-switch_1.0-1~resolute1_arm64.deb`，在下次开机时生效。卸载该包并重启可恢复镜像自带的服务。重新构建镜像会把修正编入 Cedar 服务。[更新包构建脚本](../tools/build_atlasa1_rc1_broker_update.sh)
+
+## 早期开发镜像
+
 板上已安装「AtlasA1 播放器」0.1-4，MP4 的默认应用为 `atlasa1-player.desktop`。双击本地 MP4 即可播放，也可以执行 `atlasa1-player "/path/to/video.mp4"`。以普通用户从正式入口播放 25 秒的 HEVC 4K30 + AAC 样片，启动器自动选择 1080p 和 CPU6–7，OMX 在解码时缩小画面。实测 750 次 VE 中断、播放器零丢帧、音画偏差 P95 为 32 ms，进程在 26.619 秒后正常退出。 [播放器使用与构建](../tools/player/README.md) · [软件包构建记录](../evidence/atlasa1-player-start-sync-package-20261118.json) · [正式入口实测](../evidence/media-v30-4k-omx-panel-20261118.json)
 
 ## 2026-11-18 实板结果

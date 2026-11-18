@@ -11,7 +11,7 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SERVICE_HASHES = {'cedar-broker': '1910bf0ce66653d27fe67f99d2a1ce8b813dafec3893f981a8d7c662a61f3b04',
+SERVICE_HASHES = {'cedar-broker': '2a2790b05dd55a7463e8b11f6eed165cb4f2d904906c5ae8957527054de04f98',
                   'libcedar_backend.so': '2185f2019b4aea60933c34d387d290e808848e420f8899b0b401783293145583'}
 FIRMWARE = {'rgx.fw.36.56.104.183': '43eb5d054ee98bc975274198d2ed440e2f0f50b7ffcd0996a4022949f2c7909f',
             'rgx.sh.36.56.104.183': '71e1b1da9b4c6b42468e378e8b835306920568088bc6669879db4a108a7747c9'}
@@ -102,9 +102,9 @@ def prepare(args, root, tmp):
     enabled.mkdir(exist_ok=True)
     (enabled/'t736-cedar.socket').symlink_to('../t736-cedar.socket')
     vermagic = subprocess.check_output(['modinfo', '-F', 'vermagic', args.pvr_module], text=True).split()
-    if vermagic[:1] != [RELEASE]:
+    if vermagic[:1] != [args.kernel_release]:
         raise ValueError('PowerVR module kernel ABI mismatch')
-    install(args.pvr_module, root/'usr/lib/modules'/RELEASE/'extra/pvrsrvkm.ko')
+    install(args.pvr_module, root/'usr/lib/modules'/args.kernel_release/'extra/pvrsrvkm.ko')
     write(root/'etc/modules-load.d/atlasa1-pvr.conf', 'pvrsrvkm\n')
     fields = [subprocess.check_output(['dpkg-deb', '-f', args.gpu_deb, f], text=True).strip()
               for f in ('Package','Version','Architecture')]
@@ -126,6 +126,7 @@ def prepare(args, root, tmp):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--kernel-release', choices=[RELEASE, '6.18.63-t736-hw-v34'], default=RELEASE)
     for name in ('wc-archive', 'service-build', 'omx-vdec', 'pvr-module', 'gpu-deb', 'output'):
         parser.add_argument('--'+name, required=True, type=Path)
     args = parser.parse_args()

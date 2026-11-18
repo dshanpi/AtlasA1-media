@@ -1,0 +1,32 @@
+--- a/shm_v2/cedar_broker.c
++++ b/shm_v2/cedar_broker.c
+@@ -30,7 +30,7 @@
+     uint32_t lease;
+     int owner, failed;
+ };
+-#define CONTEXT_COUNT 1U
++#define CONTEXT_COUNT 2U
+ static struct retained contexts[CONTEXT_COUNT];
+ static pthread_mutex_t hardware_lock = PTHREAD_MUTEX_INITIALIZER;
+ static pthread_mutex_t peers_lock = PTHREAD_MUTEX_INITIALIZER;
+@@ -84,6 +84,11 @@
+             slot = &contexts[i];
+     }
+     if (!slot) {
++        if (args->width > 1920 || args->height > 1080) {
++            for (unsigned i = 0; i < CONTEXT_COUNT; ++i)
++                if (contexts[i].decoder && (contexts[i].width > 1920 || contexts[i].height > 1080))
++                    return -ENOSPC;
++        }
+         for (unsigned i = 0; i < CONTEXT_COUNT; ++i)
+             if (!contexts[i].decoder && !contexts[i].failed) { slot = &contexts[i]; break; }
+         if (!slot) return -ENOSPC;
+@@ -323,7 +328,7 @@
+             perror("cedar-broker socket"); return 1;
+         }
+     }
+-    fprintf(stderr, "CEDAR_BROKER: ready uid=%lu protocol=%u readonly-memfd max=4K8bit retained_contexts=1 output=%s\n",
++    fprintf(stderr, "CEDAR_BROKER: ready uid=%lu protocol=%u readonly-memfd max=4K8bit retained_contexts=2 output=%s\n",
+             uid, T736_PROTOCOL_VERSION, cedar_pull_into ? "direct-slot" : "owned-frame");
+     for (;;) {
+         int fd = accept4(server, NULL, NULL, SOCK_CLOEXEC);

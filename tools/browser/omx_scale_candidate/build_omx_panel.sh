@@ -14,6 +14,7 @@ cp "$browser/copy_candidate/cedar_parallel_copy.h" "$tree/copy_candidate/"
 sed 's/^int main(void)$/static int run_baseline(void)/' "$browser/../../tests/test_cedar_shm_transport.c" \
     > "$stage/tree/tests/baseline.inc"
 patch --fuzz=0 -d "$tree" -p1 < "$browser/omx_scale_candidate/omx-panel.patch"
+patch --fuzz=0 -d "$tree" -p1 < "$browser/omx_scale_candidate/broker-two-formats.patch"
 patch --fuzz=0 -d "$stage/tree" -p1 < "$browser/../../patches/cedar/backend-parallel-direct-slot.patch"
 cp "$tree"/shm_v2/{cedar_client.c,cedar_client.h,cedar_protocol.h,cedar_shm.h} "$stage/"
 cp "$tree/ffmpeg_cedar.c" "$stage/"

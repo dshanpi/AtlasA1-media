@@ -12,7 +12,7 @@ for codec in h264 hevc; do
     ffmpeg -nostdin -loglevel error -f lavfi -i color=c=blue:s=64x64:r=1 \
         -frames:v 1 -c:v "$encoder" "${settings[@]}" -f "$codec" "$scratch/$codec.stream"
 done
-chroot "$root" /bin/sh -s -- "${scratch#"$root"}" <<'EOS'
+chroot "$root" /bin/sh -s -- "${scratch#"$root"}" "${2:-6.18.63-t736-media-v30}" <<'EOS'
 set -eu
 export LC_ALL=C
 test "$(dpkg --print-architecture)" = arm64
@@ -21,7 +21,7 @@ id -Gn t736 | tr ' ' '\n' | grep -qx t736
 id t736-cedar
 test -L /etc/systemd/system/sockets.target.wants/t736-cedar.socket
 test "$(stat -c %U:%a /opt/atlasa1-player/bin/ffplay)" = root:755
-test "$(modinfo -k 6.18.63-t736-media-v30 -F vermagic pvrsrvkm | cut -d' ' -f1)" = 6.18.63-t736-media-v30
+test "$(modinfo -k "$2" -F vermagic pvrsrvkm | cut -d' ' -f1)" = "$2"
 scratch=$1
 export LD_LIBRARY_PATH=/opt/t736-cedar-browser-backend-v5:/opt/t736-cedar-wc-v5/lib
 export GST_PLUGIN_PATH_1_0=/opt/t736-cedar-wc-v5/lib/gstreamer-1.0

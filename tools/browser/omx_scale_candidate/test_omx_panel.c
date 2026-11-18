@@ -37,6 +37,16 @@ int main(void)
     free(pixels);
     assert(!t736_client_close(session));
     assert(t736_client_open(T736_CODEC_HEVC, 3840, 2160) == -ENOSPC);
+    int full_hd = t736_client_open(T736_CODEC_H264, 1920, 1080);
+    assert(full_hd > session);
+    assert(!t736_client_push(full_hd, &packet, 1, 521, INT64_MIN));
+    pixels = malloc(capacity);
+    assert(pixels && t736_client_pull(full_hd, pixels, capacity, &frame, 0) == 1);
+    assert(frame.width == 1920 && frame.height == 1080 && frame.pts_us == 1);
+    expect_frame(pixels, &frame);
+    free(pixels);
+    assert(!t736_client_close(full_hd));
+    assert(t736_client_open(T736_CODEC_H264, 1280, 720) == -ENOSPC);
     int again = t736_client_open_panel(T736_CODEC_HEVC, 3840, 2160);
     assert(again > session);
     assert(!t736_client_push(again, &packet, 1, 522, INT64_MIN));
