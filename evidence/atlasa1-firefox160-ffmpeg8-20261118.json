@@ -278,9 +278,104 @@
           ]
         ]
       }
+    },
+    "ffmpeg8_cedar_xvfb_release_kernel": {
+      "kernel": "6.18.63-t736-media-v30",
+      "source_log_sha256": "ccbda343e130b8659b127dd46c5084c96b44e6f7a5a57301b6ecfc978f39b023",
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "25.000000",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "display": "private Xvfb, 1920x1080; after normal eMMC default boot and native multi-format testing",
+      "rdd": [
+        {
+          "sandbox": [
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "media_libraries": [
+            "/opt/atlasa1-firefox/lib/libavcodec.so.62",
+            "/opt/atlasa1-firefox/lib/libt736_cedar_client.so",
+            "/usr/lib/aarch64-linux-gnu/libavutil.so.60.8.100"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 18.273,
+        "media_seconds": 18.277287,
+        "total_delta": 1097,
+        "dropped_delta": 412,
+        "presented_delta": 685,
+        "browser_retained_fps": 37.48700268155202,
+        "irq_delta": 1128,
+        "broker_sessions": [
+          [
+            "6",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "3300",
+            "6",
+            "1920",
+            "1080"
+          ],
+          [
+            "3600",
+            "6",
+            "1920",
+            "1080"
+          ],
+          [
+            "3900",
+            "6",
+            "1920",
+            "1080"
+          ],
+          [
+            "4200",
+            "6",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
     }
   },
   "client_sha256": "8d0f4e509e963539ea8389be6a02085d786b2d7f48b733c00831d53d78f10f8e",
   "package_file": "atlasa1-firefox-cedar_8.0.1-1.resolute1_arm64.deb",
-  "package_version": "8.0.1-1~resolute1"
+  "package_version": "8.0.1-1~resolute1",
+  "post_test": {
+    "xvfb_exited": true,
+    "systemd": "running",
+    "failed_unit_count": 0,
+    "display_manager": "active",
+    "greeter_current_mode": "HDMI-1 primary 1920x1080 @ 60.00 Hz",
+    "normal_user_desktop_launcher": "Firefox (AtlasA1 Cedar)"
+  },
+  "clean_package_rebuild": {
+    "same_source_path_deb_sha256": "0e360b0c309f61a6b6562387026ea8bfe3fb7f3248672972dbc7c9781c1c29cb",
+    "byte_comparison_identical": true,
+    "different_source_path_deb_sha256": "b15db7645343203cdb9eba780cb46b64cf9dd0cd1c80cffa765e35c02d132393",
+    "reason_for_path_sensitivity": "FFmpeg embeds source paths in assertion strings."
+  }
 }

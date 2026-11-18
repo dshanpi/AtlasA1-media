@@ -63,8 +63,8 @@
       "path": "docs/PLAYBACK.md",
       "kind": "source",
       "source": "mainline/docs/PLAYBACK.md",
-      "size": 10218,
-      "sha256": "85225d3be0d4594cc5f2a6f724c55e9fddf490d1506400a665a2b0dc55c8f310"
+      "size": 10287,
+      "sha256": "226ec6e772f5abee9736d33bd4b0040bd10124d5efac721b6b415b94af7ac440"
     },
     {
       "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
@@ -91,8 +91,8 @@
       "path": "evidence/atlasa1-firefox160-ffmpeg8-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/atlasa1-firefox160-ffmpeg8-20261118.json",
-      "size": 8135,
-      "sha256": "41abdece29591aaf80bc7a57b07bc157c61c8b19e9169534fd37949f3c0fa4bd"
+      "size": 10928,
+      "sha256": "490e0a269ffad85c4096a5204a829145a0808f3777d4aae1121a6fc4ba079f0a"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -121,6 +121,13 @@
       "source": "mainline/evidence/atlasa1-player-start-sync-package-20261118.json",
       "size": 3334,
       "sha256": "f330fe057a9e31886495ea6f709aa51453d8a41ad9b3fd00f8c0e084b1164e6d"
+    },
+    {
+      "path": "evidence/atlasa1-rc1-installed-broker-update-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-rc1-installed-broker-update-20261118.json",
+      "size": 3617,
+      "sha256": "f61287bd2e3ff55288eddaf6e9a609f3c69ad4876ae564d6c3ac73582b434f07"
     },
     {
       "path": "evidence/atlasa1-ubuntu26-rc1-board-media-20261118.json",
@@ -392,8 +399,8 @@
       "path": "tools/browser/FIREFOX_RESOLUTE.md",
       "kind": "source",
       "source": "mainline/tools/browser/FIREFOX_RESOLUTE.md",
-      "size": 3452,
-      "sha256": "e77800e28a22b9c43dc6805213c9388e1bf087fcf2d2b2bc562263f54e3b27bd"
+      "size": 3493,
+      "sha256": "4ed7c0fa36f9a405c1209e91dda5eccf52b0a34a13c894b2472df2292db3e591"
     },
     {
       "path": "tools/browser/README.md",
@@ -1120,8 +1127,8 @@
       "path": "tools/validation/firefox_headless_playback.py",
       "kind": "source",
       "source": "mainline/tools/validation/firefox_headless_playback.py",
-      "size": 16860,
-      "sha256": "e442a4f5999913908d7fc5c2e02f9ee7586a56b92c322331ab7a6908d474316a"
+      "size": 16870,
+      "sha256": "b5d04622807da6571389090fbde2686f5df8442ed8b2ad9dcc50c4ab414ad06c"
     },
     {
       "path": "tools/validation/gpu_runtime_view.py",

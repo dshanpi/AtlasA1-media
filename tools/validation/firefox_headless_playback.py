@@ -283,7 +283,7 @@ def collect(args, record):
         if args.xvfb:
             record['display_backend'] = 'Xvfb'
             env.pop('MOZ_HEADLESS')
-            command = [sys.executable, str(Path(__file__).resolve()), '_xvfb', args.xvfb,
+            command = [sys.executable, str(Path(__file__).resolve()), '_xvfb', args.xvfb.resolve(),
                        str(width), str(height), *command]
         else:
             command.insert(1, '--headless')

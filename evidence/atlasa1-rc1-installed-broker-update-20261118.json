@@ -1,0 +1,119 @@
+{
+  "kernel": "6.18.63-t736-media-v30",
+  "release": "v2026.11.18-ubuntu26.04-rc1",
+  "installed_add_on": "atlasa1-cedar-format-switch 1.0-1~resolute1",
+  "method": "Default eMMC cold boot, followed by uninterrupted sequence under ordinary user with SDL offscreen GLES and dummy audio.",
+  "package_sha256": "37e2e73538dfd94b7ce2c3c1b43804183dc6e8ae8b2672d852c51eb264d590c8",
+  "measurements": [
+    {
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+      },
+      "status": "not_verified",
+      "wall_seconds": 29.821,
+      "irq_delta": 750,
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 25059.517,
+        "gap_p95_ms": 38.272,
+        "gap_max_ms": 72.073
+      },
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.032,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": false,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      }
+    },
+    {
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "duration": "25.000000",
+        "nb_frames": "1500",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "status": "passed",
+      "wall_seconds": 25.64,
+      "irq_delta": 1500,
+      "sdl_present": {
+        "frames": 1500,
+        "span_ms": 25083.079,
+        "gap_p95_ms": 21.359,
+        "gap_max_ms": 37.86
+      },
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.037,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      }
+    },
+    {
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+      },
+      "status": "passed",
+      "wall_seconds": 25.466,
+      "irq_delta": 750,
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 24953.619,
+        "gap_p95_ms": 37.073,
+        "gap_max_ms": 57.688
+      },
+      "player_drops": 0,
+      "av_offset_p95_seconds": 0.031,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      }
+    }
+  ],
+  "desktop": {
+    "physical_connector": "LightDM greeter, HDMI-1 primary 1920x1080 at 60.00 Hz",
+    "separate_session": "xfce4-session, xfwm4, xfce4-panel and xfdesktop started in a private Xvfb at 1280x720 on this rootfs on v33",
+    "physical_observation": false
+  },
+  "failed_units_on_final_default_boot": 0
+}
