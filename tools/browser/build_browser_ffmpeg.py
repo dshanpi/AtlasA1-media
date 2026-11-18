@@ -20,9 +20,13 @@ def main():
     parser.add_argument('--source', type=Path, required=True, help='Extracted official FFmpeg n7.1.5 source')
     parser.add_argument('--work', type=Path, required=True, help='New isolated build directory')
     parser.add_argument('--jobs', type=int, default=8)
+    parser.add_argument('--prepare-only', action='store_true',
+                        help='Prepare the patched FFmpeg tree for a different target runtime')
     parser.add_argument('--resume', action='store_true', help='Rebuild the same isolated work directory after wrapper changes')
     parser.add_argument('--bundle-name', default='t736-browser-ffmpeg-v1', help='Separate artifact name for an incremental candidate')
     args = parser.parse_args()
+    if args.prepare_only and args.resume:
+        parser.error('--prepare-only needs a new work directory')
     if not re.fullmatch(r't736-browser-ffmpeg-v[0-9]+', args.bundle_name):
         parser.error('bundle-name must have the form t736-browser-ffmpeg-vN')
     source, work = args.source.resolve(), args.work.resolve()
@@ -64,6 +68,8 @@ def main():
         if cedar not in text:
             text = text.replace(anchor, cedar+'\n'+anchor)
     allcodecs.write_text(text, encoding='utf-8')
+    if args.prepare_only:
+        return
     command = [str(patched/'configure'), '--prefix=/opt/t736-browser-ffmpeg',
                '--arch=aarch64', '--target-os=linux', '--enable-cross-compile',
                '--cross-prefix=aarch64-linux-gnu-', '--enable-shared', '--disable-static',

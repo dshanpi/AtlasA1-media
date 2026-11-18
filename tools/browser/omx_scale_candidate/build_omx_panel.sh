@@ -1,8 +1,9 @@
 #!/bin/bash
-# $1=tools/browser in source tree, $2=existing ELBG build, $3=unused staging directory
+# Pass --service-only as the second argument when the player has its own FFmpeg build.
 set -euo pipefail
 browser=$(realpath "$1")
-base=$(realpath "$2")
+base=$2
+if [[ $base != --service-only ]]; then base=$(realpath "$base"); fi
 mkdir "$3"
 stage=$(realpath "$3")
 mkdir -p "$stage/tree/tools/browser/shm_v2" "$stage/tree/tools/browser/copy_candidate" "$stage/tree/tests"
@@ -16,7 +17,9 @@ patch --fuzz=0 -d "$tree" -p1 < "$browser/omx_scale_candidate/omx-panel.patch"
 patch --fuzz=0 -d "$stage/tree" -p1 < "$browser/../../patches/cedar/backend-parallel-direct-slot.patch"
 cp "$tree"/shm_v2/{cedar_client.c,cedar_client.h,cedar_protocol.h,cedar_shm.h} "$stage/"
 cp "$tree/ffmpeg_cedar.c" "$stage/"
-sh "$browser/panel_candidate/build_private.sh" "$base" "$stage"
+if [[ $base != --service-only ]]; then
+    sh "$browser/panel_candidate/build_private.sh" "$base" "$stage"
+fi
 
 sdk=${T736_TINA_SDK:-/home/ubuntu/t736-aiot/tina/out/t736/demo_aiot/buildroot/buildroot/host}
 sysroot="$sdk/aarch64-buildroot-linux-gnu/sysroot"
@@ -37,4 +40,5 @@ cc "${ccflags[@]}" -g -fsanitize=address,undefined -no-pie "$stage/tree/tests/te
 qemu-aarch64-static -L "$sysroot" "$stage/transport-arm" > "$stage/transport-arm.log" 2>&1
 tail -n1 "$stage"/transport-{host,arm}.log
 cd "$stage"
-sha256sum cedar-broker libcedar_backend.so libavcodec.so.61 libt736_cedar_client.so
+sha256sum cedar-broker libcedar_backend.so
+if [[ $base != --service-only ]]; then sha256sum libavcodec.so.61 libt736_cedar_client.so; fi

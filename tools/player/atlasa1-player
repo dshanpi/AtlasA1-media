@@ -102,8 +102,11 @@ def main(args):
                 'T736_CEDAR_NATIVE_PLAYER', 'T736_CEDAR_TRACE', 'T736_CEDAR_PANEL'):
         env.pop(key, None)
     decoder = cedar_decoder(path, env)
-    env.update(SDL_RENDER_DRIVER='opengles2', LD_LIBRARY_PATH=GPU+'/runtime-gles',
-               LIBGL_DRIVERS_PATH=GPU+'/lib/dri')
+    env['SDL_RENDER_DRIVER'] = 'opengles2'
+    env['LD_LIBRARY_PATH'] = LIB
+    if os.path.isdir(GPU+'/runtime-gles') and not env.get('WAYLAND_DISPLAY'):
+        env['LD_LIBRARY_PATH'] += ':' + GPU+'/runtime-gles'
+        env['LIBGL_DRIVERS_PATH'] = GPU+'/lib/dri'
     # Preserve the desktop's display, audio routing and seat. SDL opens the
     # interactive session normally; the smoke test supplies its offscreen driver.
     cmd = [PLAYER, '-hide_banner', '-autoexit', '-noframedrop']

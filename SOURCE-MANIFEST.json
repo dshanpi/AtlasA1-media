@@ -14,8 +14,8 @@
       "path": "README.md",
       "kind": "generated",
       "source": "generated/AtlasA1-media/README.md",
-      "size": 437,
-      "sha256": "7aa0f689befd2c39735366fcd0bddb97a5cee6a0c55b2d1e33124b4f084f0b16"
+      "size": 683,
+      "sha256": "95fcc977fd41f190e77edef02d3aab8572fad69cfae9abbef5f369705bb31f60"
     },
     {
       "path": "docs/BACKUP_MEDIA_V28_20261117.md",
@@ -44,6 +44,13 @@
       "source": "mainline/evidence/atlas-display-media-v29-reboot-20261118.json",
       "size": 4018,
       "sha256": "c9eab826be163602b3341bf32daa0af6630f56e21096776fc5f3017237bf9273"
+    },
+    {
+      "path": "evidence/atlas-ubuntu26-board-rebuild-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlas-ubuntu26-board-rebuild-20261118.json",
+      "size": 3896,
+      "sha256": "0e2d2d8b15c7075bf313978d27008381a437916a3daac47a5ddfabd61f9e35e7"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -336,8 +343,8 @@
       "path": "tools/browser/build_browser_ffmpeg.py",
       "kind": "source",
       "source": "mainline/tools/browser/build_browser_ffmpeg.py",
-      "size": 7850,
-      "sha256": "e9d969ca3e81743a62eb5f3a216ddadffb315370767eac9e734e73106a6d7a3b"
+      "size": 8157,
+      "sha256": "18f31f3a3e936db35bb460c61b27eb77475a8bafc1aeaeff2129dbd662b70185"
     },
     {
       "path": "tools/browser/cedar-service",
@@ -525,8 +532,8 @@
       "path": "tools/browser/omx_scale_candidate/build_omx_panel.sh",
       "kind": "source",
       "source": "mainline/tools/browser/omx_scale_candidate/build_omx_panel.sh",
-      "size": 2539,
-      "sha256": "08ac16414fd4ba1b993e0566fb0358742532150d29ea8482f24360e447ffebcb"
+      "size": 2692,
+      "sha256": "64bd241495861fa468f11648fbcdd7bac8d017b218aef4d590876dd6a33bde63"
     },
     {
       "path": "tools/browser/omx_scale_candidate/omx-panel.patch",
@@ -700,8 +707,15 @@
       "path": "tools/build_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tools/build_atlasa1_player.py",
-      "size": 5758,
-      "sha256": "b0d08e565fefb4c499b821600d8c96a24f942ba31736f83435abf6379e810dea"
+      "size": 6619,
+      "sha256": "dbfce2062eb65d3e5f8b2e5e986f180e0c98f28984d1551309b83edf827bd016"
+    },
+    {
+      "path": "tools/build_atlasa1_resolute_player.sh",
+      "kind": "source",
+      "source": "mainline/tools/build_atlasa1_resolute_player.sh",
+      "size": 1942,
+      "sha256": "e97e66a02b126183bd19b3a8dbca8382e44bd6d221da11ea9e6884ebaa7afa5a"
     },
     {
       "path": "tools/build_cedar_4k_omx.py",
@@ -826,8 +840,8 @@
       "path": "tools/player/atlasa1-player",
       "kind": "source",
       "source": "mainline/tools/player/atlasa1-player",
-      "size": 4866,
-      "sha256": "4a38bc273a87f260e3554e76c6d82263bbc1ef468d84ee3534a0190bcd666251"
+      "size": 4998,
+      "sha256": "691a0f81336c60c340e7a4b2f984819245344f1d4e8c48a9ac9a6345175ced5d"
     },
     {
       "path": "tools/player/atlasa1-player.desktop",
@@ -856,6 +870,13 @@
       "source": "mainline/tools/port_media_iommu.py",
       "size": 8268,
       "sha256": "71f7466355e72c3a1f99dbdf141f44fea3434752b33847171c52c29c302aa9e8"
+    },
+    {
+      "path": "tools/prepare_atlasa1_resolute_media.py",
+      "kind": "source",
+      "source": "mainline/tools/prepare_atlasa1_resolute_media.py",
+      "size": 5714,
+      "sha256": "756bf2a7f001d9387f36c08e2cdc42fd07efdcabac845e73d6d3dc53916e0ba9"
     },
     {
       "path": "tools/prepare_media_kernel.py",
@@ -989,6 +1010,13 @@
       "source": "mainline/tools/validation/update_t736_media_v29.py",
       "size": 33645,
       "sha256": "6c9b896a1977f411181584fd3031f6486df73637d4db1d45b769b38749f96e08"
+    },
+    {
+      "path": "tools/verify_atlasa1_resolute_media.sh",
+      "kind": "source",
+      "source": "mainline/tools/verify_atlasa1_resolute_media.sh",
+      "size": 2082,
+      "sha256": "257ed7c52fe597995498c55e1b937abf82a7266838dd949b5c3b8570b64409a9"
     }
   ]
 }

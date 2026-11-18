@@ -16,6 +16,8 @@ def main():
     p.add_argument('--cc', default='aarch64-linux-gnu-gcc')
     p.add_argument('--client', type=Path, help='prebuilt matching native panel client')
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--private-runtime', type=Path,
+                   help='Bundle matching FFmpeg 7 runtime libraries on systems with FFmpeg 8')
     args = p.parse_args()
     if args.output.exists():
         p.error('output already exists')
@@ -65,13 +67,24 @@ def main():
         install(tools/'player/atlasa1-player.desktop', stage/'usr/share/applications/atlasa1-player.desktop', 0o644)
         for name in ('README.md','copyright'):
             install(tools/'player'/name, stage/'usr/share/doc/atlasa1-player'/name, 0o644)
+        ffmpeg_deps = 'libavdevice61, libavfilter10, libavformat61, libavcodec61, libavutil59, libswscale8, libswresample5, '
+        version = '0.1-4'
+        if args.private_runtime:
+            for soname in ('libavdevice.so.61', 'libavfilter.so.10', 'libavformat.so.61', 'libswscale.so.8',
+                           'libswresample.so.5'):
+                library = args.private_runtime / soname
+                if ('['+soname+']' not in subprocess.check_output(['readelf','-d',library],text=True)
+                        or 'AArch64' not in subprocess.check_output(['readelf','-h',library],text=True)):
+                    p.error('unexpected private runtime library: ' + soname)
+                install(library, app/'lib'/soname, 0o644)
+            ffmpeg_deps = ''
+            version = '0.1-5~resolute1'
         control = stage/'DEBIAN'
         control.mkdir()
         control.joinpath('control').write_text(
-            'Package: atlasa1-player\nVersion: 0.1-4\nArchitecture: arm64\n'
+            f'Package: atlasa1-player\nVersion: {version}\nArchitecture: arm64\n'
             'Maintainer: AtlasA1 Project <noreply@github.com>\n'
-            'Depends: ffmpeg (>= 7:7.1), libavdevice61, libavfilter10, libavformat61, libavcodec61, '
-            'libavutil59, libswscale8, libswresample5, libsdl2-2.0-0, python3, python3-gi, gir1.2-gtk-3.0\n'
+            f'Depends: ffmpeg (>= 7:7.1), {ffmpeg_deps}libsdl2-2.0-0, python3, python3-gi, gir1.2-gtk-3.0\n'
             'Recommends: x11-xserver-utils\nSection: video\nPriority: optional\n'
             'Description: AtlasA1 FFplay with Cedar decoding and SDL GLES2 playback\n'
             ' Opens local video files in a desktop session with the board media runtime.\n')
