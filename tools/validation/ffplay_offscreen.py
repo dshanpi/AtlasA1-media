@@ -66,7 +66,7 @@ def play(args, record):
             lib.resolve(strict=True)
         env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_TEST_CLIENT='1', T736_CEDAR_TRACE='1',
                    LD_PRELOAD=':'.join(map(str, libs)))
-        if args.native_fit:
+        if args.native_fit or args.omx_fit:
             del env['T736_CEDAR_TEST_CLIENT']
             env.update(T736_CEDAR_NATIVE_PLAYER='1', T736_CEDAR_PANEL='1920x1080')
     if args.present_trace:
@@ -119,8 +119,10 @@ def play(args, record):
     # Tie the pixels returned to this process to the service's matching lease.
     pulls = set(re.findall(r'CEDAR_TRACE pull=\d+ session=(\d+) ', log))
     expected = (str({'hevc':2,'h264':1}[codec]), *shape)
-    match = any(s in pulls and (c, w, h) == expected and (s, w, h) in hw
-                for s, c, w, h in sessions)
+    visible_shape = ('1920', '1080') if args.omx_fit else shape
+    matching_sessions = {s for s, c, w, h in sessions
+                         if s in pulls and (c, w, h) == expected and (s, *visible_shape) in hw}
+    match = bool(matching_sessions)
     shown = re.findall(r'\[Parsed_showinfo_\d+ @ [^\]]+\] n:\s*\d+\s+pts:.*? s:(\d+)x(\d+)\b', log)
     clock_label = 'A-V' if args.audio else 'M-V'
     stats = re.findall(r'([-+]?\d+\.\d+)\s+' + clock_label + r':\s*([-+\d.]+)\s+fd=\s*(\d+)', log)
@@ -139,11 +141,17 @@ def play(args, record):
         checks['pvr_loaded'] = bool(pvr_libs)
         record['pvr_libraries'] = sorted(pvr_libs)
     record['player_filter_sizes'] = sorted({f'{w}x{h}' for w,h in shown})
-    if args.native_fit:
+    if args.native_fit or args.omx_fit:
         del checks['full_dimensions']
         checks['full_source_session'] = shape == ('3840', '2160') and match
-        checks['native_fit_geometry'] = set(shown) == {('1920','1080')} and (
-            'T736_CEDAR_PROXY: decoded=3840x2160 display=1920x1080 i420-box2x2' in log)
+        marker = ('T736_CEDAR_PROXY: input=3840x2160 display=1920x1080 omx-scale=1'
+                  if args.omx_fit else 'T736_CEDAR_PROXY: decoded=3840x2160 display=1920x1080 i420-box2x2')
+        mode = 'omx-scale' if args.omx_fit else 'shm-box'
+        shared = 'x'.join(visible_shape)
+        negotiated = any(f'T736_CEDAR_PANEL: session={s} mode={mode} input=3840x2160 '
+                         f'shared={shared} display=1920x1080' in log for s in matching_sessions)
+        checks['omx_fit_geometry' if args.omx_fit else 'native_fit_geometry'] = (
+            set(shown) == {('1920', '1080')} and (negotiated or marker in log))
     if args.audio:
         skew = sorted(abs(float(offset)) for t, offset, _ in stats if 1 <= float(t) < duration-.5)
         record['av_offset_p95_seconds'] = skew[(95*len(skew)-1)//100] if skew else None
@@ -180,10 +188,13 @@ def main():
     parser.add_argument('--renderer', choices=['software','powervr'], default='software')
     parser.add_argument('--present-trace', type=Path, help='ARM64 shared library built from ffplay_present_trace.c')
     parser.add_argument('--keep-frames', action='store_true', help='Retain late frames with the same external master clock')
-    parser.add_argument('--scale-to-window', action='store_true',
+    scaling = parser.add_mutually_exclusive_group()
+    scaling.add_argument('--scale-to-window', action='store_true',
                         help='Fit the fully decoded picture inside 1920×1080 before uploading its SDL texture')
-    parser.add_argument('--native-fit', action='store_true',
+    scaling.add_argument('--native-fit', action='store_true',
                         help='Require full UHD broker output and native-client 1920×1080 box-filtered images')
+    scaling.add_argument('--omx-fit', action='store_true',
+                        help='Require a UHD input session and half-size images from the OMX decoder')
     parser.add_argument('--user', default='t736')
     parser.add_argument('--player', type=Path, default=Path('/usr/bin/ffplay'))
     parser.add_argument('--audio', action='store_true', help='Decode audio to the dummy device and use its clock')
@@ -194,9 +205,10 @@ def main():
     args = parser.parse_args()
     if args.keep_frames and not args.present_trace:
         parser.error('--keep-frames requires --present-trace to measure actual output pacing')
-    if args.native_fit and (args.mode != 'cedar' or args.scale_to_window):
-        parser.error('--native-fit requires Cedar and its own scaling path')
+    if (args.native_fit or args.omx_fit) and args.mode != 'cedar':
+        parser.error('--native-fit and --omx-fit require Cedar')
     record = dict(player='FFplay', kernel=os.uname().release, mode=args.mode,
+                  probe_cpu_affinity=sorted(os.sched_getaffinity(0)),
                   display='SDL dummy software renderer' if args.renderer == 'software' else 'SDL offscreen GLES2',
                   window=[1920,1080], audio=args.audio, keep_late_frames=args.keep_frames)
     with args.output.open('x', encoding='utf-8') as out:

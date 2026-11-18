@@ -35,8 +35,8 @@
       "path": "docs/PLAYBACK.md",
       "kind": "source",
       "source": "mainline/docs/PLAYBACK.md",
-      "size": 5843,
-      "sha256": "5215fe17c4cf82299b7790c7694b2087699a7d7880e87b2613e38cc0a591b33a"
+      "size": 6914,
+      "sha256": "fedbfdcf71ac4ccb6f580644f0da9754cd9d79f05b1edb34b05ddf05e3347798"
     },
     {
       "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
@@ -58,6 +58,13 @@
       "source": "mainline/evidence/atlasa1-player-panel-package-20261118.json",
       "size": 3025,
       "sha256": "fef276acbbe332a1079da6b638d46b8fda511168b8958a21502dddfb7ed3e21e"
+    },
+    {
+      "path": "evidence/atlasa1-player-preferred-panel-package-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-player-preferred-panel-package-20261118.json",
+      "size": 4417,
+      "sha256": "dd16967918975395abd3c15ce7f73d4f2fffae39737976ef1a4ac04c3e32c3ae"
     },
     {
       "path": "evidence/cedar-direct-slot-build-20261118.json",
@@ -149,6 +156,13 @@
       "source": "mainline/evidence/media-v30-4k-native-playback-20261118.json",
       "size": 24597,
       "sha256": "384eec3031c8073667a53b03eed87c54054c414fe86ef026c4aeb060460a938c"
+    },
+    {
+      "path": "evidence/media-v30-4k-omx-panel-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-4k-omx-panel-20261118.json",
+      "size": 8681,
+      "sha256": "6c00a2d7625da8e7fb7cc004688276d639d63d7473c46e5db5d458ac68702b9a"
     },
     {
       "path": "evidence/media-v30-4k-wc-parallel-20261118.json",
@@ -480,6 +494,34 @@
       "sha256": "ee435630b57faf0de41e48c4150247d2f42736da531acde4907bcb45af922fb3"
     },
     {
+      "path": "tools/browser/omx_scale_candidate/README.md",
+      "kind": "source",
+      "source": "mainline/tools/browser/omx_scale_candidate/README.md",
+      "size": 2676,
+      "sha256": "70b7ecc7a778723d1473c5b6713af403d865bdcbb3597d1ce7aa66bc4f6411ac"
+    },
+    {
+      "path": "tools/browser/omx_scale_candidate/build_omx_panel.sh",
+      "kind": "source",
+      "source": "mainline/tools/browser/omx_scale_candidate/build_omx_panel.sh",
+      "size": 2539,
+      "sha256": "08ac16414fd4ba1b993e0566fb0358742532150d29ea8482f24360e447ffebcb"
+    },
+    {
+      "path": "tools/browser/omx_scale_candidate/omx-panel.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/omx_scale_candidate/omx-panel.patch",
+      "size": 15083,
+      "sha256": "0b357d1264432c8cd2af2150ee55c201f5dc72f7364fed31fe8ced4b39889338"
+    },
+    {
+      "path": "tools/browser/omx_scale_candidate/test_omx_panel.c",
+      "kind": "source",
+      "source": "mainline/tools/browser/omx_scale_candidate/test_omx_panel.c",
+      "size": 2299,
+      "sha256": "73879c9bc61e108e3f1efacb4e9d1e181bc47be09e6c6d623284e11c74f82e5d"
+    },
+    {
       "path": "tools/browser/panel_candidate/README.md",
       "kind": "source",
       "source": "mainline/tools/browser/panel_candidate/README.md",
@@ -501,6 +543,13 @@
       "sha256": "df06f45be61069a0bbbb8a4276cdb75a020b99658a02c532b29f0cfb0274cbae"
     },
     {
+      "path": "tools/browser/panel_candidate/prefer-omx-panel.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/prefer-omx-panel.patch",
+      "size": 7793,
+      "sha256": "9f6056de49d137a958d25922260662989543a1e7f665ddbe8f52ca4ed0787d53"
+    },
+    {
       "path": "tools/browser/panel_candidate/private-1080p-panel.patch",
       "kind": "source",
       "source": "mainline/tools/browser/panel_candidate/private-1080p-panel.patch",
@@ -520,6 +569,20 @@
       "source": "mainline/tools/browser/panel_candidate/test_panel_client.c",
       "size": 3781,
       "sha256": "8ea0eb4942b0e1c2204394b599e8209283873141ff3385c48727b6aeb6139cef"
+    },
+    {
+      "path": "tools/browser/panel_candidate/test_preferred_panel.c",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/test_preferred_panel.c",
+      "size": 3466,
+      "sha256": "2e1940bc4d922bee4d665e90091fcec844cc8b653320a72e0f4b08d866427232"
+    },
+    {
+      "path": "tools/browser/panel_candidate/test_preferred_panel.sh",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/test_preferred_panel.sh",
+      "size": 2152,
+      "sha256": "f71e86a0df1a3e007ef60e73bb8837d223fbe0bfa6377708986c2c4b354459dc"
     },
     {
       "path": "tools/browser/shm_v2/70-t736-cedar.rules",
@@ -616,8 +679,8 @@
       "path": "tools/build_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tools/build_atlasa1_player.py",
-      "size": 5314,
-      "sha256": "671c37b224c6ed9778da5e7052376270965704e89e715ba5d3510f584a9c30ee"
+      "size": 5451,
+      "sha256": "040c2b2354d608c452608803d88f7019a41cf5cc61545b2d1c05cb921fc4ee64"
     },
     {
       "path": "tools/build_cedar_4k_omx.py",
@@ -735,8 +798,8 @@
       "path": "tools/player/README.md",
       "kind": "source",
       "source": "mainline/tools/player/README.md",
-      "size": 2698,
-      "sha256": "12a2ad16c53d319414ff651cc77041f4350908d47ac12116a296e4dc90f20bca"
+      "size": 2968,
+      "sha256": "6efe12763900f7c9e95d03225785fd33c6562715f54b58ce16e17e84119aec67"
     },
     {
       "path": "tools/player/atlasa1-player",
@@ -763,8 +826,8 @@
       "path": "tools/player/prepare_panel_sources.sh",
       "kind": "source",
       "source": "mainline/tools/player/prepare_panel_sources.sh",
-      "size": 679,
-      "sha256": "be56d2aedced570a5fa6ed629442bb82519138f60799fd69694851df0eea1aa6"
+      "size": 762,
+      "sha256": "a369df3476f705108270cdfddb573b0619b4805ce91912630dcd999f8ae82b3b"
     },
     {
       "path": "tools/port_media_iommu.py",
@@ -847,8 +910,8 @@
       "path": "tools/validation/ffplay_offscreen.py",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_offscreen.py",
-      "size": 12540,
-      "sha256": "5906e20d1469c4526eca6bc4c65a6d8a42e3aa16147750cc5592dcd0b04a547b"
+      "size": 13441,
+      "sha256": "f1e75dd20d73aa407c0ba4b9dee3611a92dd182054353ecfccc9886eb28c5bc3"
     },
     {
       "path": "tools/validation/ffplay_present_trace.c",

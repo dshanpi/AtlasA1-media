@@ -1,0 +1,322 @@
+--- a/cedar_backend.h
++++ b/cedar_backend.h
+@@ -34,6 +34,9 @@
+  * and enforce one active lease. Do not close/reopen per browser decoder. */
+ cedar_decoder *cedar_open(enum cedar_codec codec, unsigned width, unsigned height,
+                           char *error, size_t error_size);
++/* Retains compressed-stream geometry but requests quarter-area OMX output. */
++cedar_decoder *cedar_open_panel(enum cedar_codec codec, unsigned width, unsigned height,
++                                char *error, size_t error_size);
+ int cedar_push(cedar_decoder *dec, const void *data, size_t size,
+                int64_t pts_ns, int64_t dts_ns);
+ int cedar_pull(cedar_decoder *dec, cedar_frame *out, unsigned timeout_ms);
+--- a/shm_v2/cedar_backend.h
++++ b/shm_v2/cedar_backend.h
+@@ -34,6 +34,9 @@
+  * and enforce one active lease. Do not close/reopen per browser decoder. */
+ cedar_decoder *cedar_open(enum cedar_codec codec, unsigned width, unsigned height,
+                           char *error, size_t error_size);
++/* Retains compressed-stream geometry but requests quarter-area OMX output. */
++cedar_decoder *cedar_open_panel(enum cedar_codec codec, unsigned width, unsigned height,
++                                char *error, size_t error_size);
+ int cedar_push(cedar_decoder *dec, const void *data, size_t size,
+                int64_t pts_ns, int64_t dts_ns);
+ int cedar_pull(cedar_decoder *dec, cedar_frame *out, unsigned timeout_ms);
+--- a/cedar_backend.c
++++ b/cedar_backend.c
+@@ -204,8 +204,8 @@
+     return GST_PAD_PROBE_OK;
+ }
+ 
+-cedar_decoder *cedar_open(enum cedar_codec codec, unsigned width, unsigned height,
+-                          char *error, size_t error_size)
++static cedar_decoder *open_decoder(enum cedar_codec codec, unsigned width, unsigned height,
++                                   char *error, size_t error_size, int panel)
+ {
+     cedar_decoder *d = NULL;
+     GstElement *parser = NULL, *decoder = NULL, *gate = NULL;
+@@ -216,7 +216,7 @@
+     if (error && error_size)
+         error[0] = 0;
+     if ((codec != CEDAR_H264 && codec != CEDAR_HEVC) || !width || !height ||
+-        width > 3840 || height > 2160) {
++        width > 3840 || height > 2160 || (panel && (width != 3840 || height != 2160))) {
+         if (error && error_size)
+             snprintf(error, error_size, "unsupported codec/dimensions (max 3840x2160)");
+         return NULL;
+@@ -233,8 +233,8 @@
+             snprintf(error, error_size, "out of memory");
+         return NULL;
+     }
+-    d->width = width;
+-    d->height = height;
++    d->width = panel ? width / 2 : width;
++    d->height = panel ? height / 2 : height;
+     d->discontinuity = TRUE;
+     d->pipeline = gst_pipeline_new("t736-cedar-backend");
+     d->source = gst_element_factory_make("appsrc", "compressed");
+@@ -282,6 +282,17 @@
+                               "bit-depth-chroma", G_TYPE_UINT, 8U, NULL);
+     g_object_set(gate, "caps", caps, NULL);
+     gst_caps_unref(caps);
++    if (panel) {
++        GParamSpec *scale = g_object_class_find_property(G_OBJECT_GET_CLASS(decoder), "scale");
++        if (!scale || !G_IS_PARAM_SPEC_UINT(scale) || !(scale->flags & G_PARAM_WRITABLE) ||
++            G_PARAM_SPEC_UINT(scale)->minimum > 1 || G_PARAM_SPEC_UINT(scale)->maximum < 1) {
++            fail(d, "private OMX decoder lacks half-resolution output");
++            goto failure;
++        }
++        g_object_set(decoder, "scale", 1U, NULL);
++        fprintf(stderr, "CEDAR_PANEL: OMX scale=1 requested input=%ux%u output=%ux%u\n",
++                width, height, d->width, d->height);
++    }
+     g_object_set(decoder, "afbc", FALSE, "disable-dma-feature", TRUE, NULL);
+     caps = gst_caps_from_string("video/x-raw,format=(string){NV21,NV12,I420,YV12}");
+     gst_app_sink_set_caps(GST_APP_SINK(d->sink), caps);
+@@ -317,6 +328,18 @@
+         snprintf(error, error_size, "%s", d->error);
+     cedar_close(d);
+     return NULL;
++}
++
++cedar_decoder *cedar_open(enum cedar_codec codec, unsigned width, unsigned height,
++                          char *error, size_t error_size)
++{
++    return open_decoder(codec, width, height, error, error_size, 0);
++}
++
++cedar_decoder *cedar_open_panel(enum cedar_codec codec, unsigned width, unsigned height,
++                                char *error, size_t error_size)
++{
++    return open_decoder(codec, width, height, error, error_size, 1);
+ }
+ 
+ int cedar_push(cedar_decoder *d, const void *data, size_t size,
+--- a/shm_v2/cedar_protocol.h
++++ b/shm_v2/cedar_protocol.h
+@@ -17,7 +17,10 @@
+     int32_t status;
+     uint32_t reserved;
+ };
+-struct t736_open { uint32_t codec, width, height, reserved; };
++/* Zero selects original size; flag 1 requests half-size 3840x2160 output.
++ * An older broker rejects every nonzero flag before allocating a decoder. */
++#define T736_OPEN_PANEL1080 1U
++struct t736_open { uint32_t codec, width, height, flags; };
+ struct t736_packet { int64_t pts_us, dts_us; };
+ struct t736_pull { uint32_t capacity, timeout_ms; };
+ struct t736_picture {
+--- a/shm_v2/cedar_broker.c
++++ b/shm_v2/cedar_broker.c
+@@ -26,7 +26,7 @@
+ 
+ struct retained {
+     cedar_decoder *decoder;
+-    unsigned codec, width, height;
++    unsigned codec, width, height, flags;
+     uint32_t lease;
+     int owner, failed;
+ };
+@@ -72,13 +72,15 @@
+     if (poisoned) return -EIO;
+     if ((args->codec != T736_CODEC_H264 && args->codec != T736_CODEC_HEVC) ||
+         !args->width || !args->height || args->width > T736_MAX_WIDTH ||
+-        args->height > T736_MAX_HEIGHT || ((args->width | args->height) & 1) || args->reserved)
++        args->height > T736_MAX_HEIGHT || ((args->width | args->height) & 1) ||
++        (args->flags && (args->flags != T736_OPEN_PANEL1080 ||
++                         args->width != 3840 || args->height != 2160)))
+         return -EINVAL;
+     struct retained *slot = NULL;
+     for (unsigned i = 0; i < CONTEXT_COUNT; ++i) {
+         if (contexts[i].lease) return -EBUSY;
+         if (contexts[i].decoder && contexts[i].codec == args->codec &&
+-            contexts[i].width == args->width && contexts[i].height == args->height)
++            contexts[i].width == args->width && contexts[i].height == args->height && contexts[i].flags == args->flags)
+             slot = &contexts[i];
+     }
+     if (!slot) {
+@@ -86,13 +88,14 @@
+             if (!contexts[i].decoder && !contexts[i].failed) { slot = &contexts[i]; break; }
+         if (!slot) return -ENOSPC;
+         char error[512] = {0};
+-        slot->decoder = cedar_open(args->codec, args->width, args->height, error, sizeof(error));
++        slot->decoder = (args->flags ? cedar_open_panel : cedar_open)(
++            args->codec, args->width, args->height, error, sizeof(error));
+         if (!slot->decoder) {
+             slot->failed = 1;
+             fprintf(stderr, "CEDAR_BROKER: init failed: %s\n", error);
+             return -EIO;
+         }
+-        slot->codec = args->codec; slot->width = args->width; slot->height = args->height;
++        slot->flags = args->flags; slot->codec = args->codec; slot->width = args->width; slot->height = args->height;
+     } else {
+         if (slot->failed) return -EIO;
+         int ret = backend_result(cedar_resume(slot->decoder));
+@@ -153,14 +156,16 @@
+         if (length != sizeof(struct t736_pull)) return -EINVAL;
+         struct t736_pull *args = (struct t736_pull *)body;
+         if (args->capacity > T736_MAX_FRAME || args->timeout_ms > 1000) return -EINVAL;
+-        if (args->capacity < slot->width * slot->height * 3U / 2U) return -ENOSPC;
++        unsigned out_width = slot->flags ? slot->width / 2 : slot->width;
++        unsigned out_height = slot->flags ? slot->height / 2 : slot->height;
++        if (args->capacity < out_width * out_height * 3U / 2U) return -ENOSPC;
+         if (cedar_pull_into)
+             result = cedar_pull_into(slot->decoder, pixels, args->capacity, frame, args->timeout_ms);
+         else
+             result = cedar_pull(slot->decoder, frame, args->timeout_ms);
+         if (result == 1) {
+             if ((cedar_pull_into ? frame->data != NULL : frame->data == NULL) ||
+-                !frame->width || !frame->height ||
++                frame->width != out_width || frame->height != out_height ||
+                 frame->width > T736_MAX_WIDTH || frame->height > T736_MAX_HEIGHT ||
+                 ((frame->width | frame->height) & 1) ||
+                 frame->size != (size_t)frame->width * frame->height * 3 / 2 ||
+--- a/shm_v2/cedar_client.h
++++ b/shm_v2/cedar_client.h
+@@ -22,6 +22,8 @@
+  */
+ int t736_client_available(void);
+ int t736_client_open(int codec, unsigned width, unsigned height);
++int t736_client_panel_requested(void);
++int t736_client_open_panel(int codec, unsigned width, unsigned height);
+ int t736_client_push(int session, const uint8_t *data, size_t size,
+                      int64_t pts_us, int64_t dts_us);
+ int t736_client_pull(int session, uint8_t *dst, size_t capacity,
+--- a/shm_v2/cedar_client.c
++++ b/shm_v2/cedar_client.c
+@@ -18,7 +18,7 @@
+ static int connection = -1;
+ static uint32_t serial_number;
+ static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-static int trace;
++static int trace, panel_requested;
+ static unsigned trace_push, trace_pull;
+ static const uint8_t *shared_pixels;
+ static pid_t connected_pid;
+@@ -118,6 +118,8 @@
+     if (!enabled || strcmp(enabled, "1")) return;
+     if (native && !strcmp(native, "1")) {
+         if (!is_native_player()) return;
++        const char *panel = getenv("T736_CEDAR_PANEL");
++        panel_requested = panel && !strcmp(panel, "1920x1080");
+     } else if (!rdd && (!test || strcmp(test, "1"))) {
+         return;
+     }
+@@ -206,7 +208,9 @@
+     if (!error) error = reply.status;
+     if (!error && op == T736_OPEN) {
+         const struct t736_open *args = prefix;
+-        active_session = reply.session; active_width = args->width; active_height = args->height;
++        active_session = reply.session;
++        active_width = args->flags ? args->width / 2 : args->width;
++        active_height = args->flags ? args->height / 2 : args->height;
+         error = (int)reply.session;
+     }
+     if (!error && op == T736_CLOSE && (uint32_t)session == active_session)
+@@ -221,6 +225,19 @@
+         !width || !height || width > T736_MAX_WIDTH || height > T736_MAX_HEIGHT ||
+         ((width | height) & 1)) return -EINVAL;
+     struct t736_open args = { (uint32_t)codec, width, height, 0 };
++    return simple(T736_OPEN, 0, &args, sizeof(args), NULL, 0);
++}
++
++int t736_client_panel_requested(void)
++{
++    return panel_requested && current_process();
++}
++
++int t736_client_open_panel(int codec, unsigned width, unsigned height)
++{
++    struct t736_open args = { (uint32_t)codec, width, height, T736_OPEN_PANEL1080 };
++    if (!t736_client_panel_requested() || (codec != T736_CODEC_HEVC && codec != T736_CODEC_H264) ||
++        width != 3840 || height != 2160) return -EINVAL;
+     return simple(T736_OPEN, 0, &args, sizeof(args), NULL, 0);
+ }
+ 
+--- a/ffmpeg_cedar.c
++++ b/ffmpeg_cedar.c
+@@ -28,6 +28,8 @@
+     int (*open)(int, unsigned, unsigned);
+     int (*push)(int, const uint8_t *, size_t, int64_t, int64_t);
+     int (*pull)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
++    int (*panel_requested)(void);
++    int (*open_panel)(int, unsigned, unsigned);
+     int (*drain)(int);
+     int (*flush)(int);
+     int (*close)(int);
+@@ -51,6 +53,8 @@
+     int session, delivered, fatal_error;
+     int offset_set;
+     int64_t offset_us, drain_started, backpressure_started, first_frame_wait_started;
++    size_t pixel_capacity;
++    int fit_panel;
+     AVBufferPool *pixel_pool;
+     AVBufferRef *receive_buffer;
+     unsigned generation;
+@@ -296,6 +300,7 @@
+ {
+ #define LOAD(field) *(void **)(&api->field) = dlsym(RTLD_DEFAULT, "t736_client_" #field)
+     LOAD(available); LOAD(open); LOAD(push); LOAD(pull);
++    LOAD(panel_requested); LOAD(open_panel);
+     LOAD(drain); LOAD(flush); LOAD(close);
+ #undef LOAD
+     return api->available && api->open && api->push && api->pull &&
+@@ -447,7 +452,7 @@
+         s->receive_buffer = av_buffer_pool_get(s->pixel_pool);
+     if (!s->receive_buffer)
+         return AVERROR(ENOMEM);
+-    ret = s->api.pull(s->session, s->receive_buffer->data, T736_MAX_FRAME,
++    ret = s->api.pull(s->session, s->receive_buffer->data, s->pixel_capacity,
+                       &picture, timeout_ms);
+     if (ret != 1)
+         return ret;
+@@ -455,7 +460,8 @@
+         picture.height > T736_MAX_HEIGHT || (picture.width | picture.height) & 1)
+         return AVERROR(EPROTO);
+     expected = (size_t)picture.width * picture.height * 3 / 2;
+-    if (picture.bytes_written != expected)
++    if (picture.bytes_written != expected || expected > s->pixel_capacity ||
++        (s->fit_panel && (picture.width != 1920 || picture.height != 1080)))
+         return AVERROR(EPROTO);
+     if (picture.pts_us != INT64_MIN &&
+         (picture.pts_us < 0 || picture.pts_us > INT64_MAX / 1000 ||
+@@ -463,9 +469,14 @@
+         return AVERROR(EPROTO);
+     pts = picture.pts_us == INT64_MIN ? AV_NOPTS_VALUE :
+           av_rescale_q(picture.pts_us - s->offset_us, AV_TIME_BASE_Q, packet_timebase(avctx));
+-    ret = ff_set_dimensions(avctx, picture.width, picture.height);
+-    if (ret < 0)
+-        return ret;
++    if (s->fit_panel) {
++        avctx->width = picture.width;
++        avctx->height = picture.height;
++    } else {
++        ret = ff_set_dimensions(avctx, picture.width, picture.height);
++        if (ret < 0)
++            return ret;
++    }
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     frame->format = AV_PIX_FMT_YUV420P;
+     frame->width = picture.width;
+@@ -774,14 +785,19 @@
+         return start_software(avctx, ret);
+     log_extradata(avctx, "bsf_output", s->bsf->par_out->extradata,
+                   s->bsf->par_out->extradata_size);
+-    s->pixel_pool = av_buffer_pool_init(T736_MAX_FRAME + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
++    s->fit_panel = avctx->width == 3840 && avctx->height == 2160 &&
++                   s->api.open_panel && s->api.panel_requested && s->api.panel_requested();
++    s->pixel_capacity = s->fit_panel ? 1920U * 1080U * 3U / 2U : T736_MAX_FRAME;
++    s->pixel_pool = av_buffer_pool_init(s->pixel_capacity + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
+     if (!s->pixel_pool)
+         return start_software(avctx, AVERROR(ENOMEM));
+-    ret = s->api.open(avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
++    ret = (s->fit_panel ? s->api.open_panel : s->api.open)(avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
+                       avctx->width, avctx->height);
+     if (ret <= 0)
+         return start_software(avctx, ret < 0 ? ret : AVERROR(EPROTO));
+     s->session = ret;
++    if (s->fit_panel)
++        av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: input=3840x2160 display=1920x1080 omx-scale=1\n");
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: broker session=%d codec=%s %dx%d ordinary-I420\n",
+            s->session, avctx->codec->name, avctx->width, avctx->height);

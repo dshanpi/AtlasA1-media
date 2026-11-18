@@ -1,0 +1,169 @@
+--- a/shm_v2/cedar_protocol.h
++++ b/shm_v2/cedar_protocol.h
+@@ -17,7 +17,9 @@
+     int32_t status;
+     uint32_t reserved;
+ };
+-struct t736_open { uint32_t codec, width, height, reserved; };
++/* An older v2 broker rejects nonzero OPEN flags with EINVAL before allocation. */
++#define T736_OPEN_PANEL1080 1U
++struct t736_open { uint32_t codec, width, height, flags; };
+ struct t736_packet { int64_t pts_us, dts_us; };
+ struct t736_pull { uint32_t capacity, timeout_ms; };
+ struct t736_picture {
+--- a/shm_v2/cedar_client.h
++++ b/shm_v2/cedar_client.h
+@@ -28,6 +28,7 @@
+                      struct t736_frame *frame, unsigned timeout_ms);
+ /* Opt-in scaler for the installed native player targeting a 1080p panel. */
+ int t736_client_panel_requested(void);
++int t736_client_open_preferred_panel(int codec, unsigned width, unsigned height);
+ int t736_client_pull_fit1080(int session, uint8_t *dst, size_t capacity,
+                              struct t736_frame *frame, unsigned timeout_ms);
+ int t736_client_drain(int session);
+--- a/shm_v2/cedar_client.c
++++ b/shm_v2/cedar_client.c
+@@ -24,6 +24,7 @@
+ static const uint8_t *shared_pixels;
+ static pid_t connected_pid;
+ static uint32_t active_session, active_width, active_height;
++static int active_omx_panel;
+ 
+ static void disconnect_client(void)
+ {
+@@ -32,6 +33,7 @@
+     shared_pixels = NULL;
+     if (connection >= 0) close(connection);
+     connection = -1;
++    active_omx_panel = 0;
+     active_session = active_width = active_height = 0;
+ }
+ 
+@@ -209,11 +211,16 @@
+     if (!error) error = reply.status;
+     if (!error && op == T736_OPEN) {
+         const struct t736_open *args = prefix;
+-        active_session = reply.session; active_width = args->width; active_height = args->height;
++        active_session = reply.session;
++        active_omx_panel = args->flags == T736_OPEN_PANEL1080;
++        active_width = active_omx_panel ? args->width / 2 : args->width;
++        active_height = active_omx_panel ? args->height / 2 : args->height;
+         error = (int)reply.session;
+     }
+-    if (!error && op == T736_CLOSE && (uint32_t)session == active_session)
++    if (!error && op == T736_CLOSE && (uint32_t)session == active_session) {
+         active_session = active_width = active_height = 0;
++        active_omx_panel = 0;
++    }
+     pthread_mutex_unlock(&lock);
+     return error;
+ }
+@@ -244,19 +251,42 @@
+     return panel_requested && current_process();
+ }
+ 
++int t736_client_open_preferred_panel(int codec, unsigned width, unsigned height)
++{
++    const struct t736_open args = { (uint32_t)codec, width, height, T736_OPEN_PANEL1080 };
++    if (!t736_client_panel_requested() || (codec != T736_CODEC_HEVC && codec != T736_CODEC_H264) ||
++        width != 3840 || height != 2160) return -EINVAL;
++    int result = simple(T736_OPEN, 0, &args, sizeof(args), NULL, 0);
++    if (result > 0) {
++        fprintf(stderr, "T736_CEDAR_PANEL: session=%d mode=omx-scale input=3840x2160 shared=1920x1080 display=1920x1080\n", result);
++        return result;
++    }
++    /* EINVAL is the legacy OPEN flags check. ENOSPC also means a
++     * valid, retained full-size lease may be available on the new broker. */
++    if (result != -EINVAL && result != -ENOSPC)
++        return result;
++    int panel_error = result;
++    result = t736_client_open(codec, width, height);
++    if (result > 0)
++        fprintf(stderr, "T736_CEDAR_PANEL: session=%d mode=shm-box input=3840x2160 shared=3840x2160 display=1920x1080 panel_open=%d\n",
++                result, panel_error);
++    return result;
++}
++
+ static int pull_pixels(int session, uint8_t *dst, size_t capacity,
+                        struct t736_frame *frame, unsigned timeout_ms, int fit_panel)
+ {
+     if (session <= 0 || !dst || !frame || capacity > T736_MAX_FRAME || timeout_ms > 1000)
+         return -EINVAL;
+     if (!current_process()) return -ENOTCONN;
+-    struct t736_pull args = { fit_panel ? T736_MAX_FRAME : (uint32_t)capacity, timeout_ms };
++    struct t736_pull args = { (uint32_t)capacity, timeout_ms };
+     struct t736_message reply;
+     struct t736_picture picture;
+     pthread_mutex_lock(&lock);
+     int error;
++    int box = fit_panel && !active_omx_panel;
+     if (fit_panel && (!panel_requested || (uint32_t)session != active_session ||
+-        active_width != 2 * T736_PANEL_WIDTH || active_height != 2 * T736_PANEL_HEIGHT)) {
++        (box && (active_width != 2 * T736_PANEL_WIDTH || active_height != 2 * T736_PANEL_HEIGHT)))) {
+         error = -EINVAL;
+         goto done;
+     }
+@@ -264,6 +294,8 @@
+         error = -ENOSPC;
+         goto done;
+     }
++    if (box)
++        args.capacity = T736_MAX_FRAME;
+     error = request(T736_PULL, session, &args, sizeof(args), NULL, 0, &reply);
+     if (error) goto done;
+     if (reply.status != 1) {
+@@ -283,7 +315,7 @@
+         (picture.colorspace != 0 && picture.colorspace != 1 && picture.colorspace != 6 && picture.colorspace != 9) ||
+         picture.reserved) goto malformed;
+     __atomic_thread_fence(__ATOMIC_ACQUIRE);
+-    if (fit_panel) {
++    if (box) {
+         error = t736_panel_i420(dst, capacity, shared_pixels, picture.bytes,
+                                 picture.width, picture.height);
+         if (error) goto malformed;
+--- a/ffmpeg_cedar.c
++++ b/ffmpeg_cedar.c
+@@ -29,6 +29,7 @@
+     int (*push)(int, const uint8_t *, size_t, int64_t, int64_t);
+     int (*pull)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
+     int (*panel_requested)(void);
++    int (*open_preferred_panel)(int, unsigned, unsigned);
+     int (*pull_fit1080)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
+     int (*drain)(int);
+     int (*flush)(int);
+@@ -300,7 +301,7 @@
+ {
+ #define LOAD(field) *(void **)(&api->field) = dlsym(RTLD_DEFAULT, "t736_client_" #field)
+     LOAD(available); LOAD(open); LOAD(push); LOAD(pull);
+-    LOAD(panel_requested); LOAD(pull_fit1080);
++    LOAD(panel_requested); LOAD(pull_fit1080); LOAD(open_preferred_panel);
+     LOAD(drain); LOAD(flush); LOAD(close);
+ #undef LOAD
+     return api->available && api->open && api->push && api->pull &&
+@@ -788,18 +789,21 @@
+     log_extradata(avctx, "bsf_output", s->bsf->par_out->extradata,
+                   s->bsf->par_out->extradata_size);
+     s->fit_panel = avctx->width == 3840 && avctx->height == 2160 &&
+-                   s->api.pull_fit1080 && s->api.panel_requested && s->api.panel_requested();
++                   s->api.open_preferred_panel && s->api.pull_fit1080 &&
++                   s->api.panel_requested && s->api.panel_requested();
+     s->pixel_capacity = s->fit_panel ? 1920U * 1080U * 3U / 2U : T736_MAX_FRAME;
+     s->pixel_pool = av_buffer_pool_init(s->pixel_capacity + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
+     if (!s->pixel_pool)
+         return start_software(avctx, AVERROR(ENOMEM));
+-    ret = s->api.open(avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
+-                      avctx->width, avctx->height);
++    ret = (s->fit_panel ? s->api.open_preferred_panel : s->api.open)(
++        avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
++        avctx->width, avctx->height);
+     if (ret <= 0)
+         return start_software(avctx, ret < 0 ? ret : AVERROR(EPROTO));
+     s->session = ret;
+-    if (s->fit_panel)
+-        av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: decoded=3840x2160 display=1920x1080 i420-box2x2\n");
++    if (!s->fit_panel)
++        av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PANEL: session=%d mode=source display=%dx%d\n",
++               s->session, avctx->width, avctx->height);
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: broker session=%d codec=%s %dx%d ordinary-I420\n",
+            s->session, avctx->codec->name, avctx->width, avctx->height);

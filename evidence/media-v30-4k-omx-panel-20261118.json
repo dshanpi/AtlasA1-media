@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-18",
+  "board": "AtlasA1 / T736",
+  "kernel": "6.18.63-t736-media-v30",
+  "boot_id": "75c6e89d-8706-412f-86bc-f960d4686d32",
+  "scope": "HEVC 3840x2160 30 fps compressed input, 1920x1080 visible OMX output, isolated 1920x1080 PowerVR GLES2 SDL window. Timed traces count uploads followed by SDL_RenderPresent. AAC was rendered to an SDL dummy audio device.",
+  "heap_limit_mib": 256,
+  "service_namespace_sha256": {
+    "/opt/t736-cedar-direct-test/bin/cedar-broker": "1910bf0ce66653d27fe67f99d2a1ce8b813dafec3893f981a8d7c662a61f3b04",
+    "/opt/t736-cedar-direct-test/libcedar_backend.so": "2185f2019b4aea60933c34d387d290e808848e420f8899b0b401783293145583"
+  },
+  "kernel_buffers": {
+    "unique_dma_buffers": 36,
+    "bytes": 151924736
+  },
+  "broker_sample": {
+    "pixel_format": "YV12",
+    "storage": [
+      1920,
+      1088
+    ],
+    "crop": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "strides": [
+      1920,
+      960,
+      960
+    ],
+    "at_frame": 300,
+    "total_copy_us": 2868264,
+    "average_copy_us": 9560
+  },
+  "runs": {
+    "cold_aac": {
+      "board_result": "v30-omx-fit-4k-av1.json",
+      "board_result_sha256": "e1ac0aa99cc3213788d295f9c1b2386012fcacabba93bb440a7e5f9e4733ade2",
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "3d7d3f0d3bc9980cca50e638b12a7835b86559b07360365dc384b81af5c49eaf"
+      },
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 23491.345,
+        "gap_p95_ms": 37.462,
+        "gap_max_ms": 40.73
+      },
+      "texture_upload": {
+        "mean_ms": 8.409,
+        "through_present_mean_ms": 8.634
+      },
+      "irq_delta": 750,
+      "player_drops": 0,
+      "final_clock": 24.95,
+      "wall_seconds": 28.081,
+      "av_offset_p95_seconds": 0.571,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": false,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": false,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "status": "not_verified"
+    },
+    "retained_aac": {
+      "board_result": "v30-omx-fit-4k-av2.json",
+      "board_result_sha256": "c4cdc86a9af7f09f291e0a86edfc3a5c215ebd887f025697af791e6c8cf90ef7",
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "3d7d3f0d3bc9980cca50e638b12a7835b86559b07360365dc384b81af5c49eaf"
+      },
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 24988.409,
+        "gap_p95_ms": 38.845,
+        "gap_max_ms": 67.605
+      },
+      "texture_upload": {
+        "mean_ms": 8.1,
+        "through_present_mean_ms": 8.376
+      },
+      "irq_delta": 750,
+      "player_drops": 0,
+      "final_clock": 24.96,
+      "wall_seconds": 25.671,
+      "av_offset_p95_seconds": 0.036,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "status": "passed"
+    },
+    "retained_external_clock": {
+      "board_result": "v30-omx-fit-4k-noaudio.json",
+      "board_result_sha256": "9969b9c00642476f1bd660e8a97d3563938b1a37ba57d0d43fe7eede0209f8bd",
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "25.000000",
+        "nb_frames": "750",
+        "sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f"
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 24955.228,
+        "gap_p95_ms": 38.764,
+        "gap_max_ms": 40.782
+      },
+      "texture_upload": {
+        "mean_ms": 7.984,
+        "through_present_mean_ms": 8.26
+      },
+      "irq_delta": 750,
+      "player_drops": 0,
+      "final_clock": 24.98,
+      "wall_seconds": 25.491,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "status": "passed"
+    },
+    "retained_aac_75s": {
+      "board_result": "v30-omx-fit-4k-av75s.json",
+      "board_result_sha256": "34c972b4d8c5ec84c53eb1c4a42812a447878664d24a1e1b78503f5abec43404",
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "duration": "75.042708",
+        "nb_frames": "2250",
+        "sha256": "70f663af3350b4c631254b489812301684fef0328bc4d42ef165ffcf7988d5e5"
+      },
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      },
+      "player_filter_sizes": [
+        "1920x1080"
+      ],
+      "sdl_present": {
+        "frames": 2250,
+        "span_ms": 74900.998,
+        "gap_p95_ms": 37.747,
+        "gap_max_ms": 66.106
+      },
+      "texture_upload": {
+        "mean_ms": 8.448,
+        "through_present_mean_ms": 8.66
+      },
+      "irq_delta": 2250,
+      "player_drops": 0,
+      "final_clock": 75.0,
+      "wall_seconds": 75.57,
+      "av_offset_p95_seconds": 0.035,
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "full_source_session": true,
+        "omx_fit_geometry": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "status": "passed"
+    }
+  },
+  "assessment": "First playback after a clean boot missed real-time and A/V sync despite decoding and presenting all 750 frames. The following two 25-second trials and one 75-second trial using the retained decoder passed their measured conditions.",
+  "installed_app": {
+    "entrypoint": "/usr/bin/atlasa1-player",
+    "board_result": "v30-atlasa1-013-entry.json",
+    "board_result_sha256": "0bed06610ea36d7f12972ff0813f1beb4144338b6b51dde411d4df5f632c2c4f",
+    "deb_sha256": "87e27f414306341153063613b4775860e927739a5c25ece04a4ee60a65064109",
+    "service_output_mode": "OMX-scaled 1920x1080",
+    "uid": 1000,
+    "version": "0.1-3",
+    "fixture_sha256": "3d7d3f0d3bc9980cca50e638b12a7835b86559b07360365dc384b81af5c49eaf",
+    "video": "3840x2160 HEVC 30fps",
+    "audio": "AAC 48kHz, dummy audio",
+    "desktop": "isolated Xvfb 1920x1080; FFplay SDL offscreen GLES2",
+    "exit": 0,
+    "wall_seconds": 26.618,
+    "irq_delta": 750,
+    "pvr": true,
+    "cpus": [
+      6,
+      7
+    ],
+    "panel": true,
+    "fallback": false,
+    "drops": 0,
+    "av_p95_seconds": 0.035,
+    "passed": true
+  },
+  "quality_against_software": {
+    "board_result": "v30-omx-fit-4k-pixels.json",
+    "board_result_sha256": "f99250a8454aec9d2f2f196f55e103d9bd970441f279f742172af60810a5ab9e",
+    "ffmpeg_global_psnr_db": 40.286639,
+    "kernel": "6.18.63-t736-media-v30",
+    "method": "First 60 display-order frames; packaged HEVC OMX 4K input / 1080p crop versus Debian software HEVC + area scale in a separate ffmpeg process; lossless FFV1 reference, both PSNR and SSIM computed on planar YUV420",
+    "fixture_sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f",
+    "omx": true,
+    "quality": {
+      "psnr_avg": {
+        "frames": 60,
+        "minimum": 39.76,
+        "maximum": 40.74,
+        "average": 40.292667
+      },
+      "All": {
+        "frames": 60,
+        "minimum": 0.991395,
+        "maximum": 0.992295,
+        "average": 0.991833
+      }
+    }
+  }
+}

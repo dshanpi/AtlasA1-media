@@ -39,7 +39,8 @@ def main():
         if not all(s+'@@LIBAVCODEC_61' in symbols for s in ('avpriv_elbg_free','avpriv_elbg_do')):
             p.error('the Cedar codec must include Debian libavfilter ELBG compatibility')
         codec_bytes = args.avcodec.read_bytes()
-        if not all(s in codec_bytes for s in (b'hevc_cedar\0', b'h264_cedar\0', b't736_client_pull_fit1080\0')):
+        if not all(s in codec_bytes for s in (b'hevc_cedar\0', b'h264_cedar\0',
+                                              b't736_client_open_preferred_panel\0', b't736_client_pull_fit1080\0')):
             p.error('native Cedar panel decoder build required for --avcodec')
         client = app/'lib/libt736_cedar_client.so'
         if args.client:
@@ -53,7 +54,8 @@ def main():
         if 'AArch64' not in subprocess.check_output(['readelf', '-h', client], text=True):
             p.error('native client must be AArch64')
         exports = subprocess.check_output(['nm', '-D', '--defined-only', client], text=True).splitlines()
-        if not {'t736_client_pull_fit1080', 't736_client_panel_requested'} <= {s.split()[-1] for s in exports}:
+        if not {'t736_client_pull_fit1080', 't736_client_panel_requested',
+                't736_client_open_preferred_panel'} <= {s.split()[-1] for s in exports}:
             p.error('native client lacks panel output support')
         client.chmod(0o644)
         install(tools/'player/atlasa1-player', stage/'usr/bin/atlasa1-player', 0o755)
@@ -63,7 +65,7 @@ def main():
         control = stage/'DEBIAN'
         control.mkdir()
         control.joinpath('control').write_text(
-            'Package: atlasa1-player\nVersion: 0.1-2\nArchitecture: arm64\n'
+            'Package: atlasa1-player\nVersion: 0.1-3\nArchitecture: arm64\n'
             'Maintainer: AtlasA1 Project <noreply@github.com>\n'
             'Depends: ffmpeg (>= 7:7.1), libavdevice61, libavfilter10, libavformat61, libavcodec61, '
             'libavutil59, libswscale8, libswresample5, libsdl2-2.0-0, python3, python3-gi, gir1.2-gtk-3.0\n'

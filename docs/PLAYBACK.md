@@ -1,6 +1,6 @@
 # AtlasA1 播放与显示实测
 
-板上已安装「AtlasA1 播放器」0.1-2，MP4 的默认应用为 `atlasa1-player.desktop`。双击本地 MP4 即可播放，也可以执行 `atlasa1-player "/path/to/video.mp4"`。以普通用户从正式入口 `/usr/bin/atlasa1-player` 播放 25 秒的 HEVC 4K30 + AAC 样片，启动器自动选择 1080p 和 CPU6–7。实测 750 次 VE 中断、播放器零丢帧、音画偏差 P95 为 37 ms，进程在 26.756 秒后正常退出。 [播放器使用与构建](../tools/player/README.md) · [安装包](../evidence/atlasa1-player-panel-package-20261118.json) · [入口实测](../evidence/media-v30-4k-native-playback-20261118.json)
+板上已安装「AtlasA1 播放器」0.1-3，MP4 的默认应用为 `atlasa1-player.desktop`。双击本地 MP4 即可播放，也可以执行 `atlasa1-player "/path/to/video.mp4"`。以普通用户从正式入口播放 25 秒的 HEVC 4K30 + AAC 样片，启动器自动选择 1080p 和 CPU6–7，OMX 在解码时缩小画面。实测 750 次 VE 中断、播放器零丢帧、音画偏差 P95 为 35 ms，进程在 26.618 秒后正常退出。 [播放器使用与构建](../tools/player/README.md) · [软件包构建记录](../evidence/atlasa1-player-preferred-panel-package-20261118.json) · [正式入口实测](../evidence/media-v30-4k-omx-panel-20261118.json)
 
 ## 2026-11-18 实板结果
 
@@ -13,11 +13,14 @@
 | 原生 HEVC 4K30，上传原尺寸纹理 | 两轮各呈现 750 帧，耗时 28.865 秒和 28.419 秒。另一次计时测得每帧纹理上传平均 30.183 ms。带 AAC 时音画偏差 P95 达 3.446 秒。 | 未达到实时播放。[记录](../evidence/media-v30-4k-native-playback-20261118.json) |
 | 相同 4K30 片源，缩到 1080p | FFmpeg 常规缩放用 30.909 秒呈现 750 帧。读取共享内存时做 2×2 平均缩放，耗时 27.361 秒。两种方式的纹理上传平均 10.031 ms 和 9.969 ms。 | 仅缩小纹理仍低于 30 fps。[记录](../evidence/media-v30-4k-native-playback-20261118.json) |
 | 原生 HEVC 4K30，缩到 1080p，播放器绑定两个 Cortex-A76 核心 | 两轮各呈现全部 750 帧，首帧到末帧分别为 24.951 秒和 24.948 秒。带 AAC 时为 25.025 秒，音画偏差 P95 为 33 ms。75 秒带 AAC 片源呈现全部 2250 帧，耗时 75.495 秒，2250 次 VE 中断，零丢帧，音画偏差 P95 为 38 ms。 | 通过 4K30 片源在 1080p 窗口的离屏实时播放。[记录](../evidence/media-v30-4k-native-playback-20261118.json) |
+| 原生 HEVC 4K30，OMX 直接输出 1080p | 初次打开带 AAC 的 25 秒片源，音画偏差 P95 达 571 ms，进程耗时 28.081 秒。复用解码器后，25 秒和 75 秒的带音轨片源分别呈现 750 和 2250 帧，音画偏差 P95 为 36 和 35 ms。GPU 接收 1920×1080 图像。 | 首次启动的音画同步未通过，复用后通过。[记录](../evidence/media-v30-4k-omx-panel-20261118.json) |
 | Firefox ESR，HEVC | 1080p60 测量窗口呈现 12/1207 帧。4K30 并行复制路径呈现 18/594 帧，把 CSS 视频框设为实际 1920×1080 后呈现 10/603 帧。 | 浏览器实时播放未通过。[1080p60](../evidence/media-v30-1080-playback-20261118.json) · [4K30](../evidence/media-v30-4k-firefox-parallel-20261118.json) · [1080p 视频框](../evidence/media-v30-4k-native-playback-20261118.json) |
+
+画质对照取相同 4K HEVC 片源的前 60 帧，将 OMX 的 1080p 输出与 Debian 软件解码后做面积缩放的无损参考逐帧比较。全片段 PSNR 为 40.287 dB，平均 SSIM 为 0.991833。[对照记录](../evidence/media-v30-4k-omx-panel-20261118.json)
 
 ## 复测 4K 片源在 1080p 下的帧率
 
-在使用上述 v30 服务配置、已安装播放器 0.1-2 的板上，从本仓库根目录执行下列命令。选用 2 至 90 秒、含 AAC 音轨且声明视频帧数的本地 HEVC 3840×2160 MP4，替换 `clip` 路径。本次使用的源视频时长、帧数和 SHA-256 见实测记录。探针需要 root 读取内核和服务计数，FFplay 子进程以普通用户身份运行。 [探针源码](../tools/validation/ffplay_offscreen.py) · [实测记录](../evidence/media-v30-4k-native-playback-20261118.json)
+在使用上述 v30 服务配置、已启用支持 OMX 缩放的 Cedar 服务、已安装播放器 0.1-3 的板上，从本仓库根目录执行下列命令。选用 2 至 90 秒、含 AAC 音轨且声明视频帧数的本地 HEVC 3840×2160 MP4，替换 `clip` 路径。本次使用的源视频时长、帧数和 SHA-256 见实测记录。探针需要 root 读取内核和服务计数，FFplay 子进程以普通用户身份运行。 [探针源码](../tools/validation/ffplay_offscreen.py) · [实测记录](../evidence/media-v30-4k-native-playback-20261118.json)
 
 ```sh
 clip="/path/to/hevc-4k30-aac.mp4"
@@ -27,9 +30,11 @@ cc -O2 -shared -fPIC tools/validation/ffplay_present_trace.c -ldl -o "$run/prese
 sudo taskset -c 6,7 python3 tools/validation/ffplay_offscreen.py "$clip" \
   --player /opt/atlasa1-player/bin/ffplay --ffmpeg-lib /opt/atlasa1-player/lib \
   --client-lib /opt/atlasa1-player/lib/libt736_cedar_client.so --renderer powervr \
-  --present-trace "$run/present.so" --native-fit --keep-frames --audio \
+  --present-trace "$run/present.so" --omx-fit --keep-frames --audio \
   --output "$run/playback.json"
 ```
+
+在仅支持原尺寸输出的旧服务上，将 `--omx-fit` 换成 `--native-fit` 可验证客户端的 2×2 缩放。0.1-2 使用该客户端缩放路径。[0.1-2 包记录](../evidence/atlasa1-player-panel-package-20261118.json) · [客户端缩放实测](../evidence/media-v30-4k-native-playback-20261118.json)
 
 `checks.full_source_session` 校验 Cedar 接收的源尺寸，`player_filter_sizes` 记录播放器收到的图像尺寸。`sdl_present` 给出呈现帧数和首尾间隔，`wall_seconds` 包含进程启动和退出，`av_offset_p95_seconds` 为音画时钟绝对偏差的第 95 百分位数。
 

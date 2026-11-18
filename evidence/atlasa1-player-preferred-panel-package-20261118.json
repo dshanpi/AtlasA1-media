@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "date": "2026-11-18",
+  "package": "atlasa1-player_0.1-3_arm64.deb",
+  "sha256": "87e27f414306341153063613b4775860e927739a5c25ece04a4ee60a65064109",
+  "build_epoch": 1794960000,
+  "architecture": "arm64",
+  "scope": "Native AtlasA1 Player package, prefer OMX scaling on compatible brokers for a single 1080p monitor, fallback to original 4K hardware decode and a 2x2 client I420 box filter on legacy or full-size-retained brokers.",
+  "installed_sha256": {
+    "/opt/atlasa1-player/lib/libavcodec.so.61": "d345857e704adfca5057a377fd8973bb43a98311090ad4d29a88ea96cd653ea1",
+    "/opt/atlasa1-player/lib/libt736_cedar_client.so": "f34cb076927f0afc87df29da9d7c32f095ebf6979ba32fa9e5eb122730f16c1e",
+    "/opt/atlasa1-player/lib/libavutil.so.59": "017f69e66121ff84a4a9b92c9d8397cad73ce73a2efb612074b2ee811bc38de0",
+    "/opt/atlasa1-player/bin/ffplay": "6caa18410a684e702099cb760bcdce9c480313603707092e4023d6f558545dd4"
+  },
+  "checks": [
+    "Full package extracted on Linux build host; all payload MD5 passed and desktop-file-validate passed.",
+    "Private FFmpeg codec built from patched FFmpeg 7.1.5 tree including ELBG; private Cedar client rebuilt using prepare_panel_sources.sh.",
+    "Launcher tests cover format, Unicode names, T736 board, CPU mask and desktop modes.",
+    "Actual compiled socket/SCM_RIGHTS transport and private client tested with deterministic software backend on x86-64 ASan/UBSan and AArch64 QEMU against the legacy and updated brokers.",
+    "Fresh OMX-capable broker: first OPEN returns 4K input / 1080p shared picture. Fresh or retained legacy broker: flagged OPEN returns -EINVAL, then full size OPEN and client-side box. Full-size-retained new broker: flagged OPEN returns -ENOSPC, then full-size OPEN reuses the existing 4K context.",
+    "Checked each of 3110400 output bytes, PTS and color, short-buffer return, repeated leases and API error handling. Fatal EIO returns without a second OPEN. Baseline full-size ordinary pulls retained."
+  ],
+  "sources_sha256": {
+    "tools/player/atlasa1-player": "6b7ee7ed4e54efda9915af90bedf5ff62685e5615e0c91253f48f4d53f72d132",
+    "tools/player/README.md": "6efe12763900f7c9e95d03225785fd33c6562715f54b58ce16e17e84119aec67",
+    "tools/player/prepare_panel_sources.sh": "a369df3476f705108270cdfddb573b0619b4805ce91912630dcd999f8ae82b3b",
+    "tools/build_atlasa1_player.py": "040c2b2354d608c452608803d88f7019a41cf5cc61545b2d1c05cb921fc4ee64",
+    "tools/browser/panel_candidate/private-1080p-panel.patch": "9be7edf81cfb09f52c666c68e4296bd8b2d688a77ea37da4fe08b8b6acbc3eaa",
+    "tools/browser/panel_candidate/cedar_panel.h": "df06f45be61069a0bbbb8a4276cdb75a020b99658a02c532b29f0cfb0274cbae",
+    "tools/browser/panel_candidate/test_panel.c": "80cc67345e0960d15764edb2de8a0264188afb4742239020e4b36ad5d004af42",
+    "tools/browser/panel_candidate/test_panel_client.c": "8ea0eb4942b0e1c2204394b599e8209283873141ff3385c48727b6aeb6139cef",
+    "tools/browser/panel_candidate/build_private.sh": "031ef2d59ec9d8dccc04b880907c988696c1f414542735c92a28fcf17832470e",
+    "tools/browser/ffmpeg_cedar.c": "909ab49e890aecdfaf955518cfddc132e0d84d0f41c6c3397071d61a36f06bda",
+    "tools/browser/shm_v2/cedar_client.c": "81105f11150315507a4717ca391976393808f424b7c0767631dbe1984293dc87",
+    "tests/test_atlasa1_player.py": "8f7aa67224ca9e0e279688c0e7deacb2a1e680c70345c3144a26b42c41fe2c93",
+    "tools/browser/panel_candidate/prefer-omx-panel.patch": "9f6056de49d137a958d25922260662989543a1e7f665ddbe8f52ca4ed0787d53",
+    "tools/browser/panel_candidate/test_preferred_panel.c": "2e1940bc4d922bee4d665e90091fcec844cc8b653320a72e0f4b08d866427232",
+    "tools/browser/panel_candidate/test_preferred_panel.sh": "f71e86a0df1a3e007ef60e73bb8837d223fbe0bfa6377708986c2c4b354459dc",
+    "tools/browser/omx_scale_candidate/omx-panel.patch": "0b357d1264432c8cd2af2150ee55c201f5dc72f7364fed31fe8ced4b39889338",
+    "tests/test_cedar_shm_transport.c": "697a87e6df8e5ab538bb9d4bd0b6f8deb387fec9705bed0fdcf69d14ed1f21b6"
+  },
+  "test_logs": {
+    "preferred-legacy-arm64.log": "d256f7833a215cd4e37b031716be9b9d0bcaa3cc48d7aaeda6a8ec9fb03a2067",
+    "preferred-legacy-host.log": "d256f7833a215cd4e37b031716be9b9d0bcaa3cc48d7aaeda6a8ec9fb03a2067",
+    "preferred-omx-arm64.log": "db22e6289ba111729906959bd844f657e0b23a84e898842b460eb8962cd403be",
+    "preferred-omx-host.log": "db22e6289ba111729906959bd844f657e0b23a84e898842b460eb8962cd403be"
+  }
+}
