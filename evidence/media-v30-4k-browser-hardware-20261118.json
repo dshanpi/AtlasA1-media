@@ -1,0 +1,250 @@
+{
+  "schema": 1,
+  "date": "2026-11-18",
+  "board": "AtlasA1 / T736",
+  "method": "One-shot U-Boot selection after normal eMMC software reboot. Dedicated Firefox headless profile with loopback HTTP fixture, ordinary desktop user, no HDMI player window.",
+  "kernel": "6.18.63-t736-media-v30",
+  "boot_id": "45f85e4e-2713-4c77-b550-2d18bca51ca3",
+  "default_boot": "6.18.63-t736-media-v29",
+  "boot_artifacts": {
+    "kernel_sha256": "d24144cd9fd1dc41e332a0c50dc355219ec120ae212a2b46435d3658f9360d9d",
+    "initrd_sha256": "3dae8dba4997d5cce731dc4feeaad3a853bc261b2cca20e17930c8a56f251910",
+    "dtb_sha256": "45012aeb86d657fca568417e831067170d12e224ebe71720c1956989af6f3626",
+    "matched_pvr_sha256": "6d36fc38dd232e4b920439989c530c2cae753c71f3a0466aa7b591dc91724f88"
+  },
+  "boot_checks": {
+    "gdm_active": true,
+    "pvr_loaded": true,
+    "render_node": "/dev/dri/renderD128",
+    "cedar_socket_active": true,
+    "pretest_mainpid": 0,
+    "pretest_irq_count": 0,
+    "wc_heap_sysfs_limit_mib": 256,
+    "cma_total_kib": 524288,
+    "cma_free_kib_before": 467384,
+    "cma_free_kib_after_firefox": 293492,
+    "hdmi_connected": true
+  },
+  "broker": {
+    "output": "direct-slot",
+    "retained_contexts": 1,
+    "heap_bytes": 161464320,
+    "heap_size_to_buffer_count": {
+      "4096": 1,
+      "40960": 4,
+      "524288": 1,
+      "815104": 1,
+      "1306624": 20,
+      "12533760": 8,
+      "33554432": 1
+    },
+    "omx_lib_sha256": "7f6a121d718fd458f99d2aeb7b1fd105644a318e04262eea2f7677582f8e1614",
+    "output_format": "YV12",
+    "storage": [
+      3840,
+      2176
+    ],
+    "crop": [
+      0,
+      0,
+      3840,
+      2160
+    ],
+    "strides": [
+      3840,
+      1920,
+      1920
+    ],
+    "affinity_unpinned": "0-7",
+    "cpu_capacity": {
+      "0-5": 430,
+      "6-7": 1024
+    }
+  },
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "avg_frame_rate": "30/1",
+    "duration": "25.000000",
+    "sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f"
+  },
+  "measurement_script_sha256": "5c73213be1e078de31838df6c4f418db0770a994deffe8f5a5ad9dc3c793937e",
+  "firefox": {
+    "result": {
+      "status": "not_verified",
+      "checks": {
+        "window_completed": true,
+        "dimensions": true,
+        "normal_speed": false,
+        "browser_frame_rate": false,
+        "hardware_irq_rate": true,
+        "matching_hardware_session": true,
+        "rdd_seccomp_filter": true,
+        "rdd_hardware_output": true,
+        "no_fallback_logged": true
+      },
+      "wall_seconds": 38.374,
+      "media_seconds": 19.966667,
+      "total_delta": 599,
+      "dropped_delta": 596,
+      "presented_delta": 3,
+      "browser_retained_fps": 0.07817793297545213,
+      "irq_delta": 599,
+      "broker_sessions": [
+        [
+          "1",
+          "2",
+          "3840",
+          "2160"
+        ]
+      ],
+      "broker_frame_markers": [
+        [
+          "1",
+          "1",
+          "3840",
+          "2160"
+        ],
+        [
+          "300",
+          "1",
+          "3840",
+          "2160"
+        ],
+        [
+          "600",
+          "1",
+          "3840",
+          "2160"
+        ]
+      ]
+    },
+    "rdd": [
+      {
+        "pid": 2332,
+        "sandbox": [
+          "NoNewPrivs:\t1",
+          "Seccomp:\t2"
+        ],
+        "media_libraries": [
+          "/opt/t736-browser-ffmpeg-v7/lib/libavcodec.so.61.19.101",
+          "/opt/t736-browser-ffmpeg-v7/lib/libavutil.so.59.39.100",
+          "/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so"
+        ]
+      }
+    ],
+    "broker_log": [
+      "CEDAR_BROKER: ready uid=1000 protocol=2 readonly-memfd max=4K8bit retained_contexts=1 output=direct-slot",
+      "CEDAR_BROKER: open session=1 codec=2 3840x2160",
+      "CEDAR_BROKER: hardware frames=1 session=1 visible=3840x2160",
+      "CEDAR_BROKER: hardware frames=300 session=1 visible=3840x2160",
+      "CEDAR_BROKER: hardware frames=600 session=1 visible=3840x2160",
+      "CEDAR_BROKER: peer left; context retained"
+    ],
+    "copy_markers": [
+      {
+        "frames": 1,
+        "avg_copy_us": 123045,
+        "total_copy_us": 123045,
+        "total_map_us": 286
+      },
+      {
+        "frames": 300,
+        "avg_copy_us": 39877,
+        "total_copy_us": 11963357,
+        "total_map_us": 38257
+      },
+      {
+        "frames": 600,
+        "avg_copy_us": 47758,
+        "total_copy_us": 28654948,
+        "total_map_us": 93806
+      }
+    ],
+    "raw_result_sha256": "a14f0df1b857b8df9a48686d6ccf8b3ac3a5d51565e17bf528c891493a2f0436"
+  },
+  "baseline": "atlas-display-media-v29-reboot-20261118.json",
+  "conclusion": "Increasing heap capacity allowed a full-size HEVC frame pipeline to deliver frames to the sandboxed browser. WC output copying alone averaged 47.758 ms by frame 600. 4K30 real-time presentation failed.",
+  "big_core_broker_trial": {
+    "affinity": "6-7, all live broker threads using taskset -apc; browser affinity unchanged",
+    "restored_affinity": "all 9 surviving broker threads verified 0-7",
+    "result": {
+      "status": "not_verified",
+      "checks": {
+        "window_completed": true,
+        "dimensions": true,
+        "normal_speed": false,
+        "browser_frame_rate": false,
+        "hardware_irq_rate": true,
+        "matching_hardware_session": true,
+        "rdd_seccomp_filter": true,
+        "rdd_hardware_output": true,
+        "no_fallback_logged": true
+      },
+      "wall_seconds": 43.936,
+      "media_seconds": 20.0,
+      "total_delta": 600,
+      "dropped_delta": 600,
+      "presented_delta": 0,
+      "browser_retained_fps": 0.0,
+      "irq_delta": 602,
+      "broker_sessions": [
+        [
+          "2",
+          "2",
+          "3840",
+          "2160"
+        ]
+      ],
+      "broker_frame_markers": [
+        [
+          "900",
+          "2",
+          "3840",
+          "2160"
+        ],
+        [
+          "1200",
+          "2",
+          "3840",
+          "2160"
+        ]
+      ]
+    },
+    "rdd": [
+      {
+        "pid": 6144,
+        "sandbox": [
+          "NoNewPrivs:\t1",
+          "Seccomp:\t2"
+        ],
+        "media_libraries": [
+          "/opt/t736-browser-ffmpeg-v7/lib/libavcodec.so.61.19.101",
+          "/opt/t736-browser-ffmpeg-v7/lib/libavutil.so.59.39.100",
+          "/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so"
+        ]
+      }
+    ],
+    "raw_result_sha256": "f25953a97c00056d8622ea2ac7d4be84785640a04b926ed32183023338b12c86",
+    "broker_log": [
+      "CEDAR_BROKER: open session=2 codec=2 3840x2160",
+      "CEDAR_BROKER: hardware frames=900 session=2 visible=3840x2160",
+      "CEDAR_BROKER: hardware frames=1200 session=2 visible=3840x2160",
+      "CEDAR_BROKER: peer left; context retained"
+    ],
+    "copy_markers_cumulative_across_sessions": [
+      {
+        "frames": 900,
+        "last_copy_us": 60450,
+        "total_copy_us": 46830552
+      },
+      {
+        "frames": 1200,
+        "last_copy_us": 61870,
+        "total_copy_us": 62724058
+      }
+    ]
+  },
+  "wc_copy_benchmark": "media-v30-4k-wc-parallel-20261118.json"
+}

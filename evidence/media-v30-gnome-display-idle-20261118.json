@@ -1,0 +1,197 @@
+{
+  "test": "Logged-in GNOME X11 session, live HDMI connector and X server read-only samples",
+  "boot_id": "45f85e4e-2713-4c77-b550-2d18bca51ca3",
+  "kernel": "6.18.63-t736-media-v30",
+  "x11_idle_seconds_last": 636.134,
+  "observed_continuously_s": 450.41,
+  "sample_count": 16,
+  "interval_s": 30,
+  "connectors": [
+    {
+      "name": "HDMI",
+      "state": "connected"
+    }
+  ],
+  "x11_monitor": "On at each sample",
+  "kernel_dpms": "On at each sample",
+  "x11_blank_timeout_s": 0,
+  "physical_observation": "No external monitor observer or capture device",
+  "samples": [
+    {
+      "uptime_s": 338.5,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 185729,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 368.53,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 215754,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 398.55,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 245775,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 428.57,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 275790,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 458.59,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 305816,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 488.61,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 335841,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 518.65,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 365874,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 548.67,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 395895,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 578.69,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 425916,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 608.72,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 455940,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 638.74,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 485962,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 668.76,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 515982,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 698.78,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 546008,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 728.82,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 576052,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 758.87,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 606098,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    },
+    {
+      "uptime_s": 788.91,
+      "hdmi": "connected",
+      "dpms": "On",
+      "x_display": ":1",
+      "uid": 1000,
+      "idle_ms": 636134,
+      "screen_saver_state": 3,
+      "x_monitor": "On",
+      "blank_seconds": 0
+    }
+  ]
+}

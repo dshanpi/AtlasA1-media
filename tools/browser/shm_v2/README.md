@@ -8,10 +8,11 @@ neither endpoint negotiates down to v1. Setup failure leaves the client unavaila
 so the existing first-frame software fallback can run. Errors after hardware
 output retain the existing explicit failure behavior.
 
-At preload construction, the client resolves the dedicated
-`t736-cedar` service account, checks its runtime directory/socket ownership and
-checks the connected peer with `SO_PEERCRED`. Setup then receives exactly one
-ordinary memfd using `SCM_RIGHTS` and `MSG_CMSG_CLOEXEC`. It validates the fixed
+At preload construction, the client checks the root-owned runtime directory
+and socket. The listener is created by systemd, so the client checks for root
+and a positive PID in `SO_PEERCRED`. Setup then receives exactly one ordinary
+memfd using `SCM_RIGHTS` and `MSG_CMSG_CLOEXEC`. The client resolves the
+dedicated `t736-cedar` account and checks that it owns the memfd. It validates the fixed
 `T736_MAX_FRAME` capacity (`3840x2160x3/2 = 12,441,600` bytes), regular anonymous
 file identity/owner, format, seals and metadata before making the client available. The fd is closed after a read-only
 shared mapping is established. The mapping is marked `MADV_DONTFORK`; forked

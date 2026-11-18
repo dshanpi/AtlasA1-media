@@ -98,8 +98,43 @@ static void wait_ok(pid_t child)
     assert(WIFEXITED(status) && WEXITSTATUS(status) == 0);
 }
 
+/* A socket-activated broker accepts on a listener created by root, then
+ * creates the memfd under its own UID. Exercise these kernel credentials
+ * separately on build hosts that can drop privileges. */
+static void test_socket_activation(void)
+{
+    struct passwd *service = getpwnam("nobody");
+    assert(getuid() == 0 && service && service->pw_uid != 0);
+    uid_t service_uid = service->pw_uid;
+    gid_t service_gid = service->pw_gid;
+    int sockets[2];
+    assert(!socketpair(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0, sockets));
+    pid_t child = fork();
+    assert(child >= 0);
+    if (!child) {
+        close(sockets[0]);
+        assert(!setgid(service_gid) && !setuid(service_uid));
+        struct fixture server = { .socket = sockets[1], .shm = { .fd = -1 } };
+        setup_fixture(&server);
+        t736_shm_destroy(&server.shm);
+        close(sockets[1]);
+        _exit(0);
+    }
+    close(sockets[1]);
+    assert(!setup_connection(sockets[0], 0, service_uid));
+    assert(t736_client_available() && shared_pixels[0] == 0x39);
+    assert(shared_pixels[T736_MAX_FRAME - 1] == 0x93);
+    disconnect_client();
+    wait_ok(child);
+    puts("PASS: root-created socket, sealed memfd from separate unprivileged UID, verified pixels");
+}
+
 int main(int argc, char **argv)
 {
+    if (argc == 2 && !strcmp(argv[1], "--socket-activation")) {
+        test_socket_activation();
+        return 0;
+    }
     if (argc == 3 && !strcmp(argv[1], "--check-exec-fd")) {
         int descriptor = atoi(argv[2]);
         assert(descriptor >= 3);
@@ -115,7 +150,7 @@ int main(int argc, char **argv)
     struct fixture fixture = { .socket = sockets[1], .shm = { .fd = -1 } };
     pthread_t thread;
     assert(!pthread_create(&thread, NULL, setup_fixture, &fixture));
-    assert(!setup_connection(sockets[0], getuid()));
+    assert(!setup_connection(sockets[0], getuid(), getuid()));
     assert(!pthread_join(thread, NULL));
     assert(t736_client_available() == 1 && shared_pixels[0] == 0x39);
     assert(shared_pixels[T736_MAX_FRAME - 1] == 0x93);

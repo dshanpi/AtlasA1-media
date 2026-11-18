@@ -81,11 +81,46 @@
       "sha256": "8e4898d18528fa5859d3d12bffb5e0aebea8f1f3771a3ec8fafe749855739f19"
     },
     {
+      "path": "evidence/media-v30-4k-browser-hardware-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-4k-browser-hardware-20261118.json",
+      "size": 7063,
+      "sha256": "278eb6e59124524356b91298d75ec0593d256221394b3fae4946d4f7d3666b46"
+    },
+    {
+      "path": "evidence/media-v30-4k-firefox-dr1-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-4k-firefox-dr1-20261118.json",
+      "size": 1734,
+      "sha256": "3a7df110ad9d287f8a868e5051fc9e65148eead861fd4a982dedfcaf79a60c2d"
+    },
+    {
+      "path": "evidence/media-v30-4k-wc-parallel-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-4k-wc-parallel-20261118.json",
+      "size": 2488,
+      "sha256": "f49b2a3b0f815b6ec2d894236842d8f3ab39c73d1f08f6b92a3c6f025d76fd28"
+    },
+    {
+      "path": "evidence/media-v30-gnome-display-idle-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-gnome-display-idle-20261118.json",
+      "size": 4360,
+      "sha256": "8380139329949f6723f184e6d1786927a3049f9187a68795c4145d96447d0236"
+    },
+    {
       "path": "evidence/media-v30-heap-budget-build-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/media-v30-heap-budget-build-20261118.json",
       "size": 2157,
       "sha256": "dc28dc030824175cc80b99889e0ef17f02d7b6093bf7adba8299eb62f08e68cf"
+    },
+    {
+      "path": "evidence/media-v30-parallel-slot-build-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-parallel-slot-build-20261118.json",
+      "size": 4194,
+      "sha256": "e6a8723289052adf4498623b483e96833ffc35331810356be1082b0b7ae4dec6"
     },
     {
       "path": "patches/cedar/gstomx-broker-idle.patch",
@@ -147,8 +182,8 @@
       "path": "tests/test_cedar_shm_client_fork.c",
       "kind": "source",
       "source": "mainline/tests/test_cedar_shm_client_fork.c",
-      "size": 6172,
-      "sha256": "f1d2710f5555ac5065330b71d15898c5424e3f30792285335fc2fb6f370765a4"
+      "size": 7548,
+      "sha256": "3b4d87cf1d92dcb8936dcc377800fbbea8fbe5ff14c20ed992b67c066a2e5cad"
     },
     {
       "path": "tests/test_cedar_shm_seals.c",
@@ -161,8 +196,8 @@
       "path": "tests/test_cedar_shm_transport.c",
       "kind": "source",
       "source": "mainline/tests/test_cedar_shm_transport.c",
-      "size": 14824,
-      "sha256": "f7d6df93fe5e887c0e292708886e59ef2d4440e06ecbd420dabf4e3d28ab74c1"
+      "size": 15147,
+      "sha256": "697a87e6df8e5ab538bb9d4bd0b6f8deb387fec9705bed0fdcf69d14ed1f21b6"
     },
     {
       "path": "tools/browser/README.md",
@@ -350,8 +385,8 @@
       "path": "tools/browser/shm_v2/README.md",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/README.md",
-      "size": 10066,
-      "sha256": "b9bda6c03f1cf76da5de1218fb8abcb63d551e3f10338ed9fb2d69ca3ca1c6fd"
+      "size": 10162,
+      "sha256": "a91b1b4713bb25960b09bcf3a3552c885a1f55c293e5ab4fcb5691a37af772e2"
     },
     {
       "path": "tools/browser/shm_v2/cedar-service",
@@ -378,8 +413,8 @@
       "path": "tools/browser/shm_v2/cedar_client.c",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/cedar_client.c",
-      "size": 11360,
-      "sha256": "162e28fd2728ded1c1778343191d4920c89ec854642b6ac29c56403b209dbc02"
+      "size": 11525,
+      "sha256": "c9816fb33aed25be1af30bb4172fc6e0c649cdf9a27aa053118e59d55ccb54d3"
     },
     {
       "path": "tools/browser/shm_v2/cedar_client.h",
@@ -585,6 +620,13 @@
       "sha256": "5e380fb651b335a050cac0a749266294e2f814f87c53a627902b19138e2a8122"
     },
     {
+      "path": "tools/validation/cedar_wc_parallel_bench.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/cedar_wc_parallel_bench.py",
+      "size": 5217,
+      "sha256": "588796d85d7eed636788d7d48f5dd5bc326454bedb2b64e6ee63b231d70bc0e5"
+    },
+    {
       "path": "tools/validation/decode_t736_fb_capture.py",
       "kind": "source",
       "source": "mainline/tools/validation/decode_t736_fb_capture.py",
@@ -602,15 +644,15 @@
       "path": "tools/validation/ffplay_offscreen.py",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_offscreen.py",
-      "size": 6362,
-      "sha256": "8a1856bfad4b0b8646ffc57bd060a9b210924c07ce2df49aba1e8f9e3fe0a559"
+      "size": 6730,
+      "sha256": "a7b2b538a5603ecf7af60da1273cf739f04cd1f29c75d94ce55beeb285dc86e6"
     },
     {
       "path": "tools/validation/firefox_headless_playback.py",
       "kind": "source",
       "source": "mainline/tools/validation/firefox_headless_playback.py",
-      "size": 14054,
-      "sha256": "fa8c9c3fecc25d37a9a53712b03e42d8d9fb1e6faaacb227ad185016cb3c53a6"
+      "size": 14177,
+      "sha256": "4dab5c7dae3db23eb3ef1db4dd7ffc4f246464f58750280e635a91fce690fa73"
     },
     {
       "path": "tools/validation/media_acceptance.py",

@@ -44,11 +44,10 @@ def play(args, record):
     env = dict(PATH='/usr/bin:/bin', LANG='C', HOME=user.pw_dir, SDL_VIDEODRIVER='dummy',
                SDL_AUDIODRIVER='dummy', SDL_RENDER_DRIVER='software', AV_LOG_FORCE_NOCOLOR='1')
     if args.mode == 'cedar':
-        libs = [Path('/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so'),
-                args.ffmpeg_lib/'libavutil.so.59', args.ffmpeg_lib/'libavcodec.so.61']
+        libs = [args.client_lib, args.ffmpeg_lib/'libavutil.so.59', args.ffmpeg_lib/'libavcodec.so.61']
         for lib in libs:
             lib.resolve(strict=True)
-        env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_TEST_CLIENT='1',
+        env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_TEST_CLIENT='1', T736_CEDAR_TRACE='1',
                    LD_PRELOAD=':'.join(map(str, libs)))
     decoder = codec + ('_cedar' if args.mode == 'cedar' else '')
     cmd = ['/usr/bin/ffplay', '-hide_banner', '-loglevel', 'info', '-stats', '-autoexit',
@@ -69,8 +68,12 @@ def play(args, record):
     sessions = re.findall(r'CEDAR_BROKER: open session=(\d+) codec=(\d+) (\d+)x(\d+)', broker)
     hw = re.findall(r'CEDAR_BROKER: hardware frames=\d+ session=(\d+) visible=(\d+)x(\d+)', broker)
     shape = (str(stream['width']), str(stream['height']))
-    match = len(sessions) == 1 and sessions[0][1:] == (str({'hevc':2,'h264':1}[codec]), *shape)
-    match = match and (sessions[0][0], *shape) in hw
+    # FFplay can open and close a probe decoder before it opens the playing decoder.
+    # Tie the pixels returned to this process to the service's matching lease.
+    pulls = set(re.findall(r'CEDAR_TRACE pull=\d+ session=(\d+) ', log))
+    expected = (str({'hevc':2,'h264':1}[codec]), *shape)
+    match = any(s in pulls and (c, w, h) == expected and (s, w, h) in hw
+                for s, c, w, h in sessions)
     shown = re.findall(r'\[Parsed_showinfo_\d+ @ [^\]]+\] n:\s*\d+\s+pts:.*? s:(\d+)x(\d+)\b', log)
     stats = re.findall(r'([-+]?\d+\.\d+)\s+M-V:\s*[-+\d.]+\s+fd=\s*(\d+)', log)
     drops = max((int(row[1]) for row in stats), default=None)
@@ -98,6 +101,8 @@ def main():
     parser.add_argument('--mode', choices=['cedar','software'], default='cedar')
     parser.add_argument('--user', default='t736')
     parser.add_argument('--ffmpeg-lib', type=Path, default=Path('/opt/t736-browser-ffmpeg-v7/lib'))
+    parser.add_argument('--client-lib', type=Path,
+                        default=Path('/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so'))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     record = dict(player='FFplay', kernel=os.uname().release, mode=args.mode,

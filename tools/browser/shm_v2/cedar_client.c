@@ -59,7 +59,7 @@ static int transfer(void *buf, size_t size, int sending)
     return 0;
 }
 
-static int setup_connection(int fd, uid_t expected_uid)
+static int setup_connection(int fd, uid_t listener_uid, uid_t memory_uid)
 {
     struct ucred peer;
     socklen_t length = sizeof(peer);
@@ -68,7 +68,7 @@ static int setup_connection(int fd, uid_t expected_uid)
     struct { struct t736_message message; struct t736_setup setup; } response;
     int descriptor = -1, error;
     if (getsockopt(fd, SOL_SOCKET, SO_PEERCRED, &peer, &length) ||
-        length != sizeof(peer) || !t736_uid_matches(peer.uid, expected_uid) ||
+        length != sizeof(peer) || !t736_uid_matches(peer.uid, listener_uid) ||
         peer.pid <= 0) {
         close(fd); return -EACCES;
     }
@@ -81,7 +81,7 @@ static int setup_connection(int fd, uid_t expected_uid)
         response.message.operation != T736_SETUP || response.message.length != sizeof(response.setup) ||
         response.message.sequence != 1 || response.message.session ||
         response.message.status || response.message.reserved)) error = -EPROTO;
-    if (!error) error = t736_shm_map_receiver(descriptor, &response.setup, expected_uid, &shared_pixels);
+    if (!error) error = t736_shm_map_receiver(descriptor, &response.setup, memory_uid, &shared_pixels);
     if (descriptor >= 0) close(descriptor);
     if (error) { disconnect_client(); return error; }
     serial_number = 1;
@@ -128,7 +128,9 @@ __attribute__((constructor)) static void preconnect(int argc, char **argv,
         close(fd);
         return;
     }
-    if (setup_connection(fd, account.pw_uid)) return;
+    /* systemd owns the listener. The service running as t736-cedar
+     * creates and seals the frame memfd after it accepts this connection. */
+    if (setup_connection(fd, 0, account.pw_uid)) return;
     fprintf(stderr, "T736_CEDAR_CLIENT: preconnected protocol=2 readonly-memfd pid=%ld rdd=%d\n",
             (long)getpid(), rdd);
 }

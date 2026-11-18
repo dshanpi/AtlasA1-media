@@ -26,7 +26,8 @@ async function sample(phase, reason) {
     body:JSON.stringify({phase, reason, wallMs:performance.now(), mediaTime:v.currentTime,
       width:v.videoWidth, height:v.videoHeight, paused:v.paused, rate:v.playbackRate,
       total:q.totalVideoFrames, dropped:q.droppedVideoFrames,
-      presented:v.mozPresentedFrames, visible:document.visibilityState})});
+      parsed:v.mozParsedFrames, decoded:v.mozDecodedFrames, presented:v.mozPresentedFrames,
+      painted:v.mozPaintedFrames, frameDelaySeconds:v.mozFrameDelay, visible:document.visibilityState})});
 }
 async function end(reason) {
   if (done) return;

@@ -1,0 +1,63 @@
+{
+  "kernel": "6.18.63-t736-media-v30",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "avg_frame_rate": "30/1",
+    "duration": "25.000000",
+    "sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f"
+  },
+  "result": {
+    "status": "not_verified",
+    "checks": {
+      "window_completed": true,
+      "dimensions": true,
+      "normal_speed": false,
+      "browser_frame_rate": false,
+      "hardware_irq_rate": true,
+      "matching_hardware_session": true,
+      "rdd_seccomp_filter": true,
+      "rdd_hardware_output": true,
+      "no_fallback_logged": true
+    },
+    "wall_seconds": 44.907,
+    "media_seconds": 19.866667,
+    "total_delta": 596,
+    "dropped_delta": 596,
+    "presented_delta": 0,
+    "browser_retained_fps": 0.0,
+    "irq_delta": 596,
+    "broker_sessions": [
+      [
+        "3",
+        "2",
+        "3840",
+        "2160"
+      ]
+    ],
+    "broker_frame_markers": [
+      [
+        "1500",
+        "3",
+        "3840",
+        "2160"
+      ],
+      [
+        "1800",
+        "3",
+        "3840",
+        "2160"
+      ]
+    ]
+  },
+  "mode": "Off-screen Firefox; same active retained 4K context and serial direct slot on v30",
+  "elapsed_scope": "measured in the page after warm-up",
+  "allocator_markers": [
+    "T736_CEDAR_PROXY: image_allocator output=3840x2160 strides=3840,1920,1920 opaque=present"
+  ],
+  "libavcodec_sha256": "05bbe93f07819983df325bf81874424f8451f108ee2b19001f4099b83a7ccb8f",
+  "client_sha256": "d9eb76764988f4123131af2f198aaf211a20c56edf0766b12c1102309155ac8a",
+  "baseline": "media-v30-4k-browser-hardware-20261118.json",
+  "desktop": "A separate user Firefox was running on the physical display during the DR1 test."
+}

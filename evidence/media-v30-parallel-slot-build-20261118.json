@@ -1,0 +1,55 @@
+{
+  "board": "AtlasA1",
+  "date": "2026-11-18",
+  "kind": "isolated Cedar direct-slot backend build",
+  "baseline": "bring-up direct slot backend with cedar_pull_into",
+  "basis": "media-v30-4k-wc-parallel-20261118.json",
+  "build_recipe": "tools/build_cedar_parallel_slot.sh",
+  "source_sha256_lf": {
+    "tools/browser/copy_candidate/cedar_parallel_copy.h": "cf5cee4b4fe1d98191cac29f350bcb4aca4aada8e11d676d0936ed598dcbbc7e",
+    "patches/cedar/backend-parallel-direct-slot.patch": "91eeecd80ad5a157a5682cda4c114cff1b170e103956a19859455c42f7f50944",
+    "tools/build_cedar_parallel_slot.sh": "6426383fa0e2d65c53402072c953cb5a8c932f4b37c4eb304ca0b76a6906aedd",
+    "tests/test_cedar_parallel_direct.c": "9c5cd406196b0e05c0add97293602bb664d2b990c9cf83e8d3d272954aa0085f",
+    "tools/browser/cedar_backend.c": "3e5ac5787b79d0717d06f2ffba5d89fa93253a7d774fee261c6251205311e7c4",
+    "tools/browser/cedar_backend.h": "bb0156d8b7dec6b8a975a13a8962f0d31eef826fd890e08e1caf4d800696e061"
+  },
+  "library_sha256": "fcf63b180a761ed44f006125a15bf2fed5fa3ada76b61ab192389c55fb90ddf6",
+  "hardware_test_at_build_time": false,
+  "tests": {
+    "arm-backend": {
+      "sha256": "1deef1ad3f8d9b89ca75e4db3ecaf7e61adfcb953d0c334e9838e516d2a96632",
+      "last_line": "PASS: actual Gst copy path; 4 layouts, padded strides/heights, crop origin, odd sizes, timestamps, color, malformed/missing crop, resolution change, mapped-plane span rejection; software EOS-flush-idle-resume-reuse and first-error preservation with mock action; UV vector/tail/unaligned ranges; owned frames survive actual pull/flush/close, bounded RAM reuse, concurrent frame return/close"
+    },
+    "host-backend": {
+      "sha256": "9cb10cd12241cb3005aa3a87ad13b6fc43a3fc7dfab85196047b7c0b0c7e8638",
+      "last_line": "PASS: actual Gst copy path; 4 layouts, padded strides/heights, crop origin, odd sizes, timestamps, color, malformed/missing crop, resolution change, mapped-plane span rejection; software EOS-flush-idle-resume-reuse and first-error preservation with mock action; UV vector/tail/unaligned ranges; owned frames survive actual pull/flush/close, bounded RAM reuse, concurrent frame return/close"
+    },
+    "arm-0": {
+      "sha256": "0862741366556acb6299c36b1c42fbc3375c0ac7f4ccfd9206fba7cfe54146da",
+      "last_line": "PASS: validated direct frames, both planar orders, cropped 4K, odd extents, padded strides, repeated dispatch and teardown, 0 workers"
+    },
+    "arm-2": {
+      "sha256": "52f1b30e520edc277cba01399fbe3beeba811fff38744436b4c3c8b5229ef741",
+      "last_line": "PASS: validated direct frames, both planar orders, cropped 4K, odd extents, padded strides, repeated dispatch and teardown, 2 workers"
+    },
+    "arm-4": {
+      "sha256": "fbf2d6d3af7b62ee0cd09d64a849b089a12a74404026dbbab28042e2458bd7b4",
+      "last_line": "PASS: validated direct frames, both planar orders, cropped 4K, odd extents, padded strides, repeated dispatch and teardown, 4 workers"
+    },
+    "host-0": {
+      "sha256": "fcaf91604ed55ede08152f3438e20d4822aa09f5ff274972423fd546e7c653a5",
+      "last_line": "PASS: validated direct frames, both planar orders, cropped 4K, odd extents, padded strides, repeated dispatch and teardown, 0 workers"
+    },
+    "host-2": {
+      "sha256": "cd28c9b4576bd46cd0f15e810d5e28f4b50b179f4491ed1a96655753857eaa1b",
+      "last_line": "PASS: validated direct frames, both planar orders, cropped 4K, odd extents, padded strides, repeated dispatch and teardown, 2 workers"
+    },
+    "host-4": {
+      "sha256": "5cf01862a01a2af52ec86b39b29862e4f32601431837b4227902f104238347eb",
+      "last_line": "PASS: validated direct frames, both planar orders, cropped 4K, odd extents, padded strides, repeated dispatch and teardown, 4 workers"
+    }
+  },
+  "scope": "Only packed planar direct-slot I420/YV12 output at or above 1920x1080 pixels. Up to four persistent workers copy into disjoint row bands after the existing crop/stride/span validation. Single-core, unavailable-thread, padded or small-image paths use serial copying.",
+  "rebuilt_in_fresh_directory_identical_library": true,
+  "exports_identical_to_baseline_sha256": "360c9cf72643ca6d17f5e04fbb402f7c9a1fdf273950fdd8160b09f4f65ae0f0"
+}
