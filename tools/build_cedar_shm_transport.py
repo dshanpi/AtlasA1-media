@@ -18,6 +18,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', type=Path, default=Path('/home/ubuntu/t736-mainline'))
     p.add_argument('--work', type=Path, required=True)
+    p.add_argument('--backend', type=Path, help='link a direct-slot backend candidate')
     a = p.parse_args()
     root, work = a.root.resolve(), a.work.resolve()
     if root not in work.parents or (work/'build-record.json').exists():
@@ -37,7 +38,14 @@ def main():
     sysroot = sdk/'aarch64-buildroot-linux-gnu/sysroot'
     backend = root/'build/cedar-browser-backend-v6-20261118/libcedar_backend.so'
     expected_backend = 'f6a9aa0bd235a2a8a5fd0feeb674886da5b4ac6fbdfbad3897966a65290e079e'
-    assert sha(backend) == expected_backend
+    if a.backend:
+        backend = a.backend.resolve(strict=True)
+        symbols = subprocess.check_output(['aarch64-linux-gnu-nm', '-D', '--defined-only', backend], text=True)
+        if 'cedar_pull_into' not in {line.split()[-1] for line in symbols.splitlines()}:
+            p.error('candidate backend does not export cedar_pull_into')
+        expected_backend = sha(backend)
+    else:
+        assert sha(backend) == expected_backend
     common = ['-std=c11', '-Wall', '-Wextra', '-Werror', '-pthread']
     commands = []
 
@@ -72,6 +80,10 @@ def main():
         run('host-'+name+'-test', [host], sanitizers)
         run('arm64-'+name+'-build', [cc, *common, *extra, '-O2', test, '-o', arm])
         if name == 'transport':
+            old_host = work / 'transport-owned-sanitized'
+            run('host-owned-build', ['gcc', *common, '-DT736_TEST_OWNED_BACKEND', '-O1', '-g',
+                '-fsanitize=address,undefined', '-fno-omit-frame-pointer', test, '-o', old_host])
+            run('host-owned-test', [old_host], sanitizers)
             run('arm64-'+name+'-test', ['/usr/bin/qemu-aarch64-static', '-L', sysroot, arm], test_env)
         else:
             # QEMU 8.2.2 linux-user returns success for MADV_DONTFORK while
@@ -116,12 +128,12 @@ def main():
             'qemu_limitation_record': 'evidence/cedar-shm-qemu-dontfork-limitation-20261117.json'},
         'test_binaries': [{'path': str(f.relative_to(work)), 'bytes': f.stat().st_size, 'sha256': sha(f)}
                           for f in (work/'transport-arm64', work/'seals-arm64', work/'client_fork-arm64')],
-        'transport': 'Per-peer ordinary memfd, 3110400 bytes, broker existing RW map, receiver RO DONTFORK map and closed descriptor, metadata-only PULL, memcpy into existing caller destination under client mutex',
+        'transport': 'Per-peer ordinary memfd; direct output when backend exports cedar_pull_into; receiver copies from sealed RO DONTFORK mapping into caller destination under client mutex',
         'seals': ['SHRINK', 'GROW', 'FUTURE_WRITE', 'SEAL', 'EXEC from MFD_NOEXEC_SEAL'],
-        'bounds': {'peers': 8, 'bytes_per_peer': 3110400, 'setup_absolute_deadline_ms': 5000},
+        'bounds': {'peers': 8, 'bytes_per_peer': 3840 * 2160 * 3 // 2, 'setup_absolute_deadline_ms': 5000},
         'limits': ['No device, DMA fd or hardware address transferred', 'No sandbox weakening or post-sandbox reconnect',
                    'Matched v2 broker/client required; v1 refused without silent downgrade',
-                   'No AVFrame ownership change; two ordinary RAM copies after backend output remain',
+                   'AVFrame ownership unchanged; older backends use owned output and an extra RAM copy',
                    'No Firefox or board performance acceptance; not a claim to fix VideoSink late-frame throttling',
                    'Full helper/fork ARM64 QEMU runtime is not accepted: emulator does not implement DONTFORK semantics; native ARM64 results must be recorded separately'],
         'files': [{'path': str(f.relative_to(bundle)), 'bytes': f.stat().st_size, 'sha256': sha(f)}

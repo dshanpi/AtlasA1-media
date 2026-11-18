@@ -9,7 +9,14 @@ for device in /dev/cedar_dev /dev/dma_heap/t736-ve; do
         exit 1
     fi
 done
-export LD_LIBRARY_PATH=/opt/t736-cedar-browser-backend-v5:/opt/t736-cedar-wc-v5/lib:/opt/t736-gst-parser-v27/usr/lib/aarch64-linux-gnu
+old_ld=${LD_LIBRARY_PATH:-}
+export LD_LIBRARY_PATH=/opt/t736-cedar-browser-backend-v5:/opt/t736-cedar-wc-v5/lib
+if [ -d /opt/t736-gst-parser-v27/usr/lib/aarch64-linux-gnu ]; then
+    export LD_LIBRARY_PATH="/opt/t736-gst-parser-v27/usr/lib/aarch64-linux-gnu:$LD_LIBRARY_PATH"
+fi
+if [ -n "$old_ld" ]; then
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$old_ld"
+fi
 parser_plugins=/opt/t736-gst-parser-v27/selected
 if [ -d "$parser_plugins" ]; then
     export GST_PLUGIN_SYSTEM_PATH_1_0="$parser_plugins:/usr/lib/aarch64-linux-gnu/gstreamer-1.0"
@@ -21,4 +28,8 @@ export GST_OMX_CONFIG_DIR="$root/config"
 export GST_REGISTRY_1_0=/run/t736-cedar/registry.bin
 export GST_REGISTRY_FORK=no
 unset GST_AW_OMX_DEFAULT_ARM_AFBC AW_AFBC_MODE
-exec "$root/bin/cedar-broker" 1000
+allowed_uid=$(id -u t736 2>/dev/null || true)
+case "$allowed_uid" in
+    ''|*[!0-9]*|0) printf 'CEDAR_SERVICE: desktop account t736 is unavailable\n' >&2; exit 1 ;;
+esac
+exec "$root/bin/cedar-broker" "$allowed_uid"

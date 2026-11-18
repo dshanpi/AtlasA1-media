@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "candidate": "Cedar SHM-v2 direct I420 output",
+  "scope": "Build and device-free regressions on the SDK host",
+  "hardware_playback": "pending",
+  "sources_sha256": {
+    "tools/browser/cedar_backend.c": "3e5ac5787b79d0717d06f2ffba5d89fa93253a7d774fee261c6251205311e7c4",
+    "tools/browser/cedar_backend.h": "bb0156d8b7dec6b8a975a13a8962f0d31eef826fd890e08e1caf4d800696e061",
+    "tools/browser/shm_v2/cedar_backend.h": "bb0156d8b7dec6b8a975a13a8962f0d31eef826fd890e08e1caf4d800696e061",
+    "tools/browser/shm_v2/cedar_broker.c": "792553045c6531064b1a82865d5bce8de94a718fbf9c36c8df971f09454aae1d",
+    "tests/test_cedar_backend.c": "ed946fbe464c9cc715dddcc8019f05bb18ff55e28a534554c89e6c91cef9820a",
+    "tests/test_cedar_shm_transport.c": "f7d6df93fe5e887c0e292708886e59ef2d4440e06ecbd420dabf4e3d28ab74c1",
+    "tools/build_cedar_shm_transport.py": "0f4cbdf655c287eda2a1f40edf7e8e071925a91d5c28357933232758f79f0791"
+  },
+  "arm64_binaries_sha256": {
+    "backend/libcedar_backend.so": "360c9cf72643ca6d17f5e04fbb402f7c9a1fdf273950fdd8160b09f4f65ae0f0",
+    "transport/cedar-broker": "1b73d067f1cd9df583a361a42b8170eb9b9542779a3eb65b67b8d7c5cc46f068"
+  },
+  "run": [
+    "python3 tools/build_cedar_browser_backend.py --root . --work build/backend",
+    "python3 tools/build_cedar_shm_transport.py --root . --work build/transport --backend build/backend/libcedar_backend.so"
+  ],
+  "verified": [
+    "ARM64 QEMU and host ASan/UBSan: padded NV12, NV21, I420 and YV12 with nonzero crop origin; odd sizes; timestamps; byte-for-byte parity and guard bytes for direct and owned output",
+    "Raw software appsrc/appsink: insufficient capacity or null destination leaves frame available, exact-size direct write leaves pool unallocated and metadata.data NULL, identical frame returned through legacy API",
+    "Unchanged owned-frame lifetime through pull, flush and close, bounded pool and concurrent release",
+    "Native ASan/UBSan/LSan and ARM64 QEMU: real SHM transport with direct test backend, >1000 frames on direct API, per-peer sealed slots and concurrent client access checks",
+    "Native ASan/UBSan/LSan: identical transport suite with legacy-only backend exercises weak-symbol fallback",
+    "Native host seal and fork/exec tests; ARM64 seal and fork regression binaries cross-compiled",
+    "QEMU ELF loading: new broker/old backend, new broker/new backend, old broker/new backend; previous public backend exports retained"
+  ],
+  "transfer": "The broker provides a per-connection writable ordinary-RAM slot during PULL. Raster layout validation precedes writes, metadata is published after the complete write, and the client copies under its request lock. Older backends still return an owned frame to the broker.",
+  "browser_performance": "No measured fps improvement in these tests.",
+  "production_baseline": {
+    "archive": "vendor-media-v29-final",
+    "library_sha256": "f6a9aa0bd235a2a8a5fd0feeb674886da5b4ac6fbdfbad3897966a65290e079e",
+    "backend_source_sha256": "deafdea374f866cbbde9a9598ef12dccd0f77b0f774532eeb10d5eeb04f5f3bd",
+    "copy_loop_comparison": "Identical luma and chroma reads, per-row YV12/I420 copies with stride handling, and NV12/NV21 split_uv_row code. The separate planar-contiguous experiment is absent from both backends. The direct-slot path changes the validated destination and publication of the result."
+  }
+}

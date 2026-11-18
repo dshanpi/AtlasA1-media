@@ -35,6 +35,11 @@ for item in manifest['files']:
     if item.get('mode'): os.chmod(dst,int(item['mode'],8))
 if not {'gpu_userspace','pvr_module','codec_backend','codec_service','codec_userspace','codec_config','browser_bridge','browser_service','device_rules','ddr_boot'} <= roles:
     raise SystemExit('incomplete roles')
+ffmpeg_lib = pathlib.Path('/opt/t736-browser-ffmpeg-v7/lib')
+subprocess.run(['/sbin/ldconfig', '-n', str(ffmpeg_lib)], check=True)
+for soname in ('libavcodec.so.61', 'libavutil.so.59', 'libswresample.so.5'):
+    if not (ffmpeg_lib / soname).is_file():
+        raise SystemExit('missing private FFmpeg SONAME: ' + soname)
 # Keep the manifest and an auditable role map on the live system.
 pathlib.Path('/etc/t736').mkdir(parents=True,exist_ok=True)
 shutil.copy2(root/'manifest.json','/etc/t736/vendor-manifest.json')
@@ -57,9 +62,15 @@ if subprocess.run(['getent','passwd','t736'],stdout=subprocess.DEVNULL,stderr=su
 subprocess.run(['udevadm','control','--reload-rules'],check=False)
 subprocess.run(['udevadm','trigger','--subsystem-match=misc'],check=False)
 subprocess.run(['udevadm','trigger','--subsystem-match=dma_heap'],check=False)
-subprocess.run(['depmod',KERNEL],check=False)
-subprocess.run(['systemctl','daemon-reload'],check=False)
-subprocess.run(['systemctl','enable','t736-cedar.socket'],check=False)
-subprocess.run(['systemctl','restart','t736-cedar.socket'],check=False)
+subprocess.run(['depmod', '-a', KERNEL], check=True)
+info = ['modinfo', '-k', KERNEL]
+indexed = subprocess.check_output([*info, '-n', 'pvrsrvkm'], text=True).strip()
+vermagic = subprocess.check_output([*info, '-F', 'vermagic', 'pvrsrvkm'], text=True).split()
+if not pathlib.Path(indexed).samefile(role_map['pvr_module'][0]) or vermagic[:1] != [KERNEL]:
+    raise SystemExit('PVR module index does not resolve the installed module for '+KERNEL)
+subprocess.run(['systemctl','daemon-reload'],check=True)
+subprocess.run(['systemctl','disable','t736-cedar.service'],check=True)
+subprocess.run(['systemctl','enable','t736-cedar.socket'],check=True)
+subprocess.run(['systemctl','restart','t736-cedar.socket'],check=True)
 pathlib.Path('/etc/t736/build-info').write_text('board=t736-mainline\nvendor_manifest_sha256='+hashlib.sha256((root/'manifest.json').read_bytes()).hexdigest()+'\ngpu_media_acceptance=pending\n')
 print('T736_VENDOR_INSTALL_OK')

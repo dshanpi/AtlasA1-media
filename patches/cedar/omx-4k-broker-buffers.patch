@@ -1,0 +1,22 @@
+--- a/openmax/vdec/src/omx_vdec_aw_decoder_linux.c
++++ b/openmax/vdec/src/omx_vdec_aw_decoder_linux.c
+@@ -1747,6 +1747,19 @@ static int __liPrepare(OmxDecoder* pDec)
+                          = NUM_OF_PICTURES_KEEPPED_BY_ROTATE;
+     pCtx->mVideoConfig.nDecodeSmoothFrameBufferNum \
+                          = NUM_OF_PICTURES_FOR_EXTRA_SMOOTH;
++    /* The broker immediately copies completed progressive pictures. Codec
++     * reference-picture requirements are still calculated by the decoder. */
++    if (pCtx->mStreamInfo.nWidth > 1920 && pCtx->mStreamInfo.nHeight > 1088 &&
++        (pCtx->mStreamInfo.eCodecFormat == VIDEO_CODEC_FORMAT_H264 ||
++         pCtx->mStreamInfo.eCodecFormat == VIDEO_CODEC_FORMAT_H265) &&
++        CdcGetConfigParamterInt("t736_broker_4k_buffers", 0) == 1)
++    {
++        pCtx->mVideoConfig.nDisplayHoldingFrameBufferNum = 1;
++        pCtx->mVideoConfig.nDecodeSmoothFrameBufferNum = 0;
++        logw("T736 broker 4K buffers: %dx%d display=1 smooth=0 scaledown=%d",
++             pCtx->mStreamInfo.nWidth, pCtx->mStreamInfo.nHeight,
++             pCtx->mVideoConfig.bScaleDownEn);
++    }
+ 
+     pCtx->mVideoConfig.memops = MemAdapterGetOpsS();
+     pCtx->mStreamInfo.bIsFramePackage = 1;

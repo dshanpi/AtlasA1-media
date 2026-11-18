@@ -1,6 +1,6 @@
 # T736 Firefox Cedar 候选适配
 
-本目录保存 T736 私有浏览器解码适配及分阶段记录。浏览器 1080p60 硬解、4K、编码、端到端零拷贝、长时间播放和切流仍需实板验收。已验证的 Bilibili 约 30 fps 硬解基线是 media-v27 / FFmpeg v6 / backend v4 / OMX/WC v5 / protocol v1；最新实验组合是 media-v29 / FFmpeg v8 / backend v6 / SHM protocol v2。SHM-v2 源码已经包含 Firefox user namespace UID 映射适配和 systemd socket activation，新的匹配内核镜像尚未在实板上重新验收。
+本目录保存 T736 浏览器解码适配及分阶段记录。v29 实板已验证 Firefox RDD 通过 SHM 协议 v2 使用 Cedar。HEVC 1080p60 的离屏样片在 20.78 秒内触发 1190 次 VE 中断，浏览器呈现 12 帧、丢弃 1178 帧。4K30 HEVC 使用单独的全分辨率 OMX 配置测试，v29 上因输出缓冲配置失败进入软件解码。已验证的 Bilibili 约 30 fps 基线使用 media-v27、FFmpeg v6、backend v4、OMX/WC v5 和协议 v1。[1080p60 计数](../../evidence/firefox-headless-hevc1080p60-v8-first-20261118.json) · [显示与 4K 实测](../../evidence/atlas-display-media-v29-reboot-20261118.json)
 
 2026-11-18 记录当前媒体链候选状态。本文不改变系统默认浏览器、默认内核或最终烧录镜像；厂家二进制和用户媒体不进入公开备份。
 
@@ -94,7 +94,7 @@ python3 tools/browser/build_browser_ffmpeg.py \
 
 1. 对照 manifest 校验归档与实际库 hash，确认当前内核/DTB、私有 heap 和回退启动项。将私有文件安装在 `/opt` 的候选路径，保留旧版本；不替换 `/usr/lib` 的系统 FFmpeg。
 2. 创建或检查无登录权限的 `t736-cedar` 服务用户。内核 bring-up 节点默认是 **root-only 0600**；部署 `shm_v2/70-t736-cedar.rules`，仅匹配 `misc/cedar_dev` 与 `dma_heap/t736-ve`，owner/group 均为专用服务账号、mode 0600。冷启动曾因临时 chown 未持久化导致 EACCES，厂家库随后空指针崩溃；新 `shm_v2/cedar-service` 在加载厂家库前检查两个节点的字符设备类型及读写权限并拒绝不满足条件的启动。不得开放给整个桌面组或设为 0666；节点重建后核验规则效果。
-3. root 拥有候选可执行文件、库和配置。`t736-cedar.socket` 以 root 创建 `/run/t736-cedar`（0755）和 `decoder.sock`（root:t736，0660），service 以 `User=t736-cedar`、`Group=t736` 运行并通过 `LISTEN_FDS` 接收该 endpoint。`cedar-service` 的参数 **1000 是被允许的 Firefox 客户端 UID**，不是 broker UID，必须与 `id -u t736` 的结果一致。
+3. root 拥有候选可执行文件、库和配置。`t736-cedar.socket` 以 root 创建 `/run/t736-cedar`（0755）和 `decoder.sock`（root:t736，0660），service 以 `User=t736-cedar`、`Group=t736` 运行并通过 `LISTEN_FDS` 接收该 endpoint。`cedar-service` 在启动时解析 `id -u t736` 作为允许的 Firefox 客户端 UID，避免把构建机上的 UID 1000 固定带入其他镜像。若存在 `/opt/t736-gst-parser-v27`，服务优先加载其选定 parser 和库，否则使用系统 GStreamer parser。
 4. systemd 使用 `DevicePolicy=closed`，只放行两个 Cedar/heap 设备；无 capabilities，`NoNewPrivileges=yes`、`PrivateNetwork=yes`、`RestrictAddressFamilies=AF_UNIX`。`CPUAffinity=6 7` 把服务及其线程限定在本板两个大核；这是当前性能实验设置，不是通用 SoC 默认值。将本目录 `cedarc.conf` 安装为 root 拥有的 `/opt/t736-browser-v1/config/cedarc.conf`，unit 通过 `BindReadOnlyPaths` 仅在 broker mount namespace 挂到 `/etc/cedarc.conf`。厂家实际键名是 `[paramter]` 和 `cdc_log_level = 6`，保留 error、抑制逐帧 warning；WC5/backend 的独立错误输出仍保留。已有 retained 实例不会因修改文件自动重读；由 root 安排下一轮服务生命周期，在 v27 基线和 v28 候选中使用同一日志配置。上述两轮网页记录发生在该配置部署之前。
 5. 在受控启动与内存预算确认后手动启动服务。该 unit 无 `[Install]`，`Restart=no`，不启用开机自动重启。**只换 FFmpeg 候选时不重启 broker**：退出候选 Firefox、核验 lease 已结束，再切换其私有库并重新启动候选。backend/OMX 服务替换需要单独安排生命周期与恢复步骤。
 6. 使用独立 Firefox profile，并设置 `dom.ipc.forkserver.enable=false`，使 RDD 有独立 exec。该启动方式配合当前 v2 的 UID 映射检查使用，仍需在匹配 media-v29 内核上实板复测 RDD。`firefox-cedar` 本身不创建 profile，也不设置该 pref；启动者必须明确指定。**不设置 `MOZ_DISABLE_*_SANDBOX`，不降低 sandbox level。**

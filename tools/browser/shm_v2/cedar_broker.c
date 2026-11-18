@@ -21,6 +21,9 @@
 #include <sys/un.h>
 #include <unistd.h>
 
+/* Older installed backends provide only cedar_pull and its owned frame. */
+#pragma weak cedar_pull_into
+
 struct retained {
     cedar_decoder *decoder;
     unsigned codec, width, height;
@@ -114,7 +117,7 @@ static int valid_time(int64_t value)
 }
 
 static int execute(int fd, struct t736_message *message, unsigned char *body,
-                   struct t736_picture *picture, cedar_frame *frame)
+                   struct t736_picture *picture, cedar_frame *frame, uint8_t *pixels)
 {
     unsigned length = message->length;
     message->length = 0;
@@ -151,9 +154,13 @@ static int execute(int fd, struct t736_message *message, unsigned char *body,
         struct t736_pull *args = (struct t736_pull *)body;
         if (args->capacity > T736_MAX_FRAME || args->timeout_ms > 1000) return -EINVAL;
         if (args->capacity < slot->width * slot->height * 3U / 2U) return -ENOSPC;
-        result = cedar_pull(slot->decoder, frame, args->timeout_ms);
+        if (cedar_pull_into)
+            result = cedar_pull_into(slot->decoder, pixels, args->capacity, frame, args->timeout_ms);
+        else
+            result = cedar_pull(slot->decoder, frame, args->timeout_ms);
         if (result == 1) {
-            if (!frame->data || !frame->width || !frame->height ||
+            if ((cedar_pull_into ? frame->data != NULL : frame->data == NULL) ||
+                !frame->width || !frame->height ||
                 frame->width > T736_MAX_WIDTH || frame->height > T736_MAX_HEIGHT ||
                 ((frame->width | frame->height) & 1) ||
                 frame->size != (size_t)frame->width * frame->height * 3 / 2 ||
@@ -247,13 +254,14 @@ static void *serve(void *opaque)
         cedar_frame frame = {0};
         struct t736_picture picture = {0};
         pthread_mutex_lock(&hardware_lock);
-        message.status = execute(fd, &message, body, &picture, &frame);
+        message.status = execute(fd, &message, body, &picture, &frame, shm.data);
         pthread_mutex_unlock(&hardware_lock);
         if (message.status == 1 && message.operation == T736_PULL) {
             /* This connection has one request at a time. The client consumes
              * the previous slot under its mutex before sending this request.
              * Every peer gets a distinct memfd, never a recycled live slot. */
-            memcpy(shm.data, frame.data, frame.size);
+            if (frame.data)
+                memcpy(shm.data, frame.data, frame.size);
             __atomic_thread_fence(__ATOMIC_RELEASE);
         }
         cedar_frame_free(&frame);
@@ -310,8 +318,8 @@ int main(int argc, char **argv)
             perror("cedar-broker socket"); return 1;
         }
     }
-    fprintf(stderr, "CEDAR_BROKER: ready uid=%lu protocol=%u readonly-memfd max=4K8bit retained_contexts=1\n",
-            uid, T736_PROTOCOL_VERSION);
+    fprintf(stderr, "CEDAR_BROKER: ready uid=%lu protocol=%u readonly-memfd max=4K8bit retained_contexts=1 output=%s\n",
+            uid, T736_PROTOCOL_VERSION, cedar_pull_into ? "direct-slot" : "owned-frame");
     for (;;) {
         int fd = accept4(server, NULL, NULL, SOCK_CLOEXEC);
         if (fd < 0) { if (errno == EINTR) continue; perror("accept"); break; }

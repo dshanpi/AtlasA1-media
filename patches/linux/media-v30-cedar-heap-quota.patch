@@ -1,0 +1,72 @@
+--- a/drivers/misc/t736-cedar-wc.c
++++ b/drivers/misc/t736-cedar-wc.c
+@@ -30,9 +30,22 @@
+ #include <linux/uaccess.h>
+ 
+ #define VE_MAX_BUFFER SZ_64M
+-#define VE_MAX_HEAP (128UL * SZ_1M)
+ #define VE_REG_USER_SIZE SZ_4K
+ #define VE_ALLOC_ATTRS DMA_ATTR_WRITE_COMBINE
++
++static unsigned int heap_limit_mib = 128;
++
++static int ve_set_heap_limit(const char *val, const struct kernel_param *kp)
++{
++	return param_set_uint_minmax(val, kp, 1, 256);
++}
++
++static const struct kernel_param_ops ve_heap_limit_ops = {
++	.set = ve_set_heap_limit,
++	.get = param_get_uint,
++};
++module_param_cb(heap_limit_mib, &ve_heap_limit_ops, &heap_limit_mib, 0444);
++MODULE_PARM_DESC(heap_limit_mib, "Private Cedar WC heap budget in MiB (1..256, default 128)");
+ 
+ struct t736_ve;
+ struct ve_buffer {
+@@ -209,15 +222,22 @@
+ 	struct ve_buffer *b;
+ 	struct dma_buf *db;
+ 	int err = -ENOMEM;
++	long used;
++	unsigned long limit = (unsigned long)heap_limit_mib * SZ_1M;
+ 
+ 	if (!len || len > VE_MAX_BUFFER || !IS_ALIGNED(len, PAGE_SIZE) || heap_flags)
+ 		return ERR_PTR(-EINVAL);
+ 	if (READ_ONCE(ve->poisoned))
+ 		return ERR_PTR(-EIO);
+-	if (atomic_long_add_return(len, &ve->allocated) > VE_MAX_HEAP) {
+-		atomic_long_sub(len, &ve->allocated);
+-		return ERR_PTR(-ENOSPC);
+-	}
++	used = atomic_long_read(&ve->allocated);
++	do {
++		if (len > limit || (unsigned long)used > limit - len) {
++			dev_warn_ratelimited(ve->dev,
++				"WC heap quota exceeded: request=%lu used=%ld limit=%lu bytes\n",
++				len, used, limit);
++			return ERR_PTR(-ENOSPC);
++		}
++	} while (!atomic_long_try_cmpxchg(&ve->allocated, &used, used + len));
+ 	b = kzalloc(sizeof(*b), GFP_KERNEL);
+ 	if (!b)
+ 		goto subtract;
+@@ -548,7 +568,7 @@
+ 		WRITE_ONCE(ve->powered, false);
+ 		/* No hardware DMA-drain completion is documented. Never recycle a
+ 		 * disclosed/imported buffer, even when the reset bit reads asserted.
+-		 * The 128 MiB heap budget bounds this explicit bring-up quarantine.
++		 * The boot-time heap budget bounds this bring-up quarantine.
+ 		 */
+ 		if (!ret && !ve->poisoned) {
+ 			clk_disable_unprepare(ve->clk);
+@@ -791,7 +811,8 @@
+ 		misc_deregister(&ve->misc);
+ 		goto disable_pm;
+ 	}
+-	dev_info(dev, "Cedar decoder + private 32-bit WC heap; root-only, fixed-frequency bring-up\n");
++	dev_info(dev, "Cedar decoder + private 32-bit WC heap; budget %u MiB; root-only, fixed-frequency bring-up\n",
++		 heap_limit_mib);
+ 	return 0;
+ disable_pm:
+ 	pm_runtime_disable(dev);

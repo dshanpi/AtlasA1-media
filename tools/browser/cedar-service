@@ -9,4 +9,8 @@ export GST_OMX_CONFIG_DIR="$root/config"
 export GST_REGISTRY_1_0=/run/t736-cedar/registry.bin
 export GST_REGISTRY_FORK=no
 unset GST_AW_OMX_DEFAULT_ARM_AFBC AW_AFBC_MODE
-exec "$root/bin/cedar-broker" 1000
+allowed_uid=$(id -u t736 2>/dev/null || true)
+case "$allowed_uid" in
+    ''|*[!0-9]*|0) printf 'CEDAR_SERVICE: desktop account t736 is unavailable\n' >&2; exit 1 ;;
+esac
+exec "$root/bin/cedar-broker" "$allowed_uid"

@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import socket
 import time
-from firefox_renderer_probe_lib import Marionette
+from firefox_renderer_probe import Marionette
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--url', required=True)

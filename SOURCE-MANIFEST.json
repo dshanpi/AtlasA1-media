@@ -32,6 +32,62 @@
       "sha256": "05c1eed725a2ba5158f4afe99850512657f363ef7bf85cef3e34360e68328f7b"
     },
     {
+      "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlas-display-media-v29-reboot-20261118.json",
+      "size": 4018,
+      "sha256": "c9eab826be163602b3341bf32daa0af6630f56e21096776fc5f3017237bf9273"
+    },
+    {
+      "path": "evidence/cedar-direct-slot-build-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/cedar-direct-slot-build-20261118.json",
+      "size": 3380,
+      "sha256": "83c5b8b11223aee4833fafab44817fbb68b960fe3b52b9a7b1e3a5c9e80ac9e7"
+    },
+    {
+      "path": "evidence/firefox-headless-hevc1080p60-v8-first-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/firefox-headless-hevc1080p60-v8-first-20261118.json",
+      "size": 21653,
+      "sha256": "3e4f057bca0731915fa6b08e4ec9cb3637a7afed23505d2ff59eedb9d3f52944"
+    },
+    {
+      "path": "evidence/firefox-hevc1080p60-v8-affinity-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/firefox-hevc1080p60-v8-affinity-20261118.json",
+      "size": 17232,
+      "sha256": "c27c134d4546326a7703e0aada92d9e293682756fd43ade64ce7b01595185a47"
+    },
+    {
+      "path": "evidence/firefox-hevc1080p60-v8-queue48-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/firefox-hevc1080p60-v8-queue48-20261118.json",
+      "size": 19332,
+      "sha256": "28fd4941cec91d40b28d61e6866ac94f95e80591136e8bd27c9d18d8d2794c27"
+    },
+    {
+      "path": "evidence/firefox-hevc1080p60-v8-software-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/firefox-hevc1080p60-v8-software-20261118.json",
+      "size": 13931,
+      "sha256": "11951b30efeac58bd61bc9402ec4948808df4e3bd072d6b99a9e31a7d2de893f"
+    },
+    {
+      "path": "evidence/firefox-hevc1080p60-v8-xvfb-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/firefox-hevc1080p60-v8-xvfb-20261118.json",
+      "size": 26643,
+      "sha256": "8e4898d18528fa5859d3d12bffb5e0aebea8f1f3771a3ec8fafe749855739f19"
+    },
+    {
+      "path": "evidence/media-v30-heap-budget-build-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/media-v30-heap-budget-build-20261118.json",
+      "size": 2157,
+      "sha256": "dc28dc030824175cc80b99889e0ef17f02d7b6093bf7adba8299eb62f08e68cf"
+    },
+    {
       "path": "patches/cedar/gstomx-broker-idle.patch",
       "kind": "source",
       "source": "mainline/patches/cedar/gstomx-broker-idle.patch",
@@ -60,6 +116,13 @@
       "sha256": "eea44de2701caac9a866849a16afeb95f376c0b3b5d67d9141291526379d1a31"
     },
     {
+      "path": "patches/cedar/omx-4k-broker-buffers.patch",
+      "kind": "source",
+      "source": "mainline/patches/cedar/omx-4k-broker-buffers.patch",
+      "size": 1223,
+      "sha256": "4cabef8c5b0af45ffe10d5b9a94e0667841f35bbbcabb82ca4b2ebdc347cb5c5"
+    },
+    {
       "path": "patches/cedar/raw-parser-annexb-eof-20261117.patch",
       "kind": "source",
       "source": "mainline/patches/cedar/raw-parser-annexb-eof-20261117.patch",
@@ -67,46 +130,81 @@
       "sha256": "e819f1cca09a10b4b9ed913fe0f3183aa9937d2b56b6570e2b380d49605d424b"
     },
     {
+      "path": "patches/linux/media-v30-cedar-heap-quota.patch",
+      "kind": "source",
+      "source": "mainline/patches/linux/media-v30-cedar-heap-quota.patch",
+      "size": 2426,
+      "sha256": "81d272ad12e93583cac6e53abf4639c74b17be31d8680f4349c029e9259c4549"
+    },
+    {
+      "path": "tests/test_cedar_backend.c",
+      "kind": "source",
+      "source": "mainline/tests/test_cedar_backend.c",
+      "size": 17811,
+      "sha256": "ed946fbe464c9cc715dddcc8019f05bb18ff55e28a534554c89e6c91cef9820a"
+    },
+    {
+      "path": "tests/test_cedar_shm_client_fork.c",
+      "kind": "source",
+      "source": "mainline/tests/test_cedar_shm_client_fork.c",
+      "size": 6172,
+      "sha256": "f1d2710f5555ac5065330b71d15898c5424e3f30792285335fc2fb6f370765a4"
+    },
+    {
+      "path": "tests/test_cedar_shm_seals.c",
+      "kind": "source",
+      "source": "mainline/tests/test_cedar_shm_seals.c",
+      "size": 22667,
+      "sha256": "341fab86314c3a04d27dc31d10a311b5ef3f7eccab6d44b3e495262f6c8ab102"
+    },
+    {
+      "path": "tests/test_cedar_shm_transport.c",
+      "kind": "source",
+      "source": "mainline/tests/test_cedar_shm_transport.c",
+      "size": 14824,
+      "sha256": "f7d6df93fe5e887c0e292708886e59ef2d4440e06ecbd420dabf4e3d28ab74c1"
+    },
+    {
       "path": "tools/browser/README.md",
       "kind": "source",
       "source": "mainline/tools/browser/README.md",
-      "size": 19872,
-      "sha256": "b5011d3cf3bb52acdccd36baef7e5884aede4fa9f92f9369cbbc3a34e79be9c8"
+      "size": 19976,
+      "sha256": "0494cbed3ca0618b66efd6ddc8366e7b2e8b86e067283356756f86290101d620"
     },
     {
       "path": "tools/browser/build_browser_ffmpeg.py",
       "kind": "source",
       "source": "mainline/tools/browser/build_browser_ffmpeg.py",
-      "size": 7644,
-      "sha256": "d1b3489b6224d7e1150730895a995f5effa65d3fad03ca7d5c5685aa1f3e101f"
+      "size": 7520,
+      "sha256": "e1f7a853c9ac147a9ffa8c941a8c69ed070c8f103d046cdefe382bce7699bd69"
     },
     {
       "path": "tools/browser/cedar-service",
       "kind": "source",
       "source": "mainline/tools/browser/cedar-service",
-      "size": 639,
-      "sha256": "bf9d33514fa40a31354c4e170f921e964c11b2d4a7c618784581dde35cdca175"
+      "size": 819,
+      "sha256": "523bf882825cf882a8e2827cf21a64044fead71dff695ef0874680492d73d172"
     },
     {
       "path": "tools/browser/cedar_backend.c",
       "kind": "source",
       "source": "mainline/tools/browser/cedar_backend.c",
-      "size": 25865,
-      "sha256": "deafdea374f866cbbde9a9598ef12dccd0f77b0f774532eeb10d5eeb04f5f3bd"
+      "size": 26186,
+      "sha256": "3e5ac5787b79d0717d06f2ffba5d89fa93253a7d774fee261c6251205311e7c4"
     },
     {
       "path": "tools/browser/cedar_backend.h",
       "kind": "source",
       "source": "mainline/tools/browser/cedar_backend.h",
-      "size": 2559,
-      "sha256": "b5034bcfc84513a31025749eef9f7cc30b3c3f8e79c27d9ebd14db9f4aecb6f3"
+      "size": 2805,
+      "sha256": "bb0156d8b7dec6b8a975a13a8962f0d31eef826fd890e08e1caf4d800696e061"
     },
     {
       "path": "tools/browser/cedar_broker.c",
       "kind": "source",
       "source": "mainline/tools/browser/cedar_broker.c",
-      "size": 11905,
-      "sha256": "efe16d71c505c63f70e1800acd2b6fb8ec3fe61f98607e3ba9327ed69418bdbd"
+      "size": 11623,
+      "sha256": "d4fbd206e3f6383abeea3d04c9f5267d0edd25b10c1f10039776e8e5d09f4ee4"
     },
     {
       "path": "tools/browser/cedar_client.c",
@@ -119,8 +217,8 @@
       "path": "tools/browser/cedar_client.h",
       "kind": "source",
       "source": "mainline/tools/browser/cedar_client.h",
-      "size": 1213,
-      "sha256": "70bbee5d6c8ac46429d760aa59debb3535881204941f9b8cdcc4e164beee6d45"
+      "size": 1181,
+      "sha256": "8ed66c98a7f630400840276f8e4aa4bb443702a49c29b564f17a82f41b1e5101"
     },
     {
       "path": "tools/browser/cedar_protocol.h",
@@ -175,8 +273,8 @@
       "path": "tools/browser/diagnostic_client_v1/cedar_client.h",
       "kind": "source",
       "source": "mainline/tools/browser/diagnostic_client_v1/cedar_client.h",
-      "size": 1213,
-      "sha256": "70bbee5d6c8ac46429d760aa59debb3535881204941f9b8cdcc4e164beee6d45"
+      "size": 1181,
+      "sha256": "8ed66c98a7f630400840276f8e4aa4bb443702a49c29b564f17a82f41b1e5101"
     },
     {
       "path": "tools/browser/diagnostic_client_v1/cedar_diagnostic.h",
@@ -203,8 +301,8 @@
       "path": "tools/browser/diagnostic_client_v1/provenance.json",
       "kind": "source",
       "source": "mainline/tools/browser/diagnostic_client_v1/provenance.json",
-      "size": 4273,
-      "sha256": "95e42e0ac8bc888114c5cd0e45720a6e590c721ae37549b0c07134035236a0a3"
+      "size": 4184,
+      "sha256": "1fcc07e77f571eacc0b3cf4e2e8231d7f3020f4e335ad7ed30ceafd650be3f16"
     },
     {
       "path": "tools/browser/diagnostic_client_v1/test_cedar_shm_client_fork.c",
@@ -252,29 +350,29 @@
       "path": "tools/browser/shm_v2/README.md",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/README.md",
-      "size": 10216,
-      "sha256": "e98c0a93dd5d6174add4c19e642c3356cfebfecb23602267ae49bac24f0c40f8"
+      "size": 10066,
+      "sha256": "b9bda6c03f1cf76da5de1218fb8abcb63d551e3f10338ed9fb2d69ca3ca1c6fd"
     },
     {
       "path": "tools/browser/shm_v2/cedar-service",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/cedar-service",
-      "size": 1175,
-      "sha256": "5e5d29e8a1e1c55a6fde26df3ef67d59e5eb68d42d2a5807a01f8c1f5e39cfcf"
+      "size": 1558,
+      "sha256": "30876c0a5898b2b8986641f6989b4e296f78b8e683ce8e710a1cd73e8cf5527a"
     },
     {
       "path": "tools/browser/shm_v2/cedar_backend.h",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/cedar_backend.h",
-      "size": 2559,
-      "sha256": "b5034bcfc84513a31025749eef9f7cc30b3c3f8e79c27d9ebd14db9f4aecb6f3"
+      "size": 2805,
+      "sha256": "bb0156d8b7dec6b8a975a13a8962f0d31eef826fd890e08e1caf4d800696e061"
     },
     {
       "path": "tools/browser/shm_v2/cedar_broker.c",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/cedar_broker.c",
-      "size": 14511,
-      "sha256": "298dc485c773c982508e84d25b5f3ae5e5fe12ab976e8b6156460e41e93e91f8"
+      "size": 14613,
+      "sha256": "792553045c6531064b1a82865d5bce8de94a718fbf9c36c8df971f09454aae1d"
     },
     {
       "path": "tools/browser/shm_v2/cedar_client.c",
@@ -287,8 +385,8 @@
       "path": "tools/browser/shm_v2/cedar_client.h",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/cedar_client.h",
-      "size": 1213,
-      "sha256": "70bbee5d6c8ac46429d760aa59debb3535881204941f9b8cdcc4e164beee6d45"
+      "size": 1181,
+      "sha256": "8ed66c98a7f630400840276f8e4aa4bb443702a49c29b564f17a82f41b1e5101"
     },
     {
       "path": "tools/browser/shm_v2/cedar_protocol.h",
@@ -301,8 +399,8 @@
       "path": "tools/browser/shm_v2/cedar_shm.h",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/cedar_shm.h",
-      "size": 9368,
-      "sha256": "651384f6bda5d4ef9f19824c6fc9bf926f73090990d706c638cd842a87f7d52b"
+      "size": 9151,
+      "sha256": "a9530be7f4f9607cbc9451b9398c8e6f8c64615cac54a7f90851c04795d6ee88"
     },
     {
       "path": "tools/browser/shm_v2/firefox-cedar",
@@ -315,8 +413,8 @@
       "path": "tools/browser/shm_v2/t736-cedar-experiment.service",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/t736-cedar-experiment.service",
-      "size": 1009,
-      "sha256": "ad698000cd8a820bc7a7e0c38adf1bc0ee2971c94a2187913cf019b60e5635bc"
+      "size": 969,
+      "sha256": "7e11f314826ff72c98baefcabaf861eb0c7ee2c0c78ce6fed80b3768a64e0ec4"
     },
     {
       "path": "tools/browser/shm_v2/t736-cedar.socket",
@@ -329,8 +427,15 @@
       "path": "tools/browser/t736-cedar-experiment.service",
       "kind": "source",
       "source": "mainline/tools/browser/t736-cedar-experiment.service",
-      "size": 964,
-      "sha256": "fd914ed5cfef7e5a14bed4ed1a42993bf561510d77bde2207acbea2ed1bc42eb"
+      "size": 925,
+      "sha256": "3409b715bbe0507949d3bc3431fbac8128334c5d4005d3d675d70029cdd462f3"
+    },
+    {
+      "path": "tools/build_cedar_4k_omx.py",
+      "kind": "source",
+      "source": "mainline/tools/build_cedar_4k_omx.py",
+      "size": 2062,
+      "sha256": "fa783eec374644f6c42e2aaaa8f94ba7ae5f4cf2878a8fac0ef9473c4ca4026d"
     },
     {
       "path": "tools/build_cedar_bridge.py",
@@ -343,8 +448,8 @@
       "path": "tools/build_cedar_browser_backend.py",
       "kind": "source",
       "source": "mainline/tools/build_cedar_browser_backend.py",
-      "size": 7568,
-      "sha256": "5e57c1cfba3f87637d250340f46bb9f21521e9fb5a8e05b9f17b3086598d8853"
+      "size": 7450,
+      "sha256": "3922c029b2a772646de2fa22d31011653fd2e1f3d0db4d664cbe5d0464063c8b"
     },
     {
       "path": "tools/build_cedar_demo_diagnostic.py",
@@ -357,8 +462,8 @@
       "path": "tools/build_cedar_shm_transport.py",
       "kind": "source",
       "source": "mainline/tools/build_cedar_shm_transport.py",
-      "size": 9093,
-      "sha256": "823dd94db697f3ed957a533db8aa0515540a98da647ac76a137d91eda26803c1"
+      "size": 9740,
+      "sha256": "0f4cbdf655c287eda2a1f40edf7e8e071925a91d5c28357933232758f79f0791"
     },
     {
       "path": "tools/build_cedar_wc_candidate.py",
@@ -410,11 +515,18 @@
       "sha256": "d7df7d6ad6fbad75e24bdbcba6b1b87c7b9539e9b77de181fbcd236cb8eff079"
     },
     {
+      "path": "tools/build_media_v30_candidate.sh",
+      "kind": "source",
+      "source": "mainline/tools/build_media_v30_candidate.sh",
+      "size": 2910,
+      "sha256": "691e707c90b66aa08185c4ec14b77ca2356924a3cf142659c8a47dd8bd859b89"
+    },
+    {
       "path": "tools/install_t736_media_runtime.py",
       "kind": "source",
       "source": "mainline/tools/install_t736_media_runtime.py",
-      "size": 4170,
-      "sha256": "03f670ec28411017c58a6f4633fc5ea4b47a68f6586d0d703e587a7d0427dff9"
+      "size": 4957,
+      "sha256": "d8baefef222b5496326da25ec60de02507297d130bd2330b03e52dc7995013ee"
     },
     {
       "path": "tools/port_media_iommu.py",
@@ -448,8 +560,8 @@
       "path": "tools/validation/browser_cedar_playback.py",
       "kind": "source",
       "source": "mainline/tools/validation/browser_cedar_playback.py",
-      "size": 3475,
-      "sha256": "d799ef9d36ae275d5bc3324bde09a423725443d78185b6537d680dc12987ef3f"
+      "size": 3471,
+      "sha256": "2e2ae45a6ad1dd362b93f2d3529c2f623010d247771e2a850c6620db3dfaa03e"
     },
     {
       "path": "tools/validation/browser_cedar_trial.py",
@@ -487,11 +599,25 @@
       "sha256": "ed3743101b5dfa488942d326a70b4f6ece708a1fc5492094e998753cc2cdf1d8"
     },
     {
+      "path": "tools/validation/ffplay_offscreen.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/ffplay_offscreen.py",
+      "size": 6362,
+      "sha256": "8a1856bfad4b0b8646ffc57bd060a9b210924c07ce2df49aba1e8f9e3fe0a559"
+    },
+    {
+      "path": "tools/validation/firefox_headless_playback.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/firefox_headless_playback.py",
+      "size": 14054,
+      "sha256": "fa8c9c3fecc25d37a9a53712b03e42d8d9fb1e6faaacb227ad185016cb3c53a6"
+    },
+    {
       "path": "tools/validation/media_acceptance.py",
       "kind": "source",
       "source": "mainline/tools/validation/media_acceptance.py",
-      "size": 19391,
-      "sha256": "fc2f2a58da4e38141f603e1efcdb19966c9cc24bb28f9a80e8f5c8bc26400d27"
+      "size": 20476,
+      "sha256": "93a426fb01f9cb56991b0c8669c348c8ba03f40522ad082e7f48a0b7ef052474"
     },
     {
       "path": "tools/validation/nv21_frame_hash_check.py",
@@ -504,8 +630,8 @@
       "path": "tools/validation/update_t736_media_v29.py",
       "kind": "source",
       "source": "mainline/tools/validation/update_t736_media_v29.py",
-      "size": 34280,
-      "sha256": "0c8073be98bdf3740347f43524c675ebcc1595a1bdfb769adfce2e4fdd882149"
+      "size": 33645,
+      "sha256": "6c9b896a1977f411181584fd3031f6486df73637d4db1d45b769b38749f96e08"
     }
   ]
 }

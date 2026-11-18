@@ -401,7 +401,8 @@ static void split_uv_row(uint8_t *du, uint8_t *dv, const uint8_t *source,
     }
 }
 
-static int copy_sample(cedar_decoder *d, GstSample *sample, cedar_frame *out)
+static int copy_sample(cedar_decoder *d, GstSample *sample, cedar_frame *out,
+                       uint8_t *dest, size_t capacity)
 {
     GstBuffer *buffer = gst_sample_get_buffer(sample);
     GstCaps *caps = gst_sample_get_caps(sample);
@@ -463,12 +464,21 @@ static int copy_sample(cedar_decoder *d, GstSample *sample, cedar_frame *out)
     csize = (size_t)cw*ch;
     out->size = ysize + 2*csize;
     copy_begin = monotonic_ns();
-    out->data = ram_acquire(d, out->size);
-    if (!out->data) {
-        fail(d, "I420 output allocation failed");
-        goto done;
+    if (dest) {
+        if (out->size > capacity) {
+            fail(d, "I420 output exceeds the supplied destination");
+            goto done;
+        }
+        dy = dest;
+    } else {
+        out->data = ram_acquire(d, out->size);
+        if (!out->data) {
+            fail(d, "I420 output allocation failed");
+            goto done;
+        }
+        dy = out->data;
     }
-    dy = out->data; du = dy + ysize; dv = du + csize;
+    du = dy + ysize; dv = du + csize;
     sy = (const uint8_t *)GST_VIDEO_FRAME_PLANE_DATA(&frame, 0) + (size_t)y*ys + x;
     for (row = 0; row < h; row++)
         memcpy(dy + (size_t)row*w, sy + (size_t)row*ys, w);
@@ -513,7 +523,8 @@ static int copy_sample(cedar_decoder *d, GstSample *sample, cedar_frame *out)
                 (copy_end >= copy_begin ? copy_end-copy_begin : 0)/1000,
                 d->total_map_ns/1000, d->total_copy_ns/1000,
                 d->total_copy_ns/d->copied_frames/1000,
-                d->ram_pool->allocations, d->ram_pool->reuses);
+                d->ram_pool ? d->ram_pool->allocations : 0,
+                d->ram_pool ? d->ram_pool->reuses : 0);
     }
     out->width = w; out->height = h;
     out->pts_ns = GST_BUFFER_PTS_IS_VALID(buffer) && GST_BUFFER_PTS(buffer) <= INT64_MAX ?
@@ -531,7 +542,8 @@ done:
     return result;
 }
 
-int cedar_pull(cedar_decoder *d, cedar_frame *out, unsigned timeout_ms)
+static int pull_sample(cedar_decoder *d, cedar_frame *out, unsigned timeout_ms,
+                       uint8_t *dest, size_t capacity)
 {
     GstSample *sample;
     int result;
@@ -549,9 +561,26 @@ int cedar_pull(cedar_decoder *d, cedar_frame *out, unsigned timeout_ms)
             return CEDAR_ERROR;
         return gst_app_sink_is_eos(GST_APP_SINK(d->sink)) ? CEDAR_EOF : CEDAR_AGAIN;
     }
-    result = copy_sample(d, sample, out);
+    result = copy_sample(d, sample, out, dest, capacity);
     gst_sample_unref(sample);
     return result;
+}
+
+int cedar_pull(cedar_decoder *d, cedar_frame *out, unsigned timeout_ms)
+{
+    return pull_sample(d, out, timeout_ms, NULL, 0);
+}
+
+int cedar_pull_into(cedar_decoder *d, uint8_t *dest, size_t capacity,
+                    cedar_frame *metadata, unsigned timeout_ms)
+{
+    if (!d || !dest || !metadata)
+        return CEDAR_ERROR;
+    size_t bytes = (size_t)d->width * d->height +
+                   2 * (size_t)((d->width + 1) / 2) * ((d->height + 1) / 2);
+    if (capacity < bytes)
+        return CEDAR_ERROR;
+    return pull_sample(d, metadata, timeout_ms, dest, capacity);
 }
 
 int cedar_eos(cedar_decoder *d)

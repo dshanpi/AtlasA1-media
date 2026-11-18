@@ -37,6 +37,10 @@ cedar_decoder *cedar_open(enum cedar_codec codec, unsigned width, unsigned heigh
 int cedar_push(cedar_decoder *dec, const void *data, size_t size,
                int64_t pts_ns, int64_t dts_ns);
 int cedar_pull(cedar_decoder *dec, cedar_frame *out, unsigned timeout_ms);
+/* Write packed I420 into caller-owned memory and return metadata with data=NULL.
+ * A short or NULL destination is rejected without consuming a queued sample. */
+int cedar_pull_into(cedar_decoder *dec, uint8_t *dest, size_t capacity,
+                    cedar_frame *metadata, unsigned timeout_ms);
 int cedar_eos(cedar_decoder *dec);
 /* A flushing seek clears appsrc/parser/decoder/appsink while retaining the
  * pipeline and OMX output pool. Hardware repeat-stream acceptance is separate. */

@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-18",
+  "board": "AtlasA1 / T736",
+  "kernel": "6.18.63-t736-media-v29",
+  "test": "Actual eMMC software reboot, GDM Xorg, Firefox ESR headless with isolated profile and loopback MP4s",
+  "display": {
+    "user_idle_delay_s": 0,
+    "initial_gdm_idle_delay_s": 300,
+    "initial_xorg_blank_s": 600,
+    "initial_render_node": false,
+    "initial_modprobe": "module not found although matching pvrsrvkm.ko existed; modules.dep had zero bytes",
+    "gdm_xorg_failures": 6,
+    "verified_after_reboot": {
+      "pvrsrvkm_loaded_automatically": true,
+      "render_node": "/dev/dri/renderD128",
+      "screen": "1920x1080@60",
+      "connector": "connected",
+      "dpms": "On",
+      "gdm_session": "GNOME greeter",
+      "greeter_idle_delay_s": 0,
+      "xorg_blank_s": 0
+    },
+    "user_lock_enabled": true,
+    "login_session_ac_suspend_action": "nothing",
+    "can_suspend_reported_by_logind": "na",
+    "greeter_observation_before_reboot_s": 345,
+    "physical_monitor_observation": "No new physical observation recorded"
+  },
+  "cedar": {
+    "capacity_bytes": 134217728,
+    "cma_total_kib": 524288,
+    "cma_free_kib_before": 467384,
+    "cma_free_kib_after_4k": 346428,
+    "heap_pinned_bytes_after_4k": 123863040,
+    "large_output_buffer_bytes": 12533760,
+    "large_output_buffer_count": 5,
+    "submitted": 64,
+    "hardware_frames": 0,
+    "diagnostic": "GStreamer output reconfiguration failed. Observed capacity remaining was below one further output frame. v29 does not log the size of the allocation refused.",
+    "buffer_config": {
+      "t736_broker_4k_buffers": 1,
+      "enable_scaledown_while_4k": 0
+    },
+    "broker_sha256": "1b73d067f1cd9df583a361a42b8170eb9b9542779a3eb65b67b8d7c5cc46f068",
+    "backend_sha256": "360c9cf72643ca6d17f5e04fbb402f7c9a1fdf273950fdd8160b09f4f65ae0f0",
+    "omx_sha256": "7f6a121d718fd458f99d2aeb7b1fd105644a318e04262eea2f7677582f8e1614"
+  },
+  "browser_results": {
+    "hevc_4k30": {
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "avg_frame_rate": "30/1",
+        "duration": "25.000000",
+        "sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f"
+      },
+      "kernel": "6.18.63-t736-media-v29",
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": false,
+          "matching_hardware_session": false,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.17,
+        "media_seconds": 19.179752999999998,
+        "total_delta": 575,
+        "dropped_delta": 29,
+        "presented_delta": 546,
+        "browser_retained_fps": 28.48200312989045,
+        "irq_delta": 0,
+        "broker_sessions": [
+          [
+            "1",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": []
+      }
+    },
+    "h264_1080p60_after_4k": {
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "25.000000",
+        "sha256": "21b2975239cd5575d49748ffe8d7120b00e8a209ce4deb06dce57a6cc74a0101"
+      },
+      "kernel": "6.18.63-t736-media-v29",
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": false,
+          "matching_hardware_session": false,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.738,
+        "media_seconds": 19.743996,
+        "total_delta": 1184,
+        "dropped_delta": 447,
+        "presented_delta": 737,
+        "browser_retained_fps": 37.33914277029081,
+        "irq_delta": 0,
+        "broker_sessions": [],
+        "broker_frame_markers": []
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "release": "6.18.63-t736-media-v30",
+  "status": "BUILD_VERIFIED",
+  "architecture": "arm64",
+  "baseline": "6.18.63-t736-media-v29",
+  "baseline_package_sha256": "773a084db61b8addca08bbdcdccefb7008042b61f212e5e0ea2ca127de49c33e",
+  "source_change": "drivers/misc/t736-cedar-wc.c",
+  "baseline_driver_sha256": "5c9a73ed2d701bfb5905aa59da73f7f07f60b1c0636c6746f1b7110a68265402",
+  "candidate_driver_sha256": "b145b74f74d6c134bff8715e735bd48e0a95dd2b979d71ae26209b71120c991d",
+  "source_patch": "patches/linux/media-v30-cedar-heap-quota.patch",
+  "source_patch_sha256": "81d272ad12e93583cac6e53abf4639c74b17be31d8680f4349c029e9259c4549",
+  "recipe": "tools/build_media_v30_candidate.sh",
+  "kconfig_changes": ["CONFIG_LOCALVERSION"],
+  "cma_mib": 512,
+  "cedar_quota": {
+    "parameter": "t736_cedar_wc.heap_limit_mib",
+    "default_mib": 128,
+    "min_mib": 1,
+    "max_mib": 256,
+    "sysfs_mode": "0444",
+    "single_buffer_limit_mib": 64,
+    "retired_imports_remain_pinned": true
+  },
+  "sha256": {
+    "linux-image-6.18.63-t736-media-v30_6.18.63-30_arm64.deb": "21bc01ae0a0f40bb69ddd04f33daca3e59229fc3727c0d9bc22ebac707e71a29",
+    "vmlinuz-6.18.63-t736-media-v30": "d24144cd9fd1dc41e332a0c50dc355219ec120ae212a2b46435d3658f9360d9d",
+    "Image": "827fcb119b1948bddfba362645c016c9e7c0c695c551de81fd3a16eb5e3dfe0b",
+    "t736-gpu-candidate.dtb": "45012aeb86d657fca568417e831067170d12e224ebe71720c1956989af6f3626",
+    "pvrsrvkm.ko": "6d36fc38dd232e4b920439989c530c2cae753c71f3a0466aa7b591dc91724f88",
+    ".config": "1ac4ebd1a1eb188db8b8b093c89c2bb766cf3f1079838cdf86da9b2d3879fa70",
+    "Module.symvers": "2c78cfcd32781c9121ff5b6effae05ca5e51e97f1bffa1556bd2f778c4fb0cc9"
+  },
+  "checks": {
+    "kconfig_compared_to_v29": true,
+    "module_symvers_byte_equal_to_v29": true,
+    "dtb_byte_equal_to_v29": true,
+    "packaged_kernel_decompresses_to_exact_build_image": true,
+    "packaged_dtb_byte_equal_to_build": true,
+    "kernel_parameter_name_found_in_driver_object": true,
+    "quota_rejection_log_found_in_driver_object": true,
+    "pvr_vermagic": "6.18.63-t736-media-v30 SMP mod_unload aarch64"
+  },
+  "hardware_tested_by_this_build": false
+}
