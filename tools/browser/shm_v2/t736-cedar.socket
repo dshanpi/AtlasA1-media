@@ -1,0 +1,17 @@
+[Unit]
+Description=T736 Cedar decoder socket
+Before=t736-cedar-experiment.service
+
+[Socket]
+# systemd owns the endpoint and its parent directory.  The broker receives
+# this already-listening descriptor through LISTEN_FDS and cannot replace it.
+ListenStream=/run/t736-cedar/decoder.sock
+Service=t736-cedar-experiment.service
+DirectoryMode=0755
+SocketUser=root
+SocketGroup=t736
+SocketMode=0660
+RemoveOnStop=true
+
+[Install]
+WantedBy=sockets.target
