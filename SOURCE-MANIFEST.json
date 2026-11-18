@@ -35,8 +35,8 @@
       "path": "docs/PLAYBACK.md",
       "kind": "source",
       "source": "mainline/docs/PLAYBACK.md",
-      "size": 6914,
-      "sha256": "fedbfdcf71ac4ccb6f580644f0da9754cd9d79f05b1edb34b05ddf05e3347798"
+      "size": 8112,
+      "sha256": "0c4c862d45e45b8250ca1ad0bae70206887acacb45b97c25a785be11f370fd5f"
     },
     {
       "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
@@ -67,6 +67,13 @@
       "sha256": "dd16967918975395abd3c15ce7f73d4f2fffae39737976ef1a4ac04c3e32c3ae"
     },
     {
+      "path": "evidence/atlasa1-player-start-sync-package-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-player-start-sync-package-20261118.json",
+      "size": 3334,
+      "sha256": "f330fe057a9e31886495ea6f709aa51453d8a41ad9b3fd00f8c0e084b1164e6d"
+    },
+    {
       "path": "evidence/cedar-direct-slot-build-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/cedar-direct-slot-build-20261118.json",
@@ -79,6 +86,13 @@
       "source": "mainline/evidence/cedar-peer-roles-build-20261118.json",
       "size": 2075,
       "sha256": "b2d84409b5b243602a5c0b2559fab318e120915da943a12023702703e2d21549"
+    },
+    {
+      "path": "evidence/ffplay-first-picture-sync-qemu-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/ffplay-first-picture-sync-qemu-20261118.json",
+      "size": 2153,
+      "sha256": "af03eeb04de122f33992314d63019e1fd688446e8ab01f6cbcb860057a65509f"
     },
     {
       "path": "evidence/ffplay-refresh-budget-build-20261118.json",
@@ -161,8 +175,8 @@
       "path": "evidence/media-v30-4k-omx-panel-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/media-v30-4k-omx-panel-20261118.json",
-      "size": 8681,
-      "sha256": "6c00a2d7625da8e7fb7cc004688276d639d63d7473c46e5db5d458ac68702b9a"
+      "size": 15301,
+      "sha256": "fdcd33cd41a689f5cb13a5644cc26906e2629872f9888211af753274cf14715b"
     },
     {
       "path": "evidence/media-v30-4k-wc-parallel-20261118.json",
@@ -242,6 +256,13 @@
       "sha256": "e819f1cca09a10b4b9ed913fe0f3183aa9937d2b56b6570e2b380d49605d424b"
     },
     {
+      "path": "patches/ffmpeg/ffplay-first-picture-audio.patch",
+      "kind": "source",
+      "source": "mainline/patches/ffmpeg/ffplay-first-picture-audio.patch",
+      "size": 5073,
+      "sha256": "07a60c9958f3e2271b8ce8ad35941dfe67b08251c108953b17e6b68d9734571b"
+    },
+    {
       "path": "patches/ffmpeg/ffplay-refresh-budget.patch",
       "kind": "source",
       "source": "mainline/patches/ffmpeg/ffplay-refresh-budget.patch",
@@ -259,8 +280,8 @@
       "path": "tests/test_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tests/test_atlasa1_player.py",
-      "size": 3464,
-      "sha256": "8f7aa67224ca9e0e279688c0e7deacb2a1e680c70345c3144a26b42c41fe2c93"
+      "size": 3768,
+      "sha256": "605197d7eb3f28175fd1a4476ac44962725a82cdde7e490d879f9fb3bdb50fc7"
     },
     {
       "path": "tests/test_cedar_backend.c",
@@ -497,8 +518,8 @@
       "path": "tools/browser/omx_scale_candidate/README.md",
       "kind": "source",
       "source": "mainline/tools/browser/omx_scale_candidate/README.md",
-      "size": 2676,
-      "sha256": "70b7ecc7a778723d1473c5b6713af403d865bdcbb3597d1ce7aa66bc4f6411ac"
+      "size": 4053,
+      "sha256": "672f53a43bb1c019f9fc986005d9104c68c4ccd1c546848d5175bfba0869edc4"
     },
     {
       "path": "tools/browser/omx_scale_candidate/build_omx_panel.sh",
@@ -679,8 +700,8 @@
       "path": "tools/build_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tools/build_atlasa1_player.py",
-      "size": 5451,
-      "sha256": "040c2b2354d608c452608803d88f7019a41cf5cc61545b2d1c05cb921fc4ee64"
+      "size": 5758,
+      "sha256": "b0d08e565fefb4c499b821600d8c96a24f942ba31736f83435abf6379e810dea"
     },
     {
       "path": "tools/build_cedar_4k_omx.py",
@@ -763,8 +784,8 @@
       "path": "tools/build_ffplay_refresh_pair.sh",
       "kind": "source",
       "source": "mainline/tools/build_ffplay_refresh_pair.sh",
-      "size": 2149,
-      "sha256": "af95efe9f404bab4221635316fe4a88b67f3919a8d455028ce53e8e994f75b42"
+      "size": 2333,
+      "sha256": "891229d33c5761f92101ffd1b5f5824233e5553505926f7c58a09eb7d2e4f2b2"
     },
     {
       "path": "tools/build_media_v28_candidate.py",
@@ -798,15 +819,15 @@
       "path": "tools/player/README.md",
       "kind": "source",
       "source": "mainline/tools/player/README.md",
-      "size": 2968,
-      "sha256": "6efe12763900f7c9e95d03225785fd33c6562715f54b58ce16e17e84119aec67"
+      "size": 3360,
+      "sha256": "27e9f728ba646c967b5e6db9ff9a3daa40303e4a65ddd9fc3d9d32c53e326bc0"
     },
     {
       "path": "tools/player/atlasa1-player",
       "kind": "source",
       "source": "mainline/tools/player/atlasa1-player",
-      "size": 4845,
-      "sha256": "6b7ee7ed4e54efda9915af90bedf5ff62685e5615e0c91253f48f4d53f72d132"
+      "size": 4866,
+      "sha256": "4a38bc273a87f260e3554e76c6d82263bbc1ef468d84ee3534a0190bcd666251"
     },
     {
       "path": "tools/player/atlasa1-player.desktop",
@@ -849,6 +870,13 @@
       "source": "mainline/tools/prepare_media_v28_candidate.py",
       "size": 4360,
       "sha256": "5f87aa4533069614a7d34e222f1861e26a28b56f802f75ee0b260ab5a656bf90"
+    },
+    {
+      "path": "tools/validation/README.md",
+      "kind": "source",
+      "source": "mainline/tools/validation/README.md",
+      "size": 12340,
+      "sha256": "d99514c516fdc20f81775f213c3d15a26e3c346b9fce86362dcb4a189898ded9"
     },
     {
       "path": "tools/validation/audit_media_v29_package.py",
@@ -910,8 +938,8 @@
       "path": "tools/validation/ffplay_offscreen.py",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_offscreen.py",
-      "size": 13441,
-      "sha256": "f1e75dd20d73aa407c0ba4b9dee3611a92dd182054353ecfccc9886eb28c5bc3"
+      "size": 14561,
+      "sha256": "d5a5d53b01b6d77418298cb32da542906eea8911a847a4bc68491781521b5aff"
     },
     {
       "path": "tools/validation/ffplay_present_trace.c",
@@ -919,6 +947,20 @@
       "source": "mainline/tools/validation/ffplay_present_trace.c",
       "size": 3019,
       "sha256": "20a7f73f875e2dc68126271a61160bb11fe3e5efd42aafb667d4384bae0e75b7"
+    },
+    {
+      "path": "tools/validation/ffplay_start_sync.md",
+      "kind": "source",
+      "source": "mainline/tools/validation/ffplay_start_sync.md",
+      "size": 3090,
+      "sha256": "1b0c587950943c6e56ba74ac1b617093bb101dd020e8ea3c487c31717d453ccc"
+    },
+    {
+      "path": "tools/validation/ffplay_start_sync_probe.c",
+      "kind": "source",
+      "source": "mainline/tools/validation/ffplay_start_sync_probe.c",
+      "size": 3209,
+      "sha256": "43690ce2a8ad6fad3040efe539168f0ec77ba905490af7c7ef8447e0ed9e59a9"
     },
     {
       "path": "tools/validation/firefox_headless_playback.py",

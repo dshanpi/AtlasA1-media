@@ -114,7 +114,7 @@ def main(args):
         env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_NATIVE_PLAYER='1',
                    LD_PRELOAD=':'.join(LIB+'/'+f for f in
                                       ('libt736_cedar_client.so', 'libavutil.so.59', 'libavcodec.so.61')))
-        cmd.extend(['-vst', 'V:0', '-vcodec', codec_name])
+        cmd.extend(['-wait_video_start', '-vst', 'V:0', '-vcodec', codec_name])
     os.execve(PLAYER, cmd + ['-i', path], env)
 
 

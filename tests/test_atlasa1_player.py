@@ -37,6 +37,7 @@ class AtlasPlayer(unittest.TestCase):
     def test_supported(self):
         args, env = self.launch(dict(codec_name='hevc', pix_fmt='yuv420p', width=1920, height=1080, field_order='progressive'))
         self.assertEqual(args[args.index('-vcodec')+1],'hevc_cedar')
+        self.assertEqual(args.count('-wait_video_start'), 1)
         self.assertEqual(env['T736_CEDAR_NATIVE_PLAYER'],'1')
         self.assertNotIn('T736_CEDAR_PANEL', env)
 
@@ -64,8 +65,14 @@ class AtlasPlayer(unittest.TestCase):
     def test_tenbit(self):
         args, env = self.launch(dict(codec_name='hevc', pix_fmt='yuv420p10le', width=3840, height=2160))
         self.assertNotIn('-vcodec',args)
+        self.assertNotIn('-wait_video_start', args)
         self.assertNotIn('T736_CEDAR_NATIVE_PLAYER',env)
         self.assertNotIn('LD_PRELOAD',env)
+
+    def test_audio_only(self):
+        args, env = self.launch(dict(codec_name='aac'))
+        self.assertNotIn('-wait_video_start', args)
+        self.assertNotIn('T736_CEDAR_ENABLE', env)
 
 
 if __name__ == '__main__':

@@ -36,6 +36,10 @@ def play(args, record):
     frames, duration = int(stream['nb_frames']), float(stream['duration'])
     if codec not in ('hevc', 'h264') or not 2 <= duration <= 90 or frames < 2:
         raise ValueError('expected a 2–90 second H.264 or HEVC fixture with a declared frame count')
+    total_frames = frames * args.loops
+    total_duration = duration * args.loops
+    if args.present_trace and total_frames > 16384:
+        raise ValueError('the SDL presentation tracer can record at most 16384 frames')
     with clip.open('rb') as src:
         stream['sha256'] = hashlib.file_digest(src, 'sha256').hexdigest()
     record['fixture'] = stream
@@ -84,6 +88,10 @@ def play(args, record):
         cmd.insert(1, '-an')
     if args.scale_to_window:
         cmd[1:1] = ['-filter_threads', '2']
+    if args.loops > 1:
+        cmd[1:1] = ['-loop', str(args.loops)]
+    if args.wait_video_start:
+        cmd.insert(1, '-wait_video_start')
     cursor = re.search(r'^-- cursor: (.+)$', journal('-n', '1', '--show-cursor'), re.M)
     if not cursor:
         raise ValueError('missing starting journal cursor')
@@ -103,7 +111,7 @@ def play(args, record):
                         break
                     if not pvr_libs:
                         time.sleep(.2)
-            proc.wait(timeout=max(1, 2*duration+20-(time.monotonic()-start)))
+            proc.wait(timeout=max(1, 2*total_duration+20-(time.monotonic()-start)))
         finally:
             if proc.poll() is None:
                 proc.kill()
@@ -130,12 +138,12 @@ def play(args, record):
     clock_end = float(stats[-1][0]) if stats else None
     errors = [line.strip() for line in log.splitlines() if re.search(
         'undefined symbol|symbol lookup error|failed|unknown decoder|cannot open|native fallback=', line, re.I)]
-    checks = dict(exited_cleanly=proc.returncode == 0, all_frames=len(shown) == frames,
+    checks = dict(exited_cleanly=proc.returncode == 0, all_frames=len(shown) == total_frames,
                   full_dimensions=bool(shown) and set(shown) == {shape}, zero_player_drops=drops == 0,
                   clock_reached_end=clock_end is not None and abs(clock_end-duration) < .25,
-                  realtime_wall=.97*duration <= elapsed <= 1.03*duration+1,
+                  realtime_wall=.97*total_duration <= elapsed <= 1.03*total_duration+1,
                   decoder_path=(match and 'T736_CEDAR_CLIENT: preconnected' in log and
-                                'native fallback=' not in log and interrupts >= .97*frames)
+                                'native fallback=' not in log and interrupts >= .97*total_frames)
                                if args.mode == 'cedar' else not sessions and interrupts == 0)
     if args.renderer == 'powervr':
         checks['pvr_loaded'] = bool(pvr_libs)
@@ -164,7 +172,7 @@ def play(args, record):
     if args.present_trace:
         summary = re.search(r'T736_FFPLAY_PRESENT frames=(\d+) span_ms=([\d.]+) '
                             r'gap_p95_ms=([\d.]+) gap_max_ms=([\d.]+)', log)
-        checks['presented_every_frame'] = bool(summary) and int(summary[1]) == frames
+        checks['presented_every_frame'] = bool(summary) and int(summary[1]) == total_frames
         if summary:
             record['sdl_present'] = dict(frames=int(summary[1]), span_ms=float(summary[2]),
                                          gap_p95_ms=float(summary[3]), gap_max_ms=float(summary[4]))
@@ -188,6 +196,10 @@ def main():
     parser.add_argument('--renderer', choices=['software','powervr'], default='software')
     parser.add_argument('--present-trace', type=Path, help='ARM64 shared library built from ffplay_present_trace.c')
     parser.add_argument('--keep-frames', action='store_true', help='Retain late frames with the same external master clock')
+    parser.add_argument('--loops', type=int, default=1,
+                        help='Number of playback passes with a seek to the beginning between passes')
+    parser.add_argument('--wait-video-start', action='store_true',
+                        help='Enable the bounded audio start option of the AtlasA1 0.1-4 FFplay')
     scaling = parser.add_mutually_exclusive_group()
     scaling.add_argument('--scale-to-window', action='store_true',
                         help='Fit the fully decoded picture inside 1920×1080 before uploading its SDL texture')
@@ -203,12 +215,17 @@ def main():
                         default=Path('/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so'))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    if args.loops < 1 or (args.loops > 1 and not (args.keep_frames and args.present_trace)):
+        parser.error('multiple playback passes require --keep-frames and --present-trace, and loops must be positive')
+    if args.wait_video_start and not args.audio:
+        parser.error('--wait-video-start requires --audio')
     if args.keep_frames and not args.present_trace:
         parser.error('--keep-frames requires --present-trace to measure actual output pacing')
     if (args.native_fit or args.omx_fit) and args.mode != 'cedar':
         parser.error('--native-fit and --omx-fit require Cedar')
     record = dict(player='FFplay', kernel=os.uname().release, mode=args.mode,
                   probe_cpu_affinity=sorted(os.sched_getaffinity(0)),
+                  loops=args.loops, wait_video_start=args.wait_video_start,
                   display='SDL dummy software renderer' if args.renderer == 'software' else 'SDL offscreen GLES2',
                   window=[1920,1080], audio=args.audio, keep_late_frames=args.keep_frames)
     with args.output.open('x', encoding='utf-8') as out:

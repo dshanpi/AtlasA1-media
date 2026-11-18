@@ -1,0 +1,107 @@
+--- a/fftools/ffplay.c
++++ b/fftools/ffplay.c
+@@ -230,6 +230,9 @@
+ 
+     int av_sync_type;
+ 
++    /* Armed once by the reader, before SDL starts the first audio callback. */
++    SDL_atomic_t wait_first_picture;
++    int64_t first_picture_deadline;
+     double audio_clock;
+     int audio_clock_serial;
+     double audio_diff_cum; /* used for AV difference average computation */
+@@ -334,6 +337,7 @@
+ static int exit_on_mousedown;
+ static int loop = 1;
+ static int framedrop = -1;
++static int wait_video_start;
+ static int infinite_buffer = -1;
+ static enum ShowMode show_mode = SHOW_MODE_NONE;
+ static const char *audio_codec_name;
+@@ -1214,6 +1218,8 @@
+     if (stream_index < 0 || stream_index >= ic->nb_streams)
+         return;
+     codecpar = ic->streams[stream_index]->codecpar;
++    if (codecpar->codec_type == AVMEDIA_TYPE_AUDIO || codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
++        SDL_AtomicSet(&is->wait_first_picture, 0);
+ 
+     switch (codecpar->codec_type) {
+     case AVMEDIA_TYPE_AUDIO:
+@@ -1482,6 +1488,7 @@
+ /* seek in the stream */
+ static void stream_seek(VideoState *is, int64_t pos, int64_t rel, int by_bytes)
+ {
++    SDL_AtomicSet(&is->wait_first_picture, 0);
+     if (!is->seek_req) {
+         is->seek_pos = pos;
+         is->seek_rel = rel;
+@@ -1778,6 +1785,8 @@
+ 
+     av_frame_move_ref(vp->frame, src_frame);
+     frame_queue_push(&is->pictq);
++    if (SDL_AtomicGet(&is->wait_first_picture))
++        SDL_AtomicSet(&is->wait_first_picture, 0);
+     return 0;
+ }
+ 
+@@ -2479,6 +2488,14 @@
+     int audio_size, len1;
+ 
+     audio_callback_time = av_gettime_relative();
++    if (SDL_AtomicGet(&is->wait_first_picture)) {
++        if (audio_callback_time < is->first_picture_deadline) {
++            /* Keep the device running without consuming or timestamping PCM. */
++            memset(stream, 0, len);
++            return;
++        }
++        SDL_AtomicSet(&is->wait_first_picture, 0);
++    }
+ 
+     while (len > 0) {
+         if (is->audio_buf_index >= is->audio_buf_size) {
+@@ -2980,6 +2997,28 @@
+             set_default_window_size(codecpar->width, codecpar->height, sar);
+     }
+ 
++    /* Keep the container timeline for deliberately staggered streams, unknown
++     * timestamps, network sources and initial seeks. Local MP4/Matroska with
++     * co-starting sound and pictures may wait briefly for a cold decoder. */
++    if (wait_video_start && st_index[AVMEDIA_TYPE_AUDIO] >= 0 &&
++        st_index[AVMEDIA_TYPE_VIDEO] >= 0 && start_time == AV_NOPTS_VALUE &&
++        av_sync_type == AV_SYNC_AUDIO_MASTER && !display_disable &&
++        (show_mode == SHOW_MODE_NONE || show_mode == SHOW_MODE_VIDEO) &&
++        !is->realtime && ic->pb && (ic->pb->seekable & AVIO_SEEKABLE_NORMAL) &&
++        (av_match_name("mov", ic->iformat->name) || av_match_name("matroska", ic->iformat->name))) {
++        const AVStream *audio = ic->streams[st_index[AVMEDIA_TYPE_AUDIO]];
++        const AVStream *video = ic->streams[st_index[AVMEDIA_TYPE_VIDEO]];
++        const char *protocol = avio_find_protocol_name(is->filename);
++        if (protocol && !strcmp(protocol, "file") &&
++            !(video->disposition & (AV_DISPOSITION_ATTACHED_PIC | AV_DISPOSITION_STILL_IMAGE)) &&
++            audio->start_time != AV_NOPTS_VALUE && video->start_time != AV_NOPTS_VALUE &&
++            !av_compare_ts(audio->start_time, audio->time_base, video->start_time, video->time_base)) {
++            is->first_picture_deadline = av_gettime_relative() + 2500000;
++            SDL_AtomicSet(&is->wait_first_picture, 1);
++            av_log(NULL, AV_LOG_VERBOSE, "Waiting up to 2500 ms for the first video picture\n");
++        }
++    }
++
+     /* open the streams */
+     if (st_index[AVMEDIA_TYPE_AUDIO] >= 0) {
+         stream_component_open(is, st_index[AVMEDIA_TYPE_AUDIO]);
+@@ -2988,6 +3027,8 @@
+     ret = -1;
+     if (st_index[AVMEDIA_TYPE_VIDEO] >= 0) {
+         ret = stream_component_open(is, st_index[AVMEDIA_TYPE_VIDEO]);
++        if (ret < 0)
++            SDL_AtomicSet(&is->wait_first_picture, 0);
+     }
+     if (is->show_mode == SHOW_MODE_NONE)
+         is->show_mode = ret >= 0 ? SHOW_MODE_VIDEO : SHOW_MODE_RDFT;
+@@ -3694,6 +3735,7 @@
+     { "exitonkeydown",      OPT_TYPE_BOOL,   OPT_EXPERT, { &exit_on_keydown }, "exit on key down", "" },
+     { "exitonmousedown",    OPT_TYPE_BOOL,   OPT_EXPERT, { &exit_on_mousedown }, "exit on mouse down", "" },
+     { "loop",               OPT_TYPE_INT,    OPT_EXPERT, { &loop }, "set number of times the playback shall be looped", "loop count" },
++    { "wait_video_start",   OPT_TYPE_BOOL,   OPT_EXPERT, { &wait_video_start }, "delay co-starting local file audio until the first video picture (up to 2.5 seconds)", "" },
+     { "framedrop",          OPT_TYPE_BOOL,   OPT_EXPERT, { &framedrop }, "drop frames when cpu is too slow", "" },
+     { "infbuf",             OPT_TYPE_BOOL,   OPT_EXPERT, { &infinite_buffer }, "don't limit the input buffer size (useful with realtime streams)", "" },
+     { "window_title",       OPT_TYPE_STRING,          0, { &window_title }, "set window title", "window title" },

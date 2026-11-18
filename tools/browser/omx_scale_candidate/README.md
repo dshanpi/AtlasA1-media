@@ -48,3 +48,27 @@ and the SDL presentation count. Record wall time, late frames, presentation
 intervals and A/V skew. The GStreamer property and a successful open only
 record a request. A test with a 1080p output raster measures 4K-source
 playback on a 1080p display.
+
+## One-shot board configuration on 2026-11-18
+
+The test board booted `6.18.63-t736-media-v30` with a 256 MiB Cedar
+heap and 512 MiB CMA. Its default eMMC boot entry was v29. The hardware
+keeps retired decoder allocations until reboot, so the first 4K run used a
+fresh v30 boot. The executable files for the test came from the root-owned
+`/opt/t736-v30-omx-scale-test` directory. The board mounted `/run` with
+`noexec`. Only temporary systemd configuration went under `/run/systemd/system`.
+
+These are the active `BindReadOnlyPaths` source and destination pairs observed
+for `t736-cedar.service` in that boot.
+
+| File on the board | File as seen by the service |
+| --- | --- |
+| `/opt/t736-v30-omx-scale-test/bin/cedar-broker` | `/opt/t736-cedar-direct-test/bin/cedar-broker` |
+| `/opt/t736-v30-omx-scale-test/lib/libcedar_backend.so` | `/opt/t736-cedar-direct-test/libcedar_backend.so` |
+| `/opt/t736-cedar-direct-test/cedarc-4k.conf` | `/etc/cedarc.conf` |
+| `/opt/t736-cedar-direct-test/libOmxVdec-4k.so` | `/opt/t736-cedar-wc-v5/lib/libOmxVdec.so` |
+
+The board's broker received a 3840×2160 stream and reported a 1920×1080
+visible crop in YV12 storage of 1920×1088. Matching the service's loaded
+broker and backend hashes and checking this crop identifies the tested
+path. [Board hashes and playback measurements](../../../evidence/media-v30-4k-omx-panel-20261118.json)

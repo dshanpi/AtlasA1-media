@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-18",
+  "environment": "FFplay 7.1.5 AArch64 in actual arm64 GNOME rootfs under QEMU on build host. Software decoder, SDL dummy video/audio. No VE, HDMI or physical audio-device measurement.",
+  "fixture": "5 s MP4, 160x90 H.264 at 25 fps plus 48 kHz AAC sine. MP4 video and audio start times both zero unless specified. Each case exited successfully.",
+  "player_sha256": "36b891ba51dc72d18bedc07664bbdb45a0df9183d2ea3bb79d353ecb92f721ff",
+  "tracer_sha256": "b6c75e23450c0d431f92f3eee557331a0097803361a804b7b1a0906724d1ec63",
+  "variants": {
+    "baseline": "1500 ms first output delay, default player options",
+    "gated": "same 1500 ms delay, -wait_video_start",
+    "deadline": "4200 ms first output delay, -wait_video_start; audio starts ahead of first frame after timeout",
+    "staggered": "1500 ms first output delay, video track starts at 1 s, audio track at 0 s, -wait_video_start",
+    "audio": "AAC-only, -wait_video_start -nodisp",
+    "seek": "1000 ms first output delay, initial -ss 1, -wait_video_start"
+  },
+  "results": {
+    "baseline": {
+      "gate_armed": false,
+      "pcm_us": 596672072415,
+      "decoded_us": 596673664693,
+      "presented_us": 596673679103,
+      "first_pcm_minus_first_present_ms": -1606.688
+    },
+    "gated": {
+      "gate_armed": true,
+      "decoded_us": 596673670734,
+      "presented_us": 596673684758,
+      "pcm_us": 596673693396,
+      "first_pcm_minus_first_present_ms": 8.638
+    },
+    "deadline": {
+      "gate_armed": true,
+      "pcm_us": 596682364650,
+      "decoded_us": 596684232811,
+      "presented_us": 596684247701,
+      "first_pcm_minus_first_present_ms": -1883.051
+    },
+    "staggered": {
+      "gate_armed": false,
+      "pcm_us": 596679957502,
+      "decoded_us": 596681550094,
+      "presented_us": 596681563334,
+      "first_pcm_minus_first_present_ms": -1605.832
+    },
+    "audio": {
+      "gate_armed": false,
+      "pcm_us": 596688552359
+    },
+    "seek": {
+      "gate_armed": false,
+      "pcm_us": 596688668687,
+      "decoded_us": 596689743312,
+      "presented_us": 596689758769,
+      "first_pcm_minus_first_present_ms": -1090.082
+    }
+  }
+}

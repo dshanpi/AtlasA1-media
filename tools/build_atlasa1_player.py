@@ -10,7 +10,7 @@ import tempfile
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--ffplay', type=Path, required=True, help='refresh-budget FFplay executable')
+    p.add_argument('--ffplay', type=Path, required=True, help='FFplay with refresh and first-picture audio patches')
     p.add_argument('--avcodec', type=Path, required=True, help='Cedar libavcodec.so.61 including ELBG')
     p.add_argument('--avutil', type=Path, required=True, help='matching private libavutil.so.59')
     p.add_argument('--cc', default='aarch64-linux-gnu-gcc')
@@ -19,6 +19,9 @@ def main():
     args = p.parse_args()
     if args.output.exists():
         p.error('output already exists')
+    option_table = subprocess.check_output(['readelf', '--string-dump=.rodata', args.ffplay])
+    if not any(line.partition(b']')[2].strip() == b'wait_video_start' for line in option_table.splitlines()):
+        p.error('--ffplay must implement -wait_video_start; use ffplay-start-sync')
     tools = Path(__file__).resolve().parent
     with tempfile.TemporaryDirectory() as temp:
         stage = Path(temp)
@@ -65,7 +68,7 @@ def main():
         control = stage/'DEBIAN'
         control.mkdir()
         control.joinpath('control').write_text(
-            'Package: atlasa1-player\nVersion: 0.1-3\nArchitecture: arm64\n'
+            'Package: atlasa1-player\nVersion: 0.1-4\nArchitecture: arm64\n'
             'Maintainer: AtlasA1 Project <noreply@github.com>\n'
             'Depends: ffmpeg (>= 7:7.1), libavdevice61, libavfilter10, libavformat61, libavcodec61, '
             'libavutil59, libswscale8, libswresample5, libsdl2-2.0-0, python3, python3-gi, gir1.2-gtk-3.0\n'
