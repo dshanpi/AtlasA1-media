@@ -109,6 +109,13 @@
       "sha256": "f330fe057a9e31886495ea6f709aa51453d8a41ad9b3fd00f8c0e084b1164e6d"
     },
     {
+      "path": "evidence/atlasa1-ubuntu26-rc1-board-media-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-ubuntu26-rc1-board-media-20261118.json",
+      "size": 1491,
+      "sha256": "0b352b71c86f8114c713a918fae0a95ddab95230d621df5d9655c15205e43734"
+    },
+    {
       "path": "evidence/cedar-direct-slot-build-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/cedar-direct-slot-build-20261118.json",
@@ -947,6 +954,13 @@
       "source": "mainline/tools/validation/README.md",
       "size": 12340,
       "sha256": "d99514c516fdc20f81775f213c3d15a26e3c346b9fce86362dcb4a189898ded9"
+    },
+    {
+      "path": "tools/validation/atlasa1_sdl_gles_smoke.c",
+      "kind": "source",
+      "source": "mainline/tools/validation/atlasa1_sdl_gles_smoke.c",
+      "size": 3575,
+      "sha256": "953243a3d5f23227a3b4b49086b50feff279f36b5a553ade9e68cff9092313aa"
     },
     {
       "path": "tools/validation/audit_media_v29_package.py",
