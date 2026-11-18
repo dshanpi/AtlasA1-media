@@ -8,13 +8,39 @@ from pathlib import Path
 import re
 import secrets
 import signal
+import select
+import struct
 import subprocess
+import sys
 import tempfile
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 KNOWN_HEVC = '37f109312141defa1e1afcd38e9cfe92527fa4ab1103a554bdfbe6ba689fcd20'
+
+
+def run_virtual_display(xvfb, width, height, command):
+    """Run the test client as its normal user on a private local X server."""
+    auth = Path(os.environ['T736_CEDAR_PROFILE']) / 'x-test-authority'
+    # FamilyWild with empty address/display fields matches the display chosen by Xvfb.
+    with auth.open('xb') as stream:
+        os.fchmod(stream.fileno(), 0o600)
+        stream.write(struct.pack('>H', 65535))
+        for field in (b'', b'', b'MIT-MAGIC-COOKIE-1', secrets.token_bytes(16)):
+            stream.write(struct.pack('>H', len(field)) + field)
+    server = subprocess.Popen([xvfb, '-displayfd', '1', '-screen', '0', f'{width}x{height}x24',
+                               '-nolisten', 'tcp', '-auth', str(auth)], stdout=subprocess.PIPE)
+    try:
+        if not select.select([server.stdout], [], [], 12)[0]:
+            raise TimeoutError('Virtual X server did not start')
+        number = int(server.stdout.readline().strip())
+        env = dict(os.environ, DISPLAY=f':{number}', XAUTHORITY=str(auth), GDK_BACKEND='x11')
+        return subprocess.call(command, env=env)
+    finally:
+        server.terminate()
+        server.wait(timeout=8)
+
 PAGE = b'''<!doctype html><meta charset="utf-8"><style>*{margin:0}video{width:100vw;height:100vh}</style>
 <video muted playsinline preload="auto" src="clip.mp4"></video>
 <script>
@@ -253,7 +279,15 @@ def collect(args, record):
         # The Cedar launcher consumes T736_CEDAR_PROFILE. A stock Firefox
         # needs the same isolated profile and its own process explicitly.
         isolated = ['--no-remote', '--profile', profile] if args.launcher.name == 'firefox' else []
-        proc = subprocess.Popen([args.launcher, *isolated, '--headless', *geometry, f'http://127.0.0.1:{srv.server_port}{srv.prefix}'],
+        command = [args.launcher, *isolated, *geometry, f'http://127.0.0.1:{srv.server_port}{srv.prefix}']
+        if args.xvfb:
+            record['display_backend'] = 'Xvfb'
+            env.pop('MOZ_HEADLESS')
+            command = [sys.executable, str(Path(__file__).resolve()), '_xvfb', args.xvfb,
+                       str(width), str(height), *command]
+        else:
+            command.insert(1, '--headless')
+        proc = subprocess.Popen(command,
                                 stdout=log, stderr=subprocess.STDOUT, env=env, cwd=profile,
                                 start_new_session=True, **identity)
         try:
@@ -292,6 +326,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('clip',type=Path)
     ap.add_argument('--output',type=Path,required=True)
+    ap.add_argument('--xvfb',type=Path,help='Use a private virtual X server executable instead of Firefox headless mode')
     ap.add_argument('--seconds',type=int,default=20)
     ap.add_argument('--screen', nargs=2, type=int, metavar=('WIDTH', 'HEIGHT'),
                     help='set headless screen and kiosk window size; report the actual CSS video box separately')
@@ -316,4 +351,6 @@ def main():
 
 
 if __name__ == '__main__':
+    if sys.argv[1:2] == ['_xvfb']:
+        raise SystemExit(run_virtual_display(sys.argv[2], int(sys.argv[3]), int(sys.argv[4]), sys.argv[5:]))
     raise SystemExit(main())

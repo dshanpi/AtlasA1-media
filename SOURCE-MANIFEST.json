@@ -63,8 +63,8 @@
       "path": "docs/PLAYBACK.md",
       "kind": "source",
       "source": "mainline/docs/PLAYBACK.md",
-      "size": 9349,
-      "sha256": "5c6d31e13fd2e470e353c31bd512683d6e55cfed2a0878fd7223ed8285c30202"
+      "size": 10218,
+      "sha256": "85225d3be0d4594cc5f2a6f724c55e9fddf490d1506400a665a2b0dc55c8f310"
     },
     {
       "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
@@ -86,6 +86,13 @@
       "source": "mainline/evidence/atlasa1-cedar-format-switch-20261118.json",
       "size": 5959,
       "sha256": "241ecb1604942b05c0fe43a3477a78741fcec60fc96fec959020f2a42bdc3539"
+    },
+    {
+      "path": "evidence/atlasa1-firefox160-ffmpeg8-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-firefox160-ffmpeg8-20261118.json",
+      "size": 8135,
+      "sha256": "41abdece29591aaf80bc7a57b07bc157c61c8b19e9169534fd37949f3c0fa4bd"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -382,6 +389,13 @@
       "sha256": "c9153cb5f06b0a0ac614e706a5eaddaa27ebccc752977e59b4b088909ac91d14"
     },
     {
+      "path": "tools/browser/FIREFOX_RESOLUTE.md",
+      "kind": "source",
+      "source": "mainline/tools/browser/FIREFOX_RESOLUTE.md",
+      "size": 3452,
+      "sha256": "e77800e28a22b9c43dc6805213c9388e1bf087fcf2d2b2bc562263f54e3b27bd"
+    },
+    {
       "path": "tools/browser/README.md",
       "kind": "source",
       "source": "mainline/tools/browser/README.md",
@@ -394,6 +408,13 @@
       "source": "mainline/tools/browser/build_browser_ffmpeg.py",
       "size": 8157,
       "sha256": "18f31f3a3e936db35bb460c61b27eb77475a8bafc1aeaeff2129dbd662b70185"
+    },
+    {
+      "path": "tools/browser/build_firefox_resolute_ffmpeg.sh",
+      "kind": "source",
+      "source": "mainline/tools/browser/build_firefox_resolute_ffmpeg.sh",
+      "size": 4462,
+      "sha256": "6967bc5d52a27333d77b3377118ccd517dc15052398c2eab626113edc586a40b"
     },
     {
       "path": "tools/browser/cedar-service",
@@ -562,6 +583,20 @@
       "source": "mainline/tools/browser/firefox-cedar",
       "size": 636,
       "sha256": "eeb6303ab98f881427dd63b0efe181e8cd694772742ba8be8426056d4f9f31a0"
+    },
+    {
+      "path": "tools/browser/firefox-resolute",
+      "kind": "source",
+      "source": "mainline/tools/browser/firefox-resolute",
+      "size": 892,
+      "sha256": "c75d8709a4fa6c598448bacd25b9841802c4791d2e1b2b5f70794b94ccad109b"
+    },
+    {
+      "path": "tools/browser/firefox-resolute-copyright",
+      "kind": "source",
+      "source": "mainline/tools/browser/firefox-resolute-copyright",
+      "size": 1451,
+      "sha256": "cc0cfc1ce6349e4d8bc9dacbd9fa26066d907aa49b29dd1dd59af6e532b7dc1b"
     },
     {
       "path": "tools/browser/gstomx.conf",
@@ -1085,8 +1120,8 @@
       "path": "tools/validation/firefox_headless_playback.py",
       "kind": "source",
       "source": "mainline/tools/validation/firefox_headless_playback.py",
-      "size": 15071,
-      "sha256": "ca2722f519e3af5dce89d39a523c4f7e50c22f55683f75fce4724e70cdd780a9"
+      "size": 16860,
+      "sha256": "e442a4f5999913908d7fc5c2e02f9ee7586a56b92c322331ab7a6908d474316a"
     },
     {
       "path": "tools/validation/gpu_runtime_view.py",

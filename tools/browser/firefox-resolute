@@ -1,0 +1,18 @@
+#!/bin/sh
+# Launch the AtlasA1 Firefox profile with the Cedar codec built for libavcodec62.
+set -eu
+lib=/opt/atlasa1-firefox/lib
+profile=${T736_CEDAR_PROFILE:-${HOME}/.mozilla/atlasa1-cedar}
+mkdir -p -- "$profile"
+pref='user_pref("dom.ipc.forkserver.enable", false);'
+if ! grep -Fqx "$pref" "$profile/user.js" 2>/dev/null; then
+    printf '\n%s\n' "$pref" >> "$profile/user.js"
+fi
+unset T736_CEDAR_TEST_CLIENT T736_CEDAR_NATIVE_PLAYER
+export T736_CEDAR_ENABLE=1
+export LD_LIBRARY_PATH="$lib:/opt/t736-img-ddk-24.2-x11/runtime-gles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export LD_PRELOAD="$lib/libt736_cedar_client.so:$lib/libavcodec.so.62${LD_PRELOAD:+:$LD_PRELOAD}"
+export LIBGL_DRIVERS_PATH="${LIBGL_DRIVERS_PATH:-/opt/t736-img-ddk-24.2-x11/lib/dri}"
+export MOZ_X11_EGL=1
+if [ -n "${T736_CEDAR_PROFILE:-}" ]; then set -- --no-remote "$@"; fi
+exec /usr/bin/firefox --profile "$profile" "$@"

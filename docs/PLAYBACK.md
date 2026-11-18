@@ -1,12 +1,18 @@
 # AtlasA1 播放与显示实测
 
+## Ubuntu 26.04 的 Firefox 160
+
+从 Release 下载 `atlasa1-firefox-cedar_8.0.1-1.resolute1_arm64.deb`，运行 `sudo apt install ./atlasa1-firefox-cedar_8.0.1-1.resolute1_arm64.deb` 后，普通用户可从应用菜单打开 **Firefox (AtlasA1 Cedar)**。也可以直接运行 `atlasa1-firefox`。它使用独立配置和与 Firefox 160 匹配的 FFmpeg 8 解码库。[安装与源码构建](../tools/browser/FIREFOX_RESOLUTE.md)
+
+同一段 1080p60 H.264 已在 Firefox 沙箱中使用 Cedar 硬解。独立 X11 虚拟屏上的 18.03 秒内，Cedar 产生 1081 次中断，浏览器播放 1082 帧，其中呈现 695 帧、丢弃 387 帧，平均呈现 38.54 fps。Firefox headless 测得 29.01 fps。浏览器呈现仍未达到 60 fps，以上测试均未占用 HDMI 桌面。[实板帧数和 RDD 沙箱记录](../evidence/atlasa1-firefox160-ffmpeg8-20261118.json)
+
 ## Ubuntu 26.04 的本地播放器
 
 RC1 的本地播放器版本为 `0.1-5~resolute1`。在整盘烧录后，H.264 1080p60 与 HEVC 4K30（硬件缩至 1080p）分别以 PowerVR 离屏提交了 1500 和 750 帧。原版服务只保留一种格式，播放上述 4K 后再开 1080p 会回退软件解码。[RC1 整盘实测](../evidence/atlasa1-ubuntu26-rc1-installed-validation-20261118.json)
 
 更新后的 Cedar 服务最多保留两种解码配置，其中最多一种为 UHD。不同编码、尺寸或缩放模式会占用不同配置，硬件每次处理一个播放会话。在同一次启动中切换 HEVC 4K30 → H.264 1080p60 → HEVC 4K30，三段均使用硬件解码，累计 3000 次 VE 中断，全部帧提交至 PowerVR。两次切换后播放 25 秒片段分别耗时 25.63 秒和 25.53 秒，零丢帧。测试使用虚拟音频设备。[切流实板记录](../evidence/atlasa1-cedar-format-switch-20261118.json)
 
-已有 RC1 可安装 `atlasa1-cedar-format-switch_1.0-1~resolute1_arm64.deb`，在下次开机时生效。卸载该包并重启可恢复镜像自带的服务。重新构建镜像会把修正编入 Cedar 服务。[更新包构建脚本](../tools/build_atlasa1_rc1_broker_update.sh)
+已有 RC1 可安装 `atlasa1-cedar-format-switch_1.0-1.resolute1_arm64.deb`，在下次开机时生效。卸载该包并重启可恢复镜像自带的服务。重新构建镜像会把修正编入 Cedar 服务。[更新包构建脚本](../tools/build_atlasa1_rc1_broker_update.sh)
 
 ## 早期开发镜像
 

@@ -1,0 +1,286 @@
+{
+  "board": "AtlasA1",
+  "distribution": "Ubuntu 26.04 arm64",
+  "application": "Firefox 160.0.1 (Armbian 9:160.0.1+build1-0ubuntu0.26.04.1~mt1armbian1)",
+  "ubuntu_ffmpeg_source": "7:8.0.1-3ubuntu2",
+  "private_deb_sha256": "0e360b0c309f61a6b6562387026ea8bfe3fb7f3248672972dbc7c9781c1c29cb",
+  "private_libavcodec62_sha256": "a8648fe049859782457f222ce0a446ba1c3e2afb9d2ba638b9a5c0b98c59c1ea",
+  "runs": {
+    "stock": {
+      "kernel": "6.18.63-t736-media-v30",
+      "source_log_sha256": "c0425ce269d9459d7d4171f5ab79223c1f8db6ad1391ccb5eea68dd8b5f04673",
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "25.000000",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "display": "Firefox headless, 1920x1080",
+      "rdd": [
+        {
+          "sandbox": [
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "media_libraries": [
+            "/usr/lib/aarch64-linux-gnu/libavcodec.so.62.11.100",
+            "/usr/lib/aarch64-linux-gnu/libavutil.so.60.8.100"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": false,
+          "matching_hardware_session": false,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": false,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.792,
+        "media_seconds": 19.78315,
+        "total_delta": 1187,
+        "dropped_delta": 527,
+        "presented_delta": 660,
+        "browser_retained_fps": 33.34680679062247,
+        "irq_delta": 0,
+        "broker_sessions": [],
+        "broker_frame_markers": []
+      }
+    },
+    "ffmpeg7_preload": {
+      "kernel": "6.18.63-t736-hw-v32",
+      "source_log_sha256": "e45981ea78c9fd308ba42511f62270d7023809bf3e30531c091da9fc6b7c7f52",
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "25.000000",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "display": "Firefox headless, 1920x1080",
+      "rdd": [
+        {
+          "sandbox": [
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "media_libraries": [
+            "/opt/atlasa1-player/lib/libavcodec.so.61",
+            "/opt/atlasa1-player/lib/libavutil.so.59",
+            "/opt/atlasa1-player/lib/libt736_cedar_client.so",
+            "/usr/lib/aarch64-linux-gnu/libavcodec.so.62.11.100",
+            "/usr/lib/aarch64-linux-gnu/libavutil.so.60.8.100"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": false,
+          "matching_hardware_session": false,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": false,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 18.184,
+        "media_seconds": 18.21234,
+        "total_delta": 1091,
+        "dropped_delta": 410,
+        "presented_delta": 681,
+        "browser_retained_fps": 37.45050593928728,
+        "irq_delta": 0,
+        "broker_sessions": [],
+        "broker_frame_markers": []
+      }
+    },
+    "ffmpeg8_cedar": {
+      "kernel": "6.18.63-t736-hw-v33",
+      "source_log_sha256": "6ebc6a77452a062250a799f1e95452de05d53080430ea0eab5cf1455c1275068",
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "25.000000",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "display": "Firefox headless, 1920x1080",
+      "rdd": [
+        {
+          "sandbox": [
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "media_libraries": [
+            "/opt/atlasa1-firefox/lib/libavcodec.so.62",
+            "/opt/atlasa1-firefox/lib/libt736_cedar_client.so",
+            "/usr/lib/aarch64-linux-gnu/libavutil.so.60.8.100"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 17.751,
+        "media_seconds": 17.756582,
+        "total_delta": 1065,
+        "dropped_delta": 550,
+        "presented_delta": 515,
+        "browser_retained_fps": 29.012450002816742,
+        "irq_delta": 1065,
+        "broker_sessions": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "300",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "600",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "900",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "1200",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
+    },
+    "ffmpeg8_cedar_xvfb": {
+      "kernel": "6.18.63-t736-hw-v34",
+      "source_log_sha256": "1b06b446d61b585c8a66d19553dff5104ee8b91f4ff91fa8efe2ddf6bb4b383c",
+      "fixture": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "25.000000",
+        "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+      },
+      "display": "private Xvfb, 1920x1080",
+      "rdd": [
+        {
+          "sandbox": [
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "media_libraries": [
+            "/opt/atlasa1-firefox/lib/libavcodec.so.62",
+            "/opt/atlasa1-firefox/lib/libt736_cedar_client.so",
+            "/usr/lib/aarch64-linux-gnu/libavutil.so.60.8.100"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 18.031,
+        "media_seconds": 18.034447,
+        "total_delta": 1082,
+        "dropped_delta": 387,
+        "presented_delta": 695,
+        "browser_retained_fps": 38.54472852309911,
+        "irq_delta": 1081,
+        "broker_sessions": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "300",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "600",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "900",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "1200",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
+    }
+  },
+  "client_sha256": "8d0f4e509e963539ea8389be6a02085d786b2d7f48b733c00831d53d78f10f8e",
+  "package_file": "atlasa1-firefox-cedar_8.0.1-1.resolute1_arm64.deb",
+  "package_version": "8.0.1-1~resolute1"
+}
