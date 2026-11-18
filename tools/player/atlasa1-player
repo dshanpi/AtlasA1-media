@@ -2,6 +2,8 @@
 """Play a local file in the logged-in AtlasA1 desktop session."""
 import json
 import os
+from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -36,8 +38,54 @@ def cedar_decoder(path, env):
     if (stream.get('codec_name') in ('hevc', 'h264') and stream.get('pix_fmt') in ('yuv420p', 'yuvj420p')
             and stream.get('field_order') in (None, 'unknown', 'progressive')
             and 0 < w <= 3840 and 0 < h <= 2160 and not ((w | h) & 1)):
-        return stream['codec_name'] + '_cedar'
+        return stream['codec_name'] + '_cedar', (w, h)
     return None
+
+
+def desktop_panel():
+    # Mutter reports the physical scanout mode even on scaled Wayland monitors.
+    # With multiple active monitors we cannot predict where SDL will open.
+    try:
+        from gi.repository import Gio, GLib
+    except ImportError:
+        pass
+    else:
+        try:
+            bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+            state = bus.call_sync('org.gnome.Mutter.DisplayConfig',
+                '/org/gnome/Mutter/DisplayConfig', 'org.gnome.Mutter.DisplayConfig',
+                'GetCurrentState', None, None, Gio.DBusCallFlags.NO_AUTO_START, 1000, None)
+            modes = [(w, h) for _, monitor_modes, _ in state.unpack()[1]
+                     for _, w, h, _, _, _, properties in monitor_modes if properties.get('is-current')]
+            return modes[0] if len(modes) == 1 else None
+        except GLib.Error:
+            pass
+    if os.environ.get('WAYLAND_DISPLAY') or not os.environ.get('DISPLAY'):
+        return None
+    try:
+        listing = subprocess.check_output(['/usr/bin/xrandr', '--current'], timeout=2,
+                                          stderr=subprocess.DEVNULL, text=True)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    active = re.findall(r'^\s+(\d+)x(\d+)\s+[^\n]*\*', listing, re.MULTILINE)
+    return tuple(map(int, active[0])) if len(active) == 1 else None
+
+
+def tune_panel_playback(env):
+    try:
+        compatibles = Path('/proc/device-tree/compatible').read_bytes().split(b'\0')
+    except OSError:
+        return
+    if b'allwinner,t736' not in compatibles:
+        return
+    if desktop_panel() != (1920, 1080):
+        return
+    env['T736_CEDAR_PANEL'] = '1920x1080'
+    try:
+        if {6, 7} <= os.sched_getaffinity(0):
+            os.sched_setaffinity(0, {6, 7})
+    except OSError:
+        pass
 
 
 def main(args):
@@ -51,7 +99,7 @@ def main(args):
         sys.exit('Cannot open local file: ' + path)
     env = dict(os.environ)
     for key in ('LD_PRELOAD', 'LD_LIBRARY_PATH', 'T736_CEDAR_ENABLE', 'T736_CEDAR_TEST_CLIENT',
-                'T736_CEDAR_NATIVE_PLAYER', 'T736_CEDAR_TRACE'):
+                'T736_CEDAR_NATIVE_PLAYER', 'T736_CEDAR_TRACE', 'T736_CEDAR_PANEL'):
         env.pop(key, None)
     decoder = cedar_decoder(path, env)
     env.update(SDL_RENDER_DRIVER='opengles2', LD_LIBRARY_PATH=GPU+'/runtime-gles',
@@ -60,10 +108,13 @@ def main(args):
     # interactive session normally; the smoke test supplies its offscreen driver.
     cmd = [PLAYER, '-hide_banner', '-autoexit', '-noframedrop']
     if decoder:
+        codec_name, dimensions = decoder
+        if dimensions == (3840, 2160):
+            tune_panel_playback(env)
         env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_NATIVE_PLAYER='1',
                    LD_PRELOAD=':'.join(LIB+'/'+f for f in
                                       ('libt736_cedar_client.so', 'libavutil.so.59', 'libavcodec.so.61')))
-        cmd.extend(['-vst', 'V:0', '-vcodec', decoder])
+        cmd.extend(['-vst', 'V:0', '-vcodec', codec_name])
     os.execve(PLAYER, cmd + ['-i', path], env)
 
 

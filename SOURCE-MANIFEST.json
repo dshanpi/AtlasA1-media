@@ -14,8 +14,8 @@
       "path": "README.md",
       "kind": "generated",
       "source": "generated/AtlasA1-media/README.md",
-      "size": 339,
-      "sha256": "398b68b856028eed0fa3b597ac41988a7c980022032f0af0ec5740375120a7ea"
+      "size": 437,
+      "sha256": "7aa0f689befd2c39735366fcd0bddb97a5cee6a0c55b2d1e33124b4f084f0b16"
     },
     {
       "path": "docs/BACKUP_MEDIA_V28_20261117.md",
@@ -32,6 +32,13 @@
       "sha256": "05c1eed725a2ba5158f4afe99850512657f363ef7bf85cef3e34360e68328f7b"
     },
     {
+      "path": "docs/PLAYBACK.md",
+      "kind": "source",
+      "source": "mainline/docs/PLAYBACK.md",
+      "size": 5843,
+      "sha256": "5215fe17c4cf82299b7790c7694b2087699a7d7880e87b2613e38cc0a591b33a"
+    },
+    {
       "path": "evidence/atlas-display-media-v29-reboot-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/atlas-display-media-v29-reboot-20261118.json",
@@ -44,6 +51,13 @@
       "source": "mainline/evidence/atlasa1-native-player-package-20261118.json",
       "size": 2559,
       "sha256": "d31f4be49ce48f79da00d06742e85d81e343de76c7c14c004267757ad23ad5ec"
+    },
+    {
+      "path": "evidence/atlasa1-player-panel-package-20261118.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-player-panel-package-20261118.json",
+      "size": 3025,
+      "sha256": "fef276acbbe332a1079da6b638d46b8fda511168b8958a21502dddfb7ed3e21e"
     },
     {
       "path": "evidence/cedar-direct-slot-build-20261118.json",
@@ -133,8 +147,8 @@
       "path": "evidence/media-v30-4k-native-playback-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/media-v30-4k-native-playback-20261118.json",
-      "size": 4423,
-      "sha256": "6bad5045ded18e6654a2d60204e86ff4e15b1f6ad58a1d76c82c17292368d49b"
+      "size": 24597,
+      "sha256": "384eec3031c8073667a53b03eed87c54054c414fe86ef026c4aeb060460a938c"
     },
     {
       "path": "evidence/media-v30-4k-wc-parallel-20261118.json",
@@ -231,8 +245,8 @@
       "path": "tests/test_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tests/test_atlasa1_player.py",
-      "size": 2079,
-      "sha256": "aa1f7fe78dc6fa65a34be061a1d5547408592847a957e3a6416777166edac371"
+      "size": 3464,
+      "sha256": "8f7aa67224ca9e0e279688c0e7deacb2a1e680c70345c3144a26b42c41fe2c93"
     },
     {
       "path": "tests/test_cedar_backend.c",
@@ -466,6 +480,48 @@
       "sha256": "ee435630b57faf0de41e48c4150247d2f42736da531acde4907bcb45af922fb3"
     },
     {
+      "path": "tools/browser/panel_candidate/README.md",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/README.md",
+      "size": 2646,
+      "sha256": "ad42e7500ecda865b6360612e42e934de2733bf84fde5d2f125f0573e8aa3b9b"
+    },
+    {
+      "path": "tools/browser/panel_candidate/build_private.sh",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/build_private.sh",
+      "size": 1378,
+      "sha256": "031ef2d59ec9d8dccc04b880907c988696c1f414542735c92a28fcf17832470e"
+    },
+    {
+      "path": "tools/browser/panel_candidate/cedar_panel.h",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/cedar_panel.h",
+      "size": 1906,
+      "sha256": "df06f45be61069a0bbbb8a4276cdb75a020b99658a02c532b29f0cfb0274cbae"
+    },
+    {
+      "path": "tools/browser/panel_candidate/private-1080p-panel.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/private-1080p-panel.patch",
+      "size": 9407,
+      "sha256": "9be7edf81cfb09f52c666c68e4296bd8b2d688a77ea37da4fe08b8b6acbc3eaa"
+    },
+    {
+      "path": "tools/browser/panel_candidate/test_panel.c",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/test_panel.c",
+      "size": 3464,
+      "sha256": "80cc67345e0960d15764edb2de8a0264188afb4742239020e4b36ad5d004af42"
+    },
+    {
+      "path": "tools/browser/panel_candidate/test_panel_client.c",
+      "kind": "source",
+      "source": "mainline/tools/browser/panel_candidate/test_panel_client.c",
+      "size": 3781,
+      "sha256": "8ea0eb4942b0e1c2204394b599e8209283873141ff3385c48727b6aeb6139cef"
+    },
+    {
       "path": "tools/browser/shm_v2/70-t736-cedar.rules",
       "kind": "source",
       "source": "mainline/tools/browser/shm_v2/70-t736-cedar.rules",
@@ -560,8 +616,8 @@
       "path": "tools/build_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tools/build_atlasa1_player.py",
-      "size": 4400,
-      "sha256": "ba00e34a941f38d9876bc1d5c883acd91ba6ac182552ecc3ef995d9c8d78c8bd"
+      "size": 5314,
+      "sha256": "671c37b224c6ed9778da5e7052376270965704e89e715ba5d3510f584a9c30ee"
     },
     {
       "path": "tools/build_cedar_4k_omx.py",
@@ -679,15 +735,15 @@
       "path": "tools/player/README.md",
       "kind": "source",
       "source": "mainline/tools/player/README.md",
-      "size": 2032,
-      "sha256": "12111d8bfb5d00ab2ace4a8080d3d3ff5bc9638d0ea85578d7bfe804554cfc30"
+      "size": 2698,
+      "sha256": "12a2ad16c53d319414ff651cc77041f4350908d47ac12116a296e4dc90f20bca"
     },
     {
       "path": "tools/player/atlasa1-player",
       "kind": "source",
       "source": "mainline/tools/player/atlasa1-player",
-      "size": 2849,
-      "sha256": "14161ab0a218dd061e613b5a85b5e674108b0325d03f4469cd1cefcd6eff1d16"
+      "size": 4845,
+      "sha256": "6b7ee7ed4e54efda9915af90bedf5ff62685e5615e0c91253f48f4d53f72d132"
     },
     {
       "path": "tools/player/atlasa1-player.desktop",
@@ -702,6 +758,13 @@
       "source": "mainline/tools/player/copyright",
       "size": 1565,
       "sha256": "ca0242aa9dd54559df4e2320d162c63e4e4ecdf9293bc0e2cbd9eb1909fb470c"
+    },
+    {
+      "path": "tools/player/prepare_panel_sources.sh",
+      "kind": "source",
+      "source": "mainline/tools/player/prepare_panel_sources.sh",
+      "size": 679,
+      "sha256": "be56d2aedced570a5fa6ed629442bb82519138f60799fd69694851df0eea1aa6"
     },
     {
       "path": "tools/port_media_iommu.py",
@@ -784,15 +847,15 @@
       "path": "tools/validation/ffplay_offscreen.py",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_offscreen.py",
-      "size": 11404,
-      "sha256": "861149441f6fd91e5ff5474ff27a010dfcf4d86158aebe1f308d09f722548240"
+      "size": 12540,
+      "sha256": "5906e20d1469c4526eca6bc4c65a6d8a42e3aa16147750cc5592dcd0b04a547b"
     },
     {
       "path": "tools/validation/ffplay_present_trace.c",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_present_trace.c",
-      "size": 2389,
-      "sha256": "6a6e11cdc7e69635ba48f7862e12a5f8c736d5a0107d8d4137585bbcb78720f5"
+      "size": 3019,
+      "sha256": "20a7f73f875e2dc68126271a61160bb11fe3e5efd42aafb667d4384bae0e75b7"
     },
     {
       "path": "tools/validation/firefox_headless_playback.py",

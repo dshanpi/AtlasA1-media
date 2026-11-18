@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "date": "2026-11-18",
+  "package": "atlasa1-player_0.1-2_arm64.deb",
+  "sha256": "ac9cea660b1a68088ba8bef271537a7c93e9f524b175f4e66a466b76f9f9f4ae",
+  "build_epoch": 1794960000,
+  "architecture": "arm64",
+  "scope": "Native desktop player deb, software 2x2 fit for single 1080p display. Broker, OMX and Firefox remain outside this package.",
+  "installed_sha256": {
+    "/opt/atlasa1-player/lib/libavcodec.so.61": "ed86027d1bf7fb15a57104f86ac2575384895a01104adb7b4bac8b51575c1d9a",
+    "/opt/atlasa1-player/lib/libt736_cedar_client.so": "1d8309cd19002fd7a994679fd388b3d41435d235b1b77fc26c322ea68cd296c4",
+    "/opt/atlasa1-player/lib/libavutil.so.59": "017f69e66121ff84a4a9b92c9d8397cad73ce73a2efb612074b2ee811bc38de0",
+    "/opt/atlasa1-player/bin/ffplay": "6caa18410a684e702099cb760bcdce9c480313603707092e4023d6f558545dd4"
+  },
+  "checks": [
+    "Byte-identical private codec and client to hardware-tested candidate; rebuilt client from isolated patched sources",
+    "dpkg-deb field verification and all extracted package MD5 sums passed",
+    "desktop-file-validate passed",
+    "Launcher mock tested Unicode and spaces, source geometry, supported format, other format, full-size 4K panel, 1080p panel, unknown display, non-T736 and limited CPU sets",
+    "Host ASan/UBSan and AArch64 QEMU emitted identical per-plane checksums and validated 3110400 scaled bytes. Geometry and short-buffer failures left output untouched. 132 guard-page plane shapes passed",
+    "Host ASan/UBSan and AArch64 QEMU checked panel copy, PTS, colors, old full-size 4K and 1080p client API, and no protocol advance on a rejected request."
+  ],
+  "sources_sha256": {
+    "tools/player/atlasa1-player": "6b7ee7ed4e54efda9915af90bedf5ff62685e5615e0c91253f48f4d53f72d132",
+    "tools/player/README.md": "12a2ad16c53d319414ff651cc77041f4350908d47ac12116a296e4dc90f20bca",
+    "tools/player/prepare_panel_sources.sh": "be56d2aedced570a5fa6ed629442bb82519138f60799fd69694851df0eea1aa6",
+    "tools/build_atlasa1_player.py": "671c37b224c6ed9778da5e7052376270965704e89e715ba5d3510f584a9c30ee",
+    "tools/browser/panel_candidate/private-1080p-panel.patch": "9be7edf81cfb09f52c666c68e4296bd8b2d688a77ea37da4fe08b8b6acbc3eaa",
+    "tools/browser/panel_candidate/cedar_panel.h": "df06f45be61069a0bbbb8a4276cdb75a020b99658a02c532b29f0cfb0274cbae",
+    "tools/browser/panel_candidate/test_panel.c": "80cc67345e0960d15764edb2de8a0264188afb4742239020e4b36ad5d004af42",
+    "tools/browser/panel_candidate/test_panel_client.c": "8ea0eb4942b0e1c2204394b599e8209283873141ff3385c48727b6aeb6139cef",
+    "tools/browser/panel_candidate/build_private.sh": "031ef2d59ec9d8dccc04b880907c988696c1f414542735c92a28fcf17832470e",
+    "tools/browser/ffmpeg_cedar.c": "909ab49e890aecdfaf955518cfddc132e0d84d0f41c6c3397071d61a36f06bda",
+    "tools/browser/shm_v2/cedar_client.c": "81105f11150315507a4717ca391976393808f424b7c0767631dbe1984293dc87",
+    "tests/test_atlasa1_player.py": "8f7aa67224ca9e0e279688c0e7deacb2a1e680c70345c3144a26b42c41fe2c93"
+  }
+}

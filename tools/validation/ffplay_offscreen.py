@@ -66,6 +66,9 @@ def play(args, record):
             lib.resolve(strict=True)
         env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_TEST_CLIENT='1', T736_CEDAR_TRACE='1',
                    LD_PRELOAD=':'.join(map(str, libs)))
+        if args.native_fit:
+            del env['T736_CEDAR_TEST_CLIENT']
+            env.update(T736_CEDAR_NATIVE_PLAYER='1', T736_CEDAR_PANEL='1920x1080')
     if args.present_trace:
         tracer = str(args.present_trace.resolve(strict=True))
         env['LD_PRELOAD'] = ':'.join(filter(None, [tracer, env.get('LD_PRELOAD')]))
@@ -135,6 +138,12 @@ def play(args, record):
     if args.renderer == 'powervr':
         checks['pvr_loaded'] = bool(pvr_libs)
         record['pvr_libraries'] = sorted(pvr_libs)
+    record['player_filter_sizes'] = sorted({f'{w}x{h}' for w,h in shown})
+    if args.native_fit:
+        del checks['full_dimensions']
+        checks['full_source_session'] = shape == ('3840', '2160') and match
+        checks['native_fit_geometry'] = set(shown) == {('1920','1080')} and (
+            'T736_CEDAR_PROXY: decoded=3840x2160 display=1920x1080 i420-box2x2' in log)
     if args.audio:
         skew = sorted(abs(float(offset)) for t, offset, _ in stats if 1 <= float(t) < duration-.5)
         record['av_offset_p95_seconds'] = skew[(95*len(skew)-1)//100] if skew else None
@@ -152,6 +161,10 @@ def play(args, record):
             record['sdl_present'] = dict(frames=int(summary[1]), span_ms=float(summary[2]),
                                          gap_p95_ms=float(summary[3]), gap_max_ms=float(summary[4]))
             checks['p95_presentation_gap'] = float(summary[3]) <= 1.5*1000*duration/frames
+        upload = re.search(r'T736_FFPLAY_UPLOAD mean_upload_ms=([\d.]+) '
+                           r'mean_upload_to_present_ms=([\d.]+)', log)
+        if upload:
+            record['texture_upload'] = dict(mean_ms=float(upload[1]), through_present_mean_ms=float(upload[2]))
     record.update(exit_status=proc.returncode, wall_seconds=round(elapsed, 3), irq_delta=interrupts,
                   frames_at_player_filter=len(shown), player_drops=drops, final_clock=clock_end,
                   broker=[s for s in broker.splitlines() if 'CEDAR_BROKER:' in s][-20:],
@@ -169,6 +182,8 @@ def main():
     parser.add_argument('--keep-frames', action='store_true', help='Retain late frames with the same external master clock')
     parser.add_argument('--scale-to-window', action='store_true',
                         help='Fit the fully decoded picture inside 1920×1080 before uploading its SDL texture')
+    parser.add_argument('--native-fit', action='store_true',
+                        help='Require full UHD broker output and native-client 1920×1080 box-filtered images')
     parser.add_argument('--user', default='t736')
     parser.add_argument('--player', type=Path, default=Path('/usr/bin/ffplay'))
     parser.add_argument('--audio', action='store_true', help='Decode audio to the dummy device and use its clock')
@@ -179,6 +194,8 @@ def main():
     args = parser.parse_args()
     if args.keep_frames and not args.present_trace:
         parser.error('--keep-frames requires --present-trace to measure actual output pacing')
+    if args.native_fit and (args.mode != 'cedar' or args.scale_to_window):
+        parser.error('--native-fit requires Cedar and its own scaling path')
     record = dict(player='FFplay', kernel=os.uname().release, mode=args.mode,
                   display='SDL dummy software renderer' if args.renderer == 'software' else 'SDL offscreen GLES2',
                   window=[1920,1080], audio=args.audio, keep_late_frames=args.keep_frames)

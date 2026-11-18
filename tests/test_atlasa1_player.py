@@ -20,7 +20,8 @@ class AtlasPlayer(unittest.TestCase):
         probe_json = json.dumps({'streams':[stream]})
         with patch('subprocess.check_output', return_value=probe_json) as probe, \
              patch('os.execve') as execute, \
-             patch.dict(os.environ, {'T736_CEDAR_TEST_CLIENT':'1', 'SDL_AUDIODRIVER':'dummy'}):
+             patch.dict(os.environ, {'T736_CEDAR_TEST_CLIENT':'1', 'SDL_AUDIODRIVER':'dummy',
+                                     'T736_CEDAR_PANEL':'1920x1080'}):
             self.script['main']([str(self.movie)])
         self.assertEqual(probe.call_args.args[0][-1], str(self.movie))
         executable, args, env = execute.call_args.args
@@ -37,6 +38,28 @@ class AtlasPlayer(unittest.TestCase):
         args, env = self.launch(dict(codec_name='hevc', pix_fmt='yuv420p', width=1920, height=1080, field_order='progressive'))
         self.assertEqual(args[args.index('-vcodec')+1],'hevc_cedar')
         self.assertEqual(env['T736_CEDAR_NATIVE_PLAYER'],'1')
+        self.assertNotIn('T736_CEDAR_PANEL', env)
+
+    def test_match_panel_and_affinity(self):
+        stream = dict(codec_name='hevc', pix_fmt='yuv420p', width=3840, height=2160)
+        for compatible, panel, allowed, should_fit, should_pin in (
+            (b'allwinner,t736\0', (1920, 1080), {4, 5, 6, 7}, True, True),
+            (b'allwinner,t736\0', (1920, 1080), {4, 5}, True, False),
+            (b'allwinner,t736\0', (3840, 2160), {6, 7}, False, False),
+            (b'allwinner,t736\0', None, {6, 7}, False, False),
+            (b'other\0', (1920, 1080), {6, 7}, False, False),
+        ):
+            with self.subTest(compatible=compatible, panel=panel, allowed=allowed), \
+                 patch.object(Path, 'read_bytes', return_value=compatible), \
+                 patch.dict(self.script['main'].__globals__, {'desktop_panel': lambda: panel}), \
+                 patch('os.sched_getaffinity', return_value=allowed, create=True), \
+                 patch('os.sched_setaffinity', create=True) as pin:
+                _, env = self.launch(stream)
+                self.assertEqual(env.get('T736_CEDAR_PANEL'), '1920x1080' if should_fit else None)
+                if should_pin:
+                    pin.assert_called_once_with(0, {6, 7})
+                else:
+                    pin.assert_not_called()
 
     def test_tenbit(self):
         args, env = self.launch(dict(codec_name='hevc', pix_fmt='yuv420p10le', width=3840, height=2160))

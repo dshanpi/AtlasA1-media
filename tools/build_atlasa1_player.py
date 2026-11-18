@@ -14,6 +14,7 @@ def main():
     p.add_argument('--avcodec', type=Path, required=True, help='Cedar libavcodec.so.61 including ELBG')
     p.add_argument('--avutil', type=Path, required=True, help='matching private libavutil.so.59')
     p.add_argument('--cc', default='aarch64-linux-gnu-gcc')
+    p.add_argument('--client', type=Path, help='prebuilt matching native panel client')
     p.add_argument('--output', type=Path, required=True)
     args = p.parse_args()
     if args.output.exists():
@@ -37,12 +38,23 @@ def main():
         symbols = subprocess.check_output(['nm','-D','--defined-only',args.avcodec], text=True)
         if not all(s+'@@LIBAVCODEC_61' in symbols for s in ('avpriv_elbg_free','avpriv_elbg_do')):
             p.error('the Cedar codec must include Debian libavfilter ELBG compatibility')
-        if not all(s in args.avcodec.read_bytes() for s in (b'hevc_cedar\0', b'h264_cedar\0')):
-            p.error('missing Cedar decoders in --avcodec')
+        codec_bytes = args.avcodec.read_bytes()
+        if not all(s in codec_bytes for s in (b'hevc_cedar\0', b'h264_cedar\0', b't736_client_pull_fit1080\0')):
+            p.error('native Cedar panel decoder build required for --avcodec')
         client = app/'lib/libt736_cedar_client.so'
-        subprocess.run([args.cc,'-std=c11','-Wall','-Wextra','-Werror','-O2','-pthread','-fPIC','-shared',
-                        tools/'browser/shm_v2/cedar_client.c','-Wl,-z,relro,-z,now,-soname,libt736_cedar_client.so',
-                        '-o',client],check=True)
+        if args.client:
+            install(args.client, client, 0o644)
+        else:
+            with tempfile.TemporaryDirectory() as private:
+                subprocess.run(['sh', tools/'player/prepare_panel_sources.sh', private], check=True)
+                subprocess.run([args.cc,'-std=gnu11','-O3','-Wall','-Wextra','-Werror','-fPIC','-shared',
+                                '-pthread','-Wl,-z,relro,-z,now','-Wl,-soname,libt736_cedar_client.so',
+                                '-o',client,'cedar_client.c'],cwd=Path(private)/'shm_v2',check=True)
+        if 'AArch64' not in subprocess.check_output(['readelf', '-h', client], text=True):
+            p.error('native client must be AArch64')
+        exports = subprocess.check_output(['nm', '-D', '--defined-only', client], text=True).splitlines()
+        if not {'t736_client_pull_fit1080', 't736_client_panel_requested'} <= {s.split()[-1] for s in exports}:
+            p.error('native client lacks panel output support')
         client.chmod(0o644)
         install(tools/'player/atlasa1-player', stage/'usr/bin/atlasa1-player', 0o755)
         install(tools/'player/atlasa1-player.desktop', stage/'usr/share/applications/atlasa1-player.desktop', 0o644)
@@ -51,11 +63,11 @@ def main():
         control = stage/'DEBIAN'
         control.mkdir()
         control.joinpath('control').write_text(
-            'Package: atlasa1-player\nVersion: 0.1-1\nArchitecture: arm64\n'
+            'Package: atlasa1-player\nVersion: 0.1-2\nArchitecture: arm64\n'
             'Maintainer: AtlasA1 Project <noreply@github.com>\n'
             'Depends: ffmpeg (>= 7:7.1), libavdevice61, libavfilter10, libavformat61, libavcodec61, '
             'libavutil59, libswscale8, libswresample5, libsdl2-2.0-0, python3, python3-gi, gir1.2-gtk-3.0\n'
-            'Section: video\nPriority: optional\n'
+            'Recommends: x11-xserver-utils\nSection: video\nPriority: optional\n'
             'Description: AtlasA1 FFplay with Cedar decoding and SDL GLES2 playback\n'
             ' Opens local video files in a desktop session with the board media runtime.\n')
         sums = []

@@ -1,0 +1,211 @@
+--- a/shm_v2/cedar_client.c
++++ b/shm_v2/cedar_client.c
+@@ -2,6 +2,7 @@
+ #define _GNU_SOURCE
+ #include "cedar_protocol.h"
+ #include "cedar_shm.h"
++#include "cedar_panel.h"
+ #include <errno.h>
+ #include <inttypes.h>
+ #include <limits.h>
+@@ -18,7 +19,7 @@
+ static int connection = -1;
+ static uint32_t serial_number;
+ static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-static int trace;
++static int trace, panel_requested;
+ static unsigned trace_push, trace_pull;
+ static const uint8_t *shared_pixels;
+ static pid_t connected_pid;
+@@ -118,6 +119,8 @@
+     if (!enabled || strcmp(enabled, "1")) return;
+     if (native && !strcmp(native, "1")) {
+         if (!is_native_player()) return;
++        const char *panel = getenv("T736_CEDAR_PANEL");
++        panel_requested = panel && !strcmp(panel, "1920x1080");
+     } else if (!rdd && (!test || strcmp(test, "1"))) {
+         return;
+     }
+@@ -236,17 +239,32 @@
+     return ret;
+ }
+ 
+-int t736_client_pull(int session, uint8_t *dst, size_t capacity,
+-                     struct t736_frame *frame, unsigned timeout_ms)
++int t736_client_panel_requested(void)
++{
++    return panel_requested && current_process();
++}
++
++static int pull_pixels(int session, uint8_t *dst, size_t capacity,
++                       struct t736_frame *frame, unsigned timeout_ms, int fit_panel)
+ {
+     if (session <= 0 || !dst || !frame || capacity > T736_MAX_FRAME || timeout_ms > 1000)
+         return -EINVAL;
+     if (!current_process()) return -ENOTCONN;
+-    struct t736_pull args = { (uint32_t)capacity, timeout_ms };
++    struct t736_pull args = { fit_panel ? T736_MAX_FRAME : (uint32_t)capacity, timeout_ms };
+     struct t736_message reply;
+     struct t736_picture picture;
+     pthread_mutex_lock(&lock);
+-    int error = request(T736_PULL, session, &args, sizeof(args), NULL, 0, &reply);
++    int error;
++    if (fit_panel && (!panel_requested || (uint32_t)session != active_session ||
++        active_width != 2 * T736_PANEL_WIDTH || active_height != 2 * T736_PANEL_HEIGHT)) {
++        error = -EINVAL;
++        goto done;
++    }
++    if (fit_panel && capacity < T736_PANEL_BYTES) {
++        error = -ENOSPC;
++        goto done;
++    }
++    error = request(T736_PULL, session, &args, sizeof(args), NULL, 0, &reply);
+     if (error) goto done;
+     if (reply.status != 1) {
+         if (reply.length || reply.status > 2) goto malformed;
+@@ -259,13 +277,22 @@
+     if (!picture.width || !picture.height || picture.width > T736_MAX_WIDTH ||
+         picture.height > T736_MAX_HEIGHT || ((picture.width | picture.height) & 1) ||
+         picture.bytes != picture.width * picture.height * 3 / 2 ||
+-        picture.bytes > capacity || picture.bytes > T736_MAX_FRAME ||
++        picture.bytes > args.capacity || picture.bytes > T736_MAX_FRAME ||
+         (uint32_t)session != active_session || picture.width != active_width ||
+         picture.height != active_height || picture.color_range > 2 ||
+         (picture.colorspace != 0 && picture.colorspace != 1 && picture.colorspace != 6 && picture.colorspace != 9) ||
+         picture.reserved) goto malformed;
+     __atomic_thread_fence(__ATOMIC_ACQUIRE);
+-    memcpy(dst, shared_pixels, picture.bytes);
++    if (fit_panel) {
++        error = t736_panel_i420(dst, capacity, shared_pixels, picture.bytes,
++                                picture.width, picture.height);
++        if (error) goto malformed;
++        picture.width = T736_PANEL_WIDTH;
++        picture.height = T736_PANEL_HEIGHT;
++        picture.bytes = T736_PANEL_BYTES;
++    } else {
++        memcpy(dst, shared_pixels, picture.bytes);
++    }
+     {
+         frame->width = picture.width; frame->height = picture.height;
+         frame->bytes_written = picture.bytes; frame->pts_us = picture.pts_us;
+@@ -283,6 +310,18 @@
+     return error;
+ }
+ 
++int t736_client_pull(int session, uint8_t *dst, size_t capacity,
++                     struct t736_frame *frame, unsigned timeout_ms)
++{
++    return pull_pixels(session, dst, capacity, frame, timeout_ms, 0);
++}
++
++int t736_client_pull_fit1080(int session, uint8_t *dst, size_t capacity,
++                             struct t736_frame *frame, unsigned timeout_ms)
++{
++    return pull_pixels(session, dst, capacity, frame, timeout_ms, 1);
++}
++
+ int t736_client_drain(int session) { return simple(T736_DRAIN, session, NULL, 0, NULL, 0); }
+ int t736_client_flush(int session) { return simple(T736_FLUSH, session, NULL, 0, NULL, 0); }
+ int t736_client_close(int session)
+--- a/shm_v2/cedar_client.h
++++ b/shm_v2/cedar_client.h
+@@ -26,6 +26,10 @@
+                      int64_t pts_us, int64_t dts_us);
+ int t736_client_pull(int session, uint8_t *dst, size_t capacity,
+                      struct t736_frame *frame, unsigned timeout_ms);
++/* Opt-in scaler for the installed native player targeting a 1080p panel. */
++int t736_client_panel_requested(void);
++int t736_client_pull_fit1080(int session, uint8_t *dst, size_t capacity,
++                             struct t736_frame *frame, unsigned timeout_ms);
+ int t736_client_drain(int session);
+ int t736_client_flush(int session);
+ int t736_client_close(int session);
+--- a/ffmpeg_cedar.c
++++ b/ffmpeg_cedar.c
+@@ -28,6 +28,8 @@
+     int (*open)(int, unsigned, unsigned);
+     int (*push)(int, const uint8_t *, size_t, int64_t, int64_t);
+     int (*pull)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
++    int (*panel_requested)(void);
++    int (*pull_fit1080)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
+     int (*drain)(int);
+     int (*flush)(int);
+     int (*close)(int);
+@@ -51,6 +53,8 @@
+     int session, delivered, fatal_error;
+     int offset_set;
+     int64_t offset_us, drain_started, backpressure_started, first_frame_wait_started;
++    size_t pixel_capacity;
++    int fit_panel;
+     AVBufferPool *pixel_pool;
+     AVBufferRef *receive_buffer;
+     unsigned generation;
+@@ -296,6 +300,7 @@
+ {
+ #define LOAD(field) *(void **)(&api->field) = dlsym(RTLD_DEFAULT, "t736_client_" #field)
+     LOAD(available); LOAD(open); LOAD(push); LOAD(pull);
++    LOAD(panel_requested); LOAD(pull_fit1080);
+     LOAD(drain); LOAD(flush); LOAD(close);
+ #undef LOAD
+     return api->available && api->open && api->push && api->pull &&
+@@ -447,15 +452,16 @@
+         s->receive_buffer = av_buffer_pool_get(s->pixel_pool);
+     if (!s->receive_buffer)
+         return AVERROR(ENOMEM);
+-    ret = s->api.pull(s->session, s->receive_buffer->data, T736_MAX_FRAME,
+-                      &picture, timeout_ms);
++    ret = (s->fit_panel ? s->api.pull_fit1080 : s->api.pull)(
++        s->session, s->receive_buffer->data, s->pixel_capacity, &picture, timeout_ms);
+     if (ret != 1)
+         return ret;
+     if (!picture.width || !picture.height || picture.width > T736_MAX_WIDTH ||
+         picture.height > T736_MAX_HEIGHT || (picture.width | picture.height) & 1)
+         return AVERROR(EPROTO);
+     expected = (size_t)picture.width * picture.height * 3 / 2;
+-    if (picture.bytes_written != expected)
++    if (picture.bytes_written != expected || expected > s->pixel_capacity ||
++        (s->fit_panel && (picture.width != 1920 || picture.height != 1080)))
+         return AVERROR(EPROTO);
+     if (picture.pts_us != INT64_MIN &&
+         (picture.pts_us < 0 || picture.pts_us > INT64_MAX / 1000 ||
+@@ -463,9 +469,16 @@
+         return AVERROR(EPROTO);
+     pts = picture.pts_us == INT64_MIN ? AV_NOPTS_VALUE :
+           av_rescale_q(picture.pts_us - s->offset_us, AV_TIME_BASE_Q, packet_timebase(avctx));
+-    ret = ff_set_dimensions(avctx, picture.width, picture.height);
+-    if (ret < 0)
+-        return ret;
++    if (s->fit_panel) {
++        /* Only the display raster changes. Keep bitstream geometry for
++         * probing, bitstream filtering and reopening after a seek. */
++        avctx->width = picture.width;
++        avctx->height = picture.height;
++    } else {
++        ret = ff_set_dimensions(avctx, picture.width, picture.height);
++        if (ret < 0)
++            return ret;
++    }
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     frame->format = AV_PIX_FMT_YUV420P;
+     frame->width = picture.width;
+@@ -774,7 +787,10 @@
+         return start_software(avctx, ret);
+     log_extradata(avctx, "bsf_output", s->bsf->par_out->extradata,
+                   s->bsf->par_out->extradata_size);
+-    s->pixel_pool = av_buffer_pool_init(T736_MAX_FRAME + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
++    s->fit_panel = avctx->width == 3840 && avctx->height == 2160 &&
++                   s->api.pull_fit1080 && s->api.panel_requested && s->api.panel_requested();
++    s->pixel_capacity = s->fit_panel ? 1920U * 1080U * 3U / 2U : T736_MAX_FRAME;
++    s->pixel_pool = av_buffer_pool_init(s->pixel_capacity + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
+     if (!s->pixel_pool)
+         return start_software(avctx, AVERROR(ENOMEM));
+     ret = s->api.open(avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
+@@ -782,6 +798,8 @@
+     if (ret <= 0)
+         return start_software(avctx, ret < 0 ? ret : AVERROR(EPROTO));
+     s->session = ret;
++    if (s->fit_panel)
++        av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: decoded=3840x2160 display=1920x1080 i420-box2x2\n");
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: broker session=%d codec=%s %dx%d ordinary-I420\n",
+            s->session, avctx->codec->name, avctx->width, avctx->height);
