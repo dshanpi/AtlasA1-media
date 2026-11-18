@@ -77,8 +77,8 @@
       "path": "evidence/atlas-ubuntu26-board-rebuild-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/atlas-ubuntu26-board-rebuild-20261118.json",
-      "size": 4568,
-      "sha256": "c49ca209d743c17d55dcaf462b6215dbcc98093015d1d99e272f561eb0a98590"
+      "size": 5526,
+      "sha256": "d5b9eecdfc3352b221130390d9ae64dc91c0c8dc215da23a77b5eeba08e81bb6"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -1085,8 +1085,8 @@
       "path": "tools/verify_atlasa1_resolute_media.sh",
       "kind": "source",
       "source": "mainline/tools/verify_atlasa1_resolute_media.sh",
-      "size": 2082,
-      "sha256": "257ed7c52fe597995498c55e1b937abf82a7266838dd949b5c3b8570b64409a9"
+      "size": 2930,
+      "sha256": "d83b22a41696d94ffa69666eb9ada20b04984101a3898839f015ed6c643143d7"
     }
   ]
 }
