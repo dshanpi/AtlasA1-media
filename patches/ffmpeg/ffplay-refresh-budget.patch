@@ -1,0 +1,20 @@
+--- a/fftools/ffplay.c
++++ b/fftools/ffplay.c
+@@ -3316,8 +3316,16 @@
+         if (remaining_time > 0.0)
+             av_usleep((int64_t)(remaining_time * 1000000.0));
+         remaining_time = REFRESH_RATE;
+-        if (is->show_mode != SHOW_MODE_NONE && (!is->paused || is->force_refresh))
++        if (is->show_mode != SHOW_MODE_NONE && (!is->paused || is->force_refresh)) {
++            int64_t refresh_start = av_gettime_relative();
+             video_refresh(is, &remaining_time);
++            if (is->show_mode == SHOW_MODE_VIDEO && is->video_st && !is->paused) {
++                /* Upload and presentation consume the same polling interval.
++                 * Keep any earlier deadline supplied by video_refresh(). */
++                double elapsed = (av_gettime_relative() - refresh_start) / 1000000.0;
++                remaining_time = FFMIN(remaining_time, FFMAX(0.0, REFRESH_RATE - elapsed));
++            }
++        }
+         SDL_PumpEvents();
+     }
+ }

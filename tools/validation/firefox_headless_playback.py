@@ -27,7 +27,8 @@ async function sample(phase, reason) {
       width:v.videoWidth, height:v.videoHeight, paused:v.paused, rate:v.playbackRate,
       total:q.totalVideoFrames, dropped:q.droppedVideoFrames,
       parsed:v.mozParsedFrames, decoded:v.mozDecodedFrames, presented:v.mozPresentedFrames,
-      painted:v.mozPaintedFrames, frameDelaySeconds:v.mozFrameDelay, visible:document.visibilityState})});
+      painted:v.mozPaintedFrames, frameDelaySeconds:v.mozFrameDelay, visible:document.visibilityState,
+      viewport:[innerWidth,innerHeight], videoBox:[v.clientWidth,v.clientHeight], dpr:devicePixelRatio})});
 }
 async function end(reason) {
   if (done) return;
@@ -227,6 +228,8 @@ def collect(args, record):
     record['launcher'] = str(args.launcher)
     record['kernel'] = os.uname().release
     record['desktop_uid'] = user.pw_uid
+    width, height = args.screen or (info['width'], info['height'])
+    record['headless_screen'] = [width, height]
     before = journal('-n','1','--show-cursor')
     cursor = re.search(r'^-- cursor: (.+)$', before, re.M)
     with tempfile.TemporaryDirectory(prefix='t736-firefox-') as profile, \
@@ -235,7 +238,7 @@ def collect(args, record):
             os.chown(profile, user.pw_uid, user.pw_gid)
         env = dict(HOME=user.pw_dir, USER=user.pw_name, LOGNAME=user.pw_name,
                    PATH='/usr/local/bin:/usr/bin:/bin', LANG='C.UTF-8', MOZ_HEADLESS='1',
-                   MOZ_HEADLESS_WIDTH=str(info['width']), MOZ_HEADLESS_HEIGHT=str(info['height']),
+                   MOZ_HEADLESS_WIDTH=str(width), MOZ_HEADLESS_HEIGHT=str(height),
                    T736_CEDAR_PROFILE=profile, MOZ_LOG='PlatformDecoderModule:4')
         runtime_dir = Path(f'/run/user/{user.pw_uid}')
         if runtime_dir.is_dir():
@@ -246,7 +249,8 @@ def collect(args, record):
         thread.start()
         identity = (dict(user=user.pw_uid,group=user.pw_gid,
                          extra_groups=os.getgrouplist(user.pw_name,user.pw_gid)) if uid == 0 else {})
-        proc = subprocess.Popen([args.launcher, '--headless', f'http://127.0.0.1:{srv.server_port}{srv.prefix}'],
+        geometry = ['--kiosk', '--width', str(width), '--height', str(height)] if args.screen else []
+        proc = subprocess.Popen([args.launcher, '--headless', *geometry, f'http://127.0.0.1:{srv.server_port}{srv.prefix}'],
                                 stdout=log, stderr=subprocess.STDOUT, env=env, cwd=profile,
                                 start_new_session=True, **identity)
         try:
@@ -286,12 +290,16 @@ def main():
     ap.add_argument('clip',type=Path)
     ap.add_argument('--output',type=Path,required=True)
     ap.add_argument('--seconds',type=int,default=20)
+    ap.add_argument('--screen', nargs=2, type=int, metavar=('WIDTH', 'HEIGHT'),
+                    help='set headless screen and kiosk window size; report the actual CSS video box separately')
     ap.add_argument('--user',default='t736')
     ap.add_argument('--launcher',type=Path,default=Path('/usr/local/bin/t736-firefox-cedar'))
     ap.add_argument('--unit',default='t736-cedar.service')
     args = ap.parse_args()
     if not 2 <= args.seconds <= 3600:
         ap.error('measurement window must be 2..3600 seconds')
+    if args.screen and not all(64 <= n <= 8192 for n in args.screen):
+        ap.error('screen dimensions must be 64..8192')
     record = {'schema':1,'kind':'t736-sandboxed-firefox-headless-playback'}
     with args.output.open('x',encoding='utf-8') as out:
         try:

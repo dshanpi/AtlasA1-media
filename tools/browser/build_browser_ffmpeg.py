@@ -49,6 +49,11 @@ def main():
     if not args.resume:
         makefile.write_text(makefile.read_text(encoding='utf-8') +
             '\nOBJS-$(CONFIG_H264_CEDAR_DECODER) += ffmpeg_cedar.o\nOBJS-$(CONFIG_HEVC_CEDAR_DECODER) += ffmpeg_cedar.o\n', encoding='utf-8')
+    # Debian's shared libavfilter uses libavcodec's versioned ELBG functions.
+    # Upstream normally adds this object via an enabled filter or encoder.
+    make_text = makefile.read_text(encoding='utf-8')
+    if 'OBJS += elbg.o\n' not in make_text:
+        makefile.write_text(make_text + '\nOBJS += elbg.o\n', encoding='utf-8')
     allcodecs = patched/'libavcodec/allcodecs.c'
     text = allcodecs.read_text(encoding='utf-8')
     for codec in ('h264','hevc'):

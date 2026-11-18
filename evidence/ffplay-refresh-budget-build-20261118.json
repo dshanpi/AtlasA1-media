@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-18",
+  "kind": "ARM64 FFplay 7.1.5 source matched A/B build",
+  "patch": "patches/ffmpeg/ffplay-refresh-budget.patch",
+  "patch_sha256": "d57295384b26344e6f01bc38f37453d65616bdda238a71eaded09d0d4cdd7c6a",
+  "recipe": "tools/build_ffplay_refresh_pair.sh",
+  "fftools_ffplay_c_sha256": "c1df35454edb188735acb5c63217284dd9949f822f0b206aea9eb163ac207b6f",
+  "cross_gcc": "aarch64-linux-gnu-gcc 13.3.0",
+  "target_distribution": "Debian trixie arm64",
+  "link_libraries": {
+    "ffmpeg": "7.1.5-0+deb13u1",
+    "SDL2": "2.32.4+dfsg-1"
+  },
+  "packages": {
+    "libavcodec61_7.1.5-0+deb13u1_arm64.deb": "dca58c157a2a0434b4c371b14b52f7922625147453b3d3cc165a2bb08157b31d",
+    "libavdevice61_7.1.5-0+deb13u1_arm64.deb": "6fd5173b6d147aab1b79b21cca8ea76e6d151da6853d4c79e82e208ee6ecb687",
+    "libavfilter10_7.1.5-0+deb13u1_arm64.deb": "42d9544cf6082b231906a3bd0d5f9dc5c3b0bdc049b61a219b659319c66ed2e3",
+    "libavformat61_7.1.5-0+deb13u1_arm64.deb": "c14f4cfbb3d377108ff7d28000c3f99feed936dd2348f7a253947ea87ad2cfb6",
+    "libavutil59_7.1.5-0+deb13u1_arm64.deb": "74c613a9c4674a251aa1808927f1b3b7dcd07f92b1724974e81ffabda81d0760",
+    "libsdl2-2.0-0_2.32.4+dfsg-1_arm64.deb": "6312ccbc29645ac5cc9dde9f9ed8bd5c85a0233690c270c83c963b49f8cd49d5",
+    "libsdl2-dev_2.32.4+dfsg-1_arm64.deb": "7def114ccf8fcbb67a2a326e7090ec0aa50074269e4e2108a23cf3328a3abc47",
+    "libswresample5_7.1.5-0+deb13u1_arm64.deb": "ab19f630592925e70e9f8d6e12fc53d756d292d28d4f6154f1c3e393c3a87aa3",
+    "libswscale8_7.1.5-0+deb13u1_arm64.deb": "c091c8c7d7c4519280a33464eadf9280eaf9287486a5339e237ad39faa8c337c"
+  },
+  "sha256": {
+    "ffplay-baseline": "a4e8845dfe505b3d8c854bea6811d66e7be2b1aaa159ab240eb458684d4b4550",
+    "ffplay-fixed": "6caa18410a684e702099cb760bcdce9c480313603707092e4023d6f558545dd4"
+  },
+  "both_binaries_rebuilt_byte_identically_in_fresh_output": true,
+  "description": "Both players link to the distribution shared libraries. Same sources, same compiler, same options, same common objects. The candidate change bounds the outer video-playing poll sleep by the time left after refresh while preserving an earlier deadline. Pause, no video and visualization modes retain their normal poll interval. The isolated pair has Vulkan disabled; SDL OpenGL ES remains available.",
+  "compiler_note": "SDL2 headers redefine HAVE_PTHREAD_SETNAME_NP after the FFmpeg config header in both builds. Build and linkage completed."
+}

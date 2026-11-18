@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-18",
+  "scope": "Native Linux transport tests on the x86_64 build host and cross-compiled AArch64 libraries",
+  "listener": "SO_PEERCRED must report a positive PID and the namespace projection of UID 0, the systemd listener owner",
+  "memfd": "The descriptor must retain all required seals and its owner must match the namespace projection of the resolved t736-cedar account",
+  "sources": {
+    "tools/browser/shm_v2/cedar_client.c": "c9816fb33aed25be1af30bb4172fc6e0c649cdf9a27aa053118e59d55ccb54d3",
+    "tests/test_cedar_shm_client_fork.c": "3b4d87cf1d92dcb8936dcc377800fbbea8fbe5ff14c20ed992b67c066a2e5cad",
+    "tests/test_cedar_shm_transport.c": "697a87e6df8e5ab538bb9d4bd0b6f8deb387fec9705bed0fdcf69d14ed1f21b6",
+    "tools/browser/copy_candidate/firefox-dr1-output.patch": "4feeddfe26a5981dd3be609a86b193ce730795a24641020faa7b2562f003b415"
+  },
+  "compile": "aarch64-linux-gnu-gcc -std=c11 -Wall -Wextra -Werror -pthread -O2 -fPIC -shared cedar_client.c -Wl,-z,relro,-z,now,-soname,libt736_cedar_client.so",
+  "arm64": {
+    "production": "b70571d1589ba2f5c53d425386722acc6e13d848b2f9eb0cac720f1aca03b40d",
+    "dr1": "044180419e1ab612c994266ea0d596d83dbd14b252d013efffaeb6dd527d7f82"
+  },
+  "regressions": {
+    "wrong_listener": "EACCES before setup",
+    "wrong_memfd_owner": "EPROTO before mapping, disconnected, no backend calls",
+    "separate_identities": "UID 0 creates socketpair, child switches to nobody and sends its sealed memfd. The parent verified both endpoint bytes read through the read-only mapping.",
+    "transport": "actual client and broker: >1000 pulls, malformed replies, fd balance",
+    "fork": "DONTFORK, PID gating, CLOEXEC, active parent socket retained",
+    "sanitizers": [
+      "address",
+      "undefined"
+    ]
+  },
+  "logs_sha256": {
+    "test_cedar_shm_transport.log": "79c9ed390bc4fba066973a0581db8ef7da9ac6296187e9a23aa67042b85888dd",
+    "test_cedar_shm_client_fork.log": "8fcc9403a5cc24f07ae4d8bc576638ad3ebb84eeeca1d207ede68fbec21d445a"
+  },
+  "board_playback": "No board tests in this build record"
+}

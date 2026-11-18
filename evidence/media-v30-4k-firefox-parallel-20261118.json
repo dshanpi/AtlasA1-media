@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-18",
+  "board": "AtlasA1 / T736",
+  "kernel": "6.18.63-t736-media-v30",
+  "boot_selection": "Once via U-Boot console; default boot link remains 6.18.63-t736-media-v29",
+  "method": "Sandboxed Firefox ESR headless at fixture size, v8 launcher, fresh profile, hardware broker with parallel direct-slot backend, original 4K OMX settings",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "avg_frame_rate": "30/1",
+    "duration": "25.000000",
+    "sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f"
+  },
+  "mapped_candidate": {
+    "boot_id": "bcf59c33-4dc3-4349-adea-49391d046422",
+    "pid": 1964,
+    "sha256": "fcf63b180a761ed44f006125a15bf2fed5fa3ada76b61ab192389c55fb90ddf6",
+    "namespace_mount": "521 466 179:4 /opt/t736-cedar-direct-test/libcedar_backend-parallel.so /opt/t736-cedar-direct-test/libcedar_backend.so ro,nosuid,noatime shared:404 master:1 - ext4 /dev/mmcblk0p4 rw",
+    "executable_map": "ffff8d600000-ffff8d606000 r-xp 00000000 b3:04 30974                      /opt/t736-cedar-direct-test/libcedar_backend.so",
+    "inode": 30974
+  },
+  "worker_cpus": [
+    6,
+    7,
+    4,
+    5
+  ],
+  "heap_limit_mib": 256,
+  "cma_total_kib": 524288,
+  "cma_free_before_kib": 467384,
+  "cma_free_after_kib": 309708,
+  "irq_before_browser_launch": 0,
+  "firefox_result": {
+    "status": "not_verified",
+    "checks": {
+      "window_completed": true,
+      "dimensions": true,
+      "normal_speed": false,
+      "browser_frame_rate": false,
+      "hardware_irq_rate": true,
+      "matching_hardware_session": true,
+      "rdd_seccomp_filter": true,
+      "rdd_hardware_output": true,
+      "no_fallback_logged": true
+    },
+    "wall_seconds": 22.139,
+    "media_seconds": 19.8,
+    "total_delta": 594,
+    "dropped_delta": 576,
+    "presented_delta": 18,
+    "browser_retained_fps": 0.8130448529743891,
+    "irq_delta": 591,
+    "broker_sessions": [
+      [
+        "1",
+        "2",
+        "3840",
+        "2160"
+      ]
+    ],
+    "broker_frame_markers": [
+      [
+        "1",
+        "1",
+        "3840",
+        "2160"
+      ],
+      [
+        "300",
+        "1",
+        "3840",
+        "2160"
+      ],
+      [
+        "600",
+        "1",
+        "3840",
+        "2160"
+      ]
+    ]
+  },
+  "rdd": [
+    {
+      "pid": 2379,
+      "sandbox": [
+        "NoNewPrivs:\t1",
+        "Seccomp:\t2"
+      ],
+      "media_libraries": [
+        "/opt/t736-browser-ffmpeg-v7/lib/libavcodec.so.61.19.101",
+        "/opt/t736-browser-ffmpeg-v7/lib/libavutil.so.59.39.100",
+        "/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so"
+      ]
+    }
+  ],
+  "launcher": "/usr/local/bin/t736-firefox-cedar",
+  "firefox_record_sha256": "d8f57fe69352ca2f1bb81d83b1659460772b7da06beb1ef29dbe2439c76fa9d6",
+  "broker_markers": [
+    "CEDAR_BROKER: ready uid=1000 protocol=2 readonly-memfd max=4K8bit retained_contexts=1 output=direct-slot",
+    "CEDAR_BROKER: open session=1 codec=2 3840x2160",
+    "CEDAR_PARALLEL_COPY: workers=4",
+    "CEDAR_COPY frames=1 format=YV12 storage=3840x2176 crop=0,0,3840,2160 strides=3840,1920,1920 map_us=244 copy_us=49360 total_map_us=244 total_copy_us=49360 avg_copy_us=49360 ram_allocations=0 ram_reuses=0",
+    "CEDAR_BROKER: hardware frames=1 session=1 visible=3840x2160",
+    "CEDAR_COPY frames=300 format=YV12 storage=3840x2176 crop=0,0,3840,2160 strides=3840,1920,1920 map_us=111 copy_us=23307 total_map_us=57161 total_copy_us=7661844 avg_copy_us=25539 ram_allocations=0 ram_reuses=0",
+    "CEDAR_BROKER: hardware frames=300 session=1 visible=3840x2160",
+    "CEDAR_COPY frames=600 format=YV12 storage=3840x2176 crop=0,0,3840,2160 strides=3840,1920,1920 map_us=125 copy_us=32850 total_map_us=114335 total_copy_us=15312346 avg_copy_us=25520 ram_allocations=0 ram_reuses=0",
+    "CEDAR_BROKER: hardware frames=600 session=1 visible=3840x2160",
+    "CEDAR_BROKER: peer left; context retained"
+  ],
+  "serial_baseline": "media-v30-4k-browser-hardware-20261118.json",
+  "copy_time_at_600_frames_ms": {
+    "baseline": 47.758,
+    "parallel": 25.52
+  },
+  "conclusion": "4K parallel copies sped up the same hardware playback path, but 18 presented frames in the measured 22.139 seconds failed the 4K30 browser target."
+}

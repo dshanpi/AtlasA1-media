@@ -1,0 +1,166 @@
+{
+  "kernel": "6.18.63-t736-media-v30",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "avg_frame_rate": "30/1",
+    "duration": "25.000000",
+    "sha256": "10da686ba059fbd8aeef8f52eccd5e8c3f820cb9c79e17d23ac991687f45be5f"
+  },
+  "backend_sha256": "fcf63b180a761ed44f006125a15bf2fed5fa3ada76b61ab192389c55fb90ddf6",
+  "display": "All player runs used local fixtures and an isolated SDL or Firefox display, with no physical HDMI video window or audio.",
+  "before_parallel": {
+    "irq_delta": 750,
+    "wall_seconds": 47.293,
+    "drops": 684,
+    "filter_frames": 66,
+    "renderer": "SDL dummy video, 1920x1080 window, software renderer",
+    "probe_note": "Initial script required exactly one broker OPEN; FFplay probed first, then held a second matching playback lease. The service delivered 750 additional frames during that lease."
+  },
+  "decode_without_render": {
+    "exit": 0,
+    "wall": 21.335020652000026,
+    "irq": 750,
+    "streams": [
+      {
+        "codec_name": "hevc",
+        "width": 3840,
+        "height": 2160,
+        "nb_read_frames": "750"
+      }
+    ],
+    "fallback": [],
+    "client": [
+      "T736_CEDAR_CLIENT: preconnected protocol=2 readonly-memfd pid=5965 rdd=0"
+    ]
+  },
+  "native": {
+    "full_texture": {
+      "wall_seconds": 31.491,
+      "irq_delta": 750,
+      "player_drops": 0,
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 30699.02,
+        "gap_p95_ms": 51.677,
+        "gap_max_ms": 63.355
+      },
+      "pvr_libraries": [
+        "pvr_dri.so"
+      ],
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": false,
+        "realtime_wall": false,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": false
+      },
+      "status": "not_verified"
+    },
+    "fit_to_panel": {
+      "wall_seconds": 31.634,
+      "irq_delta": 750,
+      "player_drops": 0,
+      "sdl_present": {
+        "frames": 750,
+        "span_ms": 30886.084,
+        "gap_p95_ms": 49.878,
+        "gap_max_ms": 63.36
+      },
+      "pvr_libraries": [
+        "pvr_dri.so"
+      ],
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": false,
+        "realtime_wall": false,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "scaled_output": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      },
+      "status": "not_verified",
+      "panel_sizes": [
+        "1920x1080"
+      ]
+    }
+  },
+  "firefox_1080_kiosk": {
+    "headless_screen": [
+      1920,
+      1080
+    ],
+    "actual_css_box": [
+      1920,
+      1080
+    ],
+    "actual_viewport": [
+      1920,
+      1080
+    ],
+    "result": {
+      "status": "not_verified",
+      "checks": {
+        "window_completed": true,
+        "dimensions": true,
+        "normal_speed": false,
+        "browser_frame_rate": false,
+        "hardware_irq_rate": true,
+        "matching_hardware_session": true,
+        "rdd_seccomp_filter": true,
+        "rdd_hardware_output": true,
+        "no_fallback_logged": true
+      },
+      "wall_seconds": 22.752,
+      "media_seconds": 20.099999999999998,
+      "total_delta": 603,
+      "dropped_delta": 593,
+      "presented_delta": 10,
+      "browser_retained_fps": 0.43952180028129395,
+      "irq_delta": 601,
+      "broker_sessions": [
+        [
+          "4",
+          "2",
+          "3840",
+          "2160"
+        ]
+      ],
+      "broker_frame_markers": [
+        [
+          "1500",
+          "4",
+          "3840",
+          "2160"
+        ],
+        [
+          "1800",
+          "4",
+          "3840",
+          "2160"
+        ]
+      ]
+    }
+  },
+  "native_setup": {
+    "broker_listener_uid": 0,
+    "exporter_uid": 999,
+    "private_libavcodec_sha256": "93ebb172b8e807ad556d1203d29833124436399465973c3f809e214e36ea6fa3",
+    "private_client_sha256": "b70571d1589ba2f5c53d425386722acc6e13d848b2f9eb0cac720f1aca03b40d",
+    "system_avfilter_symbols": [
+      "avpriv_elbg_free@@LIBAVCODEC_61",
+      "avpriv_elbg_do@@LIBAVCODEC_61"
+    ],
+    "matched_link": "A private build of the same n7.1.5 codec with its own libavcodec/elbg.o passed ldd -r /usr/bin/ffplay."
+  }
+}

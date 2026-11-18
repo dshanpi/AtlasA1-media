@@ -1,0 +1,254 @@
+--- a/tools/browser/ffmpeg_cedar.c
++++ b/tools/browser/ffmpeg_cedar.c
+@@ -28,6 +28,7 @@
+     int (*open)(int, unsigned, unsigned);
+     int (*push)(int, const uint8_t *, size_t, int64_t, int64_t);
+     int (*pull)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
++    int (*pull_to)(int, size_t, struct t736_frame *, unsigned, t736_copy_picture, void *);
+     int (*drain)(int);
+     int (*flush)(int);
+     int (*close)(int);
+@@ -295,7 +296,7 @@
+ static int resolve_client(CedarAPI *api)
+ {
+ #define LOAD(field) *(void **)(&api->field) = dlsym(RTLD_DEFAULT, "t736_client_" #field)
+-    LOAD(available); LOAD(open); LOAD(push); LOAD(pull);
++    LOAD(available); LOAD(open); LOAD(push); LOAD(pull); LOAD(pull_to);
+     LOAD(drain); LOAD(flush); LOAD(close);
+ #undef LOAD
+     return api->available && api->open && api->push && api->pull &&
+@@ -365,6 +366,10 @@
+     s->software->time_base = avctx->time_base;
+     s->software->thread_count = avctx->thread_count;
+     s->software->thread_type = avctx->thread_type;
++    /* Keep Firefox's allocator/opaque paired even if replay becomes necessary
++     * before the first delivered hardware picture. */
++    s->software->get_buffer2 = avctx->get_buffer2;
++    s->software->opaque = avctx->opaque;
+     s->software->flags = avctx->flags;
+     s->software->flags2 = avctx->flags2;
+     s->software->skip_frame = avctx->skip_frame;
+@@ -395,6 +400,10 @@
+                 avctx->has_b_frames = s->software->has_b_frames;
+                 avctx->profile = s->software->profile;
+                 avctx->level = s->software->level;
++                /* The nested public receive has already released its
++                 * FrameDecodeData. Supply the outer DR1 decoder's metadata. */
++                ret = ff_attach_decode_data(frame);
++                if (ret < 0) av_frame_unref(frame);
+             }
+             return ret;
+         }
+@@ -436,6 +445,49 @@
+     }
+ }
+ 
++typedef struct CedarImageTarget {
++    AVCodecContext *context;
++    AVFrame *frame;
++} CedarImageTarget;
++
++/* Invoked only for a validated frame, while the client protects its one SHM
++ * slot. No Firefox texture, AVFrame, or hardware handle crosses the socket. */
++static int copy_to_image(void *opaque, const struct t736_frame *picture,
++                         const uint8_t *pixels)
++{
++    CedarImageTarget *target = opaque;
++    AVCodecContext *context = target->context;
++    AVFrame *frame = target->frame;
++    if (picture->width != context->width || picture->height != context->height ||
++        picture->bytes_written != (size_t)context->width * context->height * 3 / 2)
++        return AVERROR(EPROTO);
++    frame->format = context->pix_fmt = AV_PIX_FMT_YUV420P;
++    int ret = ff_get_buffer(context, frame, 0);
++    if (ret < 0)
++        return ret;
++    for (unsigned plane = 0; plane < 3; plane++) {
++        unsigned width = picture->width >> (plane != 0);
++        unsigned height = picture->height >> (plane != 0);
++        int stride = frame->linesize[plane];
++        AVBufferRef *buffer = av_frame_get_plane_buffer(frame, plane);
++        if (!buffer || stride < (int)width)
++            return AVERROR(EPROTO);
++        size_t extent = (size_t)(height - 1) * stride + width;
++        uintptr_t offset = (uintptr_t)frame->data[plane] - (uintptr_t)buffer->data;
++        if (offset > buffer->size || extent > buffer->size - offset)
++            return AVERROR(EPROTO);
++        if ((unsigned)stride == width) {
++            memcpy(frame->data[plane], pixels, (size_t)width * height);
++        } else {
++            for (unsigned row = 0; row < height; row++)
++                memcpy(frame->data[plane] + (size_t)row * stride,
++                       pixels + (size_t)row * width, width);
++        }
++        pixels += (size_t)width * height;
++    }
++    return 0;
++}
++
+ static int pull_frame(AVCodecContext *avctx, AVFrame *frame, unsigned timeout_ms)
+ {
+     CedarContext *s = avctx->priv_data;
+@@ -443,12 +495,29 @@
+     size_t expected;
+     int64_t pts;
+     int ret;
+-    if (!s->receive_buffer)
+-        s->receive_buffer = av_buffer_pool_get(s->pixel_pool);
+-    if (!s->receive_buffer)
+-        return AVERROR(ENOMEM);
+-    ret = s->api.pull(s->session, s->receive_buffer->data, T736_MAX_FRAME,
+-                      &picture, timeout_ms);
++    const int use_allocator = avctx->get_buffer2 != avcodec_default_get_buffer2;
++    if (use_allocator && s->api.pull_to) {
++        CedarImageTarget target = {avctx, frame};
++        ret = s->api.pull_to(s->session, T736_MAX_FRAME, &picture, timeout_ms,
++                             copy_to_image, &target);
++        if (ret < 0)
++            av_frame_unref(frame);
++    } else {
++        if (!s->receive_buffer)
++            s->receive_buffer = av_buffer_pool_get(s->pixel_pool);
++        if (!s->receive_buffer)
++            return AVERROR(ENOMEM);
++        ret = s->api.pull(s->session, s->receive_buffer->data, T736_MAX_FRAME,
++                          &picture, timeout_ms);
++        if (ret == 1 && use_allocator) {
++            CedarImageTarget target = {avctx, frame};
++            ret = copy_to_image(&target, &picture, s->receive_buffer->data);
++            if (ret < 0)
++                av_frame_unref(frame);
++            else
++                ret = 1;
++        }
++    }
+     if (ret != 1)
+         return ret;
+     if (!picture.width || !picture.height || picture.width > T736_MAX_WIDTH ||
+@@ -470,7 +539,12 @@
+     frame->format = AV_PIX_FMT_YUV420P;
+     frame->width = picture.width;
+     frame->height = picture.height;
+-    if (!(picture.width & 63)) {
++    if (use_allocator) {
++        if (!s->delivered)
++            fprintf(stderr, "T736_CEDAR_PROXY: image_allocator output=%ux%u strides=%d,%d,%d opaque=%s\n",
++                    picture.width, picture.height, frame->linesize[0], frame->linesize[1],
++                    frame->linesize[2], av_buffer_get_opaque(frame->buf[0]) ? "present" : "absent");
++    } else if (!(picture.width & 63)) {
+         /* Packed I420 has 32-byte-aligned Y/U/V strides and plane starts
+          * when luma width is a multiple of 64. Transfer ownership of the
+          * receive allocation; never overwrite it while Firefox holds it. */
+@@ -496,6 +570,15 @@
+                 memcpy(frame->data[plane] + (size_t)y * frame->linesize[plane],
+                        src + (size_t)y * width, width);
+             src += (size_t)width * height;
++        }
++    }
++    if (!use_allocator) {
++        /* The packed-pool path owns refcounted storage directly. FFmpeg DR1
++         * requires per-frame internal decode data for this path as well. */
++        ret = ff_attach_decode_data(frame);
++        if (ret < 0) {
++            av_frame_unref(frame);
++            return ret;
+         }
+     }
+     frame->pts = frame->best_effort_timestamp = pts;
+@@ -828,7 +911,7 @@
+ const FFCodec symbol = { \
+     .p.name = name_, .p.long_name = NULL_IF_CONFIG_SMALL("T736 Cedar broker with native fallback"), \
+     .p.type = AVMEDIA_TYPE_VIDEO, .p.id = codec_, \
+-    .p.capabilities = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS, \
++    .p.capabilities = AV_CODEC_CAP_DR1 | AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS, \
+     .caps_internal = FF_CODEC_CAP_INIT_CLEANUP | FF_CODEC_CAP_SETS_FRAME_PROPS | FF_CODEC_CAP_AUTO_THREADS, \
+     .priv_data_size = sizeof(CedarContext), .init = cedar_init, .close = cedar_close, .flush = cedar_flush, \
+     FF_CODEC_RECEIVE_FRAME_CB(cedar_receive), \
+--- a/tools/browser/cedar_client.h
++++ b/tools/browser/cedar_client.h
+@@ -26,6 +26,13 @@
+                      int64_t pts_us, int64_t dts_us);
+ int t736_client_pull(int session, uint8_t *dst, size_t capacity,
+                      struct t736_frame *frame, unsigned timeout_ms);
++/* Pixels are ordinary read-only SHM, borrowed while the synchronous callback
++ * runs under the client lock. Do not retain pixels or call the client again
++ * from the callback. Return 0 on success or a negative errno on failure. */
++typedef int (*t736_copy_picture)(void *opaque, const struct t736_frame *frame,
++                                 const uint8_t *pixels);
++int t736_client_pull_to(int session, size_t capacity, struct t736_frame *frame,
++                        unsigned timeout_ms, t736_copy_picture copy, void *opaque);
+ int t736_client_drain(int session);
+ int t736_client_flush(int session);
+ int t736_client_close(int session);
+--- a/tools/browser/shm_v2/cedar_client.c
++++ b/tools/browser/shm_v2/cedar_client.c
+@@ -218,10 +218,10 @@
+     return ret;
+ }
+ 
+-int t736_client_pull(int session, uint8_t *dst, size_t capacity,
+-                     struct t736_frame *frame, unsigned timeout_ms)
+-{
+-    if (session <= 0 || !dst || !frame || capacity > T736_MAX_FRAME || timeout_ms > 1000)
++int t736_client_pull_to(int session, size_t capacity, struct t736_frame *frame,
++                        unsigned timeout_ms, t736_copy_picture copy, void *opaque)
++{
++    if (session <= 0 || !copy || !frame || capacity > T736_MAX_FRAME || timeout_ms > 1000)
+         return -EINVAL;
+     if (!current_process()) return -ENOTCONN;
+     struct t736_pull args = { (uint32_t)capacity, timeout_ms };
+@@ -247,7 +247,6 @@
+         (picture.colorspace != 0 && picture.colorspace != 1 && picture.colorspace != 6 && picture.colorspace != 9) ||
+         picture.reserved) goto malformed;
+     __atomic_thread_fence(__ATOMIC_ACQUIRE);
+-    memcpy(dst, shared_pixels, picture.bytes);
+     {
+         frame->width = picture.width; frame->height = picture.height;
+         frame->bytes_written = picture.bytes; frame->pts_us = picture.pts_us;
+@@ -255,7 +254,9 @@
+         if (trace && ++trace_pull <= 24)
+             fprintf(stderr, "CEDAR_TRACE pull=%u session=%d pts=%" PRId64 " %ux%u\n",
+                     trace_pull, session, frame->pts_us, frame->width, frame->height);
+-        error = 1;
++        error = copy(opaque, frame, shared_pixels);
++        if (!error) error = 1;
++        else if (error > 0) error = -EINVAL;
+     }
+     goto done;
+ malformed:
+@@ -265,6 +266,19 @@
+     return error;
+ }
+ 
++static int copy_packed(void *dst, const struct t736_frame *frame, const uint8_t *pixels)
++{
++    memcpy(dst, pixels, frame->bytes_written);
++    return 0;
++}
++
++int t736_client_pull(int session, uint8_t *dst, size_t capacity,
++                     struct t736_frame *frame, unsigned timeout_ms)
++{
++    if (!dst) return -EINVAL;
++    return t736_client_pull_to(session, capacity, frame, timeout_ms, copy_packed, dst);
++}
++
+ int t736_client_drain(int session) { return simple(T736_DRAIN, session, NULL, 0, NULL, 0); }
+ int t736_client_flush(int session) { return simple(T736_FLUSH, session, NULL, 0, NULL, 0); }
+ int t736_client_close(int session)
+--- a/tools/browser/shm_v2/cedar_client.h
++++ b/tools/browser/shm_v2/cedar_client.h
+@@ -26,6 +26,13 @@
+                      int64_t pts_us, int64_t dts_us);
+ int t736_client_pull(int session, uint8_t *dst, size_t capacity,
+                      struct t736_frame *frame, unsigned timeout_ms);
++/* Pixels are ordinary read-only SHM, borrowed while the synchronous callback
++ * runs under the client lock. Do not retain pixels or call the client again
++ * from the callback. Return 0 on success or a negative errno on failure. */
++typedef int (*t736_copy_picture)(void *opaque, const struct t736_frame *frame,
++                                 const uint8_t *pixels);
++int t736_client_pull_to(int session, size_t capacity, struct t736_frame *frame,
++                        unsigned timeout_ms, t736_copy_picture copy, void *opaque);
+ int t736_client_drain(int session);
+ int t736_client_flush(int session);
+ int t736_client_close(int session);

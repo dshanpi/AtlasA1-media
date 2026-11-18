@@ -1,0 +1,335 @@
+{
+  "kernel": "6.18.63-t736-media-v30",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 1920,
+    "height": 1080,
+    "avg_frame_rate": "60/1",
+    "duration": "30.000000",
+    "sha256": "37f109312141defa1e1afcd38e9cfe92527fa4ab1103a554bdfbe6ba689fcd20"
+  },
+  "test": "1080p60 Firefox and FFplay, after the first v30 4K session. Parallel backend loaded from service-specific read-only bind.",
+  "backend_sha256": "fcf63b180a761ed44f006125a15bf2fed5fa3ada76b61ab192389c55fb90ddf6",
+  "copy_at_frame_1200_average_us": 9734,
+  "firefox": {
+    "v8": {
+      "status": "not_verified",
+      "checks": {
+        "window_completed": true,
+        "dimensions": true,
+        "normal_speed": false,
+        "browser_frame_rate": false,
+        "hardware_irq_rate": true,
+        "matching_hardware_session": true,
+        "rdd_seccomp_filter": true,
+        "rdd_hardware_output": true,
+        "no_fallback_logged": true
+      },
+      "wall_seconds": 22.779,
+      "media_seconds": 20.083333999999997,
+      "total_delta": 1207,
+      "dropped_delta": 1195,
+      "presented_delta": 12,
+      "browser_retained_fps": 0.5268010009219017,
+      "irq_delta": 1207,
+      "broker_sessions": [
+        [
+          "1",
+          "2",
+          "1920",
+          "1080"
+        ]
+      ],
+      "broker_frame_markers": [
+        [
+          "1",
+          "1",
+          "1920",
+          "1080"
+        ],
+        [
+          "300",
+          "1",
+          "1920",
+          "1080"
+        ],
+        [
+          "600",
+          "1",
+          "1920",
+          "1080"
+        ],
+        [
+          "900",
+          "1",
+          "1920",
+          "1080"
+        ],
+        [
+          "1200",
+          "1",
+          "1920",
+          "1080"
+        ]
+      ]
+    },
+    "dr1": {
+      "status": "not_verified",
+      "checks": {
+        "window_completed": true,
+        "dimensions": true,
+        "normal_speed": false,
+        "browser_frame_rate": false,
+        "hardware_irq_rate": true,
+        "matching_hardware_session": true,
+        "rdd_seccomp_filter": true,
+        "rdd_hardware_output": true,
+        "no_fallback_logged": true
+      },
+      "wall_seconds": 22.769,
+      "media_seconds": 19.116667,
+      "total_delta": 1148,
+      "dropped_delta": 1143,
+      "presented_delta": 5,
+      "browser_retained_fps": 0.21959682023804297,
+      "irq_delta": 1148,
+      "broker_sessions": [
+        [
+          "4",
+          "2",
+          "1920",
+          "1080"
+        ]
+      ],
+      "broker_frame_markers": [
+        [
+          "3300",
+          "4",
+          "1920",
+          "1080"
+        ],
+        [
+          "3600",
+          "4",
+          "1920",
+          "1080"
+        ],
+        [
+          "3900",
+          "4",
+          "1920",
+          "1080"
+        ],
+        [
+          "4200",
+          "4",
+          "1920",
+          "1080"
+        ]
+      ],
+      "page_counts": {
+        "parsed": 1148,
+        "decoded": 1148,
+        "presented": 5,
+        "painted": 5
+      },
+      "end_frame_delay_seconds": 4.966955623
+    }
+  },
+  "ffplay": {
+    "software_renderer": {
+      "wall_seconds": 30.626,
+      "irq_delta": 1800,
+      "frames_at_player_filter": 1052,
+      "player_drops": 1052,
+      "final_clock": 30.04,
+      "status": "not_verified",
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": false,
+        "full_dimensions": true,
+        "zero_player_drops": false,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true
+      }
+    },
+    "powervr": {
+      "wall_seconds": 30.683,
+      "irq_delta": 1800,
+      "frames_at_player_filter": 1756,
+      "player_drops": 468,
+      "final_clock": 29.99,
+      "status": "not_verified",
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": false,
+        "full_dimensions": true,
+        "zero_player_drops": false,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true
+      }
+    },
+    "decoder": "Cedar hardware for both rendering modes. External master clock, discard late frames. No audio or physical HDMI window."
+  },
+  "native_refresh_budget_ab": {
+    "method": "Matched FFplay 7.1.5 ARM64 binaries. Same active 1080p60 HEVC context, 1920x1080 offscreen PowerVR GLES2 and external master clock. Count distinct I420 texture updates followed by SDL_RenderPresent. Late frames retained; pass requires both cadence and real elapsed time. No physical screen observation.",
+    "board_desktop": "The benchmark did not use the physical X11 surface; foreground session activity was not fixed for all measurements.",
+    "order": [
+      "fixed",
+      "upstream",
+      "fixed"
+    ],
+    "build_evidence": "ffplay-refresh-budget-build-20261118.json",
+    "runs": [
+      {
+        "sdl_present": {
+          "frames": 1800,
+          "span_ms": 29952.272,
+          "gap_p95_ms": 20.914,
+          "gap_max_ms": 35.199
+        },
+        "wall_seconds": 30.493,
+        "pvr_libraries": [
+          "pvr_dri.so"
+        ],
+        "irq_delta": 1800,
+        "player_drops": 0,
+        "status": "passed",
+        "checks": {
+          "exited_cleanly": true,
+          "all_frames": true,
+          "full_dimensions": true,
+          "zero_player_drops": true,
+          "clock_reached_end": true,
+          "realtime_wall": true,
+          "decoder_path": true,
+          "pvr_loaded": true,
+          "presented_every_frame": true,
+          "p95_presentation_gap": true
+        }
+      },
+      {
+        "sdl_present": {
+          "frames": 1800,
+          "span_ms": 33710.35,
+          "gap_p95_ms": 21.111,
+          "gap_max_ms": 36.021
+        },
+        "wall_seconds": 34.505,
+        "pvr_libraries": [
+          "pvr_dri.so"
+        ],
+        "irq_delta": 1800,
+        "player_drops": 0,
+        "status": "not_verified",
+        "checks": {
+          "exited_cleanly": true,
+          "all_frames": true,
+          "full_dimensions": true,
+          "zero_player_drops": true,
+          "clock_reached_end": false,
+          "realtime_wall": false,
+          "decoder_path": true,
+          "pvr_loaded": true,
+          "presented_every_frame": true,
+          "p95_presentation_gap": true
+        }
+      },
+      {
+        "sdl_present": {
+          "frames": 1800,
+          "span_ms": 29961.311,
+          "gap_p95_ms": 20.682,
+          "gap_max_ms": 22.988
+        },
+        "wall_seconds": 30.548,
+        "pvr_libraries": [
+          "pvr_dri.so"
+        ],
+        "irq_delta": 1800,
+        "player_drops": 0,
+        "status": "passed",
+        "checks": {
+          "exited_cleanly": true,
+          "all_frames": true,
+          "full_dimensions": true,
+          "zero_player_drops": true,
+          "clock_reached_end": true,
+          "realtime_wall": true,
+          "decoder_path": true,
+          "pvr_loaded": true,
+          "presented_every_frame": true,
+          "p95_presentation_gap": true
+        }
+      }
+    ],
+    "audio_clock": {
+      "audio_track": {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      },
+      "fixture": {
+        "codec_name": "hevc",
+        "width": 1920,
+        "height": 1080,
+        "duration": "30.000000",
+        "nb_frames": "1800",
+        "sha256": "65a4afd3c7620c6abcd04603ba7d9589e968137a97889a1cb1c5fdc6f9411596"
+      },
+      "av_offset_p95_seconds": 0.039,
+      "sdl_present": {
+        "frames": 1800,
+        "span_ms": 29622.895,
+        "gap_p95_ms": 20.635,
+        "gap_max_ms": 22.985
+      },
+      "wall_seconds": 30.651,
+      "irq_delta": 1800,
+      "player_drops": 0,
+      "status": "passed",
+      "checks": {
+        "exited_cleanly": true,
+        "all_frames": true,
+        "full_dimensions": true,
+        "zero_player_drops": true,
+        "clock_reached_end": true,
+        "realtime_wall": true,
+        "decoder_path": true,
+        "pvr_loaded": true,
+        "audio_video_sync": true,
+        "presented_every_frame": true,
+        "p95_presentation_gap": true
+      }
+    },
+    "audio_note": "AAC 48 kHz mono tone decoded to the SDL dummy device; the FFplay audio clock was master. No physical HDMI sound was emitted."
+  },
+  "installed_app": {
+    "package": "atlasa1-player 0.1-1 arm64",
+    "sha256": "3d41ce9728f4bbc31d5d4544f26a9f241066d901767604a3def9024b977e4ca7",
+    "entrypoint": "/usr/bin/atlasa1-player",
+    "gnome_association": "No previous video/mp4 handler; registering atlasa1-player.desktop made it the effective MP4 default on this board. No explicit user association was written.",
+    "playback": {
+      "input": "HEVC 1920x1080 60fps + AAC, 30 seconds; path includes spaces",
+      "user": "t736",
+      "window": "SDL offscreen GLES2",
+      "audio_device": "dummy",
+      "process_seconds": 30.805,
+      "irq_delta": 1800,
+      "player_drops": 0,
+      "final_audio_clock_s": 30.03,
+      "final_av_offset_s": 0.032,
+      "native_fallback_logged": false,
+      "exit": 0,
+      "process_maps": [
+        "pvr_dri.so",
+        "/opt/atlasa1-player/bin/ffplay",
+        "/opt/atlasa1-player/lib/libavcodec.so.61",
+        "/opt/atlasa1-player/lib/libt736_cedar_client.so"
+      ]
+    }
+  }
+}

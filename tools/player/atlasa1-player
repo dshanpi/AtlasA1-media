@@ -1,0 +1,71 @@
+#!/usr/bin/python3 -I
+"""Play a local file in the logged-in AtlasA1 desktop session."""
+import json
+import os
+import subprocess
+import sys
+
+PLAYER = '/opt/atlasa1-player/bin/ffplay'
+LIB = '/opt/atlasa1-player/lib'
+GPU = '/opt/t736-img-ddk-24.2-x11'
+
+
+def choose_file():
+    import gi
+    gi.require_version('Gtk', '3.0')
+    from gi.repository import Gtk
+    dialog = Gtk.FileChooserDialog(title='AtlasA1 Player', action=Gtk.FileChooserAction.OPEN)
+    dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT)
+    try:
+        return dialog.get_filename() if dialog.run() == Gtk.ResponseType.ACCEPT else None
+    finally:
+        dialog.destroy()
+
+
+def cedar_decoder(path, env):
+    cmd = ['/usr/bin/ffprobe', '-v', 'error', '-select_streams', 'V:0', '-show_entries',
+           'stream=codec_name,pix_fmt,width,height,field_order', '-of', 'json', '-i', path]
+    try:
+        streams = json.loads(subprocess.check_output(cmd, env=env, timeout=30))['streams']
+    except (subprocess.SubprocessError, KeyError, ValueError):
+        return None
+    if not streams:
+        return None
+    stream = streams[0]
+    w, h = stream.get('width', 0), stream.get('height', 0)
+    if (stream.get('codec_name') in ('hevc', 'h264') and stream.get('pix_fmt') in ('yuv420p', 'yuvj420p')
+            and stream.get('field_order') in (None, 'unknown', 'progressive')
+            and 0 < w <= 3840 and 0 < h <= 2160 and not ((w | h) & 1)):
+        return stream['codec_name'] + '_cedar'
+    return None
+
+
+def main(args):
+    if len(args) > 1:
+        sys.exit('Usage: atlasa1-player [local-video-file]')
+    name = args[0] if args else choose_file()
+    if name is None:
+        return
+    path = os.path.abspath(name)
+    if not os.path.isfile(path):
+        sys.exit('Cannot open local file: ' + path)
+    env = dict(os.environ)
+    for key in ('LD_PRELOAD', 'LD_LIBRARY_PATH', 'T736_CEDAR_ENABLE', 'T736_CEDAR_TEST_CLIENT',
+                'T736_CEDAR_NATIVE_PLAYER', 'T736_CEDAR_TRACE'):
+        env.pop(key, None)
+    decoder = cedar_decoder(path, env)
+    env.update(SDL_RENDER_DRIVER='opengles2', LD_LIBRARY_PATH=GPU+'/runtime-gles',
+               LIBGL_DRIVERS_PATH=GPU+'/lib/dri')
+    # Preserve the desktop's display, audio routing and seat. SDL opens the
+    # interactive session normally; the smoke test supplies its offscreen driver.
+    cmd = [PLAYER, '-hide_banner', '-autoexit', '-noframedrop']
+    if decoder:
+        env.update(T736_CEDAR_ENABLE='1', T736_CEDAR_NATIVE_PLAYER='1',
+                   LD_PRELOAD=':'.join(LIB+'/'+f for f in
+                                      ('libt736_cedar_client.so', 'libavutil.so.59', 'libavcodec.so.61')))
+        cmd.extend(['-vst', 'V:0', '-vcodec', decoder])
+    os.execve(PLAYER, cmd + ['-i', path], env)
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

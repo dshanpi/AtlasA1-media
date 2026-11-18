@@ -88,6 +88,19 @@ static int setup_connection(int fd, uid_t listener_uid, uid_t memory_uid)
     return 0;
 }
 
+static int is_native_player(void)
+{
+    static const char player[] = "/opt/atlasa1-player/bin/ffplay";
+    char path[sizeof(player)];
+    struct stat executable;
+    if (!getuid() || getuid() != geteuid())
+        return 0;
+    ssize_t length = readlink("/proc/self/exe", path, sizeof(path));
+    return length == (ssize_t)sizeof(player)-1 && !memcmp(path, player, sizeof(player)-1) &&
+           !stat("/proc/self/exe", &executable) && S_ISREG(executable.st_mode) &&
+           executable.st_uid == 0 && !(executable.st_mode & (S_IWGRP | S_IWOTH));
+}
+
 /* glibc invokes init-array functions with the original process arguments.
  * Firefox's forkserver must be disabled by the isolated launcher, so RDD has
  * its own exec and constructor. Browser/content/utility processes never connect.
@@ -98,11 +111,16 @@ __attribute__((constructor)) static void preconnect(int argc, char **argv,
     (void)envp;
     const char *enabled = getenv("T736_CEDAR_ENABLE");
     const char *test = getenv("T736_CEDAR_TEST_CLIENT");
+    const char *native = getenv("T736_CEDAR_NATIVE_PLAYER");
     const char *trace_env = getenv("T736_CEDAR_TRACE");
     trace = trace_env && !strcmp(trace_env, "1");
     int rdd = argc > 1 && !strcmp(argv[argc - 1], "rdd");
-    if (!enabled || strcmp(enabled, "1") ||
-        (!rdd && (!test || strcmp(test, "1")))) return;
+    if (!enabled || strcmp(enabled, "1")) return;
+    if (native && !strcmp(native, "1")) {
+        if (!is_native_player()) return;
+    } else if (!rdd && (!test || strcmp(test, "1"))) {
+        return;
+    }
     struct sockaddr_un address = { .sun_family = AF_UNIX };
     struct timeval deadline = { .tv_sec = 15 };
     struct passwd account, *resolved = NULL;

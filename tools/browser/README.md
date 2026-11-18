@@ -1,5 +1,9 @@
 # T736 Firefox Cedar 候选适配
 
+v30 实板使用 256 MiB Cedar 专用堆后，Firefox RDD 可以取得完整 3840×2160 HEVC 硬件帧。四个线程并行复制输出将前 600 帧的平均复制耗时降到 25.52 ms，Firefox 的 4K30 测量窗口仍丢弃 576/594 帧。1080p60 在同一浏览器路径也仍有丢帧。离屏 Firefox、原生播放器和实体 HDMI 扫描输出各自记录。[Firefox 4K 记录](../../evidence/media-v30-4k-firefox-parallel-20261118.json) · [原生播放器和 Firefox 1080p60 对照](../../evidence/media-v30-1080-playback-20261118.json)
+
+本地视频可用 AtlasA1 播放器。修正 FFplay 的刷新等待之后，Cedar 解码与 PowerVR GLES2 离屏呈现连续两次完成 1080p60 的全部 1800 帧。含 AAC 音轨的测试也使用了音频主时钟。[安装与构建](../player/README.md)
+
 本目录保存 T736 浏览器解码适配及分阶段记录。v29 实板已验证 Firefox RDD 通过 SHM 协议 v2 使用 Cedar。HEVC 1080p60 的离屏样片在 20.78 秒内触发 1190 次 VE 中断，浏览器呈现 12 帧、丢弃 1178 帧。4K30 HEVC 使用单独的全分辨率 OMX 配置测试，v29 上因输出缓冲配置失败进入软件解码。已验证的 Bilibili 约 30 fps 基线使用 media-v27、FFmpeg v6、backend v4、OMX/WC v5 和协议 v1。[1080p60 计数](../../evidence/firefox-headless-hevc1080p60-v8-first-20261118.json) · [显示与 4K 实测](../../evidence/atlas-display-media-v29-reboot-20261118.json)
 
 2026-11-18 记录当前媒体链候选状态。本文不改变系统默认浏览器、默认内核或最终烧录镜像；厂家二进制和用户媒体不进入公开备份。

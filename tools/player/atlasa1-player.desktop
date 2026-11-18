@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AtlasA1 Player
+Name[zh_CN]=AtlasA1 播放器
+Exec=atlasa1-player %f
+TryExec=atlasa1-player
+Icon=multimedia-video-player
+Terminal=false
+Categories=AudioVideo;Player;
+MimeType=video/mp4;

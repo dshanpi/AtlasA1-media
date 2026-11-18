@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-18",
+  "kind": "optional AtlasA1 native player package build",
+  "package_filename": "atlasa1-player_0.1-1_arm64.deb",
+  "package_sha256": "3d41ce9728f4bbc31d5d4544f26a9f241066d901767604a3def9024b977e4ca7",
+  "sources": {
+    "tools/build_atlasa1_player.py": "ba00e34a941f38d9876bc1d5c883acd91ba6ac182552ecc3ef995d9c8d78c8bd",
+    "tools/player/atlasa1-player": "14161ab0a218dd061e613b5a85b5e674108b0325d03f4469cd1cefcd6eff1d16",
+    "tools/player/atlasa1-player.desktop": "850793681c7050168def31acf8f452b1903a96543860f3959e3502da1009eeeb",
+    "tools/player/README.md": "12111d8bfb5d00ab2ace4a8080d3d3ff5bc9638d0ea85578d7bfe804554cfc30",
+    "tools/player/copyright": "ca0242aa9dd54559df4e2320d162c63e4e4ecdf9293bc0e2cbd9eb1909fb470c",
+    "tools/browser/shm_v2/cedar_client.c": "81105f11150315507a4717ca391976393808f424b7c0767631dbe1984293dc87",
+    "tests/test_atlasa1_player.py": "aa1f7fe78dc6fa65a34be061a1d5547408592847a957e3a6416777166edac371"
+  },
+  "installed_binary_sha256": {
+    "/opt/atlasa1-player/bin/ffplay": "6caa18410a684e702099cb760bcdce9c480313603707092e4023d6f558545dd4",
+    "/opt/atlasa1-player/lib/libavcodec.so.61": "93ebb172b8e807ad556d1203d29833124436399465973c3f809e214e36ea6fa3",
+    "/opt/atlasa1-player/lib/libavutil.so.59": "017f69e66121ff84a4a9b92c9d8397cad73ce73a2efb612074b2ee811bc38de0",
+    "/opt/atlasa1-player/lib/libt736_cedar_client.so": "05f7d5dd8f83bab1906c62d186e0344da733bd58051dfd5d2d9e993f81d9b1c3"
+  },
+  "checks": [
+    "Full archive listing: root:root, directories 0755, executables 0755, libraries and desktop file 0644; payload MD5 verified after dpkg-deb extraction",
+    "desktop-file-validate passed",
+    "Launcher mock: Unicode filename with spaces preserved; default audio driver inherited, no audio disabling; -noframedrop and opengles2 selected; HEVC 8-bit native opt-in; HEVC 10-bit system fallback",
+    "Native ASan/UBSan/LSan: protocol-v2 Unix transport, eight malformed reply classes, 1000 locked concurrent pulls, listener/memfd UID distinction, 58 SHM seal tests, fork and exec fd safety",
+    "Public launcher clears the diagnostic override. Native connection requires exact /proc/self/exe, non-root caller and root-owned, non-group/world-writable player binary."
+  ],
+  "build_only": true,
+  "boot_dependency": "Known full-resolution 4K output used v30, 256 MiB Cedar budget, full-size OMX and the parallel direct-slot service. Default v29 uses a 128 MiB budget and has no demonstrated 4K frame delivery. Retained decoder format cannot generally change in one boot."
+}
