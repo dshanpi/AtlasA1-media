@@ -18,6 +18,34 @@
       "sha256": "95fcc977fd41f190e77edef02d3aab8572fad69cfae9abbef5f369705bb31f60"
     },
     {
+      "path": "config/atlasa1-resolute-vendor-files.json",
+      "kind": "source",
+      "source": "mainline/config/atlasa1-resolute-vendor-files.json",
+      "size": 8514,
+      "sha256": "dfb0d6f3815fab67ebe82a4e4f11754c101742b2de0b318fd858f0a7596c4fdb"
+    },
+    {
+      "path": "config/gpu-userspace-gnome.desktop",
+      "kind": "source",
+      "source": "mainline/config/gpu-userspace-gnome.desktop",
+      "size": 255,
+      "sha256": "7bb42617233162fc2441b8b4c432830f830c022cf8941ddb5601daaeda03d027"
+    },
+    {
+      "path": "config/gpu-userspace-run.sh",
+      "kind": "source",
+      "source": "mainline/config/gpu-userspace-run.sh",
+      "size": 476,
+      "sha256": "d291f6f304bf79dcd770fe99ab12bf52d365d78cc818f1e09398992b1bdcf2c3"
+    },
+    {
+      "path": "config/gpu-userspace-x11.env",
+      "kind": "source",
+      "source": "mainline/config/gpu-userspace-x11.env",
+      "size": 450,
+      "sha256": "deb9040372042c06745d8fbcd60da9b929ad70396f16bfa600e69cf30cbab40d"
+    },
+    {
       "path": "docs/BACKUP_MEDIA_V28_20261117.md",
       "kind": "source",
       "source": "mainline/docs/BACKUP_MEDIA_V28_20261117.md",
@@ -49,8 +77,8 @@
       "path": "evidence/atlas-ubuntu26-board-rebuild-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/atlas-ubuntu26-board-rebuild-20261118.json",
-      "size": 3896,
-      "sha256": "0e2d2d8b15c7075bf313978d27008381a437916a3daac47a5ddfabd61f9e35e7"
+      "size": 4568,
+      "sha256": "c49ca209d743c17d55dcaf462b6215dbcc98093015d1d99e272f561eb0a98590"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -718,6 +746,13 @@
       "sha256": "e97e66a02b126183bd19b3a8dbca8382e44bd6d221da11ea9e6884ebaa7afa5a"
     },
     {
+      "path": "tools/build_atlasa1_resolute_vendor.sh",
+      "kind": "source",
+      "source": "mainline/tools/build_atlasa1_resolute_vendor.sh",
+      "size": 1679,
+      "sha256": "adb9a42c98a70ea9e64812fb492ff0f374f08757fa84d07e2cc6004dda428e06"
+    },
+    {
       "path": "tools/build_cedar_4k_omx.py",
       "kind": "source",
       "source": "mainline/tools/build_cedar_4k_omx.py",
@@ -802,6 +837,13 @@
       "sha256": "891229d33c5761f92101ffd1b5f5824233e5553505926f7c58a09eb7d2e4f2b2"
     },
     {
+      "path": "tools/build_gpu_userspace.py",
+      "kind": "source",
+      "source": "mainline/tools/build_gpu_userspace.py",
+      "size": 9985,
+      "sha256": "6548203b72ddfc113da62407315f7afc30fb9ec6bcead335bc10f344d8b8b07c"
+    },
+    {
       "path": "tools/build_media_v28_candidate.py",
       "kind": "source",
       "source": "mainline/tools/build_media_v28_candidate.py",
@@ -875,8 +917,15 @@
       "path": "tools/prepare_atlasa1_resolute_media.py",
       "kind": "source",
       "source": "mainline/tools/prepare_atlasa1_resolute_media.py",
-      "size": 5714,
-      "sha256": "756bf2a7f001d9387f36c08e2cdc42fd07efdcabac845e73d6d3dc53916e0ba9"
+      "size": 7308,
+      "sha256": "9f71e9862b82b1c59594eed1ea045926feb83300c7aa78fabf01b2b1c4e1bcde"
+    },
+    {
+      "path": "tools/prepare_atlasa1_sdl_sysroot.sh",
+      "kind": "source",
+      "source": "mainline/tools/prepare_atlasa1_sdl_sysroot.sh",
+      "size": 1261,
+      "sha256": "3b622376c9603c835b7b8c7fdd1f5b3dafafc4d65af6a4764754085693f6811a"
     },
     {
       "path": "tools/prepare_media_kernel.py",
@@ -926,6 +975,13 @@
       "source": "mainline/tools/validation/build_h264_1080p_fixture.py",
       "size": 6656,
       "sha256": "933d7677c61b5de46225c02c1aedd26871f4c84c59390a3716690f92c39d092b"
+    },
+    {
+      "path": "tools/validation/cedar-env",
+      "kind": "source",
+      "source": "mainline/tools/validation/cedar-env",
+      "size": 1500,
+      "sha256": "0a1b9bad7fb92b3dd56cdd3c7cef93f5a3cb7ce49c9c24db2e86eb664b25e2e0"
     },
     {
       "path": "tools/validation/cedar_nv21_compare.py",
@@ -989,6 +1045,20 @@
       "source": "mainline/tools/validation/firefox_headless_playback.py",
       "size": 14812,
       "sha256": "b4e6d120e13b26706a306e4e9ba5c38e022856534ccf829a89a6baec0e31ba2f"
+    },
+    {
+      "path": "tools/validation/gpu_runtime_view.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/gpu_runtime_view.py",
+      "size": 4511,
+      "sha256": "0bdf9800033a80104d0ee50988701e11d804328b275adb08aeae02142dff4db4"
+    },
+    {
+      "path": "tools/validation/gpu_userspace_probe.c",
+      "kind": "source",
+      "source": "mainline/tools/validation/gpu_userspace_probe.c",
+      "size": 9386,
+      "sha256": "4dc62d92789dc0938092ea0b5d1cd0768f25cc781bc720b2b65c8c2c7685e96e"
     },
     {
       "path": "tools/validation/media_acceptance.py",

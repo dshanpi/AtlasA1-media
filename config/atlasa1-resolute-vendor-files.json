@@ -1,0 +1,147 @@
+{
+  "cedar_rebuilt_libraries": [
+    "gstreamer-1.0/libgstomx.so",
+    "libMemAdapter.so",
+    "libcdc_base.so"
+  ],
+  "cedar_sdk_libraries": {
+    "libOmxCore.so": "a29760452c43c9e9988742e0b20ad44a7558d35979f9796928272e731b04424f",
+    "libOmxVdec.so": "a524cdbda7b9c7becbf4a5d1bdc83afb859aa8297b18b1b092157b6d26c6e24e",
+    "libVE.so": "3af49a5eb24f6832518a858274fb206d60e490985bff02f5d5be36d053f65be4",
+    "libawavs.so": "3d46076a1a2cb039540e2e5a945a7320791958b827024b7a6586bd2d3cc6824a",
+    "libawavs2.so": "7b7ba32eafc0605755a5ee4a46a1ec03a94ff004a366314689a90b1d8d8ff2ae",
+    "libawh264.so": "c977fe936a0bf1418f0a452c9769158b3ad2c8ff32aa972c1db4e21630f7fcc3",
+    "libawh265.so": "6adc1bba9ca552e17f6bc8a5d4b28b6cba1a6268feebfded0fa99ed199457df1",
+    "libawmjpeg.so": "c6c0fff04dcddc633544831430727b445a3f1fe4873c881a16aeaed958513e65",
+    "libawmjpegplus.so": "99b4d3dcac4e5e5c38f9e1387bc803d8d9fd6f975eb7d83899928e79e8feda9d",
+    "libawmpeg2.so": "f93ffabbb28c314769fbaaa0b2432b1cca4f4f5f160a9767fba00a76a37863de",
+    "libawmpeg4base.so": "d3e89676527bbb61f424cf9b09be46db2c27db26032af9c0f3507c46843d8220",
+    "libawmpeg4dx.so": "01c72ccbd86be598867391a1e33c944c89e8beae2a1efa4044afe5e1819e08d0",
+    "libawmpeg4h263.so": "fa224002a349b36131212bee325173772fa1dbb0d8e3d80bbd91446f87cb9548",
+    "libawmpeg4normal.so": "286687b64fa5fc39ff1f3aad2c8931d3e3073707d578e36a1381eb1890553768",
+    "libawmpeg4vp6.so": "1e4476aa88bcca548978fae4a135c84f55ba2a7b1e096e7da0a72e0fc0d7191e",
+    "libawvp6soft.so": "bc86eb76c6f4a23e08af46b18ca8c04ce336539133722f8ac966ba1c30f585f7",
+    "libawvp8.so": "fd9bfce1d37fe33a91eebbf5006945174e8f7bbb5d354e88d922c5c584ee3e20",
+    "libawvp9HwAL.so": "59432ffc48ea834c292fadd16f7c0dee2fd632d5af909c9ce04e4b5f0e4178f0",
+    "libfbm.so": "711db0ea30a1a04a43fb95cc6f91cc4a301bb074d03a5270c52b8669ed5e29a7",
+    "libsbm.so": "0bba9af82a6ed76a06ee5c5894ebf75bef6c42aeea0a9026035331aa6f808151",
+    "libscaledown.so": "65ff549bfc6541da9abddf87030c0763ae1197abf98fba7882fc38e967a699ef",
+    "libvdecVcs.so": "4e239fc13922fc450b4b70a88ddce131117208d261cf0dbbd16282380a8e6a1f",
+    "libvdecoder.so": "ec47b638c4f3880689d2b148579a32548edcd371d9ff8ff4dcbee82ca9473f9e",
+    "libvideoengine.so": "abfea1fa75f6a3ca5413d16eb69fcb87692f3e3b6552d83a222a998e909cef82"
+  },
+  "gpu_sdk_files": {
+    "opt/t736-img-ddk-24.2-x11/firmware/rgx.fw.36.56.104.183": "43eb5d054ee98bc975274198d2ed440e2f0f50b7ffcd0996a4022949f2c7909f",
+    "opt/t736-img-ddk-24.2-x11/firmware/rgx.sh.36.56.104.183": "71e1b1da9b4c6b42468e378e8b835306920568088bc6669879db4a108a7747c9",
+    "opt/t736-img-ddk-24.2-x11/lib/dri/pvr_dri.so": "445406ab0c2a23c6ee2cb5e7e2187f968be6f545167a91ca67a234b3e92bb48a",
+    "opt/t736-img-ddk-24.2-x11/lib/dri/sunxi-drm_dri.so": "445406ab0c2a23c6ee2cb5e7e2187f968be6f545167a91ca67a234b3e92bb48a",
+    "opt/t736-img-ddk-24.2-x11/lib/dri/swrast_dri.so": "445406ab0c2a23c6ee2cb5e7e2187f968be6f545167a91ca67a234b3e92bb48a",
+    "opt/t736-img-ddk-24.2-x11/lib/dri/zink_dri.so": "445406ab0c2a23c6ee2cb5e7e2187f968be6f545167a91ca67a234b3e92bb48a",
+    "opt/t736-img-ddk-24.2-x11/lib/libEGL.so": {
+      "symlink": "libEGL.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libEGL.so.1": {
+      "symlink": "libEGL.so.1.0.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libEGL.so.1.0.0": "216b9ab552a83253c99bf54b9bc775458dc642f18eb37eed40b6e2c42de0f38d",
+    "opt/t736-img-ddk-24.2-x11/lib/libGL.so": {
+      "symlink": "libGL.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGL.so.1": {
+      "symlink": "libGL.so.1.2.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGL.so.1.2.0": "fb3bf1b53ff0007c957b30ba9f7620cb07edf36b7a5f218a8359c36384c850fc",
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv1_CM.so": {
+      "symlink": "libGLESv1_CM.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv1_CM.so.1": {
+      "symlink": "libGLESv1_CM.so.1.1.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv1_CM.so.1.1.0": "2f6c0a43cf165d90179c379b4059579554aa0b9dea66312095089a8e22526392",
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv1_CM_PVR_MESA.so": {
+      "symlink": "libGLESv1_CM_PVR_MESA.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv1_CM_PVR_MESA.so.24.2.6603887": "98f89f4d423955d62a7e40296da72f84887c8f9de4ce7bd5daec4171daf0fe14",
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv2.so": {
+      "symlink": "libGLESv2.so.2"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv2.so.2": {
+      "symlink": "libGLESv2.so.2.0.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv2.so.2.0.0": "ad3902456e220bb80c2fcdec1fec5cc36276503d3f84a3ae2c1faf7efff9714c",
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv2_PVR_MESA.so": {
+      "symlink": "libGLESv2_PVR_MESA.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libGLESv2_PVR_MESA.so.24.2.6603887": "7442a27ca4a28586a7699b97f224541d9b6ecdf2717a9c4e815ce57afada2a7f",
+    "opt/t736-img-ddk-24.2-x11/lib/libOpenCL.so": {
+      "symlink": "libPVROCL.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libOpenCL.so.1": {
+      "symlink": "libPVROCL.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libPVROCL.so": {
+      "symlink": "libPVROCL.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libPVROCL.so.1": {
+      "symlink": "libPVROCL.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libPVROCL.so.24.2.6603887": "ae90824ffe67135f1b2430e1082e51817a34c9b9b676d7913058f9bfe93621ba",
+    "opt/t736-img-ddk-24.2-x11/lib/libPVRScopeServices.so": {
+      "symlink": "libPVRScopeServices.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libPVRScopeServices.so.24.2.6603887": "104ce36d69901a0e9eccb8e89f434fd6af8a901e0b094e53978e62aacc02c62b",
+    "opt/t736-img-ddk-24.2-x11/lib/libVK_IMG.so": {
+      "symlink": "libVK_IMG.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libVK_IMG.so.1": {
+      "symlink": "libVK_IMG.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libVK_IMG.so.24.2.6603887": "ac182122ff87ed2ade0deca78c360324069351e050860952175670f78f92230e",
+    "opt/t736-img-ddk-24.2-x11/lib/libgbm.so": {
+      "symlink": "libgbm.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libgbm.so.1": {
+      "symlink": "libgbm.so.1.0.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libgbm.so.1.0.0": "6b54e3ce133f8cd1ec442ced7ace62a00e8a9c45ad339a1d921c1483340635f6",
+    "opt/t736-img-ddk-24.2-x11/lib/libglapi.so": {
+      "symlink": "libglapi.so.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libglapi.so.0": {
+      "symlink": "libglapi.so.0.0.0"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libglapi.so.0.0.0": "c38bb96742f4b50078ea3d4bd5e57e6792aba27d6c4ad1c07217c8db4a47b49c",
+    "opt/t736-img-ddk-24.2-x11/lib/libglslcompiler.so": {
+      "symlink": "libglslcompiler.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libglslcompiler.so.24.2.6603887": "0dee1bd5a4d04f1aca028ad766bde310faba69a1f174dcaef03715617f0a7938",
+    "opt/t736-img-ddk-24.2-x11/lib/libpvr_dri_support.so": {
+      "symlink": "libpvr_dri_support.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libpvr_dri_support.so.24.2.6603887": "97cda01f3f7026d6ffecbc23991e0a414925996b5ef22766186148f8a4f5aa34",
+    "opt/t736-img-ddk-24.2-x11/lib/libpvr_mesa_wsi.so": "a71d6aac9cd82399240815b0780aedb74206f5baf42e1b1606114ac643ca3ad1",
+    "opt/t736-img-ddk-24.2-x11/lib/libsrv_um.so": {
+      "symlink": "libsrv_um.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libsrv_um.so.24.2.6603887": "a717b17927a7679e83548ae62e0f0df2568ea9a6716201ca0b62ef4ee3cdd756",
+    "opt/t736-img-ddk-24.2-x11/lib/libsutu_display.so": {
+      "symlink": "libsutu_display.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libsutu_display.so.24.2.6603887": "f8d3c89a494e1c5da2e8e9c6efcab77c9f4a71f4ae99feccfc561c76e2af962d",
+    "opt/t736-img-ddk-24.2-x11/lib/libufwriter.so": {
+      "symlink": "libufwriter.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libufwriter.so.24.2.6603887": "c8d0f919b82d15f094d2b20f7b1569a4dcc410b6a44450d4b6a7d240617c1dd6",
+    "opt/t736-img-ddk-24.2-x11/lib/libusc.so": {
+      "symlink": "libusc.so.24.2.6603887"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libusc.so.24.2.6603887": "e2a2d3ad5526e9e4d83bb8d97966e382f080f8687178bd43c416d5d5a4cecc57",
+    "opt/t736-img-ddk-24.2-x11/lib/libvulkan.so": {
+      "symlink": "libvulkan.so.1"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libvulkan.so.1": {
+      "symlink": "libvulkan.so.1.3.280"
+    },
+    "opt/t736-img-ddk-24.2-x11/lib/libvulkan.so.1.3.280": "f91ccd196bfa9fef3ecf7ec4b8da74174b476cc196345f96e9c0f49b3816c0ba"
+  }
+}

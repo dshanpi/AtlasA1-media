@@ -10,8 +10,7 @@ import tarfile
 import tempfile
 
 
-WC_ARCHIVE_SHA = 'fb2644eaf61ad5d2f06c6fecd00e8ec64c6695d79d4eff9cf915eeac3a15b7ba'
-GPU_PACKAGE_SHA = '1455889d0c10ec5d0b49e839e0e9d3f7560869e65da5fbee02e477039c78e16e'
+ROOT = Path(__file__).resolve().parents[1]
 SERVICE_HASHES = {'cedar-broker': '1910bf0ce66653d27fe67f99d2a1ce8b813dafec3893f981a8d7c662a61f3b04',
                   'libcedar_backend.so': '2185f2019b4aea60933c34d387d290e808848e420f8899b0b401783293145583'}
 FIRMWARE = {'rgx.fw.36.56.104.183': '43eb5d054ee98bc975274198d2ed440e2f0f50b7ffcd0996a4022949f2c7909f',
@@ -46,7 +45,10 @@ def prepare(args, root, tmp):
         dest.write_text(value)
         dest.chmod(mode)
 
-    with tarfile.open(verified(args.wc_archive, WC_ARCHIVE_SHA), 'r:gz') as tar:
+    vendor_files = json.loads((ROOT/'config/atlasa1-resolute-vendor-files.json').read_text())
+    sdk_libs = vendor_files['cedar_sdk_libraries']
+    expected_libs = set(sdk_libs) | set(vendor_files['cedar_rebuilt_libraries'])
+    with tarfile.open(args.wc_archive, 'r:gz') as tar:
         for item in tar:
             rel = PurePosixPath(item.name)
             if item.isfile() and rel.parts[:2] == ('t736-cedar-wc-v5', 'lib'):
@@ -57,6 +59,20 @@ def prepare(args, root, tmp):
                 with tar.extractfile(item) as source, dest.open('xb') as stream:
                     shutil.copyfileobj(source, stream)
                 dest.chmod(0o644)
+    if {p.relative_to(wc/'lib').as_posix() for p in (wc/'lib').rglob('*.so')} != expected_libs:
+        raise ValueError('Cedar library set differs from the board runtime')
+    for name, sha in sdk_libs.items():
+        verified(wc/'lib'/name, sha)
+    for name, symbol in (('libcdc_base.so', b'/dev/dma_heap/t736-ve'),
+                         ('libMemAdapter.so', b'T736_WC: first validated WC ordering barrier'),
+                         ('gstreamer-1.0/libgstomx.so', b'T736_OMX_DIAG')):
+        contents = (wc/'lib'/name).read_bytes()
+        if symbol not in contents:
+            raise ValueError(f'Missing board-specific code in {name}')
+    for library in vendor_files['cedar_rebuilt_libraries']:
+        header = subprocess.check_output(['readelf', '-h', wc/'lib'/library], text=True)
+        if 'AArch64' not in header:
+            raise ValueError(f'Unexpected architecture for {library}')
     if b't736_broker_4k_buffers' not in args.omx_vdec.read_bytes():
         raise ValueError('The OMX decoder was not built with the 4K broker buffer patch')
     install(args.omx_vdec, wc/'lib/libOmxVdec.so')
@@ -72,7 +88,7 @@ def prepare(args, root, tmp):
         'GST_REGISTRY_1_0=/run/t736-cedar/registry.bin', 'GST_REGISTRY_1_0=/tmp/t736-cedar-registry.bin')
     write(service/'bin/cedar-service', script, 0o755)
     install(browser/'gstomx.conf', service/'config/gstomx.conf')
-    config = (browser/'cedarc.conf').read_text().rstrip() + '\nt736_broker_4k_buffers = 1\n'
+    config = (browser/'cedarc.conf').read_text().rstrip() + '\nt736_broker_4k_buffers = 1\nenable_scaledown_while_4k = 0\n'
     write(service/'config/cedarc.conf', config)
     write(root/'etc/cedarc.conf', '# Service-specific configuration is bind-mounted by t736-cedar.service.\n')
     install(shm/'70-t736-cedar.rules', root/'etc/udev/rules.d/70-t736-cedar.rules')
@@ -90,7 +106,17 @@ def prepare(args, root, tmp):
         raise ValueError('PowerVR module kernel ABI mismatch')
     install(args.pvr_module, root/'usr/lib/modules'/RELEASE/'extra/pvrsrvkm.ko')
     write(root/'etc/modules-load.d/atlasa1-pvr.conf', 'pvrsrvkm\n')
-    subprocess.run(['dpkg-deb', '-x', verified(args.gpu_deb, GPU_PACKAGE_SHA), tmp/'gpu'], check=True)
+    fields = [subprocess.check_output(['dpkg-deb', '-f', args.gpu_deb, f], text=True).strip()
+              for f in ('Package','Version','Architecture')]
+    if fields != ['t736-img-userspace-candidate', '24.2.6603887-2', 'arm64']:
+        raise ValueError('Unexpected GPU package identity')
+    subprocess.run(['dpkg-deb', '-x', args.gpu_deb, tmp/'gpu'], check=True)
+    for rel, expected in vendor_files['gpu_sdk_files'].items():
+        path = tmp/'gpu'/rel
+        if isinstance(expected, str):
+            verified(path, expected)
+        elif not path.is_symlink() or str(path.readlink()) != expected['symlink']:
+            raise ValueError(f'Unexpected GPU library symlink {rel}')
     for name, sha in FIRMWARE.items():
         source = verified(tmp/'gpu/opt/t736-img-ddk-24.2-x11/firmware'/name, sha)
         install(source, root/'usr/lib/firmware'/name)
