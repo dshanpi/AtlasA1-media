@@ -27,6 +27,12 @@ A clean rebuild with the release build path produced a byte-identical `.deb` wit
 
 ## Playback measurement
 
+The current launcher uses Firefox's global refresh clock on the AtlasA1 Wayland DDK. On GNOME/v42 at 1080p60, two controlled runs retained 59.93 and 59.41 fps, with 1/1209 and 12/1227 frames dropped; restoring the per-window Wayland clock retained 53.37 fps with 133/1203 drops. A fresh profile playing immediately after browser launch retained 53.04 fps. These are browser counters, not physical HDMI scanout acceptance, and zero-drop acceptance has not passed. [GNOME results and remaining limits](../../docs/GNOME_MEDIA.md)
+
+For internal drop categories, add `--wayland --debug-media` to the validation command below. It starts a separate disposable profile and enables privileged diagnostic access only on that loopback test instance. It leaves the RDD sandbox enabled. `--warmup N` explicitly records an optional wait before playing; do not compare such a run with immediate startup without noting the difference.
+
+Original-size HEVC 4K30 remains unverified on GNOME: a clean-boot hardware run retained 13.21 fps. The native player's scaled 4K context and the browser's original-size 4K context are different; the two retained slots can reject a switch with `ENOSPC`. Enlarging the slot count without fixing retained DMA allocations is not a solution. The native player's hardware scaling result is not a browser 4K result.
+
 On the default eMMC release kernel `6.18.63-t736-media-v30`, a private 1920×1080 Xvfb server presented 685 of 1,097 frames over 18.273 seconds (37.49 fps), with 412 drops and 1,128 Cedar interrupts. The same test on temporary kernel `6.18.63-t736-hw-v34` presented 695 of 1,082 frames over 18.031 seconds (38.54 fps), with 387 drops and 1,081 interrupts. Add `--xvfb /usr/bin/Xvfb` to the test command to exercise that path on a system with Xvfb installed.
 
 On the board, the Firefox 160 H.264 test used an isolated profile and the regular user. At 1920×1080, the 17.751-second headless measurement recorded 1,065 Cedar interrupts, 1,065 video frames and 550 browser drops. The browser retained 29.01 fps. The RDD mapped the private FFmpeg 8 codec, the Cedar client and the system FFmpeg 8 utility library. The same test using the stock browser or the FFmpeg 7 launcher recorded zero Cedar interrupts. Physical HDMI frame cadence requires separate measurement. [Board measurements](../../evidence/atlasa1-firefox160-ffmpeg8-20261118.json)

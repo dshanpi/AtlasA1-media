@@ -1,0 +1,31 @@
+{
+  "kernel": "6.18.63-t736-gnome-v42",
+  "pvr_status": "Driver Status:   OK\n\nDevice ID: 0:128\nFirmware Status: OK\nServer Errors:   0\nHWR Event Count: 0\nCRR Event Count: 0\nSLR Event Count: 0\nWGP Error Count: 0\nTRP Error Count: 0\nFWF Event Count: 0\nAPM Event Count: 0\nGPU Utilisation: 15%\nDM Utilisation:  VM0\n           2D:   0% \n         GEOM:   0% \n           3D:  14% \n          CDM:   0% \n          RAY:   0% \n        GEOM2:   0% \n",
+  "launcher_sha256": "7ac9709d2c5860948c4d04212804007f66b1fd48d8958895e89bd9fbf3e1c398",
+  "codec_sha256": "a8648fe049859782457f222ce0a446ba1c3e2afb9d2ba638b9a5c0b98c59c1ea",
+  "helper": "4197 /usr/libexec/mutter-x11-frames.atlasa1-real",
+  "lib_symlink": "usr/lib",
+  "default_boot": {
+    "/boot/uInitrd": "/boot/uInitrd-6.18.63-t736-media-v30",
+    "/boot/vmlinuz-6.18.63-t736-armbian": "/boot/vmlinuz-6.18.63-t736-media-v30",
+    "/boot/initrd.img-6.18.63-t736-armbian": "/boot/initrd.img-6.18.63-t736-media-v30",
+    "/boot/dtb/allwinner/t736-mainline-bringup.dtb": "/boot/dtb/allwinner/t736-mainline-bringup.dtb"
+  },
+  "shell_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "shell_pid": 3540,
+  "services": {
+    "gdm": "active",
+    "t736-cedar.service": "active",
+    "t736-cedar.socket": "active"
+  },
+  "alsa_cards": null
+}

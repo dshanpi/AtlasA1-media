@@ -1,0 +1,585 @@
+{
+  "schema": 1,
+  "date": "2026-11-19",
+  "kernel": "6.18.63-t736-gnome-v42",
+  "status": "improved_not_fully_verified",
+  "installed_change": "AtlasA1 Wayland Firefox launcher sets widget.wayland.vsync.enabled=false. No codec library replacement.",
+  "results": {
+    "v42-firefox-stage-timing.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 20.215,
+        "media_seconds": 20.226940000000003,
+        "total_delta": 1213,
+        "dropped_delta": 388,
+        "presented_delta": 825,
+        "browser_retained_fps": 40.81127875340094,
+        "irq_delta": 1227,
+        "broker_sessions": [
+          [
+            "7",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "6600",
+            "7",
+            "1920",
+            "1080"
+          ],
+          [
+            "6900",
+            "7",
+            "1920",
+            "1080"
+          ],
+          [
+            "7200",
+            "7",
+            "1920",
+            "1080"
+          ],
+          [
+            "7500",
+            "7",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "083de3f3ba3de1520e6e62b5d8ff1af6578078d8fa6cbbfec25c6dca85745b1d"
+    },
+    "v42-firefox-debug-media-v3.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.973,
+        "media_seconds": 19.948787000000003,
+        "total_delta": 1199,
+        "dropped_delta": 66,
+        "presented_delta": 1133,
+        "browser_retained_fps": 56.726580884193666,
+        "irq_delta": 1198,
+        "broker_sessions": [
+          [
+            "10",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "8100",
+            "10",
+            "1920",
+            "1080"
+          ],
+          [
+            "8400",
+            "10",
+            "1920",
+            "1080"
+          ],
+          [
+            "8700",
+            "10",
+            "1920",
+            "1080"
+          ],
+          [
+            "9000",
+            "10",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "0270db12b881cae3c98071e5f8c58503560c8e83934b2ed9efaf991fbb28f6d5"
+    },
+    "v42-firefox-warmup25.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": false,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.522,
+        "media_seconds": 19.508124,
+        "total_delta": 1153,
+        "dropped_delta": 89,
+        "presented_delta": 1064,
+        "browser_retained_fps": 54.502612437250285,
+        "irq_delta": 1171,
+        "broker_sessions": [
+          [
+            "11",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "12",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "9300",
+            "12",
+            "1920",
+            "1080"
+          ],
+          [
+            "9600",
+            "12",
+            "1920",
+            "1080"
+          ],
+          [
+            "9900",
+            "12",
+            "1920",
+            "1080"
+          ],
+          [
+            "10200",
+            "12",
+            "1920",
+            "1080"
+          ],
+          [
+            "10500",
+            "12",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "2b20ebd33e8768598e77e19f6960fc188d0ddad5f244e9b46ad35ebaba18beba"
+    },
+    "v42-firefox-timer-vsync-v2.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 20.156,
+        "media_seconds": 20.171743999999997,
+        "total_delta": 1209,
+        "dropped_delta": 1,
+        "presented_delta": 1208,
+        "browser_retained_fps": 59.93252629489979,
+        "irq_delta": 1216,
+        "broker_sessions": [
+          [
+            "13",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "10800",
+            "13",
+            "1920",
+            "1080"
+          ],
+          [
+            "11100",
+            "13",
+            "1920",
+            "1080"
+          ],
+          [
+            "11400",
+            "13",
+            "1920",
+            "1080"
+          ],
+          [
+            "11700",
+            "13",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "216e6462370235c08bef321067c3dd333c89ad9317d7871cdd37039408240fcb"
+    },
+    "v42-firefox-control-v5.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 20.048,
+        "media_seconds": 20.01669,
+        "total_delta": 1203,
+        "dropped_delta": 133,
+        "presented_delta": 1070,
+        "browser_retained_fps": 53.37190742218676,
+        "irq_delta": 1206,
+        "broker_sessions": [
+          [
+            "14",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "12000",
+            "14",
+            "1920",
+            "1080"
+          ],
+          [
+            "12300",
+            "14",
+            "1920",
+            "1080"
+          ],
+          [
+            "12600",
+            "14",
+            "1920",
+            "1080"
+          ],
+          [
+            "12900",
+            "14",
+            "1920",
+            "1080"
+          ],
+          [
+            "13200",
+            "14",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "57e45ea5f4dd9ff1ce025d7f59df1cc66bb0ef162fb89321d7ecaa00a8c36a52"
+    },
+    "v42-firefox-timer-vsync-v3.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 20.45,
+        "media_seconds": 20.467403,
+        "total_delta": 1227,
+        "dropped_delta": 12,
+        "presented_delta": 1215,
+        "browser_retained_fps": 59.41320293398533,
+        "irq_delta": 1234,
+        "broker_sessions": [
+          [
+            "15",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "13500",
+            "15",
+            "1920",
+            "1080"
+          ],
+          [
+            "13800",
+            "15",
+            "1920",
+            "1080"
+          ],
+          [
+            "14100",
+            "15",
+            "1920",
+            "1080"
+          ],
+          [
+            "14400",
+            "15",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "0793185c1b77d09e188156b986e1274525a2a905655d0de27f01b3dc94777726"
+    },
+    "v42-firefox-installed-global-vsync-cold.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.307,
+        "media_seconds": 19.297723,
+        "total_delta": 1162,
+        "dropped_delta": 138,
+        "presented_delta": 1024,
+        "browser_retained_fps": 53.03775832599575,
+        "irq_delta": 1169,
+        "broker_sessions": [
+          [
+            "16",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "14700",
+            "16",
+            "1920",
+            "1080"
+          ],
+          [
+            "15000",
+            "16",
+            "1920",
+            "1080"
+          ],
+          [
+            "15300",
+            "16",
+            "1920",
+            "1080"
+          ],
+          [
+            "15600",
+            "16",
+            "1920",
+            "1080"
+          ],
+          [
+            "15900",
+            "16",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "76d8ef895cf3b9d345fe89c283b58fef16275f11d42e2905c1afc98bf6004b83"
+    },
+    "v42-firefox-installed-hevc4k30-context-full.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": false,
+          "matching_hardware_session": false,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": false,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 20.31,
+        "media_seconds": 20.298902000000002,
+        "total_delta": 610,
+        "dropped_delta": 38,
+        "presented_delta": 572,
+        "browser_retained_fps": 28.163466272772034,
+        "irq_delta": 0,
+        "broker_sessions": [],
+        "broker_frame_markers": []
+      },
+      "sha256": "74dd8e8df60be8ec983b2fc0add2130e0845ad71b217f3986d658f1e1a44a5a6"
+    },
+    "v42-firefox-hevc4k30-cleanboot.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": false,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 20.137,
+        "media_seconds": 20.103275,
+        "total_delta": 610,
+        "dropped_delta": 344,
+        "presented_delta": 266,
+        "browser_retained_fps": 13.209514823459303,
+        "irq_delta": 484,
+        "broker_sessions": [
+          [
+            "1",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "3840",
+            "2160"
+          ],
+          [
+            "300",
+            "1",
+            "3840",
+            "2160"
+          ]
+        ]
+      },
+      "sha256": "330f3ecfcf6670e3bc30907b24f11c34febd736b7a6e4af9310dbe516861c8de"
+    },
+    "v42-firefox-installed-reboot-1080p60.json": {
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "wall_seconds": 19.889,
+        "media_seconds": 19.892836,
+        "total_delta": 1193,
+        "dropped_delta": 3,
+        "presented_delta": 1190,
+        "browser_retained_fps": 59.83206797727387,
+        "irq_delta": 1200,
+        "broker_sessions": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "300",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "600",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "900",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "1200",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "sha256": "5c5bb0f82241b5e4d3ca40a53b4ed9607bd6306c4921b751a1e0e9a601042b00"
+    }
+  },
+  "hardware_limits": {
+    "browser_full_size_4k": "not_verified",
+    "hdmi_audio": "no ALSA card; not_verified",
+    "encoding": "not_implemented",
+    "4k_hdmi_output": "not_tested"
+  },
+  "4k_copy_mean_us_at_frame_300": 29971,
+  "default_boot": "v30 / Xfce unchanged",
+  "release_image_published": false,
+  "final_state": "final-global-vsync-state.json"
+}

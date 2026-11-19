@@ -1,0 +1,70 @@
+--- a/libavcodec/ffmpeg_cedar.c
++++ b/libavcodec/ffmpeg_cedar.c
+@@ -7,6 +7,7 @@
+ #include <errno.h>
+ #include <stdint.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "avcodec.h"
+@@ -60,6 +61,9 @@
+     unsigned timing_next;
+     unsigned batch_frames, batch_inputs, batch_logs;
+     int64_t batch_started;
++    unsigned stage_count;
++    int64_t stage_alloc_us, stage_copy_us, stage_pull_us;
++    int64_t stage_alloc_max_us, stage_copy_max_us, stage_pull_max_us;
+ } CedarContext;
+ 
+ typedef struct CedarNALSummary {
+@@ -462,7 +466,9 @@
+         picture->bytes_written != (size_t)context->width * context->height * 3 / 2)
+         return AVERROR(EPROTO);
+     frame->format = context->pix_fmt = AV_PIX_FMT_YUV420P;
++    int64_t stage_begin = av_gettime_relative();
+     int ret = ff_get_buffer(context, frame, 0);
++    int64_t stage_allocated = av_gettime_relative();
+     if (ret < 0)
+         return ret;
+     for (unsigned plane = 0; plane < 3; plane++) {
+@@ -485,6 +491,14 @@
+         }
+         pixels += (size_t)width * height;
+     }
++    if (getenv("T736_CEDAR_STAGE_TIMING")) {
++        CedarContext *s = context->priv_data;
++        int64_t alloc_us = stage_allocated - stage_begin;
++        int64_t copy_us = av_gettime_relative() - stage_allocated;
++        s->stage_alloc_us += alloc_us; s->stage_copy_us += copy_us;
++        s->stage_alloc_max_us = FFMAX(s->stage_alloc_max_us, alloc_us);
++        s->stage_copy_max_us = FFMAX(s->stage_copy_max_us, copy_us);
++    }
+     return 0;
+ }
+ 
+@@ -495,6 +509,7 @@
+     size_t expected;
+     int64_t pts;
+     int ret;
++    int64_t stage_pull_begin = av_gettime_relative();
+     const int use_allocator = avctx->get_buffer2 != avcodec_default_get_buffer2;
+     if (use_allocator && s->api.pull_to) {
+         CedarImageTarget target = {avctx, frame};
+@@ -520,6 +535,16 @@
+     }
+     if (ret != 1)
+         return ret;
++    if (getenv("T736_CEDAR_STAGE_TIMING")) {
++        int64_t elapsed = av_gettime_relative() - stage_pull_begin;
++        s->stage_pull_us += elapsed;
++        s->stage_pull_max_us = FFMAX(s->stage_pull_max_us, elapsed);
++        if (!(++s->stage_count % 150))
++            fprintf(stderr, "CEDAR_STAGE frames=%u pull_mean_us=%lld alloc_mean_us=%lld copy_mean_us=%lld pull_max_us=%lld alloc_max_us=%lld copy_max_us=%lld\n",
++                    s->stage_count, (long long)(s->stage_pull_us / s->stage_count),
++                    (long long)(s->stage_alloc_us / s->stage_count), (long long)(s->stage_copy_us / s->stage_count),
++                    (long long)s->stage_pull_max_us, (long long)s->stage_alloc_max_us, (long long)s->stage_copy_max_us);
++    }
+     if (!picture.width || !picture.height || picture.width > T736_MAX_WIDTH ||
+         picture.height > T736_MAX_HEIGHT || (picture.width | picture.height) & 1)
+         return AVERROR(EPROTO);

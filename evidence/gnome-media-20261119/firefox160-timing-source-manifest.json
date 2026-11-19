@@ -1,0 +1,43 @@
+{
+  "source_repository": "https://hg.mozilla.org/releases/mozilla-release",
+  "source_stamp": "b1145b0710192f716be5f59f5b2dfeed650d5294",
+  "runtime": "Firefox 160.0.1",
+  "files": [
+    {
+      "name": "StaticPrefList.yaml",
+      "sha256": "2791d2ff777b9158622e6de45eecf120fb1cdd9ec4a300afa8caa2f44ec7af3c"
+    },
+    {
+      "name": "nsWindowWayland.cpp",
+      "sha256": "4b484ccdc16e62ccba40fe3bd5786b19f0e5b98b9f912a611653422cebfbe3b7"
+    },
+    {
+      "name": "gfxPlatformGtk.cpp",
+      "sha256": "d95b960f6dbc6db6c442633edcdfbbd18c9b1c49ec686ac4809ffb21ef27372a"
+    },
+    {
+      "name": "gfxPlatform.cpp",
+      "sha256": "6b42b62085ec88adaacdd7e73dbdf45b43f038dfc7c0f649e48e3a518c98590b"
+    },
+    {
+      "name": "WaylandVsyncSource.cpp",
+      "sha256": "781a4339926058a5e3562847ecfa0c9375834e9f3048519ab1490e7316747de1"
+    },
+    {
+      "name": "RenderCompositorEGL.cpp",
+      "sha256": "4ee4e9dc1d47c6eb20c249283ce1115a93e6aeffb8999b7f83fb7dd81c5c853a"
+    },
+    {
+      "name": "FFmpegVideoDecoder.cpp",
+      "sha256": "1abe0dd335bcb9d9e99f5de1c1fca21c044e044bf671157ca673ca4cab24f42b"
+    },
+    {
+      "name": "ImageComposite.cpp",
+      "sha256": "0bbbc7ad70b7915f63b7473d295e0ac0d3170b17b4acd3e0470e0f62adda37cd"
+    },
+    {
+      "name": "VideoSink.cpp",
+      "sha256": "1d3bc1b3c099800c3e594e400553fb02211ec731f4035abe138bb9029e67bec6"
+    }
+  ]
+}

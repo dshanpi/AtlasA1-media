@@ -23,6 +23,13 @@ if [ "${XDG_SESSION_TYPE:-}" = wayland ] && [ -n "${WAYLAND_DISPLAY:-}" ] &&
     if ! grep -Fqx "$pref" "$profile/user.js" 2>/dev/null; then
         printf '\n%s\n' "$pref" >> "$profile/user.js"
     fi
+    # On AtlasA1 GNOME the per-window Wayland callback clock drops video
+    # frames after decoding. Use Firefox's global clock; EGL/GLES and Cedar
+    # remain accelerated. Validated on the board's 1080p60 output.
+    pref='user_pref("widget.wayland.vsync.enabled", false);'
+    if ! grep -Fqx "$pref" "$profile/user.js" 2>/dev/null; then
+        printf '\n%s\n' "$pref" >> "$profile/user.js"
+    fi
 fi
 export LD_LIBRARY_PATH="$lib:${lookup}$gpu/runtime-gles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export LD_PRELOAD="$lib/libt736_cedar_client.so:$lib/libavcodec.so.62${LD_PRELOAD:+:$LD_PRELOAD}"

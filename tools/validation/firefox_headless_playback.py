@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import secrets
 import signal
+import socket
 import select
 import struct
 import subprocess
@@ -71,7 +72,7 @@ async function watch() {
   } finally { if (!done) setTimeout(watch,500); }
 }
 watch();
-v.play().catch(err => end(String(err)));
+setTimeout(() => v.play().catch(err => end(String(err))), WARMUP_MS);
 </script>'''
 
 
@@ -101,7 +102,8 @@ class Player(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == self.server.prefix:
-            data = PAGE.replace(b'WINDOW', str(self.server.seconds).encode())
+            data = PAGE.replace(b'WINDOW', str(self.server.seconds).encode()).replace(
+                b'WARMUP_MS', str(self.server.warmup * 1000).encode())
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
             self.send_header('Content-Length', str(len(data)))
@@ -263,8 +265,10 @@ def collect(args, record):
         raise ValueError(f'unsupported fixture {info}')
     record['fixture'] = info
     record['launcher'] = str(args.launcher)
+    record['launcher_sha256'] = hashlib.sha256(args.launcher.read_bytes()).hexdigest()
     record['kernel'] = os.uname().release
     record['desktop_uid'] = user.pw_uid
+    record['warmup_seconds'] = args.warmup
     width, height = args.screen or (info['width'], info['height'])
     record['headless_screen'] = [width, height]
     before = journal('-n','1','--show-cursor')
@@ -273,10 +277,25 @@ def collect(args, record):
          tempfile.TemporaryFile(mode='w+b') as log, ThreadingHTTPServer(('127.0.0.1',0),Player) as srv:
         if uid == 0:
             os.chown(profile, user.pw_uid, user.pw_gid)
+        debug_connection = None
+        debug_client = None
+        debug_next = 0
+        if args.debug_media:
+            from firefox_renderer_probe import Marionette
+            with socket.socket() as listener:
+                listener.bind(('127.0.0.1', 0))
+                debug_port = listener.getsockname()[1]
+            prefs = Path(profile) / 'user.js'
+            prefs.write_text(f'user_pref("marionette.port", {debug_port});\n', encoding='utf-8')
+            if uid == 0:
+                os.chown(prefs, user.pw_uid, user.pw_gid)
+            record['debug_media'] = []
         env = dict(HOME=user.pw_dir, USER=user.pw_name, LOGNAME=user.pw_name,
                    PATH='/usr/local/bin:/usr/bin:/bin', LANG='C.UTF-8', MOZ_HEADLESS='1',
                    MOZ_HEADLESS_WIDTH=str(width), MOZ_HEADLESS_HEIGHT=str(height),
                    T736_CEDAR_PROFILE=profile, MOZ_LOG='PlatformDecoderModule:4')
+        if args.debug_media:
+            env['MOZ_REMOTE_ALLOW_SYSTEM_ACCESS'] = '1'
         runtime_dir = Path(f'/run/user/{user.pw_uid}')
         if runtime_dir.is_dir():
             env['XDG_RUNTIME_DIR'] = str(runtime_dir)
@@ -287,6 +306,7 @@ def collect(args, record):
             env.update(WAYLAND_DISPLAY='wayland-0', XDG_SESSION_TYPE='wayland',
                        GDK_BACKEND='wayland', DBUS_SESSION_BUS_ADDRESS='unix:path='+str(runtime_dir/'bus'))
         srv.prefix = '/' + secrets.token_urlsafe(16) + '/'
+        srv.warmup = args.warmup
         srv.clip, srv.seconds, srv.samples, srv.done = args.clip, args.seconds, [], threading.Event()
         thread = threading.Thread(target=srv.serve_forever, daemon=True)
         thread.start()
@@ -297,6 +317,9 @@ def collect(args, record):
         # needs the same isolated profile and its own process explicitly.
         isolated = ['--no-remote', '--profile', profile] if args.launcher.name == 'firefox' else []
         command = [args.launcher, *isolated, *geometry, f'http://127.0.0.1:{srv.server_port}{srv.prefix}']
+        if args.debug_media:
+            command[1:1] = ['--marionette', '--remote-allow-system-access']
+            command[-1] = 'about:blank'
         if args.xvfb:
             record['display_backend'] = 'Xvfb'
             env.pop('MOZ_HEADLESS')
@@ -310,17 +333,54 @@ def collect(args, record):
                                 stdout=log, stderr=subprocess.STDOUT, env=env, cwd=profile,
                                 start_new_session=True, **identity)
         try:
-            deadline = time.monotonic()+args.seconds+90
+            deadline = time.monotonic()+args.seconds+args.warmup+90
             snapshot_time = time.monotonic()
             while not srv.done.wait(.25) and proc.poll() is None and time.monotonic()<deadline:
+                if args.debug_media and debug_client is None and time.monotonic() >= debug_next:
+                    try:
+                        debug_connection = socket.create_connection(('127.0.0.1', debug_port), timeout=1)
+                        debug_client = Marionette(debug_connection, 60)
+                        debug_client.command('WebDriver:NewSession', {})
+                        debug_client.command('WebDriver:SetTimeouts', {'script': 2000})
+                        debug_client.command('Marionette:SetContext', {'value': 'chrome'})
+                        graphics = debug_client.command('WebDriver:ExecuteScript', {'args': [], 'script': '''
+                            const gfx = Cc["@mozilla.org/gfx/info;1"].getService(Ci.nsIGfxInfo);
+                            const prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+                            return {features: gfx.getFeatures(), renderer: gfx.adapterDescription,
+                                waylandVsync: prefs.getBoolPref("widget.wayland.vsync.enabled"),
+                                layoutFrameRate: prefs.getIntPref("layout.frame_rate")};
+                        '''})
+                        record['graphics'] = graphics.get('value', graphics)
+                        debug_client.command('Marionette:SetContext', {'value': 'content'})
+                        debug_client.command('WebDriver:Navigate', {
+                            'url': f'http://127.0.0.1:{srv.server_port}{srv.prefix}'})
+                        debug_connection.settimeout(3)
+                    except ConnectionRefusedError:
+                        if debug_connection:
+                            debug_connection.close()
+                        debug_client = None
+                        debug_next = time.monotonic() + 1
                 if (srv.samples and srv.samples[-1]['mediaTime'] >= 2
                         and time.monotonic() >= snapshot_time
                         and not any('Seccomp:\t2' in p['sandbox'] for p in record.get('rdd', []))):
                     record['rdd'] = rdd_snapshot(proc.pid, args.rdd_cpus)
                     snapshot_time = time.monotonic() + 2
+                if (args.debug_media and debug_client is not None and srv.samples and srv.samples[-1]['mediaTime'] >= 3
+                        and time.monotonic() >= debug_next):
+                    debug_next = time.monotonic() + 5
+                    try:
+                        script = Path(__file__).with_name('firefox_media_debug_snapshot.js').read_text(encoding='utf-8')
+                        response = debug_client.command('WebDriver:ExecuteAsyncScript', {
+                            'script': script, 'args': [], 'newSandbox': True, 'sandbox': 'system'})
+                        record['debug_media'].append(response.get('value', response))
+                    except (OSError, ValueError, RuntimeError, EOFError) as exc:
+                        record['debug_media'].append({'error': str(exc)})
+                        debug_next = float('inf')
             record['firefox_exit_before_cleanup'] = proc.poll()
             record['samples'] = list(srv.samples)
         finally:
+            if debug_connection:
+                debug_connection.close()
             try:
                 os.killpg(proc.pid, signal.SIGTERM)
                 proc.wait(timeout=10)
@@ -333,7 +393,7 @@ def collect(args, record):
             thread.join()
         log.seek(0)
         lines = [l.decode('utf-8','replace').strip() for l in log
-                 if any(key in l for key in (b'T736_', b'error', b'failed', b'ERROR', b'cannot be preloaded'))]
+                 if any(key in l for key in (b'T736_', b'CEDAR_STAGE', b'error', b'failed', b'ERROR', b'cannot be preloaded'))]
         record['firefox_diagnostics'] = lines[-80:]
         raw = journal('--after-cursor', cursor[1], '-u', args.unit) if cursor else ''
         record['broker_log'] = [s for s in raw.splitlines() if 'CEDAR_BROKER:' in s][-80:]
@@ -347,8 +407,12 @@ def main():
     ap.add_argument('--output',type=Path,required=True)
     ap.add_argument('--xvfb',type=Path,help='Use a private virtual X server executable instead of Firefox headless mode')
     ap.add_argument('--wayland',action='store_true',help='Play visibly in the current GNOME Wayland session')
+    ap.add_argument('--debug-media', action='store_true',
+                    help='Read internal drop counters via loopback Marionette in the isolated test profile')
     ap.add_argument('--rdd-cpus',type=int,nargs='+',help='Diagnostic affinity for this temporary Firefox RDD only')
     ap.add_argument('--seconds',type=int,default=20)
+    ap.add_argument('--warmup', type=int, default=0,
+                    help='Wait on the test page before playback to separate browser startup load')
     ap.add_argument('--screen', nargs=2, type=int, metavar=('WIDTH', 'HEIGHT'),
                     help='set headless screen and kiosk window size; report the actual CSS video box separately')
     ap.add_argument('--user',default='t736')
@@ -361,6 +425,8 @@ def main():
         ap.error('--wayland and --xvfb are mutually exclusive')
     if not 2 <= args.seconds <= 3600:
         ap.error('measurement window must be 2..3600 seconds')
+    if not 0 <= args.warmup <= 120:
+        ap.error('warmup must be 0..120 seconds')
     if args.screen and not all(64 <= n <= 8192 for n in args.screen):
         ap.error('screen dimensions must be 64..8192')
     record = {'schema':1,'kind':'t736-sandboxed-firefox-headless-playback'}
@@ -369,7 +435,7 @@ def main():
     with args.output.open('x',encoding='utf-8') as out:
         try:
             collect(args,record)
-        except (OSError, ValueError, KeyError, subprocess.SubprocessError) as exc:
+        except (OSError, ValueError, KeyError, RuntimeError, EOFError, subprocess.SubprocessError) as exc:
             record['result'] = {'status':'incomplete','reason':str(exc)}
         json.dump(record,out,indent=2)
         out.write('\n')

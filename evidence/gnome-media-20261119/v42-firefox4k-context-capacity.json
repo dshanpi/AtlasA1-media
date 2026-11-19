@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kernel": "6.18.63-t736-gnome-v42",
+  "kind": "broker-open-diagnostic",
+  "user": "t736",
+  "protocol": 2,
+  "codec": "HEVC",
+  "width": 3840,
+  "height": 2160,
+  "flags": 0,
+  "status": -28,
+  "errno": "ENOSPC",
+  "lease": 0,
+  "interpretation": "Native panel-sized HEVC 4K and H2641080 retained contexts occupy the two slots; original-size HEVC4K is a different context. This is not a disk-space measurement.",
+  "allocation_limit_changed": false,
+  "followup": "Reboot same v42 and test original-size HEVC4K before any panel-scaled session."
+}

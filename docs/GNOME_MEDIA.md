@@ -121,6 +121,40 @@ v42 的 DRM 跟踪中，1326 次 RCQ 提交有 1324 次在下一次 vblank 收�
 
 4K 的 30.4 fps 数字来自呈现反馈跨度，包含初始追赶，不能解读成片源帧率改变或高于 30fps 的性能保证。正式播放器两个测试均被验证器标记为 `not_verified`，原因是显示环节仍有丢帧。辅助进程在重启后的 346 秒状态检查时仍为同一 PID，GPU 错误计数全为零，Shell 使用 CPU0–7。没有开启新的默认启动项或发布 GNOME 镜像。
 
+## Firefox：按阶段计时与刷新时钟对照
+
+对实际 Firefox 160.0.1（SourceStamp `b1145b0710192f716be5f59f5b2dfeed650d5294`）继续诊断。`copy_candidate/firefox-stage-timing.patch` 只用于已经应用 DR1 补丁的 FFmpeg 8 `libavcodec/ffmpeg_cedar.c`；设置 `T736_CEDAR_STAGE_TIMING=1` 后每 150 帧打印累计计时。诊断库单独安装，生产 `libavcodec.so.62` 没有替换。1350 帧的取帧均值为 10.953 ms，其中 Firefox 图像分配 0.109 ms、三平面复制 1.515 ms。取帧包括 IPC、服务端等待及复制，不能全部算成硬件解码时间。
+
+验证器新增 `--debug-media`：只在独立临时 profile 中开启 loopback Marionette，读取 `mozRequestDebugInfo()` 的解码端、播放队列和合成器丢帧计数，以及实际图形后端。普通播放不启用诊断接口；RDD 仍保持 `NoNewPrivs=1`、seccomp mode 2。Firefox 自带的 `videoHardwareAccelerated=false` 表示它把此自定义 FFmpeg 接口归类为软件路径，不能单凭该字段否定 Cedar；硬解仍须以本次 broker 会话、IRQ 和硬件输出日志交叉确认。
+
+内部计数将剩余主要丢帧定位到合成器。上游 `nsWindowWayland.cpp:626` 根据 `widget.wayland.vsync.enabled` 创建窗口专用的 `WaylandVsyncSource`；关闭该选项后，合成器走全局刷新分发。保持 PowerVR WebRender、GLES、Cedar、桌面分辨率及全八核调度不变，先后对照如下：
+
+| 测试 | 浏览器保留帧率 | 测量窗口丢帧 |
+| --- | --- | --- |
+| 原始即时启动，诊断 FFmpeg | 40.81 fps | 388 / 1213 |
+| 启动完成后导航，原窗口回调时钟 | 56.73 fps | 66 / 1199 |
+| 全局时钟第一次 | 59.93 fps | 1 / 1209 |
+| 恢复窗口回调时钟，同版验证器 | 53.37 fps | 133 / 1203 |
+| 全局时钟重复 | 59.41 fps | 12 / 1227 |
+| 正式启动入口，全新 profile 立即播放 | 53.04 fps | 138 / 1162 |
+| 再次冷启动 v42，正式入口启动完成后导航 | 59.83 fps | 3 / 1193 |
+
+两轮全局时钟测试均确认实际后端是 PowerVR B-Series BXM-4-64 / WebRender，硬解、沙箱、正常播放速度检查通过。仍有少量丢帧，验证器继续标记 `not_verified`。这不是浏览器到 HDMI 的逐帧扫描输出验收。
+
+收益已接入 `tools/browser/firefox-resolute`，仅在 AtlasA1 Wayland DDK 分支写入该设置；不关闭 GPU 或硬解，不改全局 GNOME 配置。当前证据只覆盖 1080p60 输出，不承诺其他刷新率。全新浏览器首次启动的后台任务仍会影响播放，不能把热启动的约 60 fps 当成冷启动成绩。另一个 `--warmup 25` 对照为 54.50 fps，但预加载期间重建了两次解码会话，被严格的单会话验证拒绝，未计作通过。
+
+诊断接口初版曾因连接顺序、会话初始化超时及 Firefox 160 要求 `MOZ_REMOTE_ALLOW_SYSTEM_ACCESS=1` 而没有形成有效播放结果；这些不是解码失败。最终验证器等待会话建立后再导航，保留异常及清理自身进程组，不接管用户的浏览器。
+
+### 原尺寸 4K 的单独复测
+
+原生播放器的 4K 缩放上下文和浏览器的原尺寸上下文具有不同 flags，不能共享。此前的缩放 HEVC 4K 与 H.264 1080p 占据两个保留槽后，普通用户直接协议探针确认原尺寸 HEVC 4K OPEN 返回 `-28/ENOSPC`，lease 为 0。此时浏览器约 28.16 fps，但 Cedar IRQ 增量为 0，没有匹配硬解会话，不能计作硬解成绩。这里的 ENOSPC 是解码上下文额度，不是磁盘容量。
+
+随后临时冷启动同一 v42，在未创建任何缩放上下文前首先测试原尺寸 HEVC 4K30。普通用户 RDD 沙箱、PowerVR WebRender、3840×2160 硬件输出均确认；约 20.14 秒内，610 帧丢 344，保留 266 帧（13.21 fps），Cedar IRQ 增量为 484。服务端第 300 帧累计 CPU 复制均值 29.971 ms，已接近 30fps 的 33.33 ms 单帧预算，尚未算上 RDD 复制和纹理上传。因此浏览器 4K 仍未通过，不能用原生播放器的硬件缩放成绩代替。
+
+未扩大保留槽或绕过 DMA 缓冲隔离。该轮后再次清理启动，避免原尺寸 4K 实验占用缩放播放器需要的上下文。下一步须解决解码缓冲生命周期与浏览器的图像传递，或者以明确标注的硬件缩放路径面向 1080p 显示；不能只靠关闭丢帧统计或修改播放速度。
+
+最后一次冷启动后，正式入口的 H.264 1080p60 复测为 59.83 fps、1193 帧丢 3 帧；记录的 `waylandVsync=false`，PowerVR / Cedar / RDD 沙箱均确认。GDM 与解码 service/socket 正常，辅助进程持续存活，Shell 使用全部八核，GPU 错误计数全部为 0，生产 FFmpeg 的 SHA-256 未改变。当前桌面为临时 v42/GNOME，默认启动别名和 `uInitrd` 仍为 v30，没有发布新镜像。
+
 ## 音频与编码
 
 当前 PipeWire 仅有 `Dummy Output`，内核没有 ALSA 声卡。AAC 解码和时钟推进不等于实际出声；新版验证器会单独记录 sink，并在只有虚拟设备时拒绝把会话音频标为通过。
