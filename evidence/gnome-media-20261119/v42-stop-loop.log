@@ -1,0 +1,27 @@
+Linux atlasa1 6.18.63-t736-gnome-v42 #42 SMP 2026-11-19 00:00:00 UTC aarch64 GNU/Linux
+ff158b44d071ca160e7c3bcb798f7793568c4e8c782088d2e0bf9b04d8bbe85a  /var/tmp/atlasa1-gnome-media-20261119/probes-r8/cedar-gnome-dmabuf-player
+a84ddc5e2161b395cef054f1b4ea60b509e3579077787e632f5ad3dd545e0ac3  /var/tmp/atlasa1-gnome-media-20261119/probes-r8/ffplay-wayland-present.so
+20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274  /var/tmp/atlas-rc1-fes-qa/h264-1080p60-aac.mp4
+Couldn't open plugin directory: No such file or directory
+No plugins found, falling back on no decorations
+T736_WC: version=0x3331000021320 phy_offset=0x0 heap=t736-ve cache=WC barriers=dmb-osh
+T736_OMX_DIAG self=0xaaaaeebcfdf0 phase=flush.entry idle=-1 actual=-1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_OMX_DIAG self=0xaaaaeebcfdf0 phase=flush.initial-state idle=-1 actual=1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_OMX_DIAG self=0xaaaaeebcfdf0 phase=flush.loaded-return idle=-1 actual=1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_WC: first validated WC ordering barrier
+ATLAS_WAYLAND_TRACE protocol=wp_presentation
+ATLAS_WAYLAND_PRESENT requested=1500 shown=1486 discarded=14 span_ms=25005.907 fps=59.386 max_gap_ms=100.439 gaps_over_25ms=3 gaps_over_40ms=2 flags=0x7
+ATLAS_WAYLAND_CLOCK presentation=1 request=1
+DMA_PACING vsync=0 unpaced=0
+GPU=PowerVR B-Series BXM-4-64
+DEBUG  : cedarc <CdcIniParserInit:41>: load conf file /etc/cedarc.conf ok!
+
+DEBUG  : cedarc <AwOmxComponentInit:40>: OMXCORE: aw_omx_component_init eebdb0f0
+
+INFO   : cedarc <log_setlevel:73>: Set log level to 6 from /vendor/etc/cedarc.conf
+ERROR  : omx_vdec <AwOmxVdecPortGetFormat:365>: [40;31merro: pParamData->nIndex > m_sPortFormatType.nIndex[0m
+ERROR  : cedarc <DebugCheckConfig:396>: [40;31mnow cedarc log level:6[0m
+ERROR  : ionAlloc <ion_alloc_vir2phy_cpu:487>: [40;31mion_alloc_vir2phy failed, do not find virtual address: 0xffff84000880[0m
+ERROR  : ionAlloc <ion_alloc_vir2phy_cpu:487>: [40;31mion_alloc_vir2phy failed, do not find virtual address: 0xffff84000c7f[0m
+DMA_FORMAT format=YV12 coded=1920x1088 visible=1920x1080 bytes=3133440
+DMA_PLAYER frames=1500 elapsed_ms=25005.342 pts_span_ms=24983.333 submit_mean_ms=0.430 max_late_ms=42.318 imports=12 cpu_frame_copies=0 audio=none async=1 failed=0

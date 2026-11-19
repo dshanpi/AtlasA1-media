@@ -3,6 +3,9 @@
 # Stops the decoder socket during the test and restores its listening state.
 set -euo pipefail
 [[ $# == 4 && $EUID == 0 ]] || { echo "Usage (root): $0 PROBE_DIR CLIP h264|hevc NEW_LOG" >&2; exit 2; }
+# Multiple runs must not share the VE or restore the service under each other.
+exec 9>/run/lock/atlasa1-gnome-dmabuf-probe.lock
+flock -n 9 || { echo "Another DMA-BUF probe is running" >&2; exit 1; }
 bin=$(realpath -e "$1"); clip=$(realpath -e "$2"); codec=$3; log=$(realpath -m "$4")
 [[ $codec == h264 || $codec == hevc ]] || exit 2
 test ! -e "$log"

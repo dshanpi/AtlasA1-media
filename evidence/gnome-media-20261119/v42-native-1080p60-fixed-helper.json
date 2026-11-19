@@ -1,0 +1,43 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-gnome-v42",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": false,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": false,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "dummy",
+  "presentation_metric": "wp_presentation compositor feedback with hardware timing flags",
+  "fixture": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "duration": "25.000000",
+    "nb_frames": "1500",
+    "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "status": "incomplete",
+  "error": "[Errno 2] No such file or directory: '/opt/t736-cedar-transport-v2/lib'"
+}

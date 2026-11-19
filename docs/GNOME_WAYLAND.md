@@ -9,6 +9,7 @@ Ubuntu 26.04 的 GNOME/Wayland 已在实板接通 PowerVR。2026-11-19 用户确
 - 从同版 Tina SDK 的 `img-bxm/.../wayland` 构建独立 `atlasa1-img-wayland` 包，放在 `/opt/atlasa1-img-wayland`。X11 包继续独立保留。系统 Wayland 库和 Vulkan loader 不被厂家版本覆盖。
 - udev 将 sunxi-drm 显示设备指定为 Mutter primary。默认选中 PVR card1 时，跨设备 framebuffer 导入失败且呈现很慢。
 - GNOME/GTK 使用 EGL/GLES，避免启动不受支持的 Vulkan/桌面 GL 路径。正常 D-Bus 启动的“设置”已确认加载 PVR。
+- X11 窗口边框辅助进程 `mutter-x11-frames` 使用单独的 Cairo 环境，禁用它的 GTK GL/Vulkan 并清除厂家库路径。继承全局 GLES 环境会导致该进程反复段错误重启，拖慢视频呈现；此例外不改变 Shell、普通 GTK 应用或播放器的 GPU 环境。后续 v42 对照与实际帧数见 [GNOME 多媒体验收](GNOME_MEDIA.md)。
 - `MUTTER_DEBUG_KMS_SCHEDULING_PRIORITY=normal` 禁用 Mutter 的 KMS deadline timer；当前 sunxi-drm 的 vblank 查询可能阻塞。该设置是此组合的用户态兼容配置，未宣称内核时序缺陷已修复。
 - **不绑 CPU 核心。** 曾将 Shell 主线程固定到 CPU6/7，独立测试略快，但从 Shell 启动的 Chromium 继承了该 affinity，多个进程挤在两个核上。已从配置删除并在实板恢复八核调度。
 - Firefox 原生 Wayland 原先混用厂商 EGL 与系统 `libGL` 函数入口，无法建立有效 GL 上下文。Firefox 专用的 `firefox-gles/libGL.so.1` 将查找导向配套 GLES，启动器同时选择 GLES context。这个目录只加入该浏览器进程的搜索路径，不能当作系统 OpenGL/GLX 实现使用。实测硬件 WebRender 与 `PowerVR B-Series BXM-4-64` 均已确认。
@@ -33,7 +34,7 @@ sudo udevadm control --reload
 sudo udevadm trigger --subsystem-match=drm
 ```
 
-stage 脚本只安装 GNOME 配置与会话入口，不更改默认显示管理器。通过 GDM 选择 **AtlasA1 GNOME**。测试切换前保存工作并保留 LightDM/Xfce 回退；不要把临时自动登录配置写入发行镜像。离线根文件系统可作为 stage 的参数。
+stage 脚本安装 GNOME 配置、会话入口及 X11 边框辅助进程的局部包装，不更改默认显示管理器。辅助进程通过 `dpkg-divert` 保留软件包原文件，拒绝覆盖其他 diversion；离线根文件系统和重复安装均已验证。通过 GDM 选择 **AtlasA1 GNOME**。测试切换前保存工作并保留 LightDM/Xfce 回退；不要把临时自动登录配置写入发行镜像。离线根文件系统可作为 stage 的参数。
 
 用户偏好的不息屏配置应在目标桌面用户的会话中设置：
 

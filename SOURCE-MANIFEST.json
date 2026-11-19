@@ -53,6 +53,13 @@
       "sha256": "6dc329d35fa9d58418e8670e1e75768a8c7135309526696b00fb659ca786f65e"
     },
     {
+      "path": "config/gnome-wayland/atlasa1-mutter-x11-frames",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/atlasa1-mutter-x11-frames",
+      "size": 408,
+      "sha256": "05ab1222e873e91c95ced3551c2d2449aa241ea7300a8843ed9bd20fbdcd685f"
+    },
+    {
       "path": "config/gpu-userspace-gnome.desktop",
       "kind": "source",
       "source": "mainline/config/gpu-userspace-gnome.desktop",
@@ -105,15 +112,15 @@
       "path": "docs/GNOME_MEDIA.md",
       "kind": "source",
       "source": "mainline/docs/GNOME_MEDIA.md",
-      "size": 10320,
-      "sha256": "3d2de46a12b5fd521be11048828805ae058f91e7f0be8f331bb29f7aef0249ff"
+      "size": 15108,
+      "sha256": "0a872368ae4fe23388ce74a30936c28cdfc9e2ca3b2a56bf71f9bf9620a7db1e"
     },
     {
       "path": "docs/GNOME_WAYLAND.md",
       "kind": "source",
       "source": "mainline/docs/GNOME_WAYLAND.md",
-      "size": 4932,
-      "sha256": "0035cdc11e5fd2f0a2fde19a2b8a80df2cb08d0de8bf6501d5b61352529d3a34"
+      "size": 5487,
+      "sha256": "17ad4851cb0d8c3569b866bc4aa93709c092918b42b8179d9ce9caecea75be98"
     },
     {
       "path": "docs/PLAYBACK.md",
@@ -571,6 +578,20 @@
       "sha256": "fd4244b30ebf942b0483556fa06fc8e13eb9faba055bc4f52b8a65b7985d1a3b"
     },
     {
+      "path": "evidence/gnome-media-20261119/stage-timing-summary.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/stage-timing-summary.json",
+      "size": 6581,
+      "sha256": "842738f7c1ea356914dfc8f243b7df6cbeaf7c9deb78d4ed4206de011a9bd794"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/summary-v42.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/summary-v42.json",
+      "size": 74026,
+      "sha256": "5a911b4752f9a5e503f67f03bd8abce717eba9b953b2a43fa3c485a5a6c5ef13"
+    },
+    {
       "path": "evidence/gnome-media-20261119/summary.json",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/summary.json",
@@ -653,6 +674,363 @@
       "source": "mainline/evidence/gnome-media-20261119/v40-real-frame-gpu-import.log",
       "size": 5954,
       "sha256": "53cb62c977a6478f03cbb809d14c65c4c7c405d2d7b2a52184e3abd295702272"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-baseline.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-baseline.log",
+      "size": 3273,
+      "sha256": "37dd4256aae69d2bac0c8d7e51cd01866f17875ef4d7213ddd8dacff69ab0c3e"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-baseline.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-baseline.tsv",
+      "size": 142974,
+      "sha256": "4c845fee24bae1255b811e7e09e520a3cb6dd80cd2dffee60c6445fcbc8df8d1"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-client-strace.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-client-strace.log",
+      "size": 3286,
+      "sha256": "163770e9e9e7b49b07350c8a8f68fe269f459387211737c006ffbff916f85f53"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-client-strace.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-client-strace.tsv",
+      "size": 142974,
+      "sha256": "cff160feea5906fb44a4405d36196bfe5a783217e9635bfd16b798d57b0130ca"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-strace.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-strace.log",
+      "size": 3271,
+      "sha256": "6045e357a7da6fd8dd3b77fc5ec675cdca476d3c551f78b8d6db663f423b4717"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-strace.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-strace.tsv",
+      "size": 142974,
+      "sha256": "bdca30ceed45df4df8a6e8567af77466a91c0a18915452b45a803ec7d804e3fb"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-timing-vsync-unpaced.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-timing-vsync-unpaced.tsv",
+      "size": 142974,
+      "sha256": "3fbc1464ffb06f43ca8cca16314f46b3b64be81f4748a0217fc3f52a5198e0f9"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v40-vsync-unpaced.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v40-vsync-unpaced.log",
+      "size": 3300,
+      "sha256": "103ce0b04cc353df9d22210c4032cb8808aedbadb046a8d5803f70a2db577383"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-after-play-dmesg.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-after-play-dmesg.log",
+      "size": 51188,
+      "sha256": "092d2eac2ec02914eb32d38841ee2c88ce507cc193d95fc2d09b62dd8691f3b0"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-before-play-dmesg.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-before-play-dmesg.log",
+      "size": 51188,
+      "sha256": "092d2eac2ec02914eb32d38841ee2c88ce507cc193d95fc2d09b62dd8691f3b0"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-dmabuf-1080p60-warm.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-dmabuf-1080p60-warm.log",
+      "size": 3301,
+      "sha256": "c1e1685e7fb5dad488cf7632b29a8353710539260add41278a62f1dc014e00f8"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-dmabuf-1080p60.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-dmabuf-1080p60.log",
+      "size": 3301,
+      "sha256": "e02355ab66d0bed9739593bbd5811088fbd798b4f5662bb3095e82018bcdcefa"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-present-stages.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-present-stages.tsv",
+      "size": 142974,
+      "sha256": "f6c8bb3d6b217118f64cca66838467e93076677196c0519c2e2db28abe8b81fe"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-present.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-present.log",
+      "size": 3300,
+      "sha256": "8b3847c35318edde5dfca2dbd84bc5b6624e299b254088c89303f0987eb82e4e"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-present.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-present.tsv",
+      "size": 86562,
+      "sha256": "48160aa34974d4eeb28f7fabb410db416aaa5596b2a84e559d2fc753018d2ed0"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-timing-baseline.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-timing-baseline.tsv",
+      "size": 135928,
+      "sha256": "f2384990d776c85e8c64fe207a87151b7dbf34395977a0cf444b610da5d89218"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v41-timing-warm.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v41-timing-warm.tsv",
+      "size": 142974,
+      "sha256": "5e4ee36acfb8d4f8692f84460ce448279f20938a98aa8d1b8c7c7c15b928d394"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-cairo-helper.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-cairo-helper.log",
+      "size": 3345,
+      "sha256": "a53513db0468a12a20194c4cb7516f70ea78f77c05c35fcbe5ab3b843c04ba25"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-cairo-helper.present.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-cairo-helper.present.tsv",
+      "size": 86421,
+      "sha256": "73707856b91a47df8199f4a35ca82e07febb11558cfe3bab029af61625703535"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-cairo-helper.stages.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-cairo-helper.stages.tsv",
+      "size": 142974,
+      "sha256": "b797d803f7a522d07680a5c7abeb98751d4697eb04c5c271b2d4ada372b74c6d"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-cairo-process.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-cairo-process.txt",
+      "size": 29998,
+      "sha256": "dfab8121e45bc9831a27f21addadba01f942f53131e8b788c63f3b262b8d11c1"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-drm-trace.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-drm-trace.log",
+      "size": 3347,
+      "sha256": "670b883c640499e2d9f97dce6e05c02bdae7d0b0d3ccb4d903fed0be0409ef55"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-drm-trace.present.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-drm-trace.present.tsv",
+      "size": 84573,
+      "sha256": "45ad356f62979a26edd1662a1ef1ab9ef064e5a614c2e624389d1dd9bc515864"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-drm-trace.stages.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-drm-trace.stages.tsv",
+      "size": 138948,
+      "sha256": "35fc712e86df75c7228af6482d2128dd06e50a5c372d85052d1520f9f4bf0b85"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-drm-trace.stats",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-drm-trace.stats",
+      "size": 1665,
+      "sha256": "8a6dfd3c101de0a7019e54877558101e32afd3631a585c5ad9df9f8def5fbba3"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-drm-trace.trace.gz",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-drm-trace.trace.gz",
+      "size": 194556,
+      "sha256": "476315743644e91b43017ad9e66c8e7626a33a6aef357b71aaef15f9d9d951ae"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-fence-leaf-summary.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-fence-leaf-summary.json",
+      "size": 567,
+      "sha256": "806f24e5233c6f48cad7e35b5fde3d5b1fe14dc112ab9cac13137a99a85755be"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-fence-trace.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-fence-trace.log",
+      "size": 3345,
+      "sha256": "ee27734265e0fc0f2209a576de03e871616a2f1d02139f127335baa949018002"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-fence-trace.present.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-fence-trace.present.tsv",
+      "size": 86358,
+      "sha256": "9f010d0fa771d996d64f2d715f69da05e48879bc1d4ea77eeb974dd1af16b8d7"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-fence-trace.stages.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-fence-trace.stages.tsv",
+      "size": 142974,
+      "sha256": "c4f3bec8375e448c293179b5072a1cab2a7436c60d08dc34514fabaacda94435"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-fence-trace.stats",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-fence-trace.stats",
+      "size": 1679,
+      "sha256": "79234a5c964f96de516868f928c63e5c9c5dce9472c2d145664fc000326ab53e"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-fence-trace.trace.gz",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-fence-trace.trace.gz",
+      "size": 234073,
+      "sha256": "d7dd74f18730d83c6ef5b09c64dc2f6b4a3d2598f1a6b59c0b15f9a61057ca16"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-final-state.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-final-state.log",
+      "size": 584,
+      "sha256": "86b9937318d20e9f085c9ed440170e9a057d2a83579792ff97b0492b38d903e7"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-firefox-1080p60-fixed-helper.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-firefox-1080p60-fixed-helper.json",
+      "size": 26964,
+      "sha256": "052218a087338473db2f78d0a462700bf5fc9515e82e64e606215494511e778b"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-firefox-1080p60-rdd-bigcores.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-firefox-1080p60-rdd-bigcores.json",
+      "size": 27190,
+      "sha256": "293757a2b9fdfd3bebd1d6964d31c1751b7db049e6be88c1320a1b1363f71232"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-isolated-helper.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-isolated-helper.log",
+      "size": 3341,
+      "sha256": "6a1052ce8e0c8c8094c63d90f88cf7d58740d8db726466d0be72dde235c8224f"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-isolated-helper.present.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-isolated-helper.present.tsv",
+      "size": 90640,
+      "sha256": "da8c9897cd090b6a82d4138d3ddf9c395cf26005d49ffd42e4a7968488e6c8b1"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-isolated-helper.stages.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-isolated-helper.stages.tsv",
+      "size": 142974,
+      "sha256": "3e582a42ce0e59db67d608cc958e67d9eea660f35aa3e08a17b06ec30bdcc9ab"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-clean.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-clean.json",
+      "size": 2762,
+      "sha256": "3ced90f5de3d1ceb11ed8a1a8dcc56d461bef544dc30f4418f095c63e0dc8cd1"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-clean.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-clean.log",
+      "size": 462862,
+      "sha256": "082724de487a9d7a0803abd23818de01e2e71fa6815bafdff3dcb90a7467a4c6"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-fixed-helper-r2.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-fixed-helper-r2.json",
+      "size": 2683,
+      "sha256": "ae5b477fe4781ce6a05688b91873ade6baf6ca51b9d394074c697ee5b80d9ce3"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-fixed-helper-r2.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-fixed-helper-r2.log",
+      "size": 228187,
+      "sha256": "51282ee2fb1f060b5cf2f35c276a8294194912cc67922a1ce835e33f6b8c6595"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-fixed-helper.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-fixed-helper.json",
+      "size": 928,
+      "sha256": "cddd0da8e559db6e449ee613221ac3865927aefdee098c72206f052c22f829d6"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-player-options.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-player-options.json",
+      "size": 2862,
+      "sha256": "31a01b7530478bd48aca65069c5afe2444ab67bfe92b22883b1c3dddfbd7f082"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-1080p60-player-options.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-1080p60-player-options.log",
+      "size": 482706,
+      "sha256": "eaa20e85ae6983e94ba1c519fa9bc786957d727aec920bd4176f85d3c86e1d59"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-4k30-fixed-helper.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-4k30-fixed-helper.json",
+      "size": 2796,
+      "sha256": "397555f048cbb2063dd42822ceb1d2b0c7e7e7ca0208a5d164c1eb4c4b04e0be"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-native-4k30-fixed-helper.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-native-4k30-fixed-helper.log",
+      "size": 276772,
+      "sha256": "742c9520d9a6e34a56d61b514c6e14a5d685f642d6df7a42a730b77f4e1c770c"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-shell-process.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-shell-process.txt",
+      "size": 45968,
+      "sha256": "1ea4aa2d489188db8b9ad0ce883ba7bad186966c41554021169b38b438905d76"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-stop-loop.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-stop-loop.log",
+      "size": 3342,
+      "sha256": "3944c7451b8abf2cfd3d1d43e78368641cbe08152fb20efe472e0bb280bcfca5"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-stop-loop.present.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-stop-loop.present.tsv",
+      "size": 90572,
+      "sha256": "2d5c50599347ea4aff9e96ef24e805c8590f6bb3b496b3fc8cf1ca8150c471bf"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/v42-stop-loop.stages.tsv",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/v42-stop-loop.stages.tsv",
+      "size": 142974,
+      "sha256": "0f3d4efd461057712a9a5d3b2d6457c048f0cf709915635eda563c55fd0bc910"
     },
     {
       "path": "evidence/gnome-wayland-20261119/app-gpu-maps.txt",
@@ -1582,8 +1960,8 @@
       "path": "tools/stage_atlasa1_gnome_wayland.sh",
       "kind": "source",
       "source": "mainline/tools/stage_atlasa1_gnome_wayland.sh",
-      "size": 816,
-      "sha256": "4c43ccb94d0da403b34b29bfff4287b639d1d50006f85742a80e500835ed34ac"
+      "size": 1397,
+      "sha256": "6794088ed27e451bb88304c2db3167179694e0c799245264caf8156f69b498f9"
     },
     {
       "path": "tools/validation/README.md",
@@ -1645,8 +2023,8 @@
       "path": "tools/validation/cedar_gnome_dmabuf_player.c",
       "kind": "source",
       "source": "mainline/tools/validation/cedar_gnome_dmabuf_player.c",
-      "size": 11664,
-      "sha256": "2646b870295a9da58496de354030ea12ba31ee3735931ee346367a4a7f9bef97"
+      "size": 13170,
+      "sha256": "23eed6e18e3367d9d7e3d4a4fd75d914906713b6bdd2e359d40f257a07f8fc4d"
     },
     {
       "path": "tools/validation/cedar_gpu_import.c",
@@ -1715,8 +2093,8 @@
       "path": "tools/validation/ffplay_wayland_present.c",
       "kind": "source",
       "source": "mainline/tools/validation/ffplay_wayland_present.c",
-      "size": 8519,
-      "sha256": "dbbf9637ddcf50b11bf13c997df4e22dff0aa71bc6959aa8909cc5e200d74854"
+      "size": 10353,
+      "sha256": "38eb8c4449b56311d05ab53dfa2d505031cdec850b16a25ea6d6b331bd43d38b"
     },
     {
       "path": "tools/validation/firefox_headless_playback.py",
@@ -1768,11 +2146,18 @@
       "sha256": "9b630cc383762347e43a1545700936375710123b43cdee771c2bbc3df40feb12"
     },
     {
+      "path": "tools/validation/run_gnome_display_trace.sh",
+      "kind": "source",
+      "source": "mainline/tools/validation/run_gnome_display_trace.sh",
+      "size": 1717,
+      "sha256": "e3d68c5ee8f6cd95d9fd3ae26ba156ebd5334fd62103fc54712c0570b27e8bd2"
+    },
+    {
       "path": "tools/validation/run_gnome_dmabuf_probe.sh",
       "kind": "source",
       "source": "mainline/tools/validation/run_gnome_dmabuf_probe.sh",
-      "size": 2256,
-      "sha256": "96dcb964606fc872e34d86bb0911d1531e9aace8082c1d170b8f29293da6db97"
+      "size": 2455,
+      "sha256": "beb4b574a7132048330a442b9be3b3601ea123f975c1af99ddad6836fba79ed3"
     },
     {
       "path": "tools/validation/sdl_packed_yuv.c",
@@ -1794,6 +2179,13 @@
       "source": "mainline/tools/validation/sdl_texture_ring.c",
       "size": 4188,
       "sha256": "f7bdebcbf14852e90f7ef1ccef25ccdbf67a4ab0aead5ef9b68a268c85562332"
+    },
+    {
+      "path": "tools/validation/summarize_dmabuf_timing.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/summarize_dmabuf_timing.py",
+      "size": 1471,
+      "sha256": "0e72f5f275ec5833cecd73e226730de2caf9f9b882dfaa5332c1f47f5c25feb9"
     },
     {
       "path": "tools/validation/update_t736_media_v29.py",

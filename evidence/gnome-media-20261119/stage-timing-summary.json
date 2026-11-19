@@ -1,0 +1,240 @@
+{
+  "scope": "Diagnostic CPU timing only; displayed frames are reported by wp_presentation",
+  "results": [
+    {
+      "file": "v40-timing-baseline.tsv",
+      "frames": 1500,
+      "stages": {
+        "fence_and_pull": {
+          "mean_ms": 0.7493220846666666,
+          "p50_ms": 0.392484,
+          "p95_ms": 0.601812,
+          "p99_ms": 3.16958,
+          "max_ms": 450.851406,
+          "over_10ms": 1
+        },
+        "import": {
+          "mean_ms": 0.2627634126666667,
+          "p50_ms": 0.062938,
+          "p95_ms": 0.090262,
+          "p99_ms": 0.142314,
+          "max_ms": 52.063696,
+          "over_10ms": 12
+        },
+        "draw": {
+          "mean_ms": 0.686076768,
+          "p50_ms": 0.577945,
+          "p95_ms": 0.837677,
+          "p99_ms": 4.873106,
+          "max_ms": 31.570006,
+          "over_10ms": 2
+        },
+        "deadline_lateness": {
+          "mean_ms": 2.3411768913333333,
+          "p50_ms": 0.075978,
+          "p95_ms": 2.795013,
+          "p99_ms": 72.146382,
+          "max_ms": 201.692343,
+          "over_10ms": 46
+        },
+        "trace_and_swap": {
+          "mean_ms": 2.3943920486666666,
+          "p50_ms": 0.707475,
+          "p95_ms": 12.700987,
+          "p99_ms": 21.081,
+          "max_ms": 217.016292,
+          "over_10ms": 115
+        }
+      },
+      "scope": "CPU stage durations; use wp_presentation for displayed frames"
+    },
+    {
+      "file": "v40-timing-vsync-unpaced.tsv",
+      "frames": 1500,
+      "stages": {
+        "fence_and_pull": {
+          "mean_ms": 0.521715304,
+          "p50_ms": 0.37365,
+          "p95_ms": 0.484074,
+          "p99_ms": 0.560495,
+          "max_ms": 275.970149,
+          "over_10ms": 1
+        },
+        "import": {
+          "mean_ms": 0.242803172,
+          "p50_ms": 0.07038,
+          "p95_ms": 0.084089,
+          "p99_ms": 0.130217,
+          "max_ms": 22.242531,
+          "over_10ms": 12
+        },
+        "draw": {
+          "mean_ms": 0.610764252,
+          "p50_ms": 0.637625,
+          "p95_ms": 0.778009,
+          "p99_ms": 0.882975,
+          "max_ms": 20.208936,
+          "over_10ms": 1
+        },
+        "deadline_lateness": {
+          "mean_ms": 1782.78538504,
+          "p50_ms": 1745.990214,
+          "p95_ms": 3494.464653,
+          "p99_ms": 3649.938455,
+          "max_ms": 3707.976018,
+          "over_10ms": 1498
+        },
+        "trace_and_swap": {
+          "mean_ms": 17.926104141333333,
+          "p50_ms": 15.431794,
+          "p95_ms": 48.082927,
+          "p99_ms": 50.484986,
+          "max_ms": 51.387265,
+          "over_10ms": 1259
+        }
+      },
+      "scope": "CPU stage durations; use wp_presentation for displayed frames"
+    },
+    {
+      "file": "v41-timing-baseline.tsv",
+      "frames": 1500,
+      "stages": {
+        "fence_and_pull": {
+          "mean_ms": 0.6733133206666667,
+          "p50_ms": 0.421291,
+          "p95_ms": 0.754458,
+          "p99_ms": 3.819666,
+          "max_ms": 263.247833,
+          "over_10ms": 1
+        },
+        "import": {
+          "mean_ms": 0.07228527866666666,
+          "p50_ms": 0.062042,
+          "p95_ms": 0.089958,
+          "p99_ms": 0.148333,
+          "max_ms": 1.166125,
+          "over_10ms": 0
+        },
+        "draw": {
+          "mean_ms": 0.7991632606666667,
+          "p50_ms": 0.615292,
+          "p95_ms": 0.99125,
+          "p99_ms": 7.023083,
+          "max_ms": 30.448708,
+          "over_10ms": 4
+        },
+        "deadline_lateness": {
+          "mean_ms": 3.3557890313333334,
+          "p50_ms": 0.080718,
+          "p95_ms": 4.989339,
+          "p99_ms": 108.300716,
+          "max_ms": 254.249674,
+          "over_10ms": 50
+        },
+        "trace_and_swap": {
+          "mean_ms": 2.7448154746666664,
+          "p50_ms": 0.732875,
+          "p95_ms": 15.425458,
+          "p99_ms": 22.364417,
+          "max_ms": 268.500458,
+          "over_10ms": 122
+        }
+      },
+      "scope": "CPU stage durations; use wp_presentation for displayed frames"
+    },
+    {
+      "file": "v41-timing-warm.tsv",
+      "frames": 1500,
+      "stages": {
+        "fence_and_pull": {
+          "mean_ms": 0.49688208133333334,
+          "p50_ms": 0.362969,
+          "p95_ms": 0.488717,
+          "p99_ms": 0.712368,
+          "max_ms": 202.957405,
+          "over_10ms": 1
+        },
+        "import": {
+          "mean_ms": 0.06476248,
+          "p50_ms": 0.058251,
+          "p95_ms": 0.077484,
+          "p99_ms": 0.12178,
+          "max_ms": 1.075656,
+          "over_10ms": 0
+        },
+        "draw": {
+          "mean_ms": 0.5996553306666667,
+          "p50_ms": 0.557377,
+          "p95_ms": 0.748319,
+          "p99_ms": 1.172093,
+          "max_ms": 14.347387,
+          "over_10ms": 1
+        },
+        "deadline_lateness": {
+          "mean_ms": 0.40219499466666664,
+          "p50_ms": 0.069457,
+          "p95_ms": 0.11907,
+          "p99_ms": 8.853039,
+          "max_ms": 48.225346,
+          "over_10ms": 11
+        },
+        "trace_and_swap": {
+          "mean_ms": 2.339159614,
+          "p50_ms": 0.670415,
+          "p95_ms": 14.14982,
+          "p99_ms": 22.09918,
+          "max_ms": 63.487908,
+          "over_10ms": 127
+        }
+      },
+      "scope": "CPU stage durations; use wp_presentation for displayed frames"
+    },
+    {
+      "file": "v41-present-stages.tsv",
+      "frames": 1500,
+      "stages": {
+        "fence_and_pull": {
+          "mean_ms": 0.5718063573333333,
+          "p50_ms": 0.370725,
+          "p95_ms": 0.51518,
+          "p99_ms": 0.712018,
+          "max_ms": 278.968353,
+          "over_10ms": 1
+        },
+        "import": {
+          "mean_ms": 0.06609029333333333,
+          "p50_ms": 0.059661,
+          "p95_ms": 0.080876,
+          "p99_ms": 0.124477,
+          "max_ms": 1.055618,
+          "over_10ms": 0
+        },
+        "draw": {
+          "mean_ms": 0.6430576586666666,
+          "p50_ms": 0.564485,
+          "p95_ms": 0.762723,
+          "p99_ms": 1.377537,
+          "max_ms": 37.334372,
+          "over_10ms": 5
+        },
+        "deadline_lateness": {
+          "mean_ms": 0.6342711066666666,
+          "p50_ms": 0.079482,
+          "p95_ms": 1.325723,
+          "p99_ms": 10.047559,
+          "max_ms": 60.505006,
+          "over_10ms": 16
+        },
+        "trace_and_swap": {
+          "mean_ms": 2.49982342,
+          "p50_ms": 0.681731,
+          "p95_ms": 15.018998,
+          "p99_ms": 22.306984,
+          "max_ms": 75.825159,
+          "over_10ms": 125
+        }
+      },
+      "scope": "CPU stage durations; use wp_presentation for displayed frames"
+    }
+  ]
+}

@@ -21,11 +21,17 @@ static struct wl_event_queue *queue;
 static struct wl_registry *registry;
 static struct wl_surface *surface;
 static struct wp_presentation *presentation;
+static uint32_t presentation_clock = UINT32_MAX;
 static int initialized, new_frame;
 static unsigned requested, shown, discarded, flags_seen, over25, over40;
 static uint64_t first, last, maximum;
 static uint64_t uploads[16384], presents[16384];
 static unsigned upload_count, present_count;
+static struct feedback_timing {
+    uint64_t requested_ns, callback_ns, presented_ns, sequence;
+    uint32_t refresh_ns, flags;
+    int result; /* 0 pending, 1 presented, 2 discarded */
+} feedback_times[16384];
 static _Thread_local uint64_t poll_max, sleep_max;
 static _Thread_local unsigned poll_slow, sleep_slow;
 
@@ -68,12 +74,18 @@ int av_usleep(unsigned usec)
     return result;
 }
 
+static void clock_id(void *data, struct wp_presentation *object, uint32_t id)
+{ (void)data; (void)object; presentation_clock = id; }
+static const struct wp_presentation_listener presentation_listener = {clock_id};
+
 static void global(void *data, struct wl_registry *reg, uint32_t name,
                    const char *interface, uint32_t version)
 {
     (void)data; (void)version;
-    if (!strcmp(interface, "wp_presentation"))
+    if (!strcmp(interface, "wp_presentation")) {
         presentation = wl_registry_bind(reg, name, &wp_presentation_interface, 1);
+        wp_presentation_add_listener(presentation, &presentation_listener, NULL);
+    }
 }
 static void removed(void *data, struct wl_registry *reg, uint32_t name)
 { (void)data; (void)reg; (void)name; }
@@ -85,8 +97,13 @@ static void presented(void *data, struct wp_presentation_feedback *f,
                       uint32_t hi, uint32_t lo, uint32_t ns, uint32_t refresh,
                       uint32_t seq_hi, uint32_t seq_lo, uint32_t flags)
 {
-    (void)data; (void)refresh; (void)seq_hi; (void)seq_lo;
     uint64_t stamp = (((uint64_t)hi << 32) | lo) * 1000000000ULL + ns;
+    struct feedback_timing *timing = data;
+    if (timing) {
+        timing->callback_ns = monotonic_ns(); timing->presented_ns = stamp;
+        timing->sequence = ((uint64_t)seq_hi << 32) | seq_lo;
+        timing->refresh_ns = refresh; timing->flags = flags; timing->result = 1;
+    }
     if (!shown) first = stamp;
     else if (stamp >= last) {
         uint64_t gap = stamp - last;
@@ -101,13 +118,24 @@ static void presented(void *data, struct wp_presentation_feedback *f,
 }
 static void dropped(void *data, struct wp_presentation_feedback *f)
 {
-    (void)data;
+    struct feedback_timing *timing = data;
+    if (timing) { timing->callback_ns = monotonic_ns(); timing->result = 2; }
     discarded++;
     wp_presentation_feedback_destroy(f);
 }
 static const struct wp_presentation_feedback_listener feedback_listener = {
     sync_output, presented, dropped
 };
+
+static void request_feedback(void)
+{
+    wl_display_dispatch_queue_pending(display, queue);
+    struct wp_presentation_feedback *feedback = wp_presentation_feedback(presentation, surface);
+    struct feedback_timing *timing = requested < 16384 ? &feedback_times[requested] : NULL;
+    if (timing) timing->requested_ns = monotonic_ns();
+    wp_presentation_feedback_add_listener(feedback, &feedback_listener, timing);
+    requested++;
+}
 
 static void setup_window(SDL_Window *window)
 {
@@ -139,12 +167,7 @@ static void setup_window(SDL_Window *window)
 void atlas_wayland_frame(SDL_Window *window)
 {
     setup_window(window);
-    if (presentation) {
-        wl_display_dispatch_queue_pending(display, queue);
-        struct wp_presentation_feedback *feedback = wp_presentation_feedback(presentation, surface);
-        wp_presentation_feedback_add_listener(feedback, &feedback_listener, NULL);
-        requested++;
-    }
+    if (presentation) request_feedback();
 }
 
 int SDL_UpdateYUVTexture(SDL_Texture *texture, const SDL_Rect *rect,
@@ -166,12 +189,7 @@ void SDL_RenderPresent(SDL_Renderer *renderer)
     if (!real) abort();
     SDL_Window *(*get_window)(SDL_Renderer *) = dlsym(RTLD_NEXT, "SDL_RenderGetWindow");
     if (get_window) setup_window(get_window(renderer));
-    if (presentation && new_frame) {
-        wl_display_dispatch_queue_pending(display, queue);
-        struct wp_presentation_feedback *feedback = wp_presentation_feedback(presentation, surface);
-        wp_presentation_feedback_add_listener(feedback, &feedback_listener, NULL);
-        requested++;
-    }
+    if (presentation && new_frame) request_feedback();
     new_frame = 0;
     uint64_t start = monotonic_ns();
     real(renderer);
@@ -203,6 +221,24 @@ void atlas_wayland_finish(void)
                 requested, shown, discarded, (last-first)/1e6,
                 shown>1 && last>first ? (shown-1)*1e9/(last-first) : 0,
                 maximum/1e6, over25, over40, flags_seen);
+        const char *path = getenv("ATLAS_PRESENT_TIMING");
+        if (path) {
+            fprintf(stderr, "ATLAS_WAYLAND_CLOCK presentation=%u request=%d\n",
+                    presentation_clock, CLOCK_MONOTONIC);
+            FILE *out = fopen(path, "wx");
+            if (!out) perror("presentation timing");
+            else {
+                fputs("frame\trequested_ns\tcallback_ns\tpresented_ns\tsequence\trefresh_ns\tflags\tresult\n", out);
+                for (unsigned i = 0; i < requested && i < 16384; i++) {
+                    struct feedback_timing *t = &feedback_times[i];
+                    fprintf(out, "%u\t%llu\t%llu\t%llu\t%llu\t%u\t%u\t%d\n", i,
+                            (unsigned long long)t->requested_ns, (unsigned long long)t->callback_ns,
+                            (unsigned long long)t->presented_ns, (unsigned long long)t->sequence,
+                            t->refresh_ns, t->flags, t->result);
+                }
+                fclose(out);
+            }
+        }
         wp_presentation_destroy(presentation);
         presentation = NULL;
     }

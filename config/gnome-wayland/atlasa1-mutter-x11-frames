@@ -1,0 +1,8 @@
+#!/bin/sh
+# The Xwayland decoration helper must not inherit the session's forced GLES
+# renderer. GTK's GL path crashes here with this vendor DDK and Mutter respawns
+# it continuously. Cairo affects window decorations only, not desktop/video GL.
+export GSK_RENDERER=cairo
+export GDK_DISABLE=gl,vulkan
+unset LD_LIBRARY_PATH LIBGL_DRIVERS_PATH COGL_DRIVER
+exec /usr/libexec/mutter-x11-frames.atlasa1-real "$@"

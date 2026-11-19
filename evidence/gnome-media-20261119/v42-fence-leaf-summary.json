@@ -1,0 +1,23 @@
+{
+  "scope": "Leaf-call durations from function_graph; nested calls require separate parsing",
+  "functions": {
+    "drm_atomic_helper_wait_for_fences": {
+      "leaf_samples": 1298,
+      "p50_us": 8.042,
+      "p95_us": 12.875,
+      "max_us": 23.25
+    },
+    "drm_atomic_helper_wait_for_dependencies": {
+      "leaf_samples": 1298,
+      "p50_us": 3.167,
+      "p95_us": 4.208,
+      "max_us": 8.834
+    },
+    "sunxi_drm_atomic_helper_commit": {
+      "leaf_samples": 1075,
+      "p50_us": 154.167,
+      "p95_us": 1670.291,
+      "max_us": 2552.917
+    }
+  }
+}

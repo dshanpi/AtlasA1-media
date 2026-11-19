@@ -27,6 +27,7 @@ extern unsigned eglGetError(void);
 extern void *eglGetProcAddress(const char *);
 static struct entry { dev_t dev;ino_t ino;int fd,w,h,strides[3];size_t offsets[3];GLuint texture;EGLImage image; } cache[64];
 static unsigned cached;
+static struct frame_timing {uint64_t begin,pulled,imported,drawn,deadline,swap_begin,swap_end;} timing[16384];
 static EGLImage(*create_image)(EGLDisplay,void *,unsigned,void *,const int *);
 static unsigned(*destroy_image)(EGLDisplay,EGLImage);
 static void(*image_target)(GLenum,void *);
@@ -87,7 +88,11 @@ int main(int argc,char **argv)
     SDL_Window *window=SDL_CreateWindow("AtlasA1 DMA-BUF playback diagnostic",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1920,1080,SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN_DESKTOP);
     SDL_GLContext context=window?SDL_GL_CreateContext(window):NULL;
     if(!context){fprintf(stderr,"SDL context %s\n",SDL_GetError());return 1;}
-    SDL_ShowCursor(SDL_DISABLE);SDL_GL_SetSwapInterval(0);
+    int vsync=getenv("ATLAS_DMA_VSYNC") && !strcmp(getenv("ATLAS_DMA_VSYNC"),"1");
+    int unpaced=getenv("ATLAS_DMA_UNPACED") && !strcmp(getenv("ATLAS_DMA_UNPACED"),"1");
+    SDL_ShowCursor(SDL_DISABLE);
+    if(SDL_GL_SetSwapInterval(vsync)){fprintf(stderr,"swap interval: %s\n",SDL_GetError());return 1;}
+    printf("DMA_PACING vsync=%d unpaced=%d\n",vsync,unpaced);
     const char *gpu=(const char *)glGetString(GL_RENDERER);printf("GPU=%s\n",gpu?gpu:"null");
     if(!gpu || !strstr(gpu,"PowerVR"))return 1;
     EGLDisplay display=eglGetCurrentDisplay();create_image=eglGetProcAddress("eglCreateImageKHR");destroy_image=eglGetProcAddress("eglDestroyImageKHR");image_target=eglGetProcAddress("glEGLImageTargetTexture2DOES");
@@ -115,6 +120,7 @@ int main(int argc,char **argv)
     int failed=0;unsigned frames=0;uint64_t start=0,first_pts=0,last_pts=0,max_late=0,draw_ns=0;
     if(gst_element_set_state(pipeline,GST_STATE_PLAYING)==GST_STATE_CHANGE_FAILURE)failed=1;
     while(!failed){
+        uint64_t frame_begin=now_ns();
         unsigned pending_slot=frames%3;
         if(pending[pending_slot].sample){
             if(wait_sync(display,pending[pending_slot].fence,1,1000000000ULL)!=0x30f6){failed=1;break;}
@@ -122,9 +128,11 @@ int main(int argc,char **argv)
             gst_sample_unref(pending[pending_slot].sample);pending[pending_slot].sample=NULL;
         }
         GstSample *sample=gst_app_sink_try_pull_sample(GST_APP_SINK(sink),10*GST_SECOND);
+        uint64_t frame_pulled=now_ns();
         if(!sample){if(!gst_app_sink_is_eos(GST_APP_SINK(sink)))failed=1;break;}
         GstBuffer *b=gst_sample_get_buffer(sample);uint64_t pts=GST_BUFFER_PTS(b);
         int visible_w,visible_h;struct entry *e=import_sample(display,sample,&visible_w,&visible_h);
+        uint64_t frame_imported=now_ns();
         if(!e || pts==GST_CLOCK_TIME_NONE || (frames && pts<last_pts)){gst_sample_unref(sample);failed=1;break;}
         int w,h;SDL_GL_GetDrawableSize(window,&w,&h);glViewport(0,0,w,h);
         glBindTexture(0x8d65,e->texture);glUniform2f(glGetUniformLocation(program,"scale"),(float)visible_w/e->w,(float)visible_h/e->h);
@@ -138,15 +146,31 @@ int main(int argc,char **argv)
         if(glGetError()){glFinish();if(!async)gst_sample_unref(sample);failed=1;break;}
         /* Decoder cannot recycle this frame until all GPU reads have completed. */
         if(!async)gst_sample_unref(sample);
+        uint64_t frame_drawn=now_ns();
         if(!frames){start=now_ns();first_pts=pts;}
         uint64_t deadline=start+pts-first_pts;
         struct timespec ts={(time_t)(deadline/1000000000ULL),(long)(deadline%1000000000ULL)};
-        clock_nanosleep(CLOCK_MONOTONIC,TIMER_ABSTIME,&ts,NULL);
+        if(!unpaced)clock_nanosleep(CLOCK_MONOTONIC,TIMER_ABSTIME,&ts,NULL);
         uint64_t stamp=now_ns();if(stamp>deadline && stamp-deadline>max_late)max_late=stamp-deadline;
-        trace(window);SDL_GL_SwapWindow(window);frames++;last_pts=pts;
+        trace(window);SDL_GL_SwapWindow(window);
+        if(frames<16384)timing[frames]=(struct frame_timing){frame_begin,frame_pulled,frame_imported,frame_drawn,deadline,stamp,now_ns()};
+        frames++;last_pts=pts;
         SDL_Event event;while(SDL_PollEvent(&event))if(event.type==SDL_QUIT || (event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_ESCAPE))failed=1;
     }
     uint64_t end=now_ns();finish_trace();glFinish();
+    const char *timing_path=getenv("ATLAS_DMA_TIMING");
+    if(timing_path){
+        FILE *out=fopen(timing_path,"wx");
+        if(!out){perror("timing output");failed=1;}
+        else{
+            fputs("frame\tbegin_ns\tpulled_ns\timported_ns\tdrawn_ns\tdeadline_ns\tswap_begin_ns\tswap_end_ns\n",out);
+            for(unsigned i=0;i<frames && i<16384;i++){
+                struct frame_timing *t=&timing[i];
+                fprintf(out,"%u\t%llu\t%llu\t%llu\t%llu\t%llu\t%llu\t%llu\n",i,(unsigned long long)t->begin,(unsigned long long)t->pulled,(unsigned long long)t->imported,(unsigned long long)t->drawn,(unsigned long long)t->deadline,(unsigned long long)t->swap_begin,(unsigned long long)t->swap_end);
+            }
+            fclose(out);
+        }
+    }
     for(unsigned i=0;i<3;i++)if(pending[i].sample){destroy_sync(display,pending[i].fence);gst_sample_unref(pending[i].sample);}
     printf("DMA_PLAYER frames=%u elapsed_ms=%.3f pts_span_ms=%.3f submit_mean_ms=%.3f max_late_ms=%.3f imports=%u cpu_frame_copies=0 audio=none async=%d failed=%d\n",frames,start?(end-start)/1e6:0.,frames?(last_pts-first_pts)/1e6:0.,frames?draw_ns/1e6/frames:0.,max_late/1e6,cached,async,failed);
     for(unsigned i=0;i<cached;i++){glDeleteTextures(1,&cache[i].texture);destroy_image(display,cache[i].image);close(cache[i].fd);}

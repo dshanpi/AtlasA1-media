@@ -1,0 +1,115 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-gnome-v42",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": true,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": true,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "dummy",
+  "presentation_metric": "wp_presentation compositor feedback with hardware timing flags",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "duration": "25.000000",
+    "nb_frames": "750",
+    "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "player_log": "/var/tmp/atlasa1-gnome-media-20261119/v42-native-4k30-fixed-helper.log",
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "av_offset_p95_seconds": 0.038,
+  "sdl_present": {
+    "frames": 750,
+    "span_ms": 24612.633,
+    "gap_p95_ms": 34.434,
+    "gap_max_ms": 55.569
+  },
+  "texture_upload": {
+    "mean_ms": 6.77,
+    "through_present_mean_ms": 8.012
+  },
+  "exit_status": 0,
+  "wall_seconds": 26.697,
+  "irq_delta": 750,
+  "frames_at_player_filter": 750,
+  "player_drops": 0,
+  "final_clock": 24.98,
+  "broker": [
+    "CEDAR_BROKER: open session=4 codec=2 3840x2160",
+    "CEDAR_BROKER: close session=4 submitted=4346 delivered=4337",
+    "CEDAR_BROKER: open session=5 codec=2 3840x2160",
+    "CEDAR_BROKER: hardware frames=4500 session=5 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=4800 session=5 visible=1920x1080",
+    "CEDAR_BROKER: close session=5 submitted=5096 delivered=5087"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": true,
+    "all_frames": true,
+    "zero_player_drops": true,
+    "clock_reached_end": true,
+    "realtime_wall": true,
+    "decoder_path": true,
+    "pvr_loaded": true,
+    "full_source_session": true,
+    "omx_fit_geometry": true,
+    "audio_video_sync": true,
+    "presented_every_frame": true,
+    "p95_presentation_gap": true,
+    "wayland_feedback_received": true,
+    "wayland_every_frame": false,
+    "wayland_hw_timing": true
+  },
+  "status": "not_verified",
+  "sdl_stage_timings_ms": {
+    "upload_p95": 7.833,
+    "upload_max": 15.545,
+    "present_p95": 0.93,
+    "present_max": 13.678
+  },
+  "sdl_event_timings": {
+    "poll_max_ms": 0.272,
+    "poll_over_20ms": 0,
+    "sleep_max_ms": 10.099,
+    "sleep_over_20ms": 0
+  },
+  "wp_presentation": {
+    "requested": 750,
+    "shown": 747,
+    "discarded": 3,
+    "span_ms": 24539.252,
+    "fps": 30.4,
+    "max_gap_ms": 83.695,
+    "gaps_over_25ms": 702,
+    "gaps_over_40ms": 16,
+    "flags": 7
+  }
+}

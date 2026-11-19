@@ -1,0 +1,72 @@
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu0/stats
+entries: 11111
+overrun: 0
+commit overrun: 0
+bytes: 444144
+oldest event ts:   314.756828
+now ts:   341.123590
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu1/stats
+entries: 2825
+overrun: 0
+commit overrun: 0
+bytes: 115032
+oldest event ts:   315.309955
+now ts:   341.138366
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu2/stats
+entries: 3027
+overrun: 0
+commit overrun: 0
+bytes: 124164
+oldest event ts:   315.312097
+now ts:   341.153210
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu3/stats
+entries: 2841
+overrun: 0
+commit overrun: 0
+bytes: 116184
+oldest event ts:   315.243999
+now ts:   341.168550
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu4/stats
+entries: 2628
+overrun: 0
+commit overrun: 0
+bytes: 107244
+oldest event ts:   315.229478
+now ts:   341.184418
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu5/stats
+entries: 2363
+overrun: 0
+commit overrun: 0
+bytes: 96184
+oldest event ts:   315.229549
+now ts:   341.200652
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu6/stats
+entries: 2190
+overrun: 0
+commit overrun: 0
+bytes: 89916
+oldest event ts:   315.258275
+now ts:   341.217027
+dropped events: 0
+read events: 0
+/sys/kernel/tracing/instances/atlasa1-media-15747/per_cpu/cpu7/stats
+entries: 2631
+overrun: 0
+commit overrun: 0
+bytes: 107656
+oldest event ts:   315.360115
+now ts:   341.233031
+dropped events: 0
+read events: 0

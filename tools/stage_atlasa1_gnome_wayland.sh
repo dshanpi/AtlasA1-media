@@ -14,3 +14,17 @@ install -Dm644 "$profile/61-atlasa1-gnome.rules" "$root/etc/udev/rules.d/61-atla
 install -Dm644 "$profile/50-atlasa1-wayland.conf" "$root/etc/systemd/user/org.gnome.Shell@.service.d/50-atlasa1-wayland.conf"
 install -Dm755 "$profile/atlasa1-gnome-session" "$root/usr/local/bin/atlasa1-gnome-session"
 install -Dm644 "$profile/atlasa1-gnome.desktop" "$root/usr/share/wayland-sessions/atlasa1-gnome.desktop"
+
+# Keep the package-owned helper upgradeable behind a narrowly scoped wrapper.
+helper=/usr/libexec/mutter-x11-frames
+real=$helper.atlasa1-real
+test -x "$root$helper"
+owner=$(dpkg-divert --root "$root" --listpackage "$helper")
+if [[ -z $owner ]]; then
+    dpkg-divert --root "$root" --local --add --rename --divert "$real" "$helper"
+elif [[ $owner != LOCAL || $(dpkg-divert --root "$root" --truename "$helper") != "$real" ]]; then
+    echo "Conflicting diversion for $helper" >&2
+    exit 1
+fi
+test -x "$root$real"
+install -Dm755 "$profile/atlasa1-mutter-x11-frames" "$root$helper"

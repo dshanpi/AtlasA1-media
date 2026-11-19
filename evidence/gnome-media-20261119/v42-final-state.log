@@ -1,0 +1,26 @@
+6.18.63-t736-gnome-v42
+   4220     346 mutter-x11-fram /usr/libexec/mutter-x11-frames.atlasa1-real
+Driver Status:   OK
+
+Device ID: 0:128
+Firmware Status: OK
+Server Errors:   0
+HWR Event Count: 0
+CRR Event Count: 0
+SLR Event Count: 0
+WGP Error Count: 0
+TRP Error Count: 0
+FWF Event Count: 0
+APM Event Count: 0
+GPU Utilisation: 18%
+DM Utilisation:  VM0
+           2D:   0% 
+         GEOM:   1% 
+           3D:  18% 
+          CDM:   0% 
+          RAY:   0% 
+        GEOM2:   0% 
+active
+pid 3541's current affinity list: 0-7
+vmlinuz-6.18.63-t736-media-v30
+uInitrd-6.18.63-t736-media-v30

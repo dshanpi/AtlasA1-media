@@ -1,0 +1,271 @@
+3539  1795093290.701981 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17034, si_uid=1000, si_status=SIGSEGV, si_utime=4 /* 0.04 s */, si_stime=6 /* 0.06 s */} ---
+3543  1795093290.702283 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17034, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000086>
+3539  1795093290.706986 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17045 <0.007897>
+17045 1795093290.717934 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.019561>
+17045 1795093290.878568 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9fa51d88, parent_tid=0xffff9fa51a30, exit_signal=0, stack=0xffff9f243000, stack_size=0x80e240, tls=0xffff9fa52080} => {parent_tid=[17052]}, 88) = 17052 <0.000163>
+17045 1795093290.879753 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9f241d88, parent_tid=0xffff9f241a30, exit_signal=0, stack=0xffff9ea33000, stack_size=0x80e240, tls=0xffff9f242080} => {parent_tid=[17053]}, 88) = 17053 <0.000141>
+17045 1795093290.889245 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9ea31d88, parent_tid=0xffff9ea31a30, exit_signal=0, stack=0xffff9e223000, stack_size=0x80e240, tls=0xffff9ea32080} => {parent_tid=[17054]}, 88) = 17054 <0.000146>
+17045 1795093290.910034 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9e221d88, parent_tid=0xffff9e221a30, exit_signal=0, stack=0xffff9da13000, stack_size=0x80e240, tls=0xffff9e222080} => {parent_tid=[17055]}, 88) = 17055 <0.000169>
+17045 1795093290.936019 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17055 1795093290.936186 ???( <unfinished ...>
+17055 1795093290.936313 +++ killed by SIGSEGV +++
+17054 1795093290.936366 +++ killed by SIGSEGV +++
+17053 1795093290.936401 +++ killed by SIGSEGV +++
+17052 1795093290.944960 +++ killed by SIGSEGV +++
+17045 1795093290.945082 +++ killed by SIGSEGV +++
+3539  1795093290.945230 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17045, si_uid=1000, si_status=SIGSEGV, si_utime=7 /* 0.07 s */, si_stime=6 /* 0.06 s */} ---
+3543  1795093290.945376 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17045, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000078>
+3539  1795093290.946815 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17056 <0.014423>
+17056 1795093290.963731 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018531>
+17056 1795093291.205237 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9f191d88, parent_tid=0xffff9f191a30, exit_signal=0, stack=0xffff9e983000, stack_size=0x80e240, tls=0xffff9f192080} => {parent_tid=[17057]}, 88) = 17057 <0.000162>
+17056 1795093291.206295 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9e981d88, parent_tid=0xffff9e981a30, exit_signal=0, stack=0xffff9e173000, stack_size=0x80e240, tls=0xffff9e982080} => {parent_tid=[17058]}, 88) = 17058 <0.000111>
+17056 1795093291.215658 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9e171d88, parent_tid=0xffff9e171a30, exit_signal=0, stack=0xffff9d963000, stack_size=0x80e240, tls=0xffff9e172080} => {parent_tid=[17059]}, 88) = 17059 <0.000150>
+17056 1795093291.233181 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9d961d88, parent_tid=0xffff9d961a30, exit_signal=0, stack=0xffff9d153000, stack_size=0x80e240, tls=0xffff9d962080} => {parent_tid=[17060]}, 88) = 17060 <0.000126>
+17056 1795093291.263458 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17060 1795093291.263780 +++ killed by SIGSEGV +++
+17059 1795093291.263859 +++ killed by SIGSEGV +++
+17057 1795093291.263897 +++ killed by SIGSEGV +++
+17058 1795093291.272917 +++ killed by SIGSEGV +++
+17056 1795093291.272992 +++ killed by SIGSEGV +++
+3539  1795093291.273115 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17056, si_uid=1000, si_status=SIGSEGV, si_utime=10 /* 0.10 s */, si_stime=11 /* 0.11 s */} ---
+3543  1795093291.273309 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17056, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000124>
+3539  1795093291.274754 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17061 <0.007756>
+17061 1795093291.284947 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018889>
+17061 1795093291.521988 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffafa41d88, parent_tid=0xffffafa41a30, exit_signal=0, stack=0xffffaf233000, stack_size=0x80e240, tls=0xffffafa42080} => {parent_tid=[17062]}, 88) = 17062 <0.000164>
+17061 1795093291.523103 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaf231d88, parent_tid=0xffffaf231a30, exit_signal=0, stack=0xffffaea23000, stack_size=0x80e240, tls=0xffffaf232080} => {parent_tid=[17063]}, 88) = 17063 <0.000133>
+17061 1795093291.532510 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaea21d88, parent_tid=0xffffaea21a30, exit_signal=0, stack=0xffffae213000, stack_size=0x80e240, tls=0xffffaea22080} => {parent_tid=[17064]}, 88) = 17064 <0.000153>
+17061 1795093291.550123 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffae211d88, parent_tid=0xffffae211a30, exit_signal=0, stack=0xffffada03000, stack_size=0x80e240, tls=0xffffae212080} => {parent_tid=[17065]}, 88) = 17065 <0.000120>
+17061 1795093291.567890 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17065 1795093291.568088 +++ killed by SIGSEGV +++
+17064 1795093291.568115 +++ killed by SIGSEGV +++
+17063 1795093291.568127 +++ killed by SIGSEGV +++
+17062 1795093291.576740 +++ killed by SIGSEGV +++
+17061 1795093291.576787 +++ killed by SIGSEGV +++
+3539  1795093291.576854 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17061, si_uid=1000, si_status=SIGSEGV, si_utime=6 /* 0.06 s */, si_stime=12 /* 0.12 s */} ---
+3543  1795093291.576953 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17061, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000099>
+3539  1795093291.578280 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17066 <0.014545>
+17066 1795093291.595269 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018266>
+17066 1795093291.829855 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa80b1d88, parent_tid=0xffffa80b1a30, exit_signal=0, stack=0xffffa78a3000, stack_size=0x80e240, tls=0xffffa80b2080} => {parent_tid=[17067]}, 88) = 17067 <0.000163>
+17066 1795093291.830961 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa78a1d88, parent_tid=0xffffa78a1a30, exit_signal=0, stack=0xffffa7093000, stack_size=0x80e240, tls=0xffffa78a2080} => {parent_tid=[17068]}, 88) = 17068 <0.000130>
+17066 1795093291.840392 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa7091d88, parent_tid=0xffffa7091a30, exit_signal=0, stack=0xffffa6883000, stack_size=0x80e240, tls=0xffffa7092080} => {parent_tid=[17069]}, 88) = 17069 <0.000150>
+17066 1795093291.860502 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa6881d88, parent_tid=0xffffa6881a30, exit_signal=0, stack=0xffffa6073000, stack_size=0x80e240, tls=0xffffa6882080} => {parent_tid=[17070]}, 88) = 17070 <0.000171>
+17066 1795093291.890621 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17070 1795093291.890939 +++ killed by SIGSEGV +++
+17068 1795093291.891009 +++ killed by SIGSEGV +++
+17067 1795093291.891046 +++ killed by SIGSEGV +++
+17069 1795093291.899540 +++ killed by SIGSEGV +++
+17066 1795093291.899685 +++ killed by SIGSEGV +++
+3545  1795093291.899857 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17066, si_uid=1000, si_status=SIGSEGV, si_utime=8 /* 0.08 s */, si_stime=12 /* 0.12 s */} ---
+3543  1795093291.900130 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17066, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000126>
+3539  1795093291.901568 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17071 <0.014385>
+17071 1795093291.918307 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018782>
+17071 1795093292.156591 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff94511d88, parent_tid=0xffff94511a30, exit_signal=0, stack=0xffff93d03000, stack_size=0x80e240, tls=0xffff94512080} => {parent_tid=[17072]}, 88) = 17072 <0.000146>
+17071 1795093292.157668 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff93d01d88, parent_tid=0xffff93d01a30, exit_signal=0, stack=0xffff934f3000, stack_size=0x80e240, tls=0xffff93d02080} => {parent_tid=[17073]}, 88) = 17073 <0.000087>
+17071 1795093292.166853 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff934f1d88, parent_tid=0xffff934f1a30, exit_signal=0, stack=0xffff92ce3000, stack_size=0x80e240, tls=0xffff934f2080} => {parent_tid=[17074]}, 88) = 17074 <0.000123>
+17071 1795093292.186033 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff92ce1d88, parent_tid=0xffff92ce1a30, exit_signal=0, stack=0xffff924d3000, stack_size=0x80e240, tls=0xffff92ce2080} => {parent_tid=[17075]}, 88) = 17075 <0.000127>
+17071 1795093292.216119 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17075 1795093292.216444 +++ killed by SIGSEGV +++
+17074 1795093292.216518 +++ killed by SIGSEGV +++
+17072 1795093292.216554 +++ killed by SIGSEGV +++
+17073 1795093292.224931 +++ killed by SIGSEGV +++
+17071 1795093292.225057 +++ killed by SIGSEGV +++
+3539  1795093292.225195 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17071, si_uid=1000, si_status=SIGSEGV, si_utime=8 /* 0.08 s */, si_stime=11 /* 0.11 s */} ---
+3543  1795093292.225349 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17071, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000128>
+3539  1795093292.226943 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17076 <0.007644>
+17076 1795093292.237121 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018298>
+17076 1795093292.472750 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9b6c1d88, parent_tid=0xffff9b6c1a30, exit_signal=0, stack=0xffff9aeb3000, stack_size=0x80e240, tls=0xffff9b6c2080} => {parent_tid=[17077]}, 88) = 17077 <0.000161>
+17076 1795093292.473828 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9aeb1d88, parent_tid=0xffff9aeb1a30, exit_signal=0, stack=0xffff9a6a3000, stack_size=0x80e240, tls=0xffff9aeb2080} => {parent_tid=[17078]}, 88) = 17078 <0.000131>
+17076 1795093292.483210 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9a6a1d88, parent_tid=0xffff9a6a1a30, exit_signal=0, stack=0xffff99e93000, stack_size=0x80e240, tls=0xffff9a6a2080} => {parent_tid=[17079]}, 88) = 17079 <0.000149>
+17076 1795093292.503809 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff99e91d88, parent_tid=0xffff99e91a30, exit_signal=0, stack=0xffff99683000, stack_size=0x80e240, tls=0xffff99e92080} => {parent_tid=[17080]}, 88) = 17080 <0.000149>
+17076 1795093292.534152 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17080 1795093292.534452 +++ killed by SIGSEGV +++
+17079 1795093292.534510 +++ killed by SIGSEGV +++
+17078 1795093292.534546 +++ killed by SIGSEGV +++
+17077 1795093292.542770 +++ killed by SIGSEGV +++
+17076 1795093292.542899 +++ killed by SIGSEGV +++
+3545  1795093292.543039 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17076, si_uid=1000, si_status=SIGSEGV, si_utime=6 /* 0.06 s */, si_stime=11 /* 0.11 s */} ---
+3543  1795093292.543303 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17076, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000118>
+3539  1795093292.544785 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17081 <0.014354>
+17081 1795093292.561525 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018827>
+17081 1795093292.763055 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff83ed1d88, parent_tid=0xffff83ed1a30, exit_signal=0, stack=0xffff836c3000, stack_size=0x80e240, tls=0xffff83ed2080} => {parent_tid=[17082]}, 88) = 17082 <0.000144>
+17081 1795093292.764134 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff836c1d88, parent_tid=0xffff836c1a30, exit_signal=0, stack=0xffff82eb3000, stack_size=0x80e240, tls=0xffff836c2080} => {parent_tid=[17083]}, 88) = 17083 <0.000115>
+17081 1795093292.773033 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff82eb1d88, parent_tid=0xffff82eb1a30, exit_signal=0, stack=0xffff826a3000, stack_size=0x80e240, tls=0xffff82eb2080} => {parent_tid=[17084]}, 88) = 17084 <0.000149>
+17081 1795093292.791581 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff826a1d88, parent_tid=0xffff826a1a30, exit_signal=0, stack=0xffff81e93000, stack_size=0x80e240, tls=0xffff826a2080} => {parent_tid=[17085]}, 88) = 17085 <0.000164>
+17081 1795093292.816959 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17085 1795093292.817312 +++ killed by SIGSEGV +++
+17084 1795093292.817381 +++ killed by SIGSEGV +++
+17083 1795093292.817417 +++ killed by SIGSEGV +++
+17082 1795093292.826109 +++ killed by SIGSEGV +++
+17081 1795093292.826211 +++ killed by SIGSEGV +++
+3539  1795093292.826335 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17081, si_uid=1000, si_status=SIGSEGV, si_utime=5 /* 0.05 s */, si_stime=11 /* 0.11 s */} ---
+3543  1795093292.826531 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17081, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000119>
+3539  1795093292.828026 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17086 <0.014328>
+17086 1795093292.844951 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018935>
+17086 1795093293.082236 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff92901d88, parent_tid=0xffff92901a30, exit_signal=0, stack=0xffff920f3000, stack_size=0x80e240, tls=0xffff92902080} => {parent_tid=[17087]}, 88) = 17087 <0.000176>
+17086 1795093293.083273 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff920f1d88, parent_tid=0xffff920f1a30, exit_signal=0, stack=0xffff918e3000, stack_size=0x80e240, tls=0xffff920f2080} => {parent_tid=[17088]}, 88) = 17088 <0.000116>
+17086 1795093293.092682 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff918e1d88, parent_tid=0xffff918e1a30, exit_signal=0, stack=0xffff910d3000, stack_size=0x80e240, tls=0xffff918e2080} => {parent_tid=[17089]}, 88) = 17089 <0.000149>
+17086 1795093293.112186 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff910d1d88, parent_tid=0xffff910d1a30, exit_signal=0, stack=0xffff908c3000, stack_size=0x80e240, tls=0xffff910d2080} => {parent_tid=[17090]}, 88) = 17090 <0.000145>
+17086 1795093293.142402 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17090 1795093293.142723 +++ killed by SIGSEGV +++
+17089 1795093293.142785 +++ killed by SIGSEGV +++
+17088 1795093293.142822 +++ killed by SIGSEGV +++
+17087 1795093293.142856 +++ killed by SIGSEGV +++
+17086 1795093293.146767 +++ killed by SIGSEGV +++
+3539  1795093293.147016 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17086, si_uid=1000, si_status=SIGSEGV, si_utime=8 /* 0.08 s */, si_stime=10 /* 0.10 s */} ---
+3543  1795093293.147201 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17086, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000112>
+3539  1795093293.148607 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17091 <0.014341>
+17091 1795093293.165450 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018961>
+17091 1795093293.407738 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff7df51d88, parent_tid=0xffff7df51a30, exit_signal=0, stack=0xffff7d743000, stack_size=0x80e240, tls=0xffff7df52080} => {parent_tid=[17092]}, 88) = 17092 <0.000161>
+17091 1795093293.408788 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff7d741d88, parent_tid=0xffff7d741a30, exit_signal=0, stack=0xffff7cf33000, stack_size=0x80e240, tls=0xffff7d742080} => {parent_tid=[17093]}, 88) = 17093 <0.000134>
+17091 1795093293.418311 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff7cf31d88, parent_tid=0xffff7cf31a30, exit_signal=0, stack=0xffff7c723000, stack_size=0x80e240, tls=0xffff7cf32080} => {parent_tid=[17094]}, 88) = 17094 <0.000136>
+17091 1795093293.431122 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff77ffed88, parent_tid=0xffff77ffea30, exit_signal=0, stack=0xffff777f0000, stack_size=0x80e240, tls=0xffff77fff080} => {parent_tid=[17095]}, 88) = 17095 <0.000143>
+17091 1795093293.456679 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17092 1795093293.456975 +++ killed by SIGSEGV +++
+17095 1795093293.457036 +++ killed by SIGSEGV +++
+17094 1795093293.457071 +++ killed by SIGSEGV +++
+17093 1795093293.465714 +++ killed by SIGSEGV +++
+17091 1795093293.465818 +++ killed by SIGSEGV +++
+3539  1795093293.465941 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17091, si_uid=1000, si_status=SIGSEGV, si_utime=6 /* 0.06 s */, si_stime=14 /* 0.14 s */} ---
+3543  1795093293.466140 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17091, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000110>
+3539  1795093293.467556 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17096 <0.014482>
+17096 1795093293.484361 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.010189>
+17096 1795093293.645103 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff86e11d88, parent_tid=0xffff86e11a30, exit_signal=0, stack=0xffff86603000, stack_size=0x80e240, tls=0xffff86e12080} => {parent_tid=[17097]}, 88) = 17097 <0.000165>
+17096 1795093293.646205 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff86601d88, parent_tid=0xffff86601a30, exit_signal=0, stack=0xffff85df3000, stack_size=0x80e240, tls=0xffff86602080} => {parent_tid=[17098]}, 88) = 17098 <0.000105>
+17096 1795093293.655483 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff85df1d88, parent_tid=0xffff85df1a30, exit_signal=0, stack=0xffff855e3000, stack_size=0x80e240, tls=0xffff85df2080} => {parent_tid=[17099]}, 88) = 17099 <0.000147>
+17096 1795093293.666420 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff855e1d88, parent_tid=0xffff855e1a30, exit_signal=0, stack=0xffff84dd3000, stack_size=0x80e240, tls=0xffff855e2080} => {parent_tid=[17100]}, 88) = 17100 <0.000117>
+17096 1795093293.684140 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17099 1795093293.684346 +++ killed by SIGSEGV +++
+17098 1795093293.684369 +++ killed by SIGSEGV +++
+17097 1795093293.684381 +++ killed by SIGSEGV +++
+17100 1795093293.692933 +++ killed by SIGSEGV +++
+17096 1795093293.692973 +++ killed by SIGSEGV +++
+3539  1795093293.693029 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17096, si_uid=1000, si_status=SIGSEGV, si_utime=6 /* 0.06 s */, si_stime=7 /* 0.07 s */} ---
+3543  1795093293.693149 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17096, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000090>
+3539  1795093293.694317 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17101 <0.007782>
+17101 1795093293.704458 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.019080>
+17101 1795093293.941012 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffafdb1d88, parent_tid=0xffffafdb1a30, exit_signal=0, stack=0xffffaf5a3000, stack_size=0x80e240, tls=0xffffafdb2080} => {parent_tid=[17102]}, 88) = 17102 <0.000157>
+17101 1795093293.942146 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaf5a1d88, parent_tid=0xffffaf5a1a30, exit_signal=0, stack=0xffffaed93000, stack_size=0x80e240, tls=0xffffaf5a2080} => {parent_tid=[17103]}, 88) = 17103 <0.000098>
+17101 1795093293.951433 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaed91d88, parent_tid=0xffffaed91a30, exit_signal=0, stack=0xffffae583000, stack_size=0x80e240, tls=0xffffaed92080} => {parent_tid=[17104]}, 88) = 17104 <0.000137>
+17101 1795093293.970425 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffae581d88, parent_tid=0xffffae581a30, exit_signal=0, stack=0xffffadd73000, stack_size=0x80e240, tls=0xffffae582080} => {parent_tid=[17105]}, 88) = 17105 <0.000122>
+17101 1795093293.988353 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17105 1795093293.988556 +++ killed by SIGSEGV +++
+17104 1795093293.988578 +++ killed by SIGSEGV +++
+17103 1795093293.988590 +++ killed by SIGSEGV +++
+17102 1795093293.997188 +++ killed by SIGSEGV +++
+17101 1795093293.997230 +++ killed by SIGSEGV +++
+3539  1795093293.997300 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17101, si_uid=1000, si_status=SIGSEGV, si_utime=8 /* 0.08 s */, si_stime=10 /* 0.10 s */} ---
+3543  1795093293.997425 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17101, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000091>
+3539  1795093293.998643 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17106 <0.014541>
+17106 1795093294.015763 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018569>
+17106 1795093294.197659 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffae6a1d88, parent_tid=0xffffae6a1a30, exit_signal=0, stack=0xffffade93000, stack_size=0x80e240, tls=0xffffae6a2080} => {parent_tid=[17107]}, 88) = 17107 <0.000118>
+17106 1795093294.198316 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffade91d88, parent_tid=0xffffade91a30, exit_signal=0, stack=0xffffad683000, stack_size=0x80e240, tls=0xffffade92080} => {parent_tid=[17108]}, 88) = 17108 <0.000101>
+17106 1795093294.204293 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffad681d88, parent_tid=0xffffad681a30, exit_signal=0, stack=0xfffface73000, stack_size=0x80e240, tls=0xffffad682080} => {parent_tid=[17109]}, 88) = 17109 <0.000108>
+17106 1795093294.224231 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xfffface71d88, parent_tid=0xfffface71a30, exit_signal=0, stack=0xffffac663000, stack_size=0x80e240, tls=0xfffface72080} => {parent_tid=[17110]}, 88) = 17110 <0.000167>
+17106 1795093294.254577 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17110 1795093294.254883 +++ killed by SIGSEGV +++
+17109 1795093294.254931 +++ killed by SIGSEGV +++
+17108 1795093294.254944 +++ killed by SIGSEGV +++
+17107 1795093294.263487 +++ killed by SIGSEGV +++
+17106 1795093294.263547 +++ killed by SIGSEGV +++
+3539  1795093294.263621 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17106, si_uid=1000, si_status=SIGSEGV, si_utime=7 /* 0.07 s */, si_stime=12 /* 0.12 s */} ---
+3543  1795093294.263785 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17106, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000091>
+3539  1795093294.265078 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17111 <0.014379>
+17111 1795093294.281957 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018876>
+17111 1795093294.523163 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaffb1d88, parent_tid=0xffffaffb1a30, exit_signal=0, stack=0xffffaf7a3000, stack_size=0x80e240, tls=0xffffaffb2080} => {parent_tid=[17112]}, 88) = 17112 <0.000157>
+17111 1795093294.524263 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaf7a1d88, parent_tid=0xffffaf7a1a30, exit_signal=0, stack=0xffffaef93000, stack_size=0x80e240, tls=0xffffaf7a2080} => {parent_tid=[17113]}, 88) = 17113 <0.000102>
+17111 1795093294.533582 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaef91d88, parent_tid=0xffffaef91a30, exit_signal=0, stack=0xffffae783000, stack_size=0x80e240, tls=0xffffaef92080} => {parent_tid=[17114]}, 88) = 17114 <0.000143>
+17111 1795093294.544134 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffae781d88, parent_tid=0xffffae781a30, exit_signal=0, stack=0xffffadf73000, stack_size=0x80e240, tls=0xffffae782080} => {parent_tid=[17115]}, 88) = 17115 <0.000125>
+17111 1795093294.561978 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17114 1795093294.562163 +++ killed by SIGSEGV +++
+17115 1795093294.562186 +++ killed by SIGSEGV +++
+17113 1795093294.562197 +++ killed by SIGSEGV +++
+17112 1795093294.567173 +++ killed by SIGSEGV +++
+17111 1795093294.567395 +++ killed by SIGSEGV +++
+3539  1795093294.567529 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17111, si_uid=1000, si_status=SIGSEGV, si_utime=7 /* 0.07 s */, si_stime=10 /* 0.10 s */} ---
+3543  1795093294.567784 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17111, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000097>
+3539  1795093294.568895 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17116 <0.007716>
+17116 1795093294.578892 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018173>
+17116 1795093294.819422 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb41d1d88, parent_tid=0xffffb41d1a30, exit_signal=0, stack=0xffffb39c3000, stack_size=0x80e240, tls=0xffffb41d2080} => {parent_tid=[17117]}, 88) = 17117 <0.000154>
+17116 1795093294.820586 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb39c1d88, parent_tid=0xffffb39c1a30, exit_signal=0, stack=0xffffb31b3000, stack_size=0x80e240, tls=0xffffb39c2080} => {parent_tid=[17118]}, 88) = 17118 <0.000134>
+17116 1795093294.829496 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb31b1d88, parent_tid=0xffffb31b1a30, exit_signal=0, stack=0xffffb29a3000, stack_size=0x80e240, tls=0xffffb31b2080} => {parent_tid=[17119]}, 88) = 17119 <0.000151>
+17116 1795093294.848720 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb29a1d88, parent_tid=0xffffb29a1a30, exit_signal=0, stack=0xffffb2193000, stack_size=0x80e240, tls=0xffffb29a2080} => {parent_tid=[17120]}, 88) = 17120 <0.000128>
+17116 1795093294.878862 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17120 1795093294.879183 +++ killed by SIGSEGV +++
+17119 1795093294.879242 +++ killed by SIGSEGV +++
+17118 1795093294.879278 +++ killed by SIGSEGV +++
+17117 1795093294.888377 +++ killed by SIGSEGV +++
+17116 1795093294.888477 +++ killed by SIGSEGV +++
+3539  1795093294.888616 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17116, si_uid=1000, si_status=SIGSEGV, si_utime=10 /* 0.10 s */, si_stime=9 /* 0.09 s */} ---
+3543  1795093294.888755 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17116, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000075>
+3539  1795093294.890240 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17121 <0.014429>
+17121 1795093294.907104 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.019225>
+17121 1795093295.147759 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb03b1d88, parent_tid=0xffffb03b1a30, exit_signal=0, stack=0xffffafba3000, stack_size=0x80e240, tls=0xffffb03b2080} => {parent_tid=[17122]}, 88) = 17122 <0.000156>
+17121 1795093295.148829 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffafba1d88, parent_tid=0xffffafba1a30, exit_signal=0, stack=0xffffaf393000, stack_size=0x80e240, tls=0xffffafba2080} => {parent_tid=[17123]}, 88) = 17123 <0.000103>
+17121 1795093295.158247 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaf391d88, parent_tid=0xffffaf391a30, exit_signal=0, stack=0xffffaeb83000, stack_size=0x80e240, tls=0xffffaf392080} => {parent_tid=[17124]}, 88) = 17124 <0.000154>
+17121 1795093295.175334 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffaeb81d88, parent_tid=0xffffaeb81a30, exit_signal=0, stack=0xffffae373000, stack_size=0x80e240, tls=0xffffaeb82080} => {parent_tid=[17125]}, 88) = 17125 <0.000164>
+17121 1795093295.205605 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17125 1795093295.205913 +++ killed by SIGSEGV +++
+17124 1795093295.205985 +++ killed by SIGSEGV +++
+17122 1795093295.206021 +++ killed by SIGSEGV +++
+17123 1795093295.214879 +++ killed by SIGSEGV +++
+17121 1795093295.214981 +++ killed by SIGSEGV +++
+3539  1795093295.215109 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17121, si_uid=1000, si_status=SIGSEGV, si_utime=10 /* 0.10 s */, si_stime=10 /* 0.10 s */} ---
+3543  1795093295.215307 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17121, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000108>
+3539  1795093295.216536 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17126 <0.007757>
+17126 1795093295.226636 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.019163>
+17126 1795093295.465495 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb3d21d88, parent_tid=0xffffb3d21a30, exit_signal=0, stack=0xffffb3513000, stack_size=0x80e240, tls=0xffffb3d22080} => {parent_tid=[17127]}, 88) = 17127 <0.000143>
+17126 1795093295.466553 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb3511d88, parent_tid=0xffffb3511a30, exit_signal=0, stack=0xffffb2d03000, stack_size=0x80e240, tls=0xffffb3512080} => {parent_tid=[17128]}, 88) = 17128 <0.000112>
+17126 1795093295.475956 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb2d01d88, parent_tid=0xffffb2d01a30, exit_signal=0, stack=0xffffb24f3000, stack_size=0x80e240, tls=0xffffb2d02080} => {parent_tid=[17129]}, 88) = 17129 <0.000146>
+17126 1795093295.496433 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffb24f1d88, parent_tid=0xffffb24f1a30, exit_signal=0, stack=0xffffb1ce3000, stack_size=0x80e240, tls=0xffffb24f2080} => {parent_tid=[17130]}, 88) = 17130 <0.000167>
+17126 1795093295.526690 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17130 1795093295.526998 +++ killed by SIGSEGV +++
+17128 1795093295.527055 +++ killed by SIGSEGV +++
+17127 1795093295.527091 +++ killed by SIGSEGV +++
+17129 1795093295.535400 +++ killed by SIGSEGV +++
+17126 1795093295.535522 +++ killed by SIGSEGV +++
+3539  1795093295.535664 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17126, si_uid=1000, si_status=SIGSEGV, si_utime=10 /* 0.10 s */, si_stime=12 /* 0.12 s */} ---
+3543  1795093295.535866 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17126, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000109>
+3539  1795093295.537640 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17131 <0.014479>
+17131 1795093295.554550 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.019057>
+17131 1795093295.793232 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa0911d88, parent_tid=0xffffa0911a30, exit_signal=0, stack=0xffffa0103000, stack_size=0x80e240, tls=0xffffa0912080} => {parent_tid=[17132]}, 88) = 17132 <0.000169>
+17131 1795093295.794284 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa0101d88, parent_tid=0xffffa0101a30, exit_signal=0, stack=0xffff9f8f3000, stack_size=0x80e240, tls=0xffffa0102080} => {parent_tid=[17133]}, 88) = 17133 <0.000112>
+17131 1795093295.803528 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9f8f1d88, parent_tid=0xffff9f8f1a30, exit_signal=0, stack=0xffff9f0e3000, stack_size=0x80e240, tls=0xffff9f8f2080} => {parent_tid=[17134]}, 88) = 17134 <0.000147>
+17131 1795093295.821432 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9f0e1d88, parent_tid=0xffff9f0e1a30, exit_signal=0, stack=0xffff9e8d3000, stack_size=0x80e240, tls=0xffff9f0e2080} => {parent_tid=[17135]}, 88) = 17135 <0.000121>
+17131 1795093295.839488 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17135 1795093295.839781 +++ killed by SIGSEGV +++
+17134 1795093295.839889 +++ killed by SIGSEGV +++
+17133 1795093295.839928 +++ killed by SIGSEGV +++
+17132 1795093295.839963 +++ killed by SIGSEGV +++
+17131 1795093295.843790 +++ killed by SIGSEGV +++
+3539  1795093295.843990 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17131, si_uid=1000, si_status=SIGSEGV, si_utime=6 /* 0.06 s */, si_stime=12 /* 0.12 s */} ---
+3543  1795093295.844195 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17131, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000115>
+3539  1795093295.845528 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17136 <0.007644>
+17136 1795093295.855652 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018870>
+17136 1795093296.080097 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff94f51d88, parent_tid=0xffff94f51a30, exit_signal=0, stack=0xffff94743000, stack_size=0x80e240, tls=0xffff94f52080} => {parent_tid=[17137]}, 88) = 17137 <0.000179>
+17136 1795093296.081184 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff94741d88, parent_tid=0xffff94741a30, exit_signal=0, stack=0xffff93f33000, stack_size=0x80e240, tls=0xffff94742080} => {parent_tid=[17138]}, 88) = 17138 <0.000123>
+17136 1795093296.090481 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff93f31d88, parent_tid=0xffff93f31a30, exit_signal=0, stack=0xffff93723000, stack_size=0x80e240, tls=0xffff93f32080} => {parent_tid=[17139]}, 88) = 17139 <0.000147>
+17136 1795093296.103064 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff93721d88, parent_tid=0xffff93721a30, exit_signal=0, stack=0xffff92f13000, stack_size=0x80e240, tls=0xffff93722080} => {parent_tid=[17140]}, 88) = 17140 <0.000145>
+17136 1795093296.133376 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17140 1795093296.133682 +++ killed by SIGSEGV +++
+17138 1795093296.133741 +++ killed by SIGSEGV +++
+17137 1795093296.133776 +++ killed by SIGSEGV +++
+17139 1795093296.142116 +++ killed by SIGSEGV +++
+17136 1795093296.142226 +++ killed by SIGSEGV +++
+3539  1795093296.142378 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17136, si_uid=1000, si_status=SIGSEGV, si_utime=8 /* 0.08 s */, si_stime=9 /* 0.09 s */} ---
+3543  1795093296.142515 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17136, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000077>
+3539  1795093296.143879 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17141 <0.014399>
+17141 1795093296.160736 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018195>
+17141 1795093296.399755 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa5731d88, parent_tid=0xffffa5731a30, exit_signal=0, stack=0xffffa4f23000, stack_size=0x80e240, tls=0xffffa5732080} => {parent_tid=[17142]}, 88) = 17142 <0.000144>
+17141 1795093296.400815 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffffa4f21d88, parent_tid=0xffffa4f21a30, exit_signal=0, stack=0xffffa4713000, stack_size=0x80e240, tls=0xffffa4f22080} => {parent_tid=[17143]}, 88) = 17143 <0.000117>
+17141 1795093296.410238 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9fffed88, parent_tid=0xffff9fffea30, exit_signal=0, stack=0xffff9f7f0000, stack_size=0x80e240, tls=0xffff9ffff080} => {parent_tid=[17144]}, 88) = 17144 <0.000148>
+17141 1795093296.430624 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0xffff9f7eed88, parent_tid=0xffff9f7eea30, exit_signal=0, stack=0xffff9efe0000, stack_size=0x80e240, tls=0xffff9f7ef080} => {parent_tid=[17145]}, 88) = 17145 <0.000128>
+17141 1795093296.461063 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x143} ---
+17145 1795093296.461360 +++ killed by SIGSEGV +++
+17144 1795093296.461474 +++ killed by SIGSEGV +++
+17143 1795093296.461515 +++ killed by SIGSEGV +++
+17142 1795093296.470362 +++ killed by SIGSEGV +++
+17141 1795093296.470454 +++ killed by SIGSEGV +++
+3539  1795093296.470592 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17141, si_uid=1000, si_status=SIGSEGV, si_utime=7 /* 0.07 s */, si_stime=13 /* 0.13 s */} ---
+3543  1795093296.470728 waitid(P_PIDFD, 14, {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=17141, si_uid=1000, si_status=SIGSEGV, si_utime=0, si_stime=0}, WNOHANG|WEXITED, NULL) = 0 <0.000079>
+3539  1795093296.472293 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xffff9db1d0f0) = 17146 <0.014564>
+17146 1795093296.489314 execve("/usr/libexec/mutter-x11-frames", ["/usr/libexec/mutter-x11-frames"], 0xaaaad29c0690 /* 58 vars */) = 0 <0.018946>
