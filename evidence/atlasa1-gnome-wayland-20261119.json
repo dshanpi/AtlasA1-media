@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "board": "AtlasA1 / T736",
+  "date": "2026-11-19",
+  "status": "usable_gnome_candidate_user_confirmed",
+  "kernel": "6.18.63-t736-media-v30",
+  "desktop": "GNOME 50.1 Wayland",
+  "hdmi_mode": "1920x1080@60",
+  "gpu": "PowerVR B-Series BXM-4-64",
+  "package": "atlasa1-img-wayland_24.2.6603887-3_arm64.deb",
+  "package_sha256": "52e710550ab23ab5046a4a6046cd3224b6e519fac5ef40b90827dfbbbb6bfba2",
+  "runtime_manifest_sha256": "3447705ec0d424d1b6f6f82f3a882ccffe3ff18c98564f4ec9b7e448f386c0dc",
+  "user_feedback_after_affinity_restore": "明显改善，已经可以正常使用",
+  "validated": [
+    "GNOME and Settings use vendor EGL/GLES/PVR",
+    "Wayland package installation and runtime link verification",
+    "AtlasA1 GNOME session wrapper actually launched through GDM",
+    "Firefox 160.0.1 reports hardware WebRender and PowerVR",
+    "Firefox test leaves normal browser profiles unchanged",
+    "CPU affinity inherited by Chromium from Shell restored from 6,7 to 0-7",
+    "X11 GPU package regression build succeeds"
+  ],
+  "measurements": {
+    "native_initial_fps": 44.244,
+    "native_package_main_thread_pinned_fps": [53.677, 53.451],
+    "native_final_eight_core_with_chromium_fps": 47.595,
+    "native_final_max_gap_ms": 83.689,
+    "native_final_gaps_over_25ms": 79,
+    "headless_control_fps": 57.75,
+    "firefox_hardware_webrender": true,
+    "firefox_before_affinity_restore_callback_fps": 22.4265,
+    "firefox_after_affinity_restore_callback_fps": 38.0532,
+    "firefox_before_affinity_restore_startup_seconds": 7.0117,
+    "firefox_after_affinity_restore_startup_seconds": 4.1300,
+    "note": "Callback FPS is not physical presentation FPS. Concurrent Chromium remained active; workloads were not strictly controlled."
+  },
+  "rejected_changes": [
+    "CPU6/7 affinity: inherited by desktop-launched applications and caused contention",
+    "continuous redraw, disabled triple buffering, simple KMS and sync-frame: no demonstrated benefit",
+    "Firefox DRM device override and disabling robustness: did not resolve EGL failure"
+  ],
+  "remaining": [
+    "Stable 60fps presentation and animation not achieved",
+    "Cold-start GDM greeter/login and GNOME default image not validated",
+    "Chromium rendering and codec path not validated in this GNOME session",
+    "GNOME-session video decoding, encoding and zero-copy not revalidated"
+  ],
+  "final_state": {
+    "running_session": "AtlasA1 GNOME Wayland",
+    "saved_boot_default": "LightDM / AtlasA1 Xfce",
+    "rollback_timer": "stopped",
+    "temporary_gdm_autologin": "removed",
+    "screen_idle": "disabled per user preference",
+    "kernel_changed": false,
+    "emmc_flashed": false,
+    "release_image_changed": false
+  },
+  "raw_measurements": "gnome-wayland-20261119/"
+}

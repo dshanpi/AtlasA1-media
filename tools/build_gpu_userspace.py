@@ -35,11 +35,26 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tina', type=Path, default=SDK)
     parser.add_argument('--work', type=Path, default=ROOT/'build/gpu-userspace-v2')
+    parser.add_argument('--platform', choices=['x11', 'wayland'], default='x11')
     parser.add_argument('--without-gnome-x11', action='store_true',
                         help='Omit the GNOME Xorg session on distributions with Wayland-only GNOME')
     args = parser.parse_args()
     sdk = args.tina.resolve(strict=True)
-    source = sdk/SOURCE_SUBDIR
+    source_subdir = SOURCE_SUBDIR.parent / args.platform
+    prefix = PREFIX
+    package_name = 't736-img-userspace-candidate'
+    version = VERSION
+    runner = 't736-img-run'
+    environment_file = 'config/gpu-userspace-x11.env'
+    runner_file = 'config/gpu-userspace-run.sh'
+    if args.platform == 'wayland':
+        version = '24.2.6603887-3'
+        prefix = Path('opt/atlasa1-img-wayland')
+        package_name = 'atlasa1-img-wayland'
+        runner = 't736-img-wayland-run'
+        environment_file = 'config/gpu-userspace-wayland.env'
+        runner_file = 'config/gpu-userspace-wayland-run.sh'
+    source = sdk/source_subdir
     assert source.is_dir()
     for name, expected in FIRMWARE.items():
         assert digest(source / 'lib/firmware' / name) == expected, name
@@ -47,13 +62,13 @@ def main():
     build.mkdir(parents=True, exist_ok=True)
     stage = build / 'package-root'
     stage.mkdir()  # Refuse to overwrite a previous candidate.
-    private = stage / PREFIX
+    private = stage / prefix
     (private / 'lib').mkdir(parents=True)
     provenance = {}
     for subtree in ['usr/lib', 'usr/local/lib']:
         src = source / subtree
         for entry in sorted(src.iterdir()):
-            if entry.name == 'pkgconfig':
+            if entry.name == 'pkgconfig' or entry.name.startswith('libwayland-'):
                 continue
             dest = private / 'lib' / entry.name
             assert not dest.exists() and not dest.is_symlink(), dest
@@ -69,7 +84,7 @@ def main():
                     provenance[str(target.relative_to(stage))] = str(original.relative_to(sdk))
     shutil.copytree(source / 'lib/firmware', private / 'firmware')
     for original in (source / 'lib/firmware').iterdir():
-        provenance[str(PREFIX / 'firmware' / original.name)] = str(original.relative_to(sdk))
+        provenance[str(prefix / 'firmware' / original.name)] = str(original.relative_to(sdk))
     (private / 'bin').mkdir()
     command = ['aarch64-linux-gnu-gcc', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror',
                str(ROOT / 'tools/validation/gpu_userspace_probe.c'), '-ldl',
@@ -77,18 +92,24 @@ def main():
     result = subprocess.run(command, text=True, capture_output=True)
     (build / 'probe-build.log').write_text(result.stdout + result.stderr)
     result.check_returncode()
-    shutil.copy2(ROOT / 'config/gpu-userspace-x11.env', private / 'session.env')
-    shutil.copy2(ROOT / 'config/gpu-userspace-run.sh', private / 'bin/t736-img-run')
-    (private / 'bin/t736-img-run').chmod(0o755)
+    shutil.copy2(ROOT / environment_file, private / 'session.env')
+    shutil.copy2(ROOT / runner_file, private / 'bin' / runner)
+    (private / 'bin' / runner).chmod(0o755)
     shutil.copy2(ROOT / 'tools/validation/gpu_runtime_view.py', private / 'bin/gpu-runtime-view')
     (private / 'bin/gpu-runtime-view').chmod(0o755)
     (stage / 'usr/bin').mkdir(parents=True)
-    (stage / 'usr/bin/t736-img-run').symlink_to('/' + str(PREFIX / 'bin/t736-img-run'))
-    if not args.without_gnome_x11:
+    (stage / 'usr/bin' / runner).symlink_to('/' + str(prefix / 'bin' / runner))
+    if args.platform == 'wayland':
+        # Firefox's EGL backend looks up GL entry points in libGL first.
+        # Keep this GLES-only lookup private to its native Wayland launcher;
+        # it is not a desktop OpenGL/GLX implementation or a system replacement.
+        (private / 'firefox-gles').mkdir()
+        (private / 'firefox-gles/libGL.so.1').symlink_to('../lib/libGLESv2.so.2')
+    if args.platform == 'x11' and not args.without_gnome_x11:
         (stage / 'usr/share/xsessions').mkdir(parents=True)
         shutil.copy2(ROOT / 'config/gpu-userspace-gnome.desktop', stage / 'usr/share/xsessions/t736-img.desktop')
     icd = json.loads((source / 'powervr_icd.json').read_text())
-    icd['ICD']['library_path'] = '/' + str(PREFIX / 'lib/libVK_IMG.so')
+    icd['ICD']['library_path'] = '/' + str(prefix / 'lib/libVK_IMG.so')
     (private / 'powervr_icd.json').write_text(json.dumps(icd, indent=2) + '\n')
     (private / 'README.txt').write_text(
         'Isolated IMG X11 DDK 24.2.6603887 candidate. No system Mesa replacement.\n'
@@ -105,13 +126,22 @@ def main():
         'A PASS is not GNOME or physical-display acceptance. No GLX test is claimed.\n'
         'The image-level desktop integration selects the X11 session.\n'
         'Keep the original llvmpipe image and original firmware for kernel rollback.\n')
+    if args.platform == 'wayland':
+        (private / 'README.txt').write_text(
+            'AtlasA1 IMG Wayland DDK 24.2.6603887.\n'
+            'Load session.env for EGL/GLES programs running on GNOME Wayland.\n'
+            'The runtime uses the distribution Wayland libraries and Vulkan loader.\n'
+            'Firmware and pvrsrvkm must match DDK 24.2.6603887.\n'
+            'GNOME requires the sunxi-drm preferred-primary udev rule.\n'
+            'firefox-gles is a Firefox Wayland-only GLES symbol lookup, not a GLX library.\n'
+            'Validate presentation timestamps and physical display behavior after installation.\n')
     files = []
     external = set()
     provided = {p.name for p in (private / 'lib').glob('*') if not p.is_dir()}
     for path in sorted(stage.rglob('*')):
         rel = str(path.relative_to(stage))
         if path.is_symlink():
-            if rel.startswith(str(PREFIX)):
+            if rel.startswith(str(prefix)):
                 assert not path.readlink().is_absolute(), path
                 assert path.resolve().is_relative_to(private.resolve()) and path.resolve().is_file(), path
             files.append({'path': rel, 'symlink': str(path.readlink()), 'source': provenance.get(rel)})
@@ -127,9 +157,9 @@ def main():
                 external.update(set(item['needed']) - provided)
             files.append(item)
     project_inputs = ['tools/build_gpu_userspace.py', 'tools/validation/gpu_userspace_probe.c',
-                      'config/gpu-userspace-x11.env', 'config/gpu-userspace-run.sh',
+                      environment_file, runner_file,
                       'config/gpu-userspace-gnome.desktop', 'tools/validation/gpu_runtime_view.py']
-    manifest = {'version': VERSION, 'source_root': str(SOURCE_SUBDIR), 'prefix': '/' + str(PREFIX),
+    manifest = {'version': version, 'source_root': str(source_subdir), 'prefix': '/' + str(prefix),
                 'project_inputs_sha256': {name: digest(ROOT / name) for name in project_inputs},
                 'probe_compiler': run('aarch64-linux-gnu-gcc', '--version').splitlines()[0],
                 'firmware_sha256': FIRMWARE, 'external_sonames': sorted(external),
@@ -144,8 +174,10 @@ def main():
         item['sha256'] + '  /' + item['path'] + '\n' for item in files if 'sha256' in item))
     # The view record binds this completed payload manifest. Keep it out of the
     # main manifest's file list to avoid a circular content hash dependency.
-    print(run('python3', str(private / 'bin/gpu-runtime-view'), '--root', str(stage)), end='')
-    print(run('python3', str(private / 'bin/gpu-runtime-view'), '--root', str(stage), '--verify'), end='')
+    print(run('python3', str(private / 'bin/gpu-runtime-view'), '--root', str(stage),
+              '--prefix', '/' + str(prefix)), end='')
+    print(run('python3', str(private / 'bin/gpu-runtime-view'), '--root', str(stage),
+              '--prefix', '/' + str(prefix), '--verify'), end='')
     shutil.copy2(private / 'runtime-gles.json', build / 'runtime-gles.json')
     control = stage / 'DEBIAN'
     control.mkdir()
@@ -154,11 +186,13 @@ def main():
                     'libxcb-present0, libxcb-randr0, libxcb-shm0, libxcb-sync1, libxcb-xfixes0, '
                     'libxcb1, libxext6, libxfixes3, libxshmfence1, libxxf86vm1, zlib1g, '
                     'libvulkan1, python3')
+    if args.platform == 'wayland':
+        dependencies += ', libwayland-client0, libwayland-server0, libwayland-egl1'
     (control / 'control').write_text(
-        'Package: t736-img-userspace-candidate\nVersion: ' + VERSION + '\nArchitecture: arm64\n'
+        'Package: ' + package_name + '\nVersion: ' + version + '\nArchitecture: arm64\n'
         'Maintainer: T736 local integration\nDepends: ' + dependencies + '\n'
-        'Description: Isolated T736 IMG X11 EGL GLES candidate and explicit validation tools\n')
-    package = build / ('t736-img-userspace-candidate_' + VERSION + '_arm64.deb')
+        'Description: Isolated T736 IMG ' + args.platform + ' EGL GLES and validation tools\n')
+    package = build / (package_name + '_' + version + '_arm64.deb')
     assert not package.exists()
     print(run('dpkg-deb', '--build', '--root-owner-group', str(stage), str(package)), end='')
     (build / 'SHA256SUMS').write_text(digest(package) + '  ' + package.name + '\n' +

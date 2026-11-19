@@ -14,8 +14,8 @@
       "path": "README.md",
       "kind": "generated",
       "source": "generated/AtlasA1-media/README.md",
-      "size": 683,
-      "sha256": "95fcc977fd41f190e77edef02d3aab8572fad69cfae9abbef5f369705bb31f60"
+      "size": 956,
+      "sha256": "00a106aa12d51e36f0dcadc2c4d28113b2151caabf1b74b8751b250f4131ed80"
     },
     {
       "path": "config/atlasa1-resolute-vendor-files.json",
@@ -23,6 +23,34 @@
       "source": "mainline/config/atlasa1-resolute-vendor-files.json",
       "size": 8514,
       "sha256": "dfb0d6f3815fab67ebe82a4e4f11754c101742b2de0b318fd858f0a7596c4fdb"
+    },
+    {
+      "path": "config/gnome-wayland/50-atlasa1-wayland.conf",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/50-atlasa1-wayland.conf",
+      "size": 552,
+      "sha256": "2c3ebe0ec2236f181f778a64d01e43c84375cee9934420cbc2a9d683db30d6f2"
+    },
+    {
+      "path": "config/gnome-wayland/61-atlasa1-gnome.rules",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/61-atlasa1-gnome.rules",
+      "size": 181,
+      "sha256": "0f7574668204ab1509d00c8c90d792770bdc29589cc9154faf20a5f156d79630"
+    },
+    {
+      "path": "config/gnome-wayland/atlasa1-gnome-session",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/atlasa1-gnome-session",
+      "size": 678,
+      "sha256": "c5d4105a71e012de81bb162ac075205561478b6e404aa79bb4a1842f71be4d05"
+    },
+    {
+      "path": "config/gnome-wayland/atlasa1-gnome.desktop",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/atlasa1-gnome.desktop",
+      "size": 225,
+      "sha256": "6dc329d35fa9d58418e8670e1e75768a8c7135309526696b00fb659ca786f65e"
     },
     {
       "path": "config/gpu-userspace-gnome.desktop",
@@ -37,6 +65,20 @@
       "source": "mainline/config/gpu-userspace-run.sh",
       "size": 476,
       "sha256": "d291f6f304bf79dcd770fe99ab12bf52d365d78cc818f1e09398992b1bdcf2c3"
+    },
+    {
+      "path": "config/gpu-userspace-wayland-run.sh",
+      "kind": "source",
+      "source": "mainline/config/gpu-userspace-wayland-run.sh",
+      "size": 159,
+      "sha256": "b6576b5dc7e3ba08fc2eb2d7a3f3b15b0b63b390a26aff3a659fb0251ded4a0e"
+    },
+    {
+      "path": "config/gpu-userspace-wayland.env",
+      "kind": "source",
+      "source": "mainline/config/gpu-userspace-wayland.env",
+      "size": 508,
+      "sha256": "6ba8866d66d656199a84256ed3f1eca2990165986d3c9bf1a5371da7a5ba8a6f"
     },
     {
       "path": "config/gpu-userspace-x11.env",
@@ -58,6 +100,13 @@
       "source": "mainline/docs/CEDAR_BRIDGE.md",
       "size": 9888,
       "sha256": "05c1eed725a2ba5158f4afe99850512657f363ef7bf85cef3e34360e68328f7b"
+    },
+    {
+      "path": "docs/GNOME_WAYLAND.md",
+      "kind": "source",
+      "source": "mainline/docs/GNOME_WAYLAND.md",
+      "size": 4902,
+      "sha256": "94176bd1e5ca84083e49557f68f222d22771d755eaf18160e847523c693c0913"
     },
     {
       "path": "docs/PLAYBACK.md",
@@ -88,11 +137,25 @@
       "sha256": "241ecb1604942b05c0fe43a3477a78741fcec60fc96fec959020f2a42bdc3539"
     },
     {
+      "path": "evidence/atlasa1-firefox-image-integration-20261119.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-firefox-image-integration-20261119.json",
+      "size": 1202,
+      "sha256": "02f345750f99fb036215620640c78f3824e3ffc8aa68505e89160a4d145270b2"
+    },
+    {
       "path": "evidence/atlasa1-firefox160-ffmpeg8-20261118.json",
       "kind": "source",
       "source": "mainline/evidence/atlasa1-firefox160-ffmpeg8-20261118.json",
       "size": 10928,
       "sha256": "490e0a269ffad85c4096a5204a829145a0808f3777d4aae1121a6fc4ba079f0a"
+    },
+    {
+      "path": "evidence/atlasa1-gnome-wayland-20261119.json",
+      "kind": "source",
+      "source": "mainline/evidence/atlasa1-gnome-wayland-20261119.json",
+      "size": 2775,
+      "sha256": "da00a5aca569fb81154f1e8e8ea47dfb5feaf2040c85bb7df667f82b486c433f"
     },
     {
       "path": "evidence/atlasa1-native-player-package-20261118.json",
@@ -205,6 +268,97 @@
       "source": "mainline/evidence/firefox-hevc1080p60-v8-xvfb-20261118.json",
       "size": 26643,
       "sha256": "8e4898d18528fa5859d3d12bffb5e0aebea8f1f3771a3ec8fafe749855739f19"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/app-gpu-maps.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/app-gpu-maps.txt",
+      "size": 537,
+      "sha256": "4890e06a9c553f5091e959c476c2f9d75a6aafe32a7f6b83c7fb262c9824b336"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/egl-wayland-context.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/egl-wayland-context.log",
+      "size": 1330,
+      "sha256": "c813510a3a4fcdd6540093909cfc8b7f31769dd59a2d12e4bbfc821b815480b3"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/firefox-before-errors.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/firefox-before-errors.log",
+      "size": 1477,
+      "sha256": "957779c9d92b0db9328842f6874cbfcdd90e02eab8256ff66ae04ed0ef61aedb"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/firefox-installed-eight-core.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/firefox-installed-eight-core.json",
+      "size": 865,
+      "sha256": "6c40abda3a7a449c379226a255f48d382a6e97c9ba24a8565eefc6c64fcaa124"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/firefox-installed-v3.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/firefox-installed-v3.json",
+      "size": 863,
+      "sha256": "a7bdfc446ea06b1ef8feb38beaafc245629e698d1d2a51c0da234d457cb5ddc0"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/headless-present.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/headless-present.log",
+      "size": 174,
+      "sha256": "b329392611e4d0fa068f2d46649b00f24370917733d3e98349f6c8ceca7743f6"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/native-present-eight-core.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/native-present-eight-core.log",
+      "size": 175,
+      "sha256": "51cd6bd4532160aa7baa55d5cd0d141d0e21c24f62932c925eee8ea95e4d2ea1"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/native-present-normal-kms.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/native-present-normal-kms.log",
+      "size": 176,
+      "sha256": "e56785e4c0251dae1c394eb3bb01fe1cfa5979fd16cb4dd7506f01817bb14859"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/native-present-package-warm.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/native-present-package-warm.log",
+      "size": 174,
+      "sha256": "40dff83c3eb0c47f05705fd59f7ad0f310f7f782d45cf7040604c81cd3e75dbd"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/native-present-package.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/native-present-package.log",
+      "size": 174,
+      "sha256": "fe3c37079f4303b00625a4ced0ec5a6c87f271fbf0f1953f78e736c535ef4728"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/native-present.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/native-present.log",
+      "size": 176,
+      "sha256": "7c5aff7c9ec205a51a75cf0e2ddcfebea8d620ccc68af629e46e0dc763e34bab"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/packages.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/packages.txt",
+      "size": 135,
+      "sha256": "addc3a13145770e93e9b9ca266202c7ebdef47f16de3c3b3920be0c464aec8e3"
+    },
+    {
+      "path": "evidence/gnome-wayland-20261119/xwayland-gles-probe.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-wayland-20261119/xwayland-gles-probe.log",
+      "size": 554,
+      "sha256": "d474f7cc7cd56b4da68a5180cfeebdaf7939c3ab0bcd2048425be41b65c344c5"
     },
     {
       "path": "evidence/media-v30-1080-playback-20261118.json",
@@ -420,8 +574,8 @@
       "path": "tools/browser/build_firefox_resolute_ffmpeg.sh",
       "kind": "source",
       "source": "mainline/tools/browser/build_firefox_resolute_ffmpeg.sh",
-      "size": 4462,
-      "sha256": "6967bc5d52a27333d77b3377118ccd517dc15052398c2eab626113edc586a40b"
+      "size": 5211,
+      "sha256": "b971bdd6e877fc9fa826905d2e311ed562c3cfa6faec779a6669f2b458a41c0e"
     },
     {
       "path": "tools/browser/cedar-service",
@@ -595,8 +749,8 @@
       "path": "tools/browser/firefox-resolute",
       "kind": "source",
       "source": "mainline/tools/browser/firefox-resolute",
-      "size": 892,
-      "sha256": "c75d8709a4fa6c598448bacd25b9841802c4791d2e1b2b5f70794b94ccad109b"
+      "size": 1464,
+      "sha256": "6aaf8abd2c80cf6aed40d76149c4701da480fe1bdce7018d7f1f5e8510c3c206"
     },
     {
       "path": "tools/browser/firefox-resolute-copyright",
@@ -604,6 +758,13 @@
       "source": "mainline/tools/browser/firefox-resolute-copyright",
       "size": 1451,
       "sha256": "cc0cfc1ce6349e4d8bc9dacbd9fa26066d907aa49b29dd1dd59af6e532b7dc1b"
+    },
+    {
+      "path": "tools/browser/firefox-resolute-source.sha256",
+      "kind": "source",
+      "source": "mainline/tools/browser/firefox-resolute-source.sha256",
+      "size": 380,
+      "sha256": "1366a932b7f61c8a2c116a56e236bb99ee5553dbd20d6c3720dbd2b66538c96f"
     },
     {
       "path": "tools/browser/gstomx.conf",
@@ -802,6 +963,13 @@
       "sha256": "3409b715bbe0507949d3bc3431fbac8128334c5d4005d3d675d70029cdd462f3"
     },
     {
+      "path": "tools/browser/verify_firefox_resolute.py",
+      "kind": "source",
+      "source": "mainline/tools/browser/verify_firefox_resolute.py",
+      "size": 1383,
+      "sha256": "d87818dd1839aa1496b8b31ab974e1982ff792bcda6ef3ed89ea3e87ba7101fe"
+    },
+    {
       "path": "tools/build_atlasa1_player.py",
       "kind": "source",
       "source": "mainline/tools/build_atlasa1_player.py",
@@ -917,8 +1085,8 @@
       "path": "tools/build_gpu_userspace.py",
       "kind": "source",
       "source": "mainline/tools/build_gpu_userspace.py",
-      "size": 9985,
-      "sha256": "6548203b72ddfc113da62407315f7afc30fb9ec6bcead335bc10f344d8b8b07c"
+      "size": 11873,
+      "sha256": "19505acc0186f7cc1ca19225acf16e20d83efe3ad99d917c76eac4042eced746"
     },
     {
       "path": "tools/build_media_v28_candidate.py",
@@ -1017,6 +1185,13 @@
       "source": "mainline/tools/prepare_media_v28_candidate.py",
       "size": 4360,
       "sha256": "5f87aa4533069614a7d34e222f1861e26a28b56f802f75ee0b260ab5a656bf90"
+    },
+    {
+      "path": "tools/stage_atlasa1_gnome_wayland.sh",
+      "kind": "source",
+      "source": "mainline/tools/stage_atlasa1_gnome_wayland.sh",
+      "size": 816,
+      "sha256": "4c43ccb94d0da403b34b29bfff4287b639d1d50006f85742a80e500835ed34ac"
     },
     {
       "path": "tools/validation/README.md",
@@ -1131,11 +1306,25 @@
       "sha256": "b5d04622807da6571389090fbde2686f5df8442ed8b2ad9dcc50c4ab414ad06c"
     },
     {
+      "path": "tools/validation/firefox_renderer_probe.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/firefox_renderer_probe.py",
+      "size": 16998,
+      "sha256": "fa16feafadb7a249f7cfd224549cdba4dd719700b8ada1a663f4c25fb262c17e"
+    },
+    {
+      "path": "tools/validation/gnome_wayland_browser.py",
+      "kind": "source",
+      "source": "mainline/tools/validation/gnome_wayland_browser.py",
+      "size": 6077,
+      "sha256": "5ef14e146b7156f5e5fb1533ab5ceabd6814453fe8f84558a5451efc0896845b"
+    },
+    {
       "path": "tools/validation/gpu_runtime_view.py",
       "kind": "source",
       "source": "mainline/tools/validation/gpu_runtime_view.py",
-      "size": 4511,
-      "sha256": "0bdf9800033a80104d0ee50988701e11d804328b275adb08aeae02142dff4db4"
+      "size": 4684,
+      "sha256": "d5b4db410142b73e37d01f6cf2dfd3bd939e0e2624c036a8d09fa12987c7b956"
     },
     {
       "path": "tools/validation/gpu_userspace_probe.c",
@@ -1164,6 +1353,13 @@
       "source": "mainline/tools/validation/update_t736_media_v29.py",
       "size": 33645,
       "sha256": "6c9b896a1977f411181584fd3031f6486df73637d4db1d45b769b38749f96e08"
+    },
+    {
+      "path": "tools/validation/wayland_present.c",
+      "kind": "source",
+      "source": "mainline/tools/validation/wayland_present.c",
+      "size": 7280,
+      "sha256": "5fae9f5939077472a640b20aff275284e6e3a12aebc0448c3c40bfcdd0ebf643"
     },
     {
       "path": "tools/verify_atlasa1_resolute_media.sh",

@@ -1,0 +1,2 @@
+# Render on the display device to avoid Mutter's cross-device framebuffer copy.
+SUBSYSTEM=="drm", KERNEL=="card[0-9]*", DRIVERS=="sunxi-drm", TAG+="mutter-device-preferred-primary"

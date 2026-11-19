@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+. /opt/atlasa1-img-wayland/session.env
+python3 "$T736_IMG_ROOT/bin/gpu-runtime-view" --prefix "$T736_IMG_ROOT" --verify >/dev/null
+dbus-update-activation-environment --systemd LD_LIBRARY_PATH LIBGL_DRIVERS_PATH \
+    COGL_DRIVER GDK_BACKEND GSK_RENDERER GDK_DISABLE
+
+clear_graphics_environment() {
+    dbus-update-activation-environment LD_LIBRARY_PATH= LIBGL_DRIVERS_PATH= \
+        COGL_DRIVER= GDK_BACKEND= GSK_RENDERER= GDK_DISABLE= || true
+    systemctl --user unset-environment LD_LIBRARY_PATH LIBGL_DRIVERS_PATH \
+        COGL_DRIVER GDK_BACKEND GSK_RENDERER GDK_DISABLE || true
+}
+trap clear_graphics_environment EXIT
+gnome-session --session=gnome "$@"

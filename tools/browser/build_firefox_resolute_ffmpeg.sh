@@ -1,13 +1,31 @@
 #!/bin/bash
 # Build the libavcodec.so.62 implementation selected by Ubuntu 26.04 Firefox.
 set -euo pipefail
-source_tree=$(realpath "${1:?Pass an extracted Ubuntu ffmpeg 8.0.1-3ubuntu2 source tree}")
+input=${1:?Pass --ubuntu-archive, a cached Ubuntu ffmpeg .dsc, or an extracted source tree}
 work=$(realpath -m "${2:?Pass a new output directory}")
 here=$(cd "$(dirname "$0")" && pwd)
-test "$(head -n1 "$source_tree/debian/changelog" | cut -d' ' -f2)" = '(7:8.0.1-3ubuntu2)'
 test ! -e "$work"
 mkdir -p "$work/build" "$work/lib" "$work/cedar/shm_v2"
-cp -a "$source_tree" "$work/src"
+if [[ $input == --ubuntu-archive || -f $input ]]; then
+    dsc=ffmpeg_8.0.1-3ubuntu2.dsc
+    if [[ $input == --ubuntu-archive ]]; then
+        archive=https://archive.ubuntu.com/ubuntu/pool/universe/f/ffmpeg
+        sources="$work/ubuntu-source"
+        mkdir "$sources"
+        while read -r digest file; do
+            curl --fail --location --retry 3 --output "$sources/$file" "$archive/$file"
+        done < "$here/firefox-resolute-source.sha256"
+    else
+        [[ $(basename -- "$input") == "$dsc" ]]
+        sources=$(dirname "$(realpath -e "$input")")
+    fi
+    (cd "$sources" && sha256sum -c "$here/firefox-resolute-source.sha256")
+    dpkg-source --no-check -x "$sources/$dsc" "$work/src"
+else
+    cp -a "$(realpath -e "$input")" "$work/src"
+fi
+source_tree="$work/src"
+test "$(head -n1 "$source_tree/debian/changelog" | cut -d' ' -f2)" = '(7:8.0.1-3ubuntu2)'
 cp "$here/ffmpeg_cedar.c" "$here/cedar_client.h" "$work/cedar/"
 cp "$here/shm_v2/"{cedar_client.c,cedar_client.h,cedar_protocol.h,cedar_shm.h} "$work/cedar/shm_v2/"
 patch --fuzz=0 -d "$work/cedar" -p3 < "$here/copy_candidate/firefox-dr1-output.patch"

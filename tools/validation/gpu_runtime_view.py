@@ -21,7 +21,7 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def expected_view(private):
+def expected_view(private, prefix=PREFIX):
     lib = private / 'lib'
     require(lib.is_dir() and not lib.is_symlink(), 'Expected an original lib directory')
     require((private / 'manifest.json').is_file(), 'Missing original payload manifest')
@@ -38,7 +38,7 @@ def expected_view(private):
     require(excluded, 'No vendor Vulkan loader found; payload needs a fresh review')
     return {
         'schema': 1,
-        'prefix': PREFIX,
+        'prefix': prefix,
         'view': VIEW,
         'payload_manifest_sha256': digest(private / 'manifest.json'),
         'links': links,
@@ -58,11 +58,11 @@ def verify_links(view, expected):
         require(link.exists(), 'Broken runtime view link: ' + str(link))
 
 
-def prepare(root, verify=False):
+def prepare(root, verify=False, prefix=PREFIX):
     root = Path(root).resolve(strict=True)
-    private = root / PREFIX.lstrip('/')
+    private = root / prefix.lstrip('/')
     require(private.is_dir() and not private.is_symlink(), 'Missing original private payload')
-    expected = expected_view(private)
+    expected = expected_view(private, prefix)
     view = private / VIEW
     record = private / (VIEW + '.json')
     data = (json.dumps(expected, sort_keys=True, indent=2) + '\n').encode()
@@ -92,8 +92,8 @@ def prepare(root, verify=False):
                 stream.write(data)
         os.chmod(view, 0o755)
         os.chmod(record, 0o644)
-    return {'runtime_path': PREFIX + '/' + VIEW,
-            'manifest_path': PREFIX + '/' + VIEW + '.json',
+    return {'runtime_path': prefix + '/' + VIEW,
+            'manifest_path': prefix + '/' + VIEW + '.json',
             'manifest_sha256': hashlib.sha256(data).hexdigest(),
             'links': len(expected['links']), 'excluded': expected['excluded']}
 
@@ -102,8 +102,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', default='/', help='Installed or offline rootfs')
     parser.add_argument('--verify', action='store_true', help='Check existing view without changes')
+    parser.add_argument('--prefix', default=PREFIX,
+                        choices=[PREFIX, '/opt/atlasa1-img-wayland'])
     args = parser.parse_args()
-    print(json.dumps(prepare(args.root, args.verify), indent=2))
+    print(json.dumps(prepare(args.root, args.verify, args.prefix), indent=2))
 
 
 if __name__ == '__main__':

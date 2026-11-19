@@ -1,0 +1,2 @@
+renderer=PowerVR B-Series BXM-4-64
+submitted=582 presented=579 discarded=1 elapsed=12.003 presented_fps=49.051 max_gap_ms=150.629 gaps_over_25ms=70 gaps_over_40ms=47 flags=0x7

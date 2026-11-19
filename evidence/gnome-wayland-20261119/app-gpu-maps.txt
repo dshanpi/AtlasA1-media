@@ -1,0 +1,12 @@
+gnome-shell
+pid 129005's current affinity list: 0-7
+/opt/atlasa1-img-wayland/lib/libEGL.so.1.0.0
+/opt/atlasa1-img-wayland/lib/libGLESv2_PVR_MESA.so.24.2.6603887
+/opt/atlasa1-img-wayland/lib/libGLESv2.so.2.0.0
+/opt/atlasa1-img-wayland/lib/libsrv_um.so.24.2.6603887
+gnome-control-center
+pid 170776's current affinity list: 0-7
+/opt/atlasa1-img-wayland/lib/libEGL.so.1.0.0
+/opt/atlasa1-img-wayland/lib/libGLESv2_PVR_MESA.so.24.2.6603887
+/opt/atlasa1-img-wayland/lib/libGLESv2.so.2.0.0
+/opt/atlasa1-img-wayland/lib/libsrv_um.so.24.2.6603887

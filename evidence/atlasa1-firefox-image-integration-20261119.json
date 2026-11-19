@@ -1,0 +1,20 @@
+{
+  "board": "AtlasA1",
+  "rootfs": "AtlasA1 Ubuntu 26.04 RC1 arm64, 6.18.63-t736-media-v30",
+  "verification_environment": "Private OverlayFS over the built RC1 rootfs, ARM64 userspace via QEMU binfmt, XDG_CURRENT_DESKTOP=XFCE",
+  "installed_package": "atlasa1-firefox-cedar 8.0.1-1~resolute1 arm64",
+  "package_sha256": "0e360b0c309f61a6b6562387026ea8bfe3fb7f3248672972dbc7c9781c1c29cb",
+  "firefox_version": "9:160.0.1+build1-0ubuntu0.26.04.1~mt1armbian1",
+  "test_user": "t736 (uid 1000)",
+  "visible_gio_application": "atlasa1-firefox.desktop",
+  "desktop_command": "atlasa1-firefox %U",
+  "resolved_executable": "/usr/bin/atlasa1-firefox",
+  "loaded_private_libraries": ["libt736_cedar_client.so", "libavcodec.so.62"],
+  "loaded_distribution_library": "libavutil.so.60",
+  "default_decoders": {"h264": "h264_cedar", "hevc": "hevc_cedar"},
+  "verified_ubuntu_archive_inputs": 4,
+  "rootfs_verifier": "verify_atlasa1_resolute.sh ROOTFS 6.18.63-t736-media-v30 --require-firefox-cedar",
+  "rootfs_verifier_exit_status": 0,
+  "rootfs_verifier_log_sha256": "8e21b4dd0b3e8378fa806c2b7288b4f1ba49ab46906e4bca6f86e4f761d57a3c",
+  "hardware_playback_evidence": "atlasa1-firefox160-ffmpeg8-20261118.json"
+}

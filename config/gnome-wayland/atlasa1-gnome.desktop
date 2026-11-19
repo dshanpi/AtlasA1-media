@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AtlasA1 GNOME
+Comment=GNOME Wayland with AtlasA1 PowerVR rendering
+Exec=/usr/local/bin/atlasa1-gnome-session
+TryExec=/usr/bin/gnome-session
+Type=Application
+DesktopNames=GNOME
+X-GDM-SessionRegisters=true

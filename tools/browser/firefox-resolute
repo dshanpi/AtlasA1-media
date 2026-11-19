@@ -10,9 +10,23 @@ if ! grep -Fqx "$pref" "$profile/user.js" 2>/dev/null; then
 fi
 unset T736_CEDAR_TEST_CLIENT T736_CEDAR_NATIVE_PLAYER
 export T736_CEDAR_ENABLE=1
-export LD_LIBRARY_PATH="$lib:/opt/t736-img-ddk-24.2-x11/runtime-gles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+gpu=/opt/t736-img-ddk-24.2-x11
+lookup=
+if [ "${XDG_SESSION_TYPE:-}" = wayland ] && [ -n "${WAYLAND_DISPLAY:-}" ] &&
+   [ -r /opt/atlasa1-img-wayland/runtime-gles/libEGL.so.1 ] &&
+   [ -r /opt/atlasa1-img-wayland/firefox-gles/libGL.so.1 ]; then
+    gpu=/opt/atlasa1-img-wayland
+    lookup="$gpu/firefox-gles:"
+    export MOZ_ENABLE_WAYLAND=1
+    # The Wayland DDK implements GLES. Match Firefox's context and symbol API.
+    pref='user_pref("gfx.egl.prefer-gles.enabled", true);'
+    if ! grep -Fqx "$pref" "$profile/user.js" 2>/dev/null; then
+        printf '\n%s\n' "$pref" >> "$profile/user.js"
+    fi
+fi
+export LD_LIBRARY_PATH="$lib:${lookup}$gpu/runtime-gles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export LD_PRELOAD="$lib/libt736_cedar_client.so:$lib/libavcodec.so.62${LD_PRELOAD:+:$LD_PRELOAD}"
-export LIBGL_DRIVERS_PATH="${LIBGL_DRIVERS_PATH:-/opt/t736-img-ddk-24.2-x11/lib/dri}"
+export LIBGL_DRIVERS_PATH="${LIBGL_DRIVERS_PATH:-$gpu/lib/dri}"
 export MOZ_X11_EGL=1
 if [ -n "${T736_CEDAR_PROFILE:-}" ]; then set -- --no-remote "$@"; fi
 exec /usr/bin/firefox --profile "$profile" "$@"

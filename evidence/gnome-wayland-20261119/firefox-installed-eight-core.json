@@ -1,0 +1,36 @@
+{
+  "session_type": "wayland",
+  "complete": true,
+  "graphics_pass": true,
+  "animation_metric": "requestAnimationFrame callbacks, not HDMI frames",
+  "startup_seconds": 4.129974580995622,
+  "graphics": {
+    "features": {
+      "compositor": "webrender",
+      "hwCompositing": {
+        "status": "available"
+      },
+      "gpuProcess": {
+        "status": "unused"
+      },
+      "webrender": {
+        "status": "available"
+      },
+      "wrCompositor": {
+        "status": "blocklisted:FEATURE_FAILURE_WEBRENDER_COMPOSITOR_DISABLED"
+      },
+      "openglCompositing": {
+        "status": "available"
+      }
+    },
+    "renderer": "PowerVR B-Series BXM-4-64"
+  },
+  "animation": {
+    "callbacks": 397,
+    "visible": "visible",
+    "fps": 38.05321299805506,
+    "maxGapMs": 207.57999999999993,
+    "gapsOver25ms": 90
+  },
+  "browser_version": "160.0.1"
+}
