@@ -1,0 +1,44 @@
+T736_WC: version=0x3331000021320 phy_offset=0x0 heap=t736-ve cache=WC barriers=dmb-osh
+T736_OMX_DIAG self=0xaaab105f9420 phase=flush.entry idle=-1 actual=-1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_OMX_DIAG self=0xaaab105f9420 phase=flush.initial-state idle=-1 actual=1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_OMX_DIAG self=0xaaab105f9420 phase=flush.loaded-return idle=-1 actual=1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_WC: first validated WC ordering barrier
+DEBUG  : cedarc <CdcIniParserInit:41>: load conf file /etc/cedarc.conf ok!
+
+DEBUG  : cedarc <AwOmxComponentInit:40>: OMXCORE: aw_omx_component_init 105f6d50
+
+INFO   : cedarc <log_setlevel:73>: Set log level to 5 from /vendor/etc/cedarc.conf
+WARNING: cedarc <getSocIdString:1219>: cannot open /dev/sunxi_soc_info, it maybe ok!
+
+WARNING: cedarc <getSocIdString:1219>: cannot open /dev/sunxi_soc_info, it maybe ok!
+
+WARNING: omx_vdec <__AwOmxVdecSetParameter:1735>: Set Parameter called in valid state
+ERROR  : omx_vdec <AwOmxVdecPortGetFormat:365>: [40;31merro: pParamData->nIndex > m_sPortFormatType.nIndex[0m
+INFO   : cedarc <log_setlevel:93>: now cedarc log level:4
+ERROR  : cedarc <DebugCheckConfig:396>: [40;31mnow cedarc log level:4[0m
+INFO   : cedarc <CreateVideoDecoder:427>: CreateVideoDecoder p:0xffff380099b0
+WARNING: cedarc <getSocIdString:1219>: cannot open /dev/sunxi_soc_info, it maybe ok!
+
+INFO   : cedarc <VeInitialize:1708>: *** ic_version = 0x3331000021320,
+WARNING: cedarc <InitializeVideoDecoder:718>: warning: the nDeInterlaceHoldingFrameBufferNum is 0
+ERROR  : ionAlloc <ion_alloc_vir2phy_cpu:487>: [40;31mion_alloc_vir2phy failed, do not find virtual address: 0xffff20000880[0m
+ERROR  : ionAlloc <ion_alloc_vir2phy_cpu:487>: [40;31mion_alloc_vir2phy failed, do not find virtual address: 0xffff20000c7f[0m
+INFO   : omx_vdec_aw <__liGetExtPara:1490>: OMX get ext para: 0x0
+WARNING: omx_vdec <__AwOmxVdecGetConfig:1806>: +++++ get display crop: top[0],left[0],width[1920],height[1080]
+FRAME format=YV12 size=1920x1088 memories=1
+MEMORY index=0 type=dmabuf offset=0 size=3133440 maxsize=3133440
+ERROR  : ionAlloc <ion_alloc_get_fd:692>: [40;31mion_alloc_get_fd failed,no virtual address: 0xffff1fd03000
+[0m
+PLANE index=0 stride=1920 offset=0 dma_fd=0
+ERROR  : ionAlloc <ion_alloc_get_fd:692>: [40;31mion_alloc_get_fd failed,no virtual address: 0xffff1ff01000
+[0m
+PLANE index=1 stride=960 offset=2088960 dma_fd=0
+ERROR  : ionAlloc <ion_alloc_get_fd:692>: [40;31mion_alloc_get_fd failed,no virtual address: 0xffff1ff80800
+[0m
+PLANE index=2 stride=960 offset=2611200 dma_fd=0
+WARNING: omx_vdec_aw <standbyOutBufferArr:879>: ** return pic when flush,i[0],pPic[0xffff20001758]
+INFO   : cedarc <DestroyVideoDecoder:441>: DestroyVideoDecoder, pDecoder=0xffff380099b0
+INFO   : cedarc <VeRelease:1865>: not malloc locks
+
+INFO   : cedarc <VeRelease:1865>: not malloc locks
+

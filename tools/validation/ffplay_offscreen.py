@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure clocked native FFplay playback through Cedar without opening an HDMI window."""
+"""Measure Cedar FFplay timing offscreen or in the active Wayland desktop."""
 import argparse
 import hashlib
 import json
@@ -64,6 +64,26 @@ def play(args, record):
             if sock.stat().st_uid == user.pw_uid:
                 env.update(DISPLAY=':'+sock.name[1:], XAUTHORITY=f'/run/user/{user.pw_uid}/gdm/Xauthority')
                 break
+    if args.wayland:
+        prefix = '/opt/atlasa1-img-wayland'
+        runtime = Path(f'/run/user/{user.pw_uid}')
+        if not (runtime/'wayland-0').is_socket():
+            raise ValueError('Expected the active GNOME wayland-0 socket')
+        env.update(SDL_VIDEODRIVER='wayland', SDL_RENDER_DRIVER='opengles2',
+                   LD_LIBRARY_PATH=prefix+'/runtime-gles', LIBGL_DRIVERS_PATH=prefix+'/lib/dri',
+                   XDG_RUNTIME_DIR=str(runtime), WAYLAND_DISPLAY='wayland-0',
+                   XDG_SESSION_TYPE='wayland', DBUS_SESSION_BUS_ADDRESS='unix:path='+str(runtime/'bus'))
+        if args.session_audio:
+            env.pop('SDL_AUDIODRIVER', None)
+            sink = subprocess.run(['wpctl', 'inspect', '@DEFAULT_AUDIO_SINK@'],
+                env=env, user=user.pw_uid, group=user.pw_gid, capture_output=True, text=True, timeout=10)
+            names = re.findall(r'(?:node.name|node.description) = "([^"]+)"', sink.stdout)
+            record['session_audio_sink'] = names
+            record['audio_hardware_available'] = (sink.returncode == 0 and bool(names)
+                                                  and not any(n in ('auto_null', 'Dummy Output') for n in names))
+            record['physical_audio_verified'] = False
+    if args.renderer_vsync is not None:
+        env['SDL_RENDER_VSYNC'] = str(args.renderer_vsync)
     if args.mode == 'cedar':
         # The Resolute player ships its complete FFmpeg 7 runtime alongside
         # the binary. Ubuntu system applications use FFmpeg 8.
@@ -83,6 +103,13 @@ def play(args, record):
     if args.present_trace:
         tracer = str(args.present_trace.resolve(strict=True))
         env['LD_PRELOAD'] = ':'.join(filter(None, [tracer, env.get('LD_PRELOAD')]))
+    if args.wayland_trace:
+        tracer = str(args.wayland_trace.resolve(strict=True))
+        env['LD_PRELOAD'] = ':'.join(filter(None, [tracer, env.get('LD_PRELOAD')]))
+    if args.texture_ring:
+        ring = args.texture_ring.resolve(strict=True)
+        env['LD_PRELOAD'] = ':'.join(filter(None, [env.get('LD_PRELOAD'), str(ring)]))
+        record['render_experiment'] = dict(path=str(ring), sha256=hashlib.sha256(ring.read_bytes()).hexdigest())
     decoder = codec + ('_cedar' if args.mode == 'cedar' else '')
     video_filter = 'showinfo=checksum=0'
     if args.scale_to_window:
@@ -93,6 +120,8 @@ def play(args, record):
            '-vf', video_filter, '-x', '1920', '-y', '1080', '-i', str(clip)]
     if not args.audio:
         cmd.insert(1, '-an')
+    if args.fullscreen:
+        cmd.insert(1, '-fs')
     if args.scale_to_window:
         cmd[1:1] = ['-filter_threads', '2']
     if args.loops > 1:
@@ -125,6 +154,9 @@ def play(args, record):
                 proc.wait()
         logfile.seek(0)
         log = logfile.read().decode('utf-8', 'replace')
+        with args.output.with_suffix('.log').open('x', encoding='utf-8') as saved_log:
+            saved_log.write(log)
+        record['player_log'] = str(args.output.with_suffix('.log'))
     elapsed, interrupts = time.monotonic() - start, irq() - irq_start
     broker = journal('--after-cursor', cursor[1], '-u', 't736-cedar.service')
     sessions = re.findall(r'CEDAR_BROKER: open session=(\d+) codec=(\d+) (\d+)x(\d+)', broker)
@@ -171,6 +203,8 @@ def play(args, record):
         skew = sorted(abs(float(offset)) for t, offset, _ in stats if 1 <= float(t) < duration-.5)
         record['av_offset_p95_seconds'] = skew[(95*len(skew)-1)//100] if skew else None
         checks['audio_video_sync'] = bool(skew) and record['av_offset_p95_seconds'] <= .08
+        if args.session_audio:
+            checks['real_audio_sink_available'] = record['audio_hardware_available']
     if args.scale_to_window:
         panel = re.findall(r'\[showinfo@panel @ [^\]]+\] n:\s*\d+\s+pts:.*? s:(\d+)x(\d+)\b', log)
         record['panel_sizes'] = sorted({f'{w}x{h}' for w,h in panel})
@@ -194,6 +228,29 @@ def play(args, record):
                   diagnostics=errors[-8:], checks=checks, status='passed' if all(checks.values()) else 'not_verified')
     if not shown:
         record['player_tail'] = log.splitlines()[-6:]
+    if args.wayland_trace:
+        stages = re.search(r'ATLAS_WAYLAND_STAGE upload_p95_ms=([\d.]+) upload_max_ms=([\d.]+) '
+                           r'present_p95_ms=([\d.]+) present_max_ms=([\d.]+)', log)
+        if stages:
+            record['sdl_stage_timings_ms'] = dict(zip(
+                ('upload_p95', 'upload_max', 'present_p95', 'present_max'), map(float, stages.groups())))
+        events = re.search(r'ATLAS_WAYLAND_EVENTS poll_max_ms=([\d.]+) poll_over_20ms=(\d+) '
+                           r'sleep_max_ms=([\d.]+) sleep_over_20ms=(\d+)', log)
+        if events:
+            record['sdl_event_timings'] = dict(poll_max_ms=float(events[1]), poll_over_20ms=int(events[2]),
+                                             sleep_max_ms=float(events[3]), sleep_over_20ms=int(events[4]))
+        feedback = re.search(r'ATLAS_WAYLAND_PRESENT requested=(\d+) shown=(\d+) discarded=(\d+) '
+                             r'span_ms=([\d.]+) fps=([\d.]+) max_gap_ms=([\d.]+) '
+                             r'gaps_over_25ms=(\d+) gaps_over_40ms=(\d+) flags=0x([0-9a-f]+)', log)
+        checks['wayland_feedback_received'] = bool(feedback)
+        if feedback:
+            record['wp_presentation'] = dict(requested=int(feedback[1]), shown=int(feedback[2]),
+                discarded=int(feedback[3]), span_ms=float(feedback[4]), fps=float(feedback[5]),
+                max_gap_ms=float(feedback[6]), gaps_over_25ms=int(feedback[7]),
+                gaps_over_40ms=int(feedback[8]), flags=int(feedback[9],16))
+            checks['wayland_every_frame'] = int(feedback[2]) == total_frames and int(feedback[3]) == 0
+            checks['wayland_hw_timing'] = int(feedback[9],16) & 7 == 7
+        record['status'] = 'passed' if all(checks.values()) else 'not_verified'
 
 
 def main():
@@ -217,11 +274,26 @@ def main():
     parser.add_argument('--user', default='t736')
     parser.add_argument('--player', type=Path, default=Path('/usr/bin/ffplay'))
     parser.add_argument('--audio', action='store_true', help='Decode audio to the dummy device and use its clock')
+    parser.add_argument('--wayland', action='store_true', help='Present a visible window in the active GNOME Wayland session')
+    parser.add_argument('--session-audio', action='store_true', help='Use the desktop audio device rather than dummy audio')
+    parser.add_argument('--fullscreen', action='store_true', help='Make the visible Wayland player fullscreen')
+    parser.add_argument('--renderer-vsync', type=int, choices=[0, 1], help='Override SDL renderer pacing for a controlled comparison')
+    parser.add_argument('--wayland-trace', type=Path, help='Diagnostic library collecting wp_presentation feedback')
+    parser.add_argument('--texture-ring', '--render-experiment', dest='texture_ring', type=Path,
+                        help='Experimental SDL rendering preload; not a production setting')
     parser.add_argument('--ffmpeg-lib', type=Path, default=Path('/opt/t736-browser-ffmpeg-v7/lib'))
     parser.add_argument('--client-lib', type=Path,
                         default=Path('/opt/t736-cedar-transport-v2/lib/libt736_cedar_client.so'))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    if args.wayland and args.renderer != 'powervr':
+        parser.error('--wayland requires --renderer powervr')
+    if args.session_audio and not (args.wayland and args.audio):
+        parser.error('--session-audio requires --wayland --audio')
+    if args.fullscreen and not args.wayland:
+        parser.error('--fullscreen requires --wayland')
+    if args.wayland_trace and not args.wayland:
+        parser.error('--wayland-trace requires --wayland')
     if args.loops < 1 or (args.loops > 1 and not (args.keep_frames and args.present_trace)):
         parser.error('multiple playback passes require --keep-frames and --present-trace, and loops must be positive')
     if args.wait_video_start and not args.audio:
@@ -235,6 +307,12 @@ def main():
                   loops=args.loops, wait_video_start=args.wait_video_start,
                   display='SDL dummy software renderer' if args.renderer == 'software' else 'SDL offscreen GLES2',
                   window=[1920,1080], audio=args.audio, keep_late_frames=args.keep_frames)
+    record['renderer_vsync_override'] = args.renderer_vsync
+    if args.wayland:
+        record.update(display='SDL Wayland GLES2', fullscreen=args.fullscreen,
+                      audio_device='session' if args.session_audio else 'dummy',
+                      presentation_metric=('wp_presentation compositor feedback with hardware timing flags'
+                                           if args.wayland_trace else 'SDL uploads and presents only'))
     with args.output.open('x', encoding='utf-8') as out:
         try:
             play(args, record)

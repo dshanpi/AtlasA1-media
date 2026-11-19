@@ -74,6 +74,22 @@ class AtlasPlayer(unittest.TestCase):
         self.assertNotIn('-wait_video_start', args)
         self.assertNotIn('T736_CEDAR_ENABLE', env)
 
+    def test_wayland_runtime_and_single_clock(self):
+        with patch.dict(os.environ, {'WAYLAND_DISPLAY': 'wayland-0'}, clear=True), \
+             patch('os.path.isdir', return_value=True):
+            _, env = self.launch(dict(codec_name='h264', pix_fmt='yuv420p', width=1920, height=1080))
+        self.assertEqual(env['SDL_VIDEODRIVER'], 'wayland')
+        self.assertEqual(env['SDL_RENDER_VSYNC'], '0')
+        self.assertIn('/opt/atlasa1-img-wayland/runtime-gles', env['LD_LIBRARY_PATH'])
+        self.assertEqual(env['LIBGL_DRIVERS_PATH'], '/opt/atlasa1-img-wayland/lib/dri')
+
+    def test_x11_runtime(self):
+        with patch.dict(os.environ, {'DISPLAY': ':0'}, clear=True), \
+             patch('os.path.isdir', return_value=True):
+            _, env = self.launch(dict(codec_name='h264', pix_fmt='yuv420p', width=1920, height=1080))
+        self.assertIn('/opt/t736-img-ddk-24.2-x11/runtime-gles', env['LD_LIBRARY_PATH'])
+        self.assertNotIn('SDL_RENDER_VSYNC', env)
+
 
 if __name__ == '__main__':
     unittest.main()

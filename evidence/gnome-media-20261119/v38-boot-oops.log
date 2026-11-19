@@ -1,0 +1,675 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x412fd050]
+[    0.000000] Linux version 6.18.63-t736-gnome-v38 (ubuntu@ubuntu2404) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #38 SMP PREEMPT_DYNAMIC 2026-11-19 00:00:00 UTC
+[    0.000000] Machine model: T736 custom board mainline bring-up
+[    0.000000] earlycon: uart8250 at MMIO32 0x0000000002500000 (options '')
+[    0.000000] printk: legacy bootconsole [uart8250] enabled
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000023fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x000000023fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x000000023fffffff]
+[    0.000000] cma: Reserved 512 MiB at 0x00000000db800000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.5
+[    0.000000] percpu: Embedded 18 pages/cpu s34200 r8192 d31336 u73728
+[    0.000000] pcpu-alloc: s34200 r8192 d31336 u73728 alloc=18*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 [0] 4 [0] 5 [0] 6 [0] 7 
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GICv3 CPU interface
+[    0.000000] CPU features: detected: Virtualization Host Extensions
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
+[    0.000000] printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] software IO TLB: area num 8.
+[    0.000000] software IO TLB: mapped [mem 0x00000000d7800000-0x00000000db800000] (64MB)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2097152
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-1, MinObjects=0, CPUs=8, Nodes=1
+[    0.000000] Dynamic Preempt: none
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] RCU Tasks: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
+[    0.000000] RCU Tasks Trace: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: GICD_CTLR.DS=0, SCR_EL3.FIQ=0
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000003460000
+[    0.000000] ITS: No ITS available, not enabling LPIs
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer running at 24.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000000] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.007474] Console: colour dummy device 80x25
+[    0.010925] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.020668] pid_max: default: 32768 minimum: 301
+[    0.024371] LSM: initializing lsm=capability
+[    0.027770] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.034607] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.044217] rcu: Hierarchical SRCU implementation.
+[    0.048017] rcu: 	Max phase no-delay instances is 1000.
+[    0.053038] smp: Bringing up secondary CPUs ...
+[    0.057210] Detected VIPT I-cache on CPU1
+[    0.057290] GICv3: CPU1: found redistributor 100 region 0:0x0000000003480000
+[    0.057340] CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
+[    0.058001] Detected VIPT I-cache on CPU2
+[    0.058072] GICv3: CPU2: found redistributor 200 region 0:0x00000000034a0000
+[    0.058113] CPU2: Booted secondary processor 0x0000000200 [0x412fd050]
+[    0.058736] Detected VIPT I-cache on CPU3
+[    0.058800] GICv3: CPU3: found redistributor 300 region 0:0x00000000034c0000
+[    0.058834] CPU3: Booted secondary processor 0x0000000300 [0x412fd050]
+[    0.059452] Detected VIPT I-cache on CPU4
+[    0.059517] GICv3: CPU4: found redistributor 400 region 0:0x00000000034e0000
+[    0.059551] CPU4: Booted secondary processor 0x0000000400 [0x412fd050]
+[    0.060176] Detected VIPT I-cache on CPU5
+[    0.060243] GICv3: CPU5: found redistributor 500 region 0:0x0000000003500000
+[    0.060277] CPU5: Booted secondary processor 0x0000000500 [0x412fd050]
+[    0.060986] CPU features: detected: Spectre-v4
+[    0.060993] CPU features: detected: Spectre-BHB
+[    0.060998] Detected PIPT I-cache on CPU6
+[    0.061038] GICv3: CPU6: found redistributor 600 region 0:0x0000000003520000
+[    0.061059] CPU6: Booted secondary processor 0x0000000600 [0x414fd0b1]
+[    0.061759] Detected PIPT I-cache on CPU7
+[    0.061807] GICv3: CPU7: found redistributor 700 region 0:0x0000000003540000
+[    0.061829] CPU7: Booted secondary processor 0x0000000700 [0x414fd0b1]
+[    0.061905] smp: Brought up 1 node, 8 CPUs
+[    0.175337] SMP: Total of 8 processors activated.
+[    0.179033] CPU: All CPU(s) started at EL2
+[    0.182057] CPU features: detected: 32-bit EL0 Support
+[    0.186203] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.194139] CPU features: detected: CRC32 instructions
+[    0.198298] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.203108] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[    0.209313] alternatives: applying system-wide alternatives
+[    0.215209] Memory: 7385924K/8388608K available (6528K kernel code, 2118K rwdata, 2400K rodata, 448K init, 287K bss, 474020K reserved, 524288K cma-reserved)
+[    0.229979] devtmpfs: initialized
+[    0.234386] posixtimers hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.241075] futex hash table entries: 2048 (131072 bytes on 1 NUMA nodes, total 128 KiB, linear).
+[    0.252728] 29776 pages in range for non-PLT usage
+[    0.252735] 521296 pages in range for PLT usage
+[    0.256646] pinctrl core: initialized pinctrl subsystem
+[    0.264893] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.270655] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[    0.277116] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.284390] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.291897] ASID allocator initialised with 65536 entries
+[    0.298517] /display-engine@5000000: Fixed dependency cycle(s) with /tcon@5730000
+[    0.305257] /tcon@5730000: Fixed dependency cycle(s) with /display-engine@5000000
+[    0.312137] /tcon@5730000: Fixed dependency cycle(s) with /hdmi@5520000
+[    0.317933] /hdmi@5520000: Fixed dependency cycle(s) with /tcon@5730000
+[    0.326032] SCSI subsystem initialized
+[    0.328796] usbcore: registered new interface driver usbfs
+[    0.333355] usbcore: registered new interface driver hub
+[    0.337716] usbcore: registered new device driver usb
+[    0.342385] clocksource: Switched to clocksource arch_sys_counter
+[    0.353651] NET: Registered PF_INET protocol family
+[    0.357801] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.368829] tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.376716] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.383707] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.391287] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    0.399435] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.405195] UDP hash table entries: 4096 (order: 6, 262144 bytes, linear)
+[    0.411403] UDP-Lite hash table entries: 4096 (order: 6, 262144 bytes, linear)
+[    0.418177] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.423061] Trying to unpack rootfs image as initramfs...
+[    0.428558] workingset: timestamp_bits=46 max_order=21 bucket_order=0
+[    0.434466] fuse: init (API version 7.45)
+[    0.437606] NET: Registered PF_ALG protocol family
+[    0.441437] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+[    0.448071] io scheduler mq-deadline registered
+[    0.451562] io scheduler kyber registered
+[    0.454508] io scheduler bfq registered
+[    0.458180] gpio gpiochip0: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.467676] t736-r-pinctrl 7025000.pinctrl: initialized sunXi PIO driver
+[    0.474197] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.487846] t736-pinctrl 2000000.pinctrl: initialized sunXi PIO driver
+[    0.494497] t736-display-ccu 2002a00.clock-controller: DE PLL locked at 600 MHz; HDMI PHY reference is board DCXO 26 MHz
+[    0.505218] t736-gpu-ccu 2002b20.clock-controller: GPU fixed PERI400 clock with independent PLL_GPU0 power prerequisite
+[    0.515909] t736-ve-power 7062000.power-controller: VE_DEC PPU=ON, 400MHz, DEC0/1 bypass verified; reset held
+[    0.537058] t736-gpu-supply 7083000.regulator: AXP8191 DCDC5 verified at 900000 uV, fixed GPU supply policy
+[    0.583645] Serial: 8250/16550 driver, 1 ports, IRQ sharing disabled
+[    0.589887] printk: legacy console [ttyS0] disabled
+[    0.614214] 2500000.serial: ttyS0 at MMIO 0x2500000 (irq = 409, base_baud = 1500000) is a 16550A
+[    0.622342] printk: legacy console [ttyS0] enabled
+[    0.629610] printk: legacy bootconsole [uart8250] disabled
+[    0.638812] [drm] [TCON_TOP]sunxi_tcon_top_probe start
+[    0.642897] [drm] [SUNXI-DE] offline_mode not found, used def val
+[    0.647728] [drm] de use no display sys
+[    0.651825] [drm] [TCON] sunxi_tcon_probe start
+[    0.655062] [drm] [SUNXI-TCON] sunxi_tcon_of_get_id 4
+[    0.658951] [drm] [TCON] sunxi_tcon_probe ret = 0
+[    0.662495] [drm] sunxi_drm_platform_probe start
+[    0.665804] [drm] sunxi_drm_match_add start
+[    0.668912] [drm] sunxi_drm_match_add finish
+[    0.671917] [drm] sunxi_drm_bind start
+[    0.674534] [drm] [TCON_TOP]sunxi_tcon_top_bind start
+[    0.678394] sunxi-drm sunxi-drm: bound 5510000.tcon-top (ops 0xffff8000806e8e30)
+[    0.684496] [drm] [SUNXI-DE] sunxi_de_bind start
+[    0.687933] [drm] sunxi_de_bind crtc init for de 0 ok
+[    0.691811] sunxi-drm sunxi-drm: bound 5000000.display-engine (ops 0xffff8000806e63d8)
+[    0.698457] [drm] [SUNXI-TCON] sunxi_tcon_of_get_id 4
+[    0.702493] [drm] sunxi-hdmi: hdmi drv init dts done
+[    0.706394] [drm] sunxi-hdmi: [warn] not set hdmi notify node!
+[    0.710947] [drm] sunxi-hdmi: hdmi drv enable resource done
+[    0.715214] [drm] sunxi-hdmi: hdmi drv init resource done
+[    0.719352] [drm] sunxi-hdmi: hdmi drv init i2c adapter finish
+[    0.724846] [drm] sunxi-hdmi: drm hdmi connector create finish
+[    0.729383] [drm] sunxi-hdmi: hdmi devices bind done <<<<<<<<<<
+
+[    0.734173] sunxi-drm sunxi-drm: bound 5520000.hdmi (ops 0xffff8000806e94e8)
+[    0.739918] sunxi-drm sunxi-drm: bound 5730000.tcon (ops 0xffff8000806e8b38)
+[    0.745708] [drm] HDMI-A-1 Not connected, start hot-plug monitoring
+[    0.750671] [drm] start HDMI-A-1 monitor monitoring, interval: 100ms
+[    0.755718] [drm:commit_init_connecting.isra.0] *ERROR* offline mode: init connecting not found sunxi_drm_offline_mode_pre_init
+[    0.766271] [drm] Initialized sunxi-drm 3.0.0 for sunxi-drm on minor 0
+[    0.771510] [drm] sunxi_drm_bind ok
+[    0.779405] [drm] sunxi-hdmi: hdmi drv detect hpd connect
+[    0.790711] brd: module loaded
+[    0.796219] loop: module loaded
+[    0.798576] t736-cedar-wc 1c0e000.video-codec: Cedar decoder + private 32-bit WC heap; budget 256 MiB; root-only, fixed-frequency bring-up
+[    0.810958] t736-dwmac 4500000.ethernet: IRQ eth_wake_irq not found
+[    0.815929] t736-dwmac 4500000.ethernet: IRQ sfty not found
+[    0.820281] t736-dwmac 4500000.ethernet: PTP uses main clock
+[    0.824801] t736-dwmac 4500000.ethernet: RGMII MAC delays TX=13 RX=10, PHY clock 25 MHz
+[    0.831707] t736-dwmac 4500000.ethernet: User ID: 0x20, Synopsys ID: 0x53
+[    0.837194] t736-dwmac 4500000.ethernet: 	DWMAC4/5
+[    0.840686] t736-dwmac 4500000.ethernet: DMA HW capability register supported
+[    0.846511] t736-dwmac 4500000.ethernet: RX Checksum Offload Engine supported
+[    0.852336] t736-dwmac 4500000.ethernet: TX Checksum insertion supported
+[    0.857726] t736-dwmac 4500000.ethernet: Wake-Up On Lan supported
+[    0.862514] t736-dwmac 4500000.ethernet: Enable RX Mitigation via HW Watchdog Timer
+[    0.868877] t736-dwmac 4500000.ethernet: device MAC address ee:5b:d5:3e:ce:e0
+[    0.874705] t736-dwmac 4500000.ethernet: Enabled RFS Flow TC (entries=10)
+[    0.880184] t736-dwmac 4500000.ethernet: Using 32/40 bits DMA host/device width
+[    1.001344] Freeing initrd memory: 18240K
+[    1.070263] t736-dwmac 4500000.ethernet: RGMII configuration retained after MAC reset: 0x11545
+[    1.077828] usbcore: registered new interface driver usb-storage
+[    1.083390] t736-smhc3-pio 4023000.mmc: STORE_MBUS addr=0x00000000020025e0 value=f1055803 (read-only)
+[    1.091323] t736-smhc3-pio 4023000.mmc: MSI_LITE1 addr=0x000000000200259c value=00030001 (read-only)
+[    1.099199] t736-smhc3-pio 4023000.mmc: SMHC 050610: IDMA descriptors=0x00000000ae000000 data=0x00000000dbba0000 (shift2, mask32)
+[    1.122420] t736-smhc3-pio 4023000.mmc: timing=0 card=400000 parent=24000000 mux=0 M=30 N=1 module=8000001d sample=0 signal=1 (no rail writes)
+[    1.146379] t736-smhc3-pio 4023000.mmc: HS400 draft: v23 IDMA, HS cap=25000000, HS200=1 cap=200000000, HS400=1 cap=200000000, fixed1.8V; no ES/CQE
+[    1.158411] usbcore: registered new interface driver usbhid
+[    1.162680] usbhid: USB HID core driver
+[    1.165390] NET: Registered PF_INET6 protocol family
+[    1.169707] Segment Routing with IPv6
+[    1.172114] In-situ OAM (IOAM) with IPv6
+[    1.174773] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    1.179726] NET: Registered PF_PACKET protocol family
+[    1.189458] t736-r-pinctrl 7025000.pinctrl: supply vcc-pl not found, using dummy regulator
+[    1.190718] t736-gpu-power 7065000.power-controller: GPU_TOP/CORE ACK=8; PLL_GPU0 ready, GPU=400000000 Hz, DCDC5=900000 uV, reset verified
+[    1.208789] clk: Not disabling unused clocks
+[    1.210038] ehci-platform 4200000.usb: EHCI Host Controller
+[    1.210053] ohci-platform 4200400.usb: Generic Platform OHCI controller
+[    1.210081] ohci-platform 4200400.usb: new USB bus registered, assigned bus number 1
+[    1.210230] ohci-platform 4200400.usb: irq 419, io mem 0x04200400
+[    1.211760] PM: genpd: Disabling unused power domains
+[    1.236295] ehci-platform 4200000.usb: new USB bus registered, assigned bus number 2
+[    1.242813] ehci-platform 4200000.usb: irq 418, io mem 0x04200000
+[    1.262376] ehci-platform 4200000.usb: USB 2.0 started, EHCI 1.00
+[    1.267216] hub 1-0:1.0: USB hub found
+[    1.269711] hub 1-0:1.0: 1 port detected
+[    1.273116] hub 2-0:1.0: USB hub found
+[    1.275583] hub 2-0:1.0: 1 port detected
+[    1.278582] Freeing unused kernel memory: 448K
+[    1.281776] Run /init as init process
+[    1.284140]   with arguments:
+[    1.284142]     /init
+[    1.284145]   with environment:
+[    1.284147]     HOME=/
+[    1.284150]     TERM=linux
+[    1.330429] [drm] sunxi-hdmi: dw edid unsupport parser desc type: 255
+[    1.335675] [drm] sunxi-hdmi: dw edid unsupport parser desc type: 253
+[    1.340819] [drm] sunxi-hdmi: sunxi hdmi edid parse block0 finish
+[    1.345626] [drm] sunxi-hdmi: [error] dw edid parse dtd timing pixel clock[0KHz] invalid!
+[    1.352500] [drm] sunxi-hdmi: sunxi hdmi edid parse block1 finish
+[    1.454397] [drm] HDMI-A-1 connection detected
+[    1.457875] [drm] sunxi-hdmi: drm get edid support modes: 42
+[    1.462277] [drm] HDMI-A-1: Configuration mode 2560x1440@60Hz
+[    1.484945] [drm] sunxi-hdmi: drm hdmi set mode change when disp info change
+[    1.490707] [drm] sunxi-hdmi: drm hdmi check mode: change >>>>>>>>>>>>>>>>
+[    1.496340] [drm] sunxi-hdmi: sunxi hdmi select vic 0 use hdmi14 vsif
+[    1.501511] [drm] sunxi-hdmi: drm hdmi mode set: 2560*1440 >>>>>>>>>>>>>>>>
+[    1.507165] [drm] [SUNXI-CRTC]sunxi_crtc_atomic_enable
+[    1.511005] [drm] sunxi_de_enable index 0
+[    1.513738] [drm] sunxi_de_enable finish sw en=0
+[    1.517061] [drm] suxni tcon hdmi set rate: 241500000Hz and get diff: 241500000Hz
+[    1.523361] [drm] sunxi-hdmi: dw audio get n = 6144
+[    1.553276] [drm] sunxi-hdmi: top phy auto calculate done
+[    1.557370] [drm] sunxi-hdmi: [top phy]
+[    1.559900] [drm] sunxi-hdmi:  - pixel clock 241500KHz
+[    1.563730] [drm] sunxi-hdmi:    - pll: 0xE8064000, 0x00035000, 0x00000000, 0x30000000
+[    1.570357] [drm] sunxi-hdmi: top phy config done
+[    1.573765] [drm] sunxi-hdmi: [warn] snps phy check clk: 241500Hz is match in [237600Hz-288000Hz] and change use: 237600Hz
+[    1.583810] [drm] sunxi-hdmi: [snps phy]
+[    1.586427] [drm] sunxi-hdmi:  - refer clock: 237600KHz, color bits: 8, repeat: 0
+[    1.592598] [drm] sunxi-hdmi:     - mpll: 0x0000, 0x3040, 0x0605
+[    1.593643] t736-smhc3-pio 4023000.mmc: first IDMA request completed: CMD8 bytes=512 IRQ=0000002c IDST=00000002
+[    1.597297] [drm] sunxi-hdmi:  - refer clock: 241500KHz. [185625KHz~340000KHz]
+[    1.597300] [drm] sunxi-hdmi:     - drive: 0x0004, 0x8040, 0x8e85
+[    1.597743] [drm] sunxi-hdmi: snps phy state: lock
+[    1.670260] [drm] sunxi-hdmi: dw audio check: triger cts re-calculate
+[    1.675391] [drm] sunxi-hdmi: hdmi drv enable output done
+[    1.679481] [drm] sunxi-hdmi: drm hdmi atomic enable >>>>>>>>>>>>>>>>
+[    1.688838] Console: switching to colour frame buffer device 320x90
+[    1.716296] [drm] HDMI-A-1: Configuration complete
+[    1.742391] usb 2-1: new high-speed USB device number 2 using ehci-platform
+[    1.907467] hub 2-1:1.0: USB hub found
+[    1.914391] hub 2-1:1.0: 4 ports detected
+[    1.955409] t736-dwmac 4500000.ethernet end0: renamed from eth0
+[    2.306400] usb 2-1.4: new high-speed USB device number 3 using ehci-platform
+[    2.519457] hub 2-1.4:1.0: USB hub found
+[    2.522258] hub 2-1.4:1.0: 6 ports detected
+[    2.642436] t736-smhc3-pio 4023000.mmc: timing=9 card=400000 parent=24000000 mux=0 M=30 N=1 module=8000001d sample=0 signal=1 (no rail writes)
+[    2.642511] t736-smhc3-pio 4023000.mmc: timing=9 card=50000000 parent=800000000 mux=1 M=8 N=1 module=81000007 sample=32 signal=1 (no rail writes)
+[    2.642714] t736-smhc3-pio 4023000.mmc: timing=9 card=200000000 parent=800000000 mux=1 M=2 N=1 module=81000001 sample=49 signal=1 (no rail writes)
+[    2.728201] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    2.744191] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+[    2.752108] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36ee8000 00000000
+[    2.758871] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    2.774845] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+[    2.782751] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36ee8000 00000000
+[    2.790216] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    2.806192] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+[    2.806198] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36ee8000 00000000
+[    2.820861] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    2.838050] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+[    2.845961] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36ee8000 00000000
+[    2.874389] usb 2-1.4.4: new high-speed USB device number 4 using ehci-platform
+[    2.920795] t736-smhc3-pio 4023000.mmc: HS200 tuning card=200000000 pass=ffffffc07fffffff abort_err=0000003f80000000 window=0+31 tap=15 verified=16x128 THLD=00800001 SFC=00000006
+[    3.070383] usb 2-1.4.6: new high-speed USB device number 5 using ehci-platform
+[    3.189175] input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.0/0003:1A86:8022.0001/input/input0
+[    3.258585] hid-generic 0003:1A86:8022.0001: input: USB HID v1.10 Keyboard [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input0
+[    3.269471] input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.1/0003:1A86:8022.0002/input/input1
+[    3.280466] hid-generic 0003:1A86:8022.0002: input: USB HID v1.10 Mouse [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input1
+[    3.291048] input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.2/0003:1A86:8022.0003/input/input2
+[    3.358501] hid-generic 0003:1A86:8022.0003: input: USB HID v1.10 Device [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input2
+[    3.958427] t736-smhc3-pio 4023000.mmc: timing=1 card=25000000 parent=800000000 mux=1 M=16 N=1 module=8100000f sample=0 signal=1 (no rail writes)
+[    4.518390] usb 2-1.4.5: new high-speed USB device number 6 using ehci-platform
+[    4.620558] usb-storage 2-1.4.5:1.0: USB Mass Storage device detected
+[    4.626290] scsi host0: usb-storage 2-1.4.5:1.0
+[    4.982441] t736-smhc3-pio 4023000.mmc: timing=10 card=50000000 parent=800000000 mux=1 M=8 N=1 module=81000007 sample=32 signal=1 (no rail writes)
+[    4.994310] t736-smhc3-pio 4023000.mmc: timing=10 card=200000000 parent=800000000 mux=1 M=2 N=1 module=81000001 sample=14 signal=1 (no rail writes)
+[    5.148121] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000080ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.164015] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.171924] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.178694] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.194580] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.202487] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.209254] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.225139] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.233046] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.239815] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.255699] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.263606] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.327149] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.343034] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.350941] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.357707] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.373592] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.381499] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.388267] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.404152] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.412058] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.418826] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.434714] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.442621] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.449389] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.465273] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.473180] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.479948] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.495833] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.503739] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.510503] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.526386] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.534293] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.541061] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.556946] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.564852] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.571621] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.587505] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.595412] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.602180] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.618066] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.625972] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.632740] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.648624] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.651307] scsi 0:0:0:0: CD-ROM            wch.cn   KMFU             1.00 PQ: 0 ANSI: 5
+[    5.656531] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.656787] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.685714] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.693621] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.700401] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.716285] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.724193] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.730962] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.746847] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.754753] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.761522] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.777408] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.785316] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.792083] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.807966] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.815873] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.822641] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.838526] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.846437] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.853206] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.869090] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.876997] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.883766] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.899651] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.907558] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.914326] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.930209] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.938115] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.944884] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.960769] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.968675] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    5.975444] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    5.991328] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    5.999235] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.006003] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.021888] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.029797] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.036565] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.052449] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.060356] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.067124] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.083008] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.090915] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.097683] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.113567] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.121474] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.128242] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.144126] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.152033] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.158803] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.174687] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.182594] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.189362] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.205246] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.213153] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.219921] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.235805] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.243712] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.250486] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.266373] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.274279] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.281049] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.296932] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.304838] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.311606] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.327491] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.335398] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.342166] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.358050] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.365957] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.372726] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.388609] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.396515] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.403283] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.419167] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.427074] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.433841] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.449725] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.457631] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.464399] t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=2b800000 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+[    6.480284] t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+[    6.488191] t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36ee8000 00000000
+[    6.497040] t736-smhc3-pio 4023000.mmc: HS400 tuned card=200000000 cmd_pass=fffffff8ffffffff cmd_window=0+32 cmd=15 ds_pass=0000000003fffff0 ds_window=4+22 ds=14 abort_err=fffffffffc00000f verified=16xCMD13+16x512 EXT_CSD=03/06 R1=00000900 THLD=02000001 SFC=00000006
+[    6.520479] mmc0: new HS400 MMC card at address 0001
+[    6.524679] mmcblk0: mmc0:0001 A31Y5C 58.2 GiB
+[    6.530029]  mmcblk0: p1 p2 p3 p4 p5 p6
+[    6.533522] mmcblk0boot0: mmc0:0001 A31Y5C 4.00 MiB
+[    6.538875] mmcblk0boot1: mmc0:0001 A31Y5C 4.00 MiB
+[   11.318445] t736-gpu-power 7065000.power-controller: sync_state() pending due to 1800000.gpu
+[   33.167584] EXT4-fs (mmcblk0p4): mounted filesystem 4d8c73ce-75f9-4794-bef2-664d7cecbbbb r/w with ordered data mode. Quota mode: disabled.
+[   33.512620] systemd[1]: System time advanced to timestamp on /var/lib/systemd/timesync/clock: Thu 2026-11-19 04:49:50 UTC
+[   33.962433] systemd[1]: systemd 259.9-0ubuntu0.1 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +IPE +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF -XKBCOMMON -UTMP +SYSVINIT +LIBARCHIVE)
+[   33.994930] systemd[1]: Detected architecture arm64.
+[   34.026599] systemd[1]: Hostname set to <atlasa1>.
+[   34.218828] systemd[1]: bpf-restrict-fs: BPF LSM hook not enabled in the kernel, BPF LSM not supported.
+[   35.122072] systemd[1]: Queued start job for default target graphical.target.
+[   35.149574] systemd[1]: Created slice system-cups.slice - CUPS Slice.
+[   35.171587] systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+[   35.199502] systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+[   35.227109] systemd[1]: Created slice user.slice - User and Session Slice.
+[   35.250638] systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+[   35.278996] systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+[   35.310489] systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+[   35.330480] systemd[1]: Reached target imports.target - Image Downloads.
+[   35.354539] systemd[1]: Reached target slices.target - Slice Units.
+[   35.374477] systemd[1]: Reached target swap.target - Swaps.
+[   35.425581] systemd[1]: Listening on rpcbind.socket - RPCbind Server Activation Socket.
+[   35.450856] systemd[1]: Listening on syslog.socket - Syslog Socket.
+[   35.473377] systemd[1]: Listening on systemd-ask-password.socket - Query the User Interactively for a Password.
+[   35.504396] systemd[1]: Listening on systemd-creds.socket - Credential Encryption/Decryption.
+[   35.533084] systemd[1]: Listening on systemd-factory-reset.socket - Factory Reset Management.
+[   35.558741] systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+[   35.586779] systemd[1]: Listening on systemd-journald.socket - Journal Sockets.
+[   35.613508] systemd[1]: Listening on systemd-mute-console.socket - Console Output Muting Service Socket.
+[   35.642488] systemd[1]: systemd-pcrextend.socket - TPM PCR Measurements skipped, unmet condition check ConditionSecurity=measured-uki
+[   35.653231] systemd[1]: systemd-pcrlock.socket - Make TPM PCR Policy skipped, unmet condition check ConditionSecurity=measured-uki
+[   35.663922] systemd[1]: Listening on systemd-resolved-monitor.socket - Resolve Monitor Varlink Socket.
+[   35.690637] systemd[1]: Listening on systemd-resolved-varlink.socket - Resolve Service Varlink Socket.
+[   35.718686] systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[   35.742607] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   35.766640] systemd[1]: Listening on systemd-udevd-varlink.socket - udev Varlink Socket.
+[   35.790747] systemd[1]: dev-hugepages.mount - Huge Pages File System skipped, unmet condition check ConditionPathExists=/sys/kernel/mm/hugepages
+[   35.809785] systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+[   35.832797] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   35.858688] systemd[1]: sys-kernel-tracing.mount - Kernel Trace File System skipped, unmet condition check ConditionPathExists=/sys/kernel/tracing
+[   35.871790] systemd[1]: tmp.mount: x-systemd.graceful-option=usrquota specified, but option is not available, suppressing.
+[   35.883958] systemd[1]: Mounting tmp.mount - Temporary Directory /tmp...
+[   35.910927] systemd[1]: Starting systemd-journald.service - Journal Service...
+[   35.934688] systemd[1]: auth-rpcgss-module.service - Kernel Module supporting RPCSEC_GSS skipped, unmet condition check ConditionPathExists=/etc/krb5.keytab
+[   35.949739] systemd[1]: Starting fake-hwclock-load.service - Restore the current clock...
+[   35.959431] systemd[1]: Starting keyboard-setup.service - Set the console keyboard layout...
+[   35.983375] systemd[1]: kmod-static-nodes.service - Create List of Static Device Nodes skipped, unmet condition check ConditionFileNotEmpty=/lib/modules/6.18.63-t736-gnome-v38/modules.devname
+[   36.001313] systemd-journald[259]: Collecting audit messages is disabled.
+[   36.003453] systemd[1]: modprobe@configfs.service - Load Kernel Module configfs skipped, unmet condition check ConditionKernelModuleLoaded=!configfs
+[   36.022883] systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+[   36.042813] systemd[1]: modprobe@drm.service - Load Kernel Module drm skipped, unmet condition check ConditionKernelModuleLoaded=!drm
+[   36.057676] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[   36.062556] systemd-journald[259]: Time jumped backwards, rotating.
+[   36.082819] systemd[1]: modprobe@fuse.service - Load Kernel Module fuse skipped, unmet condition check ConditionKernelModuleLoaded=!fuse
+[   36.097395] systemd[1]: Mounting sys-fs-fuse-connections.mount - FUSE Control File System...
+[   36.114998] systemd[1]: systemd-hibernate-clear.service - Clear Stale Hibernate Storage Info skipped, unmet condition check ConditionPathExists=/sys/firmware/efi/efivars/HibernateLocation-8cf2644b-4b0b-428f-9387-6d876050dc67
+[   36.138269] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[   36.158747] systemd[1]: systemd-pcrmachine.service - TPM PCR Machine ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
+[   36.174697] systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+[   36.194830] systemd[1]: systemd-tpm2-setup-early.service - Early TPM SRK Setup skipped, unmet condition check ConditionSecurity=measured-uki
+[   36.207457] systemd[1]: systemd-pcrnvdone.service - TPM PCR NvPCR Initialization Separator skipped, unmet condition check ConditionPathExists=/etc/initrd-release
+[   36.221919] systemd[1]: systemd-pcrproduct.service - TPM NvPCR Product ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
+[   36.237791] systemd[1]: Starting systemd-udev-load-credentials.service - Load udev Rules from Credentials...
+[   36.256939] pvrsrvkm: loading out-of-tree module taints kernel.
+[   36.257675] systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+[   36.274335] [sunxi bxm]SysDevInit start!
+[   36.279079] pvrsrvkm 1800000.gpu: T736 GPU fixed 400000000 Hz, supply 900000 uV, CCF/genpd enabled
+[   36.286764] [sunxi bxm]SysDevInit end!
+[   36.289322] PVR_K:  17: Read BVNC 36.56.104.183 from HW device registers
+[   36.294785] PVR_K:  17: RGX Device registered BVNC 36.56.104.183 with 1 core in the system
+[   36.302737] [drm] Initialized pvr 24.2.6603887 for 1800000.gpu on minor 1
+[   36.328714] systemd[1]: Started systemd-journald.service - Journal Service.
+[   36.671767] EXT4-fs (mmcblk0p4): re-mounted 4d8c73ce-75f9-4794-bef2-664d7cecbbbb.
+[   36.777426] systemd-journald[259]: Received client request to flush runtime journal.
+[   36.891236] systemd-journald[259]: /var/log/journal/8a50f23fcdf249f083516259a0626cf9/system.journal: Realtime clock jumped backwards relative to last journal entry, rotating.
+[   36.891277] systemd-journald[259]: Rotating system journal.
+[   37.650416] random: crng init done
+[   40.262539] t736-dwmac 4500000.ethernet end0: Register MEM_TYPE_PAGE_POOL RxQ-0
+[   40.290423] t736-dwmac 4500000.ethernet end0: PHY [stmmac-0:01] driver [RTL8211F Gigabit Ethernet] (irq=POLL)
+[   40.303247] t736-dwmac 4500000.ethernet end0: No Safety Features support found
+[   40.511686] t736-dwmac 4500000.ethernet end0: IEEE 1588-2008 Advanced Timestamp supported
+[   40.511722] t736-dwmac 4500000.ethernet end0: configuring for phy/rgmii-rxid link mode
+[   41.021908] PVR_K:  17: RGX Firmware image 'rgx.fw.36.56.104.183' loaded
+[   41.030302] PVR_K:  17: Shader binary image 'rgx.sh.36.56.104.183' loaded
+[   41.283970] Unable to handle kernel paging request at virtual address 0000ffff9db51b20
+[   41.290626] Mem abort info:
+[   41.292118]   ESR = 0x0000000082000007
+[   41.294593]   EC = 0x20: IABT (lower EL), IL = 32 bits
+[   41.298444]   SET = 0, FnV = 0
+[   41.300196]   EA = 0, S1PTW = 0
+[   41.302035]   FSC = 0x07: level 3 translation fault
+[   41.305623] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000106fd7000
+[   41.310770] [0000ffff9db51b20] pgd=0000000000000000, p4d=0800000101757403, pud=0800000104a6e403, pmd=0800000101c45403, pte=0000000000000000
+[   41.322007] Internal error: Oops: 0000000082000007 [#1]  SMP
+[   41.326356] Modules linked in: pvrsrvkm(O)
+[   41.329166] CPU: 3 UID: 0 PID: 1000 Comm: Xorg Tainted: G           O        6.18.63-t736-gnome-v38 #38 PREEMPT(none) 
+[   41.338555] Tainted: [O]=OOT_MODULE
+[   41.340739] Hardware name: T736 custom board mainline bring-up (DT)
+[   41.345699] pstate: 00001000 (nzcv daif -PAN -UAO -TCO -DIT +SSBS BTYPE=--)
+[   41.351357] pc : 0000ffff9db51b20
+[   41.353368] lr : 0000ffff9dbd38a4
+[   41.355379] sp : 0000fffff7136b60
+[   41.357390] x29: 0000fffff7136b70 x28: 0000ffff9dc206e0 x27: 0000aaaacdc8f050
+[   41.363228] x26: 0000ffff9dbf2000 x25: 0000aaaacdc8e110 x24: 0000fffff7136bf8
+[   41.369064] x23: 0000000000000000 x22: 0000000000000000 x21: 0000aaaacdc6eda0
+[   41.374901] x20: 0000ffff9dc20000 x19: 0000aaaacdc8e0f0 x18: 0000000000000000
+[   41.380739] x17: 0000ffff9db51b20 x16: 0000ffff9dc201b8 x15: 0000000000000000
+[   41.386576] x14: 00000000ffffffff x13: 0000ffff9db7f340 x12: 0000ffffa02fec60
+[   41.392414] x11: 00000000000003f0 x10: 0000000000000020 x9 : 0000000000000121
+[   41.398251] x8 : 000000000000001d x7 : 0000ffff9db84448 x6 : 0000000000000004
+[   41.404087] x5 : 0000000000001aa0 x4 : 000000000000000c x3 : 0000fffff7136b50
+[   41.409925] x2 : 0000aaaacdc8e178 x1 : 0000aaaacdc8e170 x0 : 0000aaaacdc8f050
+[   41.415767] ---[ end trace 0000000000000000 ]---
+[   41.419102] note: Xorg[1000] exited with preempt_count 3
+[   41.783754] Unable to handle kernel paging request at virtual address 0000ffff88471b20
+[   41.790391] Mem abort info:
+[   41.791878]   ESR = 0x0000000082000007
+[   41.794321]   EC = 0x20: IABT (lower EL), IL = 32 bits
+[   41.798171]   SET = 0, FnV = 0
+[   41.799926]   EA = 0, S1PTW = 0
+[   41.801761]   FSC = 0x07: level 3 translation fault
+[   41.805334] user pgtable: 4k pages, 48-bit VAs, pgdp=000000010185f000
+[   41.810470] [0000ffff88471b20] pgd=0000000000000000, p4d=0800000101783403, pud=0800000101f82403, pmd=0800000102f94403, pte=0000000000000000
+[   41.821688] Internal error: Oops: 0000000082000007 [#2]  SMP
+[   41.826038] Modules linked in: pvrsrvkm(O)
+[   41.828836] CPU: 6 UID: 0 PID: 1071 Comm: Xorg Tainted: G      D    O        6.18.63-t736-gnome-v38 #38 PREEMPT(none) 
+[   41.838217] Tainted: [D]=DIE, [O]=OOT_MODULE
+[   41.841179] Hardware name: T736 custom board mainline bring-up (DT)
+[   41.846133] pstate: 00001000 (nzcv daif -PAN -UAO -TCO -DIT +SSBS BTYPE=--)
+[   41.851785] pc : 0000ffff88471b20
+[   41.853792] lr : 0000ffff884f38a4
+[   41.855798] sp : 0000ffffc367b760
+[   41.857805] x29: 0000ffffc367b770 x28: 0000ffff885406e0 x27: 0000aaaab917a050
+[   41.863633] x26: 0000ffff88512000 x25: 0000aaaab9179110 x24: 0000ffffc367b7f8
+[   41.869460] x23: 0000000000000000 x22: 0000000000000000 x21: 0000aaaab9159da0
+[   41.875287] x20: 0000ffff88540000 x19: 0000aaaab91790f0 x18: 0000000000000000
+[   41.881114] x17: 0000ffff88471b20 x16: 0000ffff885401b8 x15: 0000000000000000
+[   41.886941] x14: 00000000ffffffff x13: 0000ffff8849f340 x12: 0000ffff8ac1dc60
+[   41.892768] x11: 00000000000003f0 x10: 0000000000000020 x9 : 0000000000000121
+[   41.898595] x8 : 000000000000001d x7 : 0000ffff884a4448 x6 : 0000000000000004
+[   41.904422] x5 : 0000000000001aa0 x4 : 000000000000000c x3 : 0000ffffc367b750
+[   41.910249] x2 : 0000aaaab9179178 x1 : 0000aaaab9179170 x0 : 0000aaaab917a050
+[   41.916078] ---[ end trace 0000000000000000 ]---
+[   41.919409] note: Xorg[1071] exited with preempt_count 3
+[   42.278364] Unable to handle kernel paging request at virtual address 0000ffff892c1b20
+[   42.285059] Mem abort info:
+[   42.286566]   ESR = 0x0000000082000007
+[   42.289008]   EC = 0x20: IABT (lower EL), IL = 32 bits
+[   42.292848]   SET = 0, FnV = 0
+[   42.294605]   EA = 0, S1PTW = 0
+[   42.296439]   FSC = 0x07: level 3 translation fault
+[   42.300019] user pgtable: 4k pages, 48-bit VAs, pgdp=00000001027b0000
+[   42.305159] [0000ffff892c1b20] pgd=0000000000000000, p4d=08000001027b1403, pud=08000001027b9403, pmd=0800000104452403, pte=0000000000000000
+[   42.316379] Internal error: Oops: 0000000082000007 [#3]  SMP
+[   42.320730] Modules linked in: pvrsrvkm(O)
+[   42.323529] CPU: 6 UID: 0 PID: 1099 Comm: Xorg Tainted: G      D    O        6.18.63-t736-gnome-v38 #38 PREEMPT(none) 
+[   42.332910] Tainted: [D]=DIE, [O]=OOT_MODULE
+[   42.335871] Hardware name: T736 custom board mainline bring-up (DT)
+[   42.340826] pstate: 00001000 (nzcv daif -PAN -UAO -TCO -DIT +SSBS BTYPE=--)
+[   42.346478] pc : 0000ffff892c1b20
+[   42.348485] lr : 0000ffff893438a4
+[   42.350491] sp : 0000ffffeafb8290
+[   42.352499] x29: 0000ffffeafb82a0 x28: 0000ffff893906e0 x27: 0000aaaaf84ae050
+[   42.358327] x26: 0000ffff89362000 x25: 0000aaaaf84ad110 x24: 0000ffffeafb8328
+[   42.364153] x23: 0000000000000000 x22: 0000000000000000 x21: 0000aaaaf848dda0
+[   42.369980] x20: 0000ffff89390000 x19: 0000aaaaf84ad0f0 x18: 0000000000000000
+[   42.375807] x17: 0000ffff892c1b20 x16: 0000ffff893901b8 x15: 0000000000000000
+[   42.381634] x14: 00000000ffffffff x13: 0000ffff892ef340 x12: 0000ffff8ba6bc60
+[   42.387461] x11: 00000000000003f0 x10: 0000000000000020 x9 : 0000000000000121
+[   42.393288] x8 : 000000000000001d x7 : 0000ffff892f4448 x6 : 0000000000000004
+[   42.399114] x5 : 0000000000001aa0 x4 : 000000000000000c x3 : 0000ffffeafb8280
+[   42.404941] x2 : 0000aaaaf84ad178 x1 : 0000aaaaf84ad170 x0 : 0000aaaaf84ae050
+[   42.410769] ---[ end trace 0000000000000000 ]---
+[   42.414093] note: Xorg[1099] exited with preempt_count 3
+[   42.808186] Unable to handle kernel paging request at virtual address 0000ffffa1051b20
+[   42.814818] Mem abort info:
+[   42.816306]   ESR = 0x0000000082000007
+[   42.818785]   EC = 0x20: IABT (lower EL), IL = 32 bits
+[   42.822623]   SET = 0, FnV = 0
+[   42.824371]   EA = 0, S1PTW = 0
+[   42.826204]   FSC = 0x07: level 3 translation fault
+[   42.829777] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000102590000
+[   42.834923] [0000ffffa1051b20] pgd=0000000000000000, p4d=0800000101f17403, pud=08000001027ee403, pmd=0800000102f54403, pte=0000000000000000
+[   42.846139] Internal error: Oops: 0000000082000007 [#4]  SMP
+[   42.850490] Modules linked in: pvrsrvkm(O)
+[   42.853289] CPU: 7 UID: 0 PID: 1119 Comm: Xorg Tainted: G      D    O        6.18.63-t736-gnome-v38 #38 PREEMPT(none) 
+[   42.862670] Tainted: [D]=DIE, [O]=OOT_MODULE
+[   42.865632] Hardware name: T736 custom board mainline bring-up (DT)
+[   42.870587] pstate: 00001000 (nzcv daif -PAN -UAO -TCO -DIT +SSBS BTYPE=--)
+[   42.876239] pc : 0000ffffa1051b20
+[   42.878246] lr : 0000ffffa10d38a4
+[   42.880254] sp : 0000fffffa444bc0
+[   42.882260] x29: 0000fffffa444bd0 x28: 0000ffffa11206e0 x27: 0000aaab17ab9050
+[   42.888260] x26: 0000ffffa10f2000 x25: 0000aaab17ab8110 x24: 0000fffffa444c58
+[   42.895281] x23: 0000000000000000 x22: 0000000000000000 x21: 0000aaab17a98da0
+[   42.901108] x20: 0000ffffa1120000 x19: 0000aaab17ab80f0 x18: 0000000000000000
+[   42.906935] x17: 0000ffffa1051b20 x16: 0000ffffa11201b8 x15: 0000000000000000
+[   42.912762] x14: 00000000ffffffff x13: 0000ffffa107f340 x12: 0000ffffa3802c60
+[   42.918589] x11: 00000000000003f0 x10: 0000000000000020 x9 : 0000000000000121
+[   42.924416] x8 : 000000000000001d x7 : 0000ffffa1084448 x6 : 0000000000000004
+[   42.930242] x5 : 0000000000001aa0 x4 : 000000000000000c x3 : 0000fffffa444bb0
+[   42.936069] x2 : 0000aaab17ab8178 x1 : 0000aaab17ab8170 x0 : 0000aaab17ab9050
+[   42.941897] ---[ end trace 0000000000000000 ]---
+[   42.945227] note: Xorg[1119] exited with preempt_count 3
+[   43.262604] Unable to handle kernel paging request at virtual address 0000ffff7d0e1b20
+[   43.269232] Mem abort info:
+[   43.270793]   ESR = 0x0000000082000007
+[   43.273235]   EC = 0x20: IABT (lower EL), IL = 32 bits
+[   43.277076]   SET = 0, FnV = 0
+[   43.278834]   EA = 0, S1PTW = 0
+[   43.280670]   FSC = 0x07: level 3 translation fault
+[   43.284248] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000103fd4000
+[   43.289387] [0000ffff7d0e1b20] pgd=0000000000000000, p4d=080000010232f403, pud=08000001016f3403, pmd=08000001027e1403, pte=0000000000000000
+[   43.300601] Internal error: Oops: 0000000082000007 [#5]  SMP
+[   43.304953] Modules linked in: pvrsrvkm(O)
+[   43.307751] CPU: 7 UID: 0 PID: 1140 Comm: Xorg Tainted: G      D    O        6.18.63-t736-gnome-v38 #38 PREEMPT(none) 
+[   43.317131] Tainted: [D]=DIE, [O]=OOT_MODULE
+[   43.320093] Hardware name: T736 custom board mainline bring-up (DT)
+[   43.325049] pstate: 00001000 (nzcv daif -PAN -UAO -TCO -DIT +SSBS BTYPE=--)
+[   43.330701] pc : 0000ffff7d0e1b20
+[   43.332708] lr : 0000ffff7d1638a4
+[   43.334714] sp : 0000ffffd0c57c20
+[   43.336720] x29: 0000ffffd0c57c30 x28: 0000ffff7d1b06e0 x27: 0000aaaacc8e0050
+[   43.342548] x26: 0000ffff7d182000 x25: 0000aaaacc8df110 x24: 0000ffffd0c57cb8
+[   43.348375] x23: 0000000000000000 x22: 0000000000000000 x21: 0000aaaacc8bfda0
+[   43.354203] x20: 0000ffff7d1b0000 x19: 0000aaaacc8df0f0 x18: 0000000000000000
+[   43.360030] x17: 0000ffff7d0e1b20 x16: 0000ffff7d1b01b8 x15: 0000000000000000
+[   43.365857] x14: 00000000ffffffff x13: 0000ffff7d10f340 x12: 0000ffff7f88bc60
+[   43.371684] x11: 00000000000003f0 x10: 0000000000000020 x9 : 0000000000000121
+[   43.377511] x8 : 000000000000001d x7 : 0000ffff7d114448 x6 : 0000000000000004
+[   43.383338] x5 : 0000000000001aa0 x4 : 000000000000000c x3 : 0000ffffd0c57c10
+[   43.389165] x2 : 0000aaaacc8df178 x1 : 0000aaaacc8df170 x0 : 0000aaaacc8e0050
+[   43.394993] ---[ end trace 0000000000000000 ]---
+[   43.398318] note: Xorg[1140] exited with preempt_count 3
+[   63.063540] RTL8211F Gigabit Ethernet stmmac-0:01: Downshift occurred from negotiated speed 1Gbps to actual speed 100Mbps, check cabling!
+[   63.075022] t736-dwmac 4500000.ethernet end0: Link is Up - 100Mbps/Full - flow control rx/tx

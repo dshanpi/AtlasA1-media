@@ -29,4 +29,4 @@ make install DESTDIR="$work/install"
 prefix="$work/install/opt/atlasa1-player"
 python3 "$tools/build_atlasa1_player.py" --ffplay "$prefix/bin/ffplay" \
     --avcodec "$prefix/lib/libavcodec.so.61" --avutil "$prefix/lib/libavutil.so.59" \
-    --private-runtime "$prefix/lib" --output "$work/atlasa1-player_0.1-5~resolute1_arm64.deb"
+    --private-runtime "$prefix/lib" --output "$work/atlasa1-player_0.1-6~resolute1_arm64.deb"

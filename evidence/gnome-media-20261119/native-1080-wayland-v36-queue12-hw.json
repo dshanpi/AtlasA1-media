@@ -1,0 +1,121 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-gnome-v36",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": true,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": true,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "session",
+  "presentation_metric": "wp_presentation compositor feedback with hardware timing flags",
+  "fixture": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "duration": "25.000000",
+    "nb_frames": "1500",
+    "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "session_audio_sink": [
+    "Dummy Output",
+    "auto_null"
+  ],
+  "audio_hardware_available": false,
+  "physical_audio_verified": false,
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "av_offset_p95_seconds": 0.036,
+  "sdl_present": {
+    "frames": 1500,
+    "span_ms": 24796.19,
+    "gap_p95_ms": 35.078,
+    "gap_max_ms": 67.858
+  },
+  "texture_upload": {
+    "mean_ms": 7.852,
+    "through_present_mean_ms": 10.511
+  },
+  "exit_status": 0,
+  "wall_seconds": 25.775,
+  "irq_delta": 1500,
+  "frames_at_player_filter": 1500,
+  "player_drops": 0,
+  "final_clock": 24.95,
+  "broker": [
+    "CEDAR_BROKER: open session=5 codec=1 1920x1080",
+    "CEDAR_BROKER: hardware frames=6300 session=5 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=6600 session=5 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=6900 session=5 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=7200 session=5 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=7500 session=5 visible=1920x1080",
+    "CEDAR_BROKER: close session=5 submitted=7500 delivered=7500"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": true,
+    "all_frames": true,
+    "full_dimensions": true,
+    "zero_player_drops": true,
+    "clock_reached_end": true,
+    "realtime_wall": true,
+    "decoder_path": true,
+    "pvr_loaded": true,
+    "audio_video_sync": true,
+    "real_audio_sink_available": false,
+    "presented_every_frame": true,
+    "p95_presentation_gap": false,
+    "wayland_feedback_received": true,
+    "wayland_every_frame": false,
+    "wayland_hw_timing": true
+  },
+  "status": "not_verified",
+  "sdl_stage_timings_ms": {
+    "upload_p95": 10.635,
+    "upload_max": 15.343,
+    "present_p95": 18.637,
+    "present_max": 59.058
+  },
+  "sdl_event_timings": {
+    "poll_max_ms": 2.851,
+    "poll_over_20ms": 0,
+    "sleep_max_ms": 10.951,
+    "sleep_over_20ms": 0
+  },
+  "wp_presentation": {
+    "requested": 1500,
+    "shown": 1274,
+    "discarded": 226,
+    "span_ms": 24726.055,
+    "fps": 51.484,
+    "max_gap_ms": 83.706,
+    "gaps_over_25ms": 117,
+    "gaps_over_40ms": 83,
+    "flags": 7
+  }
+}

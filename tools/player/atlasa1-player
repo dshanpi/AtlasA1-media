@@ -10,6 +10,7 @@ import sys
 PLAYER = '/opt/atlasa1-player/bin/ffplay'
 LIB = '/opt/atlasa1-player/lib'
 GPU = '/opt/t736-img-ddk-24.2-x11'
+WAYLAND_GPU = '/opt/atlasa1-img-wayland'
 
 
 def choose_file():
@@ -104,9 +105,15 @@ def main(args):
     decoder = cedar_decoder(path, env)
     env['SDL_RENDER_DRIVER'] = 'opengles2'
     env['LD_LIBRARY_PATH'] = LIB
-    if os.path.isdir(GPU+'/runtime-gles') and not env.get('WAYLAND_DISPLAY'):
-        env['LD_LIBRARY_PATH'] += ':' + GPU+'/runtime-gles'
-        env['LIBGL_DRIVERS_PATH'] = GPU+'/lib/dri'
+    gpu = WAYLAND_GPU if env.get('WAYLAND_DISPLAY') else GPU
+    if os.path.isdir(gpu+'/runtime-gles'):
+        env['LD_LIBRARY_PATH'] += ':' + gpu+'/runtime-gles'
+        env['LIBGL_DRIVERS_PATH'] = gpu+'/lib/dri'
+        if env.get('WAYLAND_DISPLAY'):
+            env.setdefault('SDL_VIDEODRIVER', 'wayland')
+            # FFplay already schedules frames against its media clock. A second
+            # SDL renderer wait slowed a 25-second clip to over 31 seconds.
+            env.setdefault('SDL_RENDER_VSYNC', '0')
     # Preserve the desktop's display, audio routing and seat. SDL opens the
     # interactive session normally; the smoke test supplies its offscreen driver.
     cmd = [PLAYER, '-hide_banner', '-autoexit', '-noframedrop']

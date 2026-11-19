@@ -1,0 +1,84 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-gnome-v39",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": true,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": true,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "session",
+  "presentation_metric": "wp_presentation compositor feedback with hardware timing flags",
+  "fixture": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "duration": "25.000000",
+    "nb_frames": "1500",
+    "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "session_audio_sink": [
+    "Dummy Output",
+    "auto_null"
+  ],
+  "audio_hardware_available": false,
+  "physical_audio_verified": false,
+  "render_experiment": {
+    "path": "/var/tmp/atlasa1-gnome-media-20261119/sdl_packed_yuv-debug.so",
+    "sha256": "571b3bab9784418f4394db0c8e069a2187e29810064373f1fc9599242e4a649f"
+  },
+  "player_log": "/var/tmp/atlasa1-gnome-media-20261119/native-1080-v39-packed-rgba-debug.log",
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "av_offset_p95_seconds": null,
+  "exit_status": -6,
+  "wall_seconds": 0.68,
+  "irq_delta": 16,
+  "frames_at_player_filter": 4,
+  "player_drops": null,
+  "final_clock": null,
+  "broker": [
+    "CEDAR_BROKER: open session=6 codec=1 1920x1080"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": false,
+    "all_frames": false,
+    "full_dimensions": true,
+    "zero_player_drops": false,
+    "clock_reached_end": false,
+    "realtime_wall": false,
+    "decoder_path": false,
+    "pvr_loaded": true,
+    "audio_video_sync": false,
+    "real_audio_sink_available": false,
+    "presented_every_frame": false,
+    "wayland_feedback_received": false
+  },
+  "status": "not_verified"
+}

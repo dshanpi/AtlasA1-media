@@ -1,0 +1,102 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-media-v30",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": true,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": true,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "session",
+  "presentation_metric": "SDL uploads and presents, not physical scanout feedback",
+  "fixture": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "duration": "25.000000",
+    "nb_frames": "1500",
+    "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "av_offset_p95_seconds": 0.028,
+  "sdl_present": {
+    "frames": 1500,
+    "span_ms": 24913.161,
+    "gap_p95_ms": 45.718,
+    "gap_max_ms": 106.027
+  },
+  "texture_upload": {
+    "mean_ms": 7.29,
+    "through_present_mean_ms": 9.862
+  },
+  "exit_status": 0,
+  "wall_seconds": 25.818,
+  "irq_delta": 1500,
+  "frames_at_player_filter": 1500,
+  "player_drops": 0,
+  "final_clock": 24.95,
+  "broker": [
+    "CEDAR_BROKER: open session=16 codec=1 1920x1080",
+    "CEDAR_BROKER: hardware frames=13200 session=16 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=13500 session=16 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=13800 session=16 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=14100 session=16 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=14400 session=16 visible=1920x1080",
+    "CEDAR_BROKER: close session=16 submitted=14568 delivered=14545"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": true,
+    "all_frames": true,
+    "full_dimensions": true,
+    "zero_player_drops": true,
+    "clock_reached_end": true,
+    "realtime_wall": true,
+    "decoder_path": true,
+    "pvr_loaded": true,
+    "audio_video_sync": true,
+    "presented_every_frame": true,
+    "p95_presentation_gap": false,
+    "wayland_feedback_received": true,
+    "wayland_every_frame": false,
+    "wayland_hw_timing": true
+  },
+  "status": "not_verified",
+  "wp_presentation": {
+    "requested": 1500,
+    "shown": 1164,
+    "discarded": 336,
+    "span_ms": 24889.243,
+    "fps": 46.727,
+    "max_gap_ms": 117.171,
+    "gaps_over_25ms": 124,
+    "gaps_over_40ms": 119,
+    "flags": 15
+  }
+}

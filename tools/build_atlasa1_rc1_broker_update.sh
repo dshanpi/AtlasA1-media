@@ -16,7 +16,7 @@ Package: atlasa1-cedar-format-switch
 Version: 1.0-1~resolute1
 Architecture: arm64
 Maintainer: DshanPI AtlasA1 contributors
-Depends: atlasa1-player (= 0.1-5~resolute1), systemd
+Depends: atlasa1-player (>= 0.1-5~resolute1), systemd
 Section: video
 Priority: optional
 Description: Cedar format switching for AtlasA1 Ubuntu 26.04 RC1

@@ -1,0 +1,88 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-media-v30",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": true,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": true,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "session",
+  "presentation_metric": "SDL uploads and presents, not physical scanout feedback",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "duration": "25.000000",
+    "nb_frames": "750",
+    "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "av_offset_p95_seconds": 0.034,
+  "sdl_present": {
+    "frames": 750,
+    "span_ms": 24892.473,
+    "gap_p95_ms": 45.188,
+    "gap_max_ms": 107.136
+  },
+  "texture_upload": {
+    "mean_ms": 7.428,
+    "through_present_mean_ms": 10.007
+  },
+  "exit_status": 0,
+  "wall_seconds": 25.86,
+  "irq_delta": 750,
+  "frames_at_player_filter": 750,
+  "player_drops": 0,
+  "final_clock": 24.94,
+  "broker": [
+    "CEDAR_BROKER: open session=10 codec=2 3840x2160",
+    "CEDAR_BROKER: close session=10 submitted=8568 delivered=8545",
+    "CEDAR_BROKER: open session=11 codec=2 3840x2160",
+    "CEDAR_BROKER: hardware frames=8700 session=11 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=9000 session=11 visible=1920x1080",
+    "CEDAR_BROKER: close session=11 submitted=9318 delivered=9295"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": true,
+    "all_frames": true,
+    "zero_player_drops": true,
+    "clock_reached_end": true,
+    "realtime_wall": true,
+    "decoder_path": true,
+    "pvr_loaded": true,
+    "full_source_session": true,
+    "omx_fit_geometry": true,
+    "audio_video_sync": true,
+    "presented_every_frame": true,
+    "p95_presentation_gap": true
+  },
+  "status": "passed"
+}

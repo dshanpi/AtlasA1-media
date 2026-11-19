@@ -121,6 +121,23 @@ taskset -c 6-7 python3 tools/validation/ffplay_offscreen.py /var/tmp/media/hevc-
   --omx-fit --audio --wait-video-start --loops 2 --output /var/tmp/native-4k-repeat.json
 ```
 
+## GNOME Wayland 实际呈现
+
+`ffplay_offscreen.py --wayland --fullscreen --renderer powervr` 在当前用户的 Wayland 会话中显示测试视频。`--renderer-vsync 0` 避免 SDL 和媒体时钟重复等待。`--session-audio` 读取当前 PipeWire sink；Dummy Output 会单独标记为未接通真实音频。
+
+使用 `--wayland-trace /path/to/ffplay-wayland-present.so` 增加逐帧 `wp_presentation` 测量。观测库由 `ffplay_wayland_present.c`、SDL2 开发头文件及以下生成文件编译而成（交叉编译时使用目标架构的头文件、库和编译器）：
+
+```sh
+xml=/usr/share/wayland-protocols/stable/presentation-time/presentation-time.xml
+wayland-scanner client-header "$xml" presentation-time-client-protocol.h
+wayland-scanner private-code "$xml" presentation-time-protocol.c
+cc -shared -fPIC -O2 -Wall -Wextra -Werror -I. $(pkg-config --cflags sdl2 wayland-client) \
+  tools/validation/ffplay_wayland_present.c presentation-time-protocol.c \
+  -ldl $(pkg-config --libs wayland-client) -o ffplay-wayland-present.so
+```
+
+SDL 提交全部帧、浏览器视频计数和 Wayland 实际呈现是不同指标。观测库汇总所有反馈 flags 的交集；不能用“某一帧具有硬件时间戳”证明所有帧均满足这一条件。完整记录见 [GNOME 多媒体验收](../../docs/GNOME_MEDIA.md)。
+
 ## 帧缓冲抓图
 
 交叉编译示例：

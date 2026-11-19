@@ -1,0 +1,71 @@
+T736_CEDAR_CLIENT: preconnected protocol=2 readonly-memfd pid=14866 rdd=0
+Couldn't open plugin directory: No such file or directory
+No plugins found, falling back on no decorations
+    nan    :  0.000 fd=   0 aq=    0KB vq=    0KB sq=    0B     nan    :  0.000 fd=   0 aq=    0KB vq=    0KB sq=    0B Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/var/tmp/atlas-rc1-fes-qa/h264-1080p60-aac.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.9.102
+  Duration: 00:00:25.00, start: 0.000000, bitrate: 10502 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 10394 kb/s, 60 fps, 60 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.28.100 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 96 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+T736_CEDAR_PROXY: init codec=h264_cedar input extradata_size=41 first8=014d402affe1001a annexb_parameter_count=0 annexb_parameter_mask=0
+T736_CEDAR_PROXY: init codec=h264_cedar bsf_output extradata_size=38 first8=00000001674d402a annexb_parameter_count=2 annexb_parameter_mask=6
+[h264_cedar @ 0xffff981c6180] T736_CEDAR_PANEL: session=6 mode=source display=1920x1080
+[h264_cedar @ 0xffff981c6180] T736_CEDAR_PROXY: broker session=6 codec=h264_cedar 1920x1080 ordinary-I420
+    nan A-V:    nan fd=   0 aq=    0KB vq=  118KB sq=    0B     nan A-V:    nan fd=   0 aq=   12KB vq= 1412KB sq=    0B T736_CEDAR_PROXY: generation=1 first_input bytes=53853 key=1 length_prefix=4 first_nal=6 nals=2 parameter_count=0 parameter_mask=0 irap=1
+T736_CEDAR_PROXY: generation=1 first_filtered bytes=53890 key=1 length_prefix=0 first_nal=6 nals=4 parameter_count=2 parameter_mask=6 irap=1
+CEDAR_TRACE push=1 session=6 bytes=53890 pts=33333 dts=-9223372036854775808
+CEDAR_TRACE push=2 session=6 bytes=22635 pts=83333 dts=-9223372036854775808
+CEDAR_TRACE push=3 session=6 bytes=13420 pts=50000 dts=-9223372036854775808
+CEDAR_TRACE push=4 session=6 bytes=10158 pts=66666 dts=-9223372036854775808
+CEDAR_TRACE push=5 session=6 bytes=21002 pts=133333 dts=-9223372036854775808
+CEDAR_TRACE push=6 session=6 bytes=15895 pts=100000 dts=-9223372036854775808
+CEDAR_TRACE push=7 session=6 bytes=12586 pts=116666 dts=-9223372036854775808
+CEDAR_TRACE push=8 session=6 bytes=25667 pts=183333 dts=-9223372036854775808
+CEDAR_TRACE push=9 session=6 bytes=15812 pts=150000 dts=-9223372036854775808
+CEDAR_TRACE push=10 session=6 bytes=12440 pts=166666 dts=-9223372036854775808
+CEDAR_TRACE push=11 session=6 bytes=23987 pts=233333 dts=-9223372036854775808
+CEDAR_TRACE push=12 session=6 bytes=18254 pts=200000 dts=-9223372036854775808
+CEDAR_TRACE push=13 session=6 bytes=15398 pts=216666 dts=-9223372036854775808
+CEDAR_TRACE push=14 session=6 bytes=25141 pts=283333 dts=-9223372036854775808
+CEDAR_TRACE push=15 session=6 bytes=17325 pts=250000 dts=-9223372036854775808
+CEDAR_TRACE push=16 session=6 bytes=15947 pts=266666 dts=-9223372036854775808
+CEDAR_TRACE push=17 session=6 bytes=24745 pts=333333 dts=-9223372036854775808
+CEDAR_TRACE push=18 session=6 bytes=17172 pts=300000 dts=-9223372036854775808
+CEDAR_TRACE push=19 session=6 bytes=16295 pts=316666 dts=-9223372036854775808
+CEDAR_TRACE push=20 session=6 bytes=24425 pts=383333 dts=-9223372036854775808
+CEDAR_TRACE push=21 session=6 bytes=17054 pts=350000 dts=-9223372036854775808
+CEDAR_TRACE push=22 session=6 bytes=16027 pts=366666 dts=-9223372036854775808
+CEDAR_TRACE push=23 session=6 bytes=25037 pts=433333 dts=-9223372036854775808
+CEDAR_TRACE push=24 session=6 bytes=17468 pts=400000 dts=-9223372036854775808
+    nan A-V:    nan fd=   0 aq=   15KB vq= 1094KB sq=    0B CEDAR_TRACE pull=1 session=6 pts=33333 1920x1080
+[Parsed_showinfo_0 @ 0xffff8c00df10] config in time_base: 1/15360, frame_rate: 60/1
+[Parsed_showinfo_0 @ 0xffff8c00df10] config out time_base: 0/0, frame_rate: 0/0
+[Parsed_showinfo_0 @ 0xffff8c00df10] n:   0 pts:      0 pts_time:0       duration:    256 duration_time:0.0166667 fmt:yuv420p cl:left sar:1/1 s:1920x1080 i:P iskey:1 type:? 
+[Parsed_showinfo_0 @ 0xffff8c00df10] color_range:tv color_space:bt709 color_primaries:unknown color_trc:unknown
+T736_CEDAR_PROXY: bounded_batch generation=1 frames=1 inputs=1 elapsed_us=21848 safe_input_empty=1
+CEDAR_TRACE pull=2 session=6 pts=50000 1920x1080
+[Parsed_showinfo_0 @ 0xffff8c00df10] n:   1 pts:    256 pts_time:0.0166667 duration:    256 duration_time:0.0166667 fmt:yuv420p cl:left sar:1/1 s:1920x1080 i:P iskey:0 type:? 
+[Parsed_showinfo_0 @ 0xffff8c00df10] color_range:tv color_space:bt709 color_primaries:unknown color_trc:unknown
+T736_CEDAR_PROXY: bounded_batch generation=1 frames=1 inputs=1 elapsed_us=11340 safe_input_empty=1
+CEDAR_TRACE pull=3 session=6 pts=66666 1920x1080
+[Parsed_showinfo_0 @ 0xffff8c00df10] n:   2 pts:    512 pts_time:0.0333333 duration:    256 duration_time:0.0166667 fmt:yuv420p cl:left sar:1/1 s:1920x1080 i:P iskey:0 type:? 
+[Parsed_showinfo_0 @ 0xffff8c00df10] color_range:tv color_space:bt709 color_primaries:unknown color_trc:unknown
+T736_CEDAR_PROXY: bounded_batch generation=1 frames=1 inputs=1 elapsed_us=16691 safe_input_empty=1
+CEDAR_TRACE pull=4 session=6 pts=83333 1920x1080
+[Parsed_showinfo_0 @ 0xffff8c00df10] n:   3 pts:    768 pts_time:0.05    duration:    256 duration_time:0.0166667 fmt:yuv420p cl:left sar:1/1 s:1920x1080 i:P iskey:0 type:? 
+[Parsed_showinfo_0 @ 0xffff8c00df10] color_range:tv color_space:bt709 color_primaries:unknown color_trc:unknown
+ATLAS_PACKED_YUV rgba=480x1620 bt709_limited=1
+PACKED_PIXEL 200,100 expected=255,24,0 actual=0,0,189 error=0
+PACKED_PIXEL 960,540 expected=0,17,255 actual=0,0,189 error=0
+PACKED_PIXEL 1700,900 expected=0,231,255 actual=0,0,189 error=0
+ATLAS_PACKED_COLOR samples=3 max_error=255

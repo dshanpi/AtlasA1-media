@@ -1,0 +1,87 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-media-v30",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": true,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": true,
+  "keep_late_frames": true,
+  "fullscreen": true,
+  "audio_device": "session",
+  "presentation_metric": "SDL uploads and presents, not physical scanout feedback",
+  "fixture": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "duration": "25.000000",
+    "nb_frames": "1500",
+    "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+  },
+  "audio_track": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 1
+  },
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "av_offset_p95_seconds": 4.705,
+  "sdl_present": {
+    "frames": 1500,
+    "span_ms": 31659.91,
+    "gap_p95_ms": 58.83,
+    "gap_max_ms": 91.848
+  },
+  "texture_upload": {
+    "mean_ms": 8.572,
+    "through_present_mean_ms": 20.495
+  },
+  "exit_status": 0,
+  "wall_seconds": 32.536,
+  "irq_delta": 1500,
+  "frames_at_player_filter": 1500,
+  "player_drops": 0,
+  "final_clock": 31.64,
+  "broker": [
+    "CEDAR_BROKER: open session=7 codec=1 1920x1080",
+    "CEDAR_BROKER: hardware frames=4500 session=7 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=4800 session=7 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=5100 session=7 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=5400 session=7 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=5700 session=7 visible=1920x1080",
+    "CEDAR_BROKER: close session=7 submitted=5782 delivered=5774"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": true,
+    "all_frames": true,
+    "full_dimensions": true,
+    "zero_player_drops": true,
+    "clock_reached_end": false,
+    "realtime_wall": false,
+    "decoder_path": true,
+    "pvr_loaded": true,
+    "audio_video_sync": false,
+    "presented_every_frame": true,
+    "p95_presentation_gap": false
+  },
+  "status": "not_verified"
+}

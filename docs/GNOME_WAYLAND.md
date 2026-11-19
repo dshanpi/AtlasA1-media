@@ -51,6 +51,6 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type not
 
 恢复八核调度后，在另一个 Chromium 仍运行的情况下，Firefox 测试由约 22.43 提升至 38.05 回调/秒，启动监听时间由 7.01 降至 4.13 秒。这是同机前后对照，不是无负载的严格性能基准。最终原生呈现测试约 47.60 fps；之前较低负载、仅 Shell 主线程绑核时约 53–54 fps，后者配置已撤销。
 
-Xwayland 的 `depth 30 ... Falling back to software` 日志来自单个像素格式的探测；不能据此断言整个 Xwayland 在软件渲染。Chromium 本身和 GNOME 会话内的编解码播放尚未在本轮完成验收。浏览器 GPU 接通不等于视频硬解、零拷贝或 60fps 播放已通过。
+Xwayland 的 `depth 30 ... Falling back to software` 日志来自单个像素格式的探测；不能据此断言整个 Xwayland 在软件渲染。浏览器 GPU 接通不等于视频硬解、零拷贝或 60fps 播放已通过。后续 GNOME 下的播放器、Firefox 硬解和实际呈现结果见 [GNOME 多媒体验收](GNOME_MEDIA.md)。
 
 本轮保留当前可用的 GNOME 会话，并停用自动回退定时器，避免用户操作中突然切换桌面。保存的开机默认仍是 LightDM/Xfce；未发布新的 GNOME 镜像，也未对 GDM 正常登录和冷启动做完整验收。

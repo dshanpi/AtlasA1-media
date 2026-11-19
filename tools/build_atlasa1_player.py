@@ -68,7 +68,7 @@ def main():
         for name in ('README.md','copyright'):
             install(tools/'player'/name, stage/'usr/share/doc/atlasa1-player'/name, 0o644)
         ffmpeg_deps = 'libavdevice61, libavfilter10, libavformat61, libavcodec61, libavutil59, libswscale8, libswresample5, '
-        version = '0.1-4'
+        version = '0.1-6'
         if args.private_runtime:
             for soname in ('libavdevice.so.61', 'libavfilter.so.10', 'libavformat.so.61', 'libswscale.so.8',
                            'libswresample.so.5'):
@@ -78,7 +78,7 @@ def main():
                     p.error('unexpected private runtime library: ' + soname)
                 install(library, app/'lib'/soname, 0o644)
             ffmpeg_deps = ''
-            version = '0.1-5~resolute1'
+            version = '0.1-6~resolute1'
         control = stage/'DEBIAN'
         control.mkdir()
         control.joinpath('control').write_text(

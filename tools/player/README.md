@@ -3,11 +3,15 @@
 在 AtlasA1 GNOME 桌面安装 arm64 软件包后，从应用菜单选择本地文件，也可以在文件管理器中右键 MP4，选择「打开方式 → AtlasA1 播放器」。命令行支持带空格的路径。
 
 ```sh
-sudo apt install ./atlasa1-player_0.1-4_arm64.deb
+sudo apt install ./atlasa1-player_0.1-6_arm64.deb
 atlasa1-player "/home/t736/Videos/测试 1080p60.mp4"
 ```
 
 播放器使用 SDL GLES2 和当前桌面会话的音频输出，保留晚到的视频帧。对于最高 3840×2160 的偶数宽高、逐行、8 位 4:2:0 H.264 或 HEVC，它会选择 Cedar 代理解码器。其他格式由发行版 FFmpeg 选择解码器。软件包提供一个可选的「打开方式」入口。
+
+GNOME Wayland 使用独立的 `/opt/atlasa1-img-wayland` DDK，默认关闭 SDL renderer 的额外垂直同步等待，由 FFplay 调度媒体时钟。X11 仍使用原来的 X11 DDK。Ubuntu 26.04 包名为 `atlasa1-player_0.1-6~resolute1_arm64.deb`，包含私有 FFmpeg 7 运行库。
+
+截至 2026-11-19，GNOME 下的 1080p60 / 4K30 实际显示仍有丢帧，当前声卡仍为 Dummy Output。播放器能解码和提交全部视频帧不代表实际显示和音频已通过。详细结果见 [GNOME 多媒体验收](../../docs/GNOME_MEDIA.md)。
 
 对于音视频时间戳同时起始的本地 MP4、MOV 或 Matroska 文件，Cedar 播放器在首帧进入显示队列后开始消耗音频，最长等待 2.5 秒。这可避免冷启动时声音比画面提前。具有音画起始偏移的文件保留原来的时间安排。
 
@@ -28,7 +32,7 @@ python3 tools/build_atlasa1_player.py \
   --ffplay "$private/player/ffplay-start-sync" \
   --avcodec "$private/ffmpeg/install/opt/t736-browser-ffmpeg/lib/libavcodec.so.61" \
   --avutil "$private/ffmpeg/install/opt/t736-browser-ffmpeg/lib/libavutil.so.59" \
-  --output /tmp/atlasa1-player_0.1-4_arm64.deb
+  --output /tmp/atlasa1-player_0.1-6_arm64.deb
 ```
 
 软件包依赖 Debian 13 的 FFmpeg 7.1 运行库，以及板级已经安装的 PowerVR 和 Cedar 服务。原生客户端核对监听端和共享帧的属主，播放器通过服务接收只读的普通内存帧。安装和卸载可通过系统包管理器完成。

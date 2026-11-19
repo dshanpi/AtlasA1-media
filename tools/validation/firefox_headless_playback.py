@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Play one local MP4 in a sandboxed, off-screen Firefox, measuring browser frames and Cedar IRQs."""
+"""Measure sandboxed Firefox video frames and Cedar IRQs offscreen or on Wayland."""
 import argparse
 import hashlib
 import json
@@ -221,13 +221,24 @@ def rational(value):
     return numerator / denominator
 
 
-def rdd_snapshot(group):
+def rdd_snapshot(group, cpus=None):
     found = []
     for proc in Path('/proc').glob('[0-9]*'):
         try:
             if os.getpgid(int(proc.name)) != group or 'RDD' not in (proc/'comm').read_text():
                 continue
             entry = {'pid': int(proc.name)}
+            entry['cpu_affinity_before'] = sorted(os.sched_getaffinity(int(proc.name)))
+            if cpus:
+                changed = 0
+                for task in (proc/'task').glob('[0-9]*'):
+                    try:
+                        os.sched_setaffinity(int(task.name), cpus)
+                        changed += 1
+                    except ProcessLookupError:
+                        pass
+                entry['affinity_threads_changed'] = changed
+                entry['cpu_affinity_after'] = sorted(os.sched_getaffinity(int(proc.name)))
             status = (proc/'status').read_text().splitlines()
             entry['sandbox'] = [line for line in status if line.startswith(('NoNewPrivs:', 'Seccomp:'))]
             try:
@@ -269,6 +280,12 @@ def collect(args, record):
         runtime_dir = Path(f'/run/user/{user.pw_uid}')
         if runtime_dir.is_dir():
             env['XDG_RUNTIME_DIR'] = str(runtime_dir)
+        if args.wayland:
+            if not (runtime_dir/'wayland-0').is_socket():
+                raise ValueError('Expected the active GNOME wayland-0 socket')
+            env.pop('MOZ_HEADLESS')
+            env.update(WAYLAND_DISPLAY='wayland-0', XDG_SESSION_TYPE='wayland',
+                       GDK_BACKEND='wayland', DBUS_SESSION_BUS_ADDRESS='unix:path='+str(runtime_dir/'bus'))
         srv.prefix = '/' + secrets.token_urlsafe(16) + '/'
         srv.clip, srv.seconds, srv.samples, srv.done = args.clip, args.seconds, [], threading.Event()
         thread = threading.Thread(target=srv.serve_forever, daemon=True)
@@ -285,8 +302,10 @@ def collect(args, record):
             env.pop('MOZ_HEADLESS')
             command = [sys.executable, str(Path(__file__).resolve()), '_xvfb', args.xvfb.resolve(),
                        str(width), str(height), *command]
-        else:
+        elif not args.wayland:
             command.insert(1, '--headless')
+        else:
+            record['display_backend'] = 'GNOME Wayland'
         proc = subprocess.Popen(command,
                                 stdout=log, stderr=subprocess.STDOUT, env=env, cwd=profile,
                                 start_new_session=True, **identity)
@@ -297,7 +316,7 @@ def collect(args, record):
                 if (srv.samples and srv.samples[-1]['mediaTime'] >= 2
                         and time.monotonic() >= snapshot_time
                         and not any('Seccomp:\t2' in p['sandbox'] for p in record.get('rdd', []))):
-                    record['rdd'] = rdd_snapshot(proc.pid)
+                    record['rdd'] = rdd_snapshot(proc.pid, args.rdd_cpus)
                     snapshot_time = time.monotonic() + 2
             record['firefox_exit_before_cleanup'] = proc.poll()
             record['samples'] = list(srv.samples)
@@ -327,6 +346,8 @@ def main():
     ap.add_argument('clip',type=Path)
     ap.add_argument('--output',type=Path,required=True)
     ap.add_argument('--xvfb',type=Path,help='Use a private virtual X server executable instead of Firefox headless mode')
+    ap.add_argument('--wayland',action='store_true',help='Play visibly in the current GNOME Wayland session')
+    ap.add_argument('--rdd-cpus',type=int,nargs='+',help='Diagnostic affinity for this temporary Firefox RDD only')
     ap.add_argument('--seconds',type=int,default=20)
     ap.add_argument('--screen', nargs=2, type=int, metavar=('WIDTH', 'HEIGHT'),
                     help='set headless screen and kiosk window size; report the actual CSS video box separately')
@@ -334,11 +355,17 @@ def main():
     ap.add_argument('--launcher',type=Path,default=Path('/usr/local/bin/t736-firefox-cedar'))
     ap.add_argument('--unit',default='t736-cedar.service')
     args = ap.parse_args()
+    if args.rdd_cpus and not set(args.rdd_cpus) <= os.sched_getaffinity(0):
+        ap.error('--rdd-cpus must be a subset of the CPUs available to this test')
+    if args.wayland and args.xvfb:
+        ap.error('--wayland and --xvfb are mutually exclusive')
     if not 2 <= args.seconds <= 3600:
         ap.error('measurement window must be 2..3600 seconds')
     if args.screen and not all(64 <= n <= 8192 for n in args.screen):
         ap.error('screen dimensions must be 64..8192')
     record = {'schema':1,'kind':'t736-sandboxed-firefox-headless-playback'}
+    if args.wayland:
+        record['kind'] = 'atlasa1-sandboxed-firefox-wayland-playback'
     with args.output.open('x',encoding='utf-8') as out:
         try:
             collect(args,record)

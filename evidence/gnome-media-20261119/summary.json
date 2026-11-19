@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-11-19T13:34:53.952448+08:00",
+  "status": "partial; GNOME multimedia acceptance incomplete",
+  "board_state": {
+    "temporary_kernel": "6.18.63-t736-gnome-v40",
+    "default_kernel": "v30",
+    "desktop": "GNOME Wayland",
+    "output": "1920x1080",
+    "gpu_hz": 400000000,
+    "shell_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "gpu_faults": 0,
+    "kernel_taint": 4096,
+    "taint_reason": "out-of-tree PVR module; no Oops taint",
+    "rcq_poll_us": 2000,
+    "final_log": "v40-final-state.log",
+    "default_image_changed": false
+  },
+  "rejected_candidates": {
+    "v38": "Xorg kernel Oops with dynamic-preemption configuration; no playback acceptance",
+    "gpu600": "no measured improvement",
+    "rcq_poll_100us": "no measured improvement",
+    "texture_ring": "no measured improvement",
+    "packed_single_rgba": "40.133 fps, slowed playback",
+    "packed_three_planes": "52.721 fps, no measured improvement"
+  },
+  "dma_import": {
+    "baseline_v39": "RGB/NV12/NV21 EGL_BAD_ALLOC",
+    "v40_synthetic_formats": [
+      "ABGR8888",
+      "NV12",
+      "NV21"
+    ],
+    "synthetic_pixel_error_max": 0,
+    "repeat_iterations": 10,
+    "repeat_checks_passed": 30,
+    "real_frame_format": "YV12",
+    "real_frame_coded": [
+      1920,
+      1088
+    ],
+    "real_frame_crop": [
+      1920,
+      1080
+    ],
+    "real_frame_pixel_error_max": 1,
+    "real_frame_log": "v40-real-frame-gpu-import.log",
+    "scope": "OMX GstMemory DMA-BUF to EGLImage/GLES; sample retained until GPU completion"
+  },
+  "playback": [
+    {
+      "log": "v40-dmabuf-1080p60-first.log",
+      "sha256": "1c6d4cefe2f419e0d42c3d24ce6733763a6ceefab43907ab86b2ec08182b60f0",
+      "presentation": {
+        "requested": "1500",
+        "shown": "1279",
+        "discarded": "221",
+        "span_ms": "24989.643",
+        "fps": "51.141",
+        "max_gap_ms": "83.696",
+        "gaps_over_25ms": "187",
+        "gaps_over_40ms": "24",
+        "flags": "0x7"
+      },
+      "player": {
+        "frames": "1500",
+        "elapsed_ms": "25005.972",
+        "pts_span_ms": "24983.333",
+        "gpu_mean_ms": "7.504",
+        "max_late_ms": "160.842",
+        "imports": "12",
+        "cpu_frame_copies": "0",
+        "audio": "none",
+        "failed": "0"
+      }
+    },
+    {
+      "log": "v40-dmabuf-1080p60-async.log",
+      "sha256": "8c02a211a368632190de35362a0260851ab659b133dccd6be6f9bf9d16844d0d",
+      "presentation": {
+        "requested": "1500",
+        "shown": "1282",
+        "discarded": "218",
+        "span_ms": "24989.761",
+        "fps": "51.261",
+        "max_gap_ms": "50.230",
+        "gaps_over_25ms": "187",
+        "gaps_over_40ms": "25",
+        "flags": "0x7"
+      },
+      "player": {
+        "frames": "1500",
+        "elapsed_ms": "25005.849",
+        "pts_span_ms": "24983.333",
+        "submit_mean_ms": "0.592",
+        "max_late_ms": "88.694",
+        "imports": "12",
+        "cpu_frame_copies": "0",
+        "audio": "none",
+        "async": "1",
+        "failed": "0"
+      }
+    },
+    {
+      "log": "v40-dmabuf-4k30-async.log",
+      "sha256": "68508149f9a3971cc76767360ab5faf3b6615dfb7ecd38f7b5ea91714a420cc7",
+      "presentation": {
+        "requested": "750",
+        "shown": "743",
+        "discarded": "7",
+        "span_ms": "24954.377",
+        "fps": "29.734",
+        "max_gap_ms": "284.523",
+        "gaps_over_25ms": "479",
+        "gaps_over_40ms": "170",
+        "flags": "0x7"
+      },
+      "player": {
+        "frames": "750",
+        "elapsed_ms": "25018.846",
+        "pts_span_ms": "24966.667",
+        "submit_mean_ms": "0.573",
+        "max_late_ms": "198.925",
+        "imports": "8",
+        "cpu_frame_copies": "0",
+        "audio": "none",
+        "async": "1",
+        "failed": "0"
+      },
+      "format": {
+        "format": "YV12",
+        "coded": "3840x2176",
+        "visible": "3840x2160",
+        "bytes": "12533760"
+      }
+    }
+  ],
+  "limits": [
+    "No 1080p60 zero-drop acceptance",
+    "4K source scaled by GPU to 1080p output; 7 discarded frames",
+    "No physical audio, HDMI sound card or A/V sync acceptance",
+    "No hardware encoder acceptance",
+    "No browser DMA-BUF integration",
+    "Root-only diagnostic runner; no production permission model",
+    "No end-to-end zero-copy scanout claim"
+  ],
+  "validation": {
+    "player_launcher_unit_tests": 6,
+    "diagnostic_public_build_script": "clean output build passed; probe-replay-build-r4.log",
+    "candidate_kernel_public_script": "syntax/patch checks only; full clean build through this new entry not run",
+    "actual_v40_build": "passed; temporary boot and GPU/desktop checked",
+    "official_armbian_patch_apply": {
+      "status": "passed",
+      "commit": "2d3dd98fb4a86d4d884cec4fc2f5de28a37a8736",
+      "method": "git apply --check followed by git apply in a clean detached worktree; Python syntax check passed"
+    }
+  },
+  "source_sha256": {
+    "patches/linux/gnome-media-20261119/v36-vblank.patch": "2f818ebca1ca3ab55a92391fa0f9eec4260e669828778d188ec00e59509a6df7",
+    "patches/linux/gnome-media-20261119/v37-gpu600-linux.patch": "82cf0818c74ff534f6c2417899298bf811f42f557d531172861a0cf122b2507e",
+    "patches/linux/gnome-media-20261119/v37-gpu600-pvr.patch": "18ca98c2577595692ce664d1968f52957ee55fdc79345275338830a4daed415a",
+    "patches/linux/gnome-media-20261119/v38-rcq-poll.patch": "d01ba5c7b35e28c285c4eca233cd90e34de1248e5ed5f08d735a26be40e44d0c",
+    "patches/linux/gnome-media-20261119/v40-cedar-import.patch": "b734b4bed474c901dfdee855672af32b8b454d15e1a3e4ee917d01a6691b2dee",
+    "tools/build_gnome_media_candidate.sh": "c44a99d4e59e4e25dc4ee572ccf2ca5f14dd7814dc72d4964643d9bc1ea805d6",
+    "tools/build_gnome_media_probes.sh": "6397ac99033d55f3a9f1ebc10892b33db2806858680b9fa0dd7b8ad7d27d1e91",
+    "tools/validation/cedar_gpu_import.c": "bc09254ba1d7f5d0772a8424c096c4e7bb1a6dc47a4ad94c7b1082eeeb1bd156",
+    "tools/validation/cedar_frame_export_probe.c": "ffcdd1457f925829b49ab0493e767f887d6aa88247bdf6b3d1c471715d1f0513",
+    "tools/validation/cedar_gnome_dmabuf_player.c": "2646b870295a9da58496de354030ea12ba31ee3735931ee346367a4a7f9bef97",
+    "tools/validation/run_gnome_dmabuf_probe.sh": "96dcb964606fc872e34d86bb0911d1531e9aace8082c1d170b8f29293da6db97",
+    "tools/validation/ffplay_wayland_present.c": "dbbf9637ddcf50b11bf13c997df4e22dff0aa71bc6959aa8909cc5e200d74854"
+  },
+  "binary_sha256": {
+    "cedar_gnome_dmabuf_player": "cda542e76dde09d566c251e3ad395b8e09414f133187e0acdd8588b6b40540e2",
+    "cedar_gnome_dmabuf_player-r2": "4e52bb896a8a5443a30738e22d50e8fb351d3987cb9cec29b82432fb77d03bb1",
+    "cedar-gnome-dmabuf-player-r4": "fad70fea04101736e83d21cf371648858b1527e6dfdb5b332e8cd6d277254b2e",
+    "ffplay-wayland-present-v5.so": "c65e77063450f3bb6e472ee41e50f9799711cae3679f5db9e68be404ebe67753",
+    "gnome-media-v40.tar.gz": "7d1ab3790613028c187685eb337221aa92e51db07181fbe7892b47889e98ec9d"
+  }
+}

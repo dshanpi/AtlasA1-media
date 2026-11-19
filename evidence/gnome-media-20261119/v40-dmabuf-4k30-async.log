@@ -1,0 +1,24 @@
+Linux atlasa1 6.18.63-t736-gnome-v40 #40 SMP 2026-11-19 00:00:00 UTC aarch64 GNU/Linux
+fad70fea04101736e83d21cf371648858b1527e6dfdb5b332e8cd6d277254b2e  /var/tmp/atlasa1-gnome-media-20261119/probes-r4/cedar-gnome-dmabuf-player
+c65e77063450f3bb6e472ee41e50f9799711cae3679f5db9e68be404ebe67753  /var/tmp/atlasa1-gnome-media-20261119/probes-r4/ffplay-wayland-present.so
+c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314  /var/tmp/atlas-rc1-fes-qa/hevc-4k30-aac.mp4
+Couldn't open plugin directory: No such file or directory
+No plugins found, falling back on no decorations
+T736_WC: version=0x3331000021320 phy_offset=0x0 heap=t736-ve cache=WC barriers=dmb-osh
+T736_OMX_DIAG self=0xaaaabca68720 phase=flush.entry idle=-1 actual=-1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_OMX_DIAG self=0xaaaabca68720 phase=flush.initial-state idle=-1 actual=1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_OMX_DIAG self=0xaaaabca68720 phase=flush.loaded-return idle=-1 actual=1 target=-1 result=0x00000000 present=1 started=0 flow=0 raw=1 pending=0 error=0x00000000 in={present:1,index:0,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} out={present:1,index:1,enabled:1,populated:0,flushing:1,flushed:0,enable_pending:0,disable_pending:0,allocated:0,pending:0,settings:0,configured:0} reason=-
+T736_WC: first validated WC ordering barrier
+ATLAS_WAYLAND_TRACE protocol=wp_presentation
+ATLAS_WAYLAND_PRESENT requested=750 shown=743 discarded=7 span_ms=24954.377 fps=29.734 max_gap_ms=284.523 gaps_over_25ms=479 gaps_over_40ms=170 flags=0x7
+GPU=PowerVR B-Series BXM-4-64
+DEBUG  : cedarc <CdcIniParserInit:41>: load conf file /etc/cedarc.conf ok!
+
+DEBUG  : cedarc <AwOmxComponentInit:40>: OMXCORE: aw_omx_component_init bca7b5a0
+
+INFO   : cedarc <log_setlevel:73>: Set log level to 6 from /vendor/etc/cedarc.conf
+ERROR  : omx_vdec <AwOmxVdecPortGetFormat:365>: [40;31merro: pParamData->nIndex > m_sPortFormatType.nIndex[0m
+ERROR  : cedarc <DebugCheckConfig:396>: [40;31mnow cedarc log level:6[0m
+ERROR  : cedarc <HevcSetNewRef:796>: [40;31m h265 decoder cost request fbm buffer timeout [0m
+DMA_FORMAT format=YV12 coded=3840x2176 visible=3840x2160 bytes=12533760
+DMA_PLAYER frames=750 elapsed_ms=25018.846 pts_span_ms=24966.667 submit_mean_ms=0.573 max_late_ms=198.925 imports=8 cpu_frame_copies=0 audio=none async=1 failed=0

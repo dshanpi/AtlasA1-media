@@ -1,0 +1,27 @@
+Linux atlasa1 6.18.63-t736-gnome-v39 #39 SMP 2026-11-19 00:00:00 UTC aarch64 GNU/Linux
+earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
+4096
+Driver Status:   OK
+
+Device ID: 0:128
+Firmware Status: OK
+Server Errors:   0
+HWR Event Count: 0
+CRR Event Count: 0
+SLR Event Count: 0
+WGP Error Count: 0
+TRP Error Count: 0
+FWF Event Count: 0
+APM Event Count: 0
+GPU Utilisation: 19%
+DM Utilisation:  VM0
+           2D:   0% 
+         GEOM:   0% 
+           3D:  19% 
+          CDM:   0% 
+          RAY:   0% 
+        GEOM2:   0% 
+active
+pid 3528's current affinity list: 0-7
+usr/lib
+2000

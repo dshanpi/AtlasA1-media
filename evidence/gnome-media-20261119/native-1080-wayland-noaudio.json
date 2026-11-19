@@ -1,0 +1,95 @@
+{
+  "player": "FFplay",
+  "kernel": "6.18.63-t736-media-v30",
+  "mode": "cedar",
+  "probe_cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "loops": 1,
+  "wait_video_start": false,
+  "display": "SDL Wayland GLES2",
+  "window": [
+    1920,
+    1080
+  ],
+  "audio": false,
+  "keep_late_frames": true,
+  "renderer_vsync_override": 0,
+  "fullscreen": true,
+  "audio_device": "dummy",
+  "presentation_metric": "SDL uploads and presents, not physical scanout feedback",
+  "fixture": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "duration": "25.000000",
+    "nb_frames": "1500",
+    "sha256": "20f379b942fa6521cb71b673ae68cdcdc1cdd1360b0d2696fe13dc2b41ec8274"
+  },
+  "pvr_libraries": [
+    "pvr_dri.so"
+  ],
+  "player_filter_sizes": [
+    "1920x1080"
+  ],
+  "sdl_present": {
+    "frames": 1500,
+    "span_ms": 24855.561,
+    "gap_p95_ms": 45.661,
+    "gap_max_ms": 76.721
+  },
+  "texture_upload": {
+    "mean_ms": 7.374,
+    "through_present_mean_ms": 9.476
+  },
+  "exit_status": 0,
+  "wall_seconds": 25.581,
+  "irq_delta": 1500,
+  "frames_at_player_filter": 1500,
+  "player_drops": 0,
+  "final_clock": 24.97,
+  "broker": [
+    "CEDAR_BROKER: open session=17 codec=1 1920x1080",
+    "CEDAR_BROKER: hardware frames=14700 session=17 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=15000 session=17 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=15300 session=17 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=15600 session=17 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=15900 session=17 visible=1920x1080",
+    "CEDAR_BROKER: close session=17 submitted=16068 delivered=16045"
+  ],
+  "diagnostics": [],
+  "checks": {
+    "exited_cleanly": true,
+    "all_frames": true,
+    "full_dimensions": true,
+    "zero_player_drops": true,
+    "clock_reached_end": true,
+    "realtime_wall": true,
+    "decoder_path": true,
+    "pvr_loaded": true,
+    "presented_every_frame": true,
+    "p95_presentation_gap": false,
+    "wayland_feedback_received": true,
+    "wayland_every_frame": false,
+    "wayland_hw_timing": true
+  },
+  "status": "not_verified",
+  "wp_presentation": {
+    "requested": 1500,
+    "shown": 1163,
+    "discarded": 337,
+    "span_ms": 24822.283,
+    "fps": 46.813,
+    "max_gap_ms": 83.699,
+    "gaps_over_25ms": 128,
+    "gaps_over_40ms": 114,
+    "flags": 15
+  }
+}
