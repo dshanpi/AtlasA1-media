@@ -1,0 +1,3 @@
+[   14.697590] atlasa1 gnome-shell[1220]: Running GNOME Shell (using mutter 50.1) as a Wayland display server
+[   15.196845] atlasa1 gnome-shell[1220]: GPU /dev/dri/card0 selected primary given udev rule
+[   20.422784] atlasa1 gnome-shell[1220]: Registering display with GDM

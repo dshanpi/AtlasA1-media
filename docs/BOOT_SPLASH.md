@@ -67,3 +67,41 @@ For an existing installation, install the wrapper as
 `/etc/initramfs-tools/hooks/atlasa1-root-wait`, both mode 0755, then rebuild the
 selected initramfs and its uInitrd. To undo this fix, remove the hook and rebuild
 both artifacts, or restore the matching backed-up boot artifacts.
+
+## Further startup profiling
+
+The v45 source U-Boot read the 14,125,064-byte Image in 2,796 ms. A gzip Image
+containing identical bytes took 1,142 ms to read. The uncompressed Image remains
+available for rollback. The rootfs recipe now creates a checked `.atlasa1.gz`
+artifact and points the fixed U-Boot kernel alias to it. Its verifier compares
+decompressed bytes with the package's original kernel.
+
+v46 retains the first expected bad-tap snapshot per tuning pass. It still reports
+every error outside the existing recovery classifier. On hardware, full DMA
+snapshots fell from 46 to 2. HS200/HS400 full sweeps and final verification
+remained enabled. Three 13 MiB direct reads of the kernel matched the reference
+hash. The test uses page-aligned Python `O_DIRECT` buffers: the installed uutils
+`dd iflag=direct` returned EINVAL and did not constitute a passed read test.
+
+v46 with gzip kernel loading reached the graphical target in 22.735 seconds.
+A one-shot `loglevel=5 systemd.show_status=error` test reached it in 21.116 seconds.
+Kernel messages remain in the ring buffer/journal. Early boot shows warnings
+and errors on UART, and systemd displays failed jobs. v47 builds the console loglevel
+into its default configuration; `50-atlasa1-boot-status.conf` supplies systemd's
+setting. Neither setting disables the serial recovery console.
+
+v47 then cold-booted without temporary logging arguments in 21.055 seconds.
+After selecting its gzip Image and matching initramfs as the defaults, a normal
+cold boot reached the graphical target in **20.879 seconds** (kernel/initramfs
+5.264 + userspace 15.615). The Wayland greeter, PowerVR and Cedar socket were
+active. No systemd units failed, and `dpkg --audit` was clean. The previous v45
+artifacts and a board-local restore script remain available.
+
+A Zstd initramfs comparison reached 20.950 seconds with v46, versus 21.116 for
+gzip. Its extra 1.57 MB added about 0.31 seconds to U-Boot loading. This did not
+demonstrate a total-boot improvement, so the default initramfs stays gzip.
+
+See `evidence/bootfast-20261120/` for timings, checksums and selected kernel logs.
+Host serial timestamps include MCP buffering and are not precise measurements
+of the instant power reaches the board. This updates the installed board and
+source recipes; it does not replace the previously published Release image.

@@ -1,0 +1,6 @@
+[    2.318555] t736-smhc3-pio 4023000.mmc: HS200 tuning card=200000000 pass=ffffffc0ffffffff abort_err=0000003f00000000 window=0+32 tap=15 verified=16x128 THLD=00800001 SFC=00000006
+[    4.638934] t736-smhc3-pio 4023000.mmc: HS400 tuned card=200000000 cmd_pass=fffffff1ffffffff cmd_window=0+33 cmd=16 ds_pass=0000000003fffff0 ds_window=4+22 ds=14 abort_err=fffffffffc00000f verified=16xCMD13+16x512 EXT_CSD=03/06 R1=00000900 THLD=02000001 SFC=00000006
+[    4.982628] EXT4-fs (mmcblk0p4): mounted filesystem 4d8c73ce-75f9-4794-bef2-664d7cecbbbb r/w with ordered data mode. Quota mode: disabled.
+[    7.482311] PVR_K:  290: Read BVNC 36.56.104.183 from HW device registers
+[    7.482877] [drm] Initialized pvr 24.2.6603887 for 1800000.gpu on minor 1
+[    7.542946] EXT4-fs (mmcblk0p4): re-mounted 4d8c73ce-75f9-4794-bef2-664d7cecbbbb.

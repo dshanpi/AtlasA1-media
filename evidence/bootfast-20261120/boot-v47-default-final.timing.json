@@ -1,0 +1,41 @@
+{
+  "scope": "host observations; MCP buffering and one-shot command delays are included",
+  "events": [
+    {
+      "event": "power-cycle-command",
+      "host_elapsed_seconds": 12.541
+    },
+    {
+      "event": "power-cycle-return",
+      "host_elapsed_seconds": 24.313
+    },
+    {
+      "event": "T736 source SRAM host",
+      "host_elapsed_seconds": 27.249
+    },
+    {
+      "event": "init_DRAM returned",
+      "host_elapsed_seconds": 30.516
+    },
+    {
+      "event": "U-Boot 2026",
+      "host_elapsed_seconds": 31.761
+    },
+    {
+      "event": "Hit any key to stop autoboot:",
+      "host_elapsed_seconds": 32.183
+    },
+    {
+      "event": "Uncompressing Kernel Image",
+      "host_elapsed_seconds": 39.998
+    },
+    {
+      "event": "Starting kernel",
+      "host_elapsed_seconds": 40.231
+    },
+    {
+      "event": " login:",
+      "host_elapsed_seconds": 62.181
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "v45_normal": {
+    "kernel": 7.631,
+    "userspace": 16.404,
+    "total": 24.036
+  },
+  "v45_gzip_image": {
+    "kernel": 7.694,
+    "userspace": 16.384,
+    "total": 24.079
+  },
+  "v46_gzip_image": {
+    "kernel": 6.335,
+    "userspace": 16.4,
+    "total": 22.735
+  },
+  "v46_quiet_gzip": {
+    "kernel": 5.334,
+    "userspace": 15.782,
+    "total": 21.116
+  },
+  "scope": "systemd Linux kernel/initramfs plus userspace; excludes SPL and U-Boot",
+  "kernel_read_ms": {
+    "raw": 2796,
+    "gzip": 1142
+  },
+  "dma_snapshots": {
+    "v45": 46,
+    "v46": 2
+  },
+  "tuning_retained": true,
+  "error_classifier_tests": "HS200 recovery and HS400 policy host tests passed",
+  "compression_tests": "Real ARM64 roundtrip, gzip input, idempotency, invalid-input and conflicting-output rejection passed",
+  "v46_archive_sha256": "ff78f7153490591261723d908f803f137712e7a2d0313969135edf0e1df11eb8",
+  "v47_archive_sha256": "28bebbaf3ca676ae6afb8e32163e8ea61ca3c74d3d5045c2d5fbd83087b0b07a",
+  "default_acceptance": {
+    "kernel": "6.18.63-t736-gnome-v47",
+    "kernel_seconds": 5.264,
+    "userspace_seconds": 15.615,
+    "total_seconds": 20.879,
+    "gdm_wayland_greeter": "active",
+    "pvr": "24.2.6603887, BVNC 36.56.104.183",
+    "cedar_socket": "active",
+    "failed_units": 0,
+    "dpkg_audit": "clean",
+    "power_cycle": "10-second off, default U-Boot, no injected commands",
+    "raw_kernel_sha256": "de8905754f5f780d7ffd51dce5c94fd2a4bb75b293c2315f274c8d64ac25f1a8",
+    "gzip_kernel_sha256": "afdd333faf31ade636286e0e9e4b2f6eb069896bd857b45b71bd9d540f965c56",
+    "initrd_sha256": "e6104216ad716e3ab8d83cbde19831e1d3400e7e30f2313c720839827ecc77ae",
+    "dtb_sha256": "a2018f5d02947ea2995829d8333ba72cc04b1293df6b7df0542414050e8b5a6d",
+    "rollback": "/var/backups/atlasa1-bootfast-20261120/restore.sh",
+    "new_release_image_published": false
+  },
+  "v46_quiet_zstd": {
+    "kernel": 5.22,
+    "userspace": 15.729,
+    "total": 20.95
+  },
+  "initrd_compression_decision": {
+    "selected": "gzip",
+    "gzip_bytes": 18459938,
+    "zstd_bytes": 20026612,
+    "reason": "The 0.166-second Linux timing difference is outweighed by about 0.31 seconds more U-Boot loading at the measured 4.8 MiB/s; no reliable total-boot improvement demonstrated."
+  },
+  "v47_default_configuration_trial": {
+    "kernel": 5.233,
+    "userspace": 15.821,
+    "total": 21.055,
+    "temporary_log_bootargs": false,
+    "gdm": "active",
+    "cedar_socket": "active",
+    "failed_units": 0
+  },
+  "source_verification": {
+    "single_armbian_patch": "clean apply passed; extracted boot helper and recipes matched canonical sources",
+    "mmc_patch": "clean apply against preserved v26 source matched the compiled v47 driver after LF normalization",
+    "compiled_mmc_sha256": "5dccdb7abe0d3925f4c8abb8b40e86f27f4dfc24cc2a96474eb56d3b541e09a1",
+    "shell_syntax": "configure, verify and candidate builder passed bash -n"
+  }
+}

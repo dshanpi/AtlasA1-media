@@ -1,0 +1,20 @@
+[
+  {
+    "trial": 1,
+    "bytes": 13631488,
+    "direct": true,
+    "sha256": "d87feafee75e70872652a9d6a71d3d961420befc8f4f436ce59783b5b408fd7c"
+  },
+  {
+    "trial": 2,
+    "bytes": 13631488,
+    "direct": true,
+    "sha256": "d87feafee75e70872652a9d6a71d3d961420befc8f4f436ce59783b5b408fd7c"
+  },
+  {
+    "trial": 3,
+    "bytes": 13631488,
+    "direct": true,
+    "sha256": "d87feafee75e70872652a9d6a71d3d961420befc8f4f436ce59783b5b408fd7c"
+  }
+]
