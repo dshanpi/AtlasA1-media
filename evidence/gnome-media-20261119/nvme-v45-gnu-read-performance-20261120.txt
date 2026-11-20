@@ -1,0 +1,28 @@
+Fri Nov 20 04:44:47 AM UTC 2026
+dd (coreutils) 9.7
+186646528 bytes (187 MB, 178 MiB) copied, 1 s, 186 MB/s377487360 bytes (377 MB, 360 MiB) copied, 2 s, 188 MB/s569376768 bytes (569 MB, 543 MiB) copied, 3 s, 190 MB/s760217600 bytes (760 MB, 725 MiB) copied, 4 s, 190 MB/s952107008 bytes (952 MB, 908 MiB) copied, 5 s, 190 MB/s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.62555 s, 191 MB/s
+195035136 bytes (195 MB, 186 MiB) copied, 1 s, 194 MB/s389021696 bytes (389 MB, 371 MiB) copied, 2 s, 194 MB/s584056832 bytes (584 MB, 557 MiB) copied, 3 s, 194 MB/s774897664 bytes (775 MB, 739 MiB) copied, 4 s, 194 MB/s970981376 bytes (971 MB, 926 MiB) copied, 5 s, 194 MB/s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.53615 s, 194 MB/s
+active
+5756 /usr/bin/gnome-shell --mode=user
+5804 /usr/libexec/gnome-shell-calendar-server
+[    0.947412] t736-pcie 6000000.pcie: eDMA: unroll T, 4 wr, 4 rd
+[    1.157645] t736-pcie 6000000.pcie: PCIe Gen.1 x1 link up
+[    1.161895] t736-pcie 6000000.pcie: PCI host bridge to bus 0000:00
+[    1.191058] pci 0000:00:00.0: [1f6d:abcd] type 01 class 0x060400 PCIe Root Port
+[    1.234989] pci 0000:01:00.0: [8086:f1a6] type 00 class 0x010802 PCIe Endpoint
+[    1.246652] pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
+[    1.313466] pcieport 0000:00:00.0: PME: Signaling with IRQ 426
+[    1.318693] nvme nvme0: pci function 0000:01:00.0
+[    1.322114] nvme 0000:01:00.0: enabling device (0000 -> 0002)
+[    1.696642] nvme nvme0: 8/0/0 default/read/poll queues
+[    1.703793]  nvme0n1: p1
+[   35.589397] systemd[1]: Queued start job for default target graphical.target.
+[   40.397263] nvme nvme0: using unchecked data buffer
+[   40.809066] block nvme0n1: No UUID available providing old NGUID
+[   99.029676] pcieport 0000:00:00.0: VPD access failed.  This is likely a firmware bug on this device.  Contact the card vendor for a firmware update

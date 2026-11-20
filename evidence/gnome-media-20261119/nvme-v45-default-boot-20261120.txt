@@ -1,0 +1,36 @@
+Fri Nov 20 04:53:48 AM UTC 2026
+6.18.63-t736-gnome-v45
+earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
+NAME          SIZE MODEL               FSTYPE MOUNTPOINTS
+nvme0n1     119.2G INTEL SSDPEKKW128G8        
+└─nvme0n1p1 119.2G                     ext4   
+active
+active
+1307 /usr/bin/gnome-shell --mode=gdm
+pvrsrvkm             1155072  41
+default via 10.0.0.1 dev end0 proto dhcp src 10.0.0.235 metric 100 
+10.0.0.0/24 dev end0 proto kernel scope link src 10.0.0.235 metric 100 
+Image-6.18.63-t736-gnome-v45
+initrd.img-6.18.63-t736-gnome-v45
+uInitrd-6.18.63-t736-gnome-v45
+a2018f5d02947ea2995829d8333ba72cc04b1293df6b7df0542414050e8b5a6d  /boot/dtb/allwinner/t736-mainline-bringup.dtb
+[    0.901793] t736-pcie 6000000.pcie: host bridge /pcie@6000000 ranges:
+[    0.906942] t736-pcie 6000000.pcie:       IO 0x0021000000..0x0021ffffff -> 0x0021000000
+[    0.913649] t736-pcie 6000000.pcie:      MEM 0x0022000000..0x0027ffffff -> 0x0022000000
+[    0.920350] t736-pcie 6000000.pcie:      MEM 0x0440000000..0x053fffffff -> 0x0440000000
+[    0.927057] t736-pcie 6000000.pcie:   IB MEM 0x0040000000..0x023fffffff -> 0x0040000000
+[    0.933848] t736-pcie 6000000.pcie: ASPM disabled for fixed COMBO1 REFCLK path
+[    0.939892] t736-pcie 6000000.pcie: iATU: unroll T, 16 ob, 16 ib, align 4K, limit 32G
+[    0.946651] t736-pcie 6000000.pcie: eDMA: unroll T, 4 wr, 4 rd
+[    1.157619] t736-pcie 6000000.pcie: PCIe Gen.1 x1 link up
+[    1.161870] t736-pcie 6000000.pcie: PCI host bridge to bus 0000:00
+[    1.191035] pci 0000:00:00.0: [1f6d:abcd] type 01 class 0x060400 PCIe Root Port
+[    1.234960] pci 0000:01:00.0: [8086:f1a6] type 00 class 0x010802 PCIe Endpoint
+[    1.246628] pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
+[    1.313446] pcieport 0000:00:00.0: PME: Signaling with IRQ 426
+[    1.318661] nvme nvme0: pci function 0000:01:00.0
+[    1.322082] nvme 0000:01:00.0: enabling device (0000 -> 0002)
+[    1.683354] nvme nvme0: 8/0/0 default/read/poll queues
+[    1.690653]  nvme0n1: p1
+[   39.771423] nvme nvme0: using unchecked data buffer
+[   40.197751] block nvme0n1: No UUID available providing old NGUID

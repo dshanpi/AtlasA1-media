@@ -1,0 +1,74 @@
+[
+  {
+    "buffer_page_offset": 0,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 512,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 1024,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 1536,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 2048,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 2560,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 3072,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "buffer_page_offset": 3584,
+    "matches_gnu_dd": [
+      true,
+      true,
+      true,
+      true
+    ]
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "target": "GNOME v42 display plus v34 PCIe/NVMe hardware support",
+  "build": "6.18.63-t736-gnome-v43",
+  "build_method": "Incremental existing v42 tree; affected sources and config backed up before applying digest-verified v34 patches; full replay option added to public candidate builder",
+  "public_option": "--pcie-nvme",
+  "full_clean_replay_of_new_combination": false,
+  "config": {
+    "CONFIG_PCI": "y",
+    "CONFIG_PCIE_T736": "y",
+    "CONFIG_BLK_DEV_NVME": "y",
+    "gpu_hz": 400000000,
+    "max_link_speed": 1
+  },
+  "archive_sha256": "14c8bb4a9020d5d6bead93bb2fb8486c46fed91d6f50d306922dd3ae0f715eb7",
+  "build_log_sha256": "1e2dfe8fa020f29e984daea408e0541b60dcc23f9466c306c9e50895123781cf",
+  "board_status": "v43 trial boots completed; SSD usable after restoring PCI configuration live; v44 port-service candidate building",
+  "default_boot": "v42 retained",
+  "device": "User reports PCIe M.2 SSD inserted; no enumeration under v42 without PCIe support",
+  "acceptance": {
+    "enumeration": true,
+    "read_io_live_recovery": true,
+    "read_mbps": [
+      186,
+      188
+    ],
+    "cold_boot_without_manual_fix": false,
+    "write_io": false,
+    "higher_link_rate": false
+  },
+  "endpoint": {
+    "pci_id": "8086:f1a6",
+    "model": "INTEL SSDPEKKW128G8",
+    "size_sectors": 250069680,
+    "link": "Gen1 x1"
+  },
+  "findings": [
+    "v43 originally lacked dma-ranges; Linux DWC disables all inbound ATU windows unless ranges are supplied",
+    "identity mapping of actual 8GiB RAM added, but first NVMe probe still timed out",
+    "after timeout root COMMAND was 0 and endpoint BAR0 was 4 instead of assigned 0x22100004",
+    "restoring bridge COMMAND 7 and endpoint BAR0, then rebinding nvme exposed the namespace",
+    "CONFIG_PCIEPORTBUS was disabled; v44 enables root-port service for cold-boot testing"
+  ],
+  "dma_dtb_sha256": "a2018f5d02947ea2995829d8333ba72cc04b1293df6b7df0542414050e8b5a6d"
+}

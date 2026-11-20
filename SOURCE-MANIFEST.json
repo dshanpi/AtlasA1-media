@@ -14,8 +14,8 @@
       "path": "README.md",
       "kind": "generated",
       "source": "generated/AtlasA1-media/README.md",
-      "size": 956,
-      "sha256": "00a106aa12d51e36f0dcadc2c4d28113b2151caabf1b74b8751b250f4131ed80"
+      "size": 1070,
+      "sha256": "cb5c50491a8556386d1c67dae274d0e212fec53771fba99e237d2b48e29de0d1"
     },
     {
       "path": "config/atlasa1-resolute-vendor-files.json",
@@ -112,8 +112,8 @@
       "path": "docs/GNOME_MEDIA.md",
       "kind": "source",
       "source": "mainline/docs/GNOME_MEDIA.md",
-      "size": 24129,
-      "sha256": "f2af888b6327dee832350edb093252ee9d0be9564b034c54e0004ed1f74f925d"
+      "size": 26284,
+      "sha256": "3160ee0c43ee81b57e78eabd229fea20a94623a62e7bf22429742ffafdc56cf0"
     },
     {
       "path": "docs/GNOME_WAYLAND.md",
@@ -284,6 +284,13 @@
       "sha256": "8e4898d18528fa5859d3d12bffb5e0aebea8f1f3771a3ec8fafe749855739f19"
     },
     {
+      "path": "evidence/gnome-media-20261119/broker-dependency-fix-20261120.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/broker-dependency-fix-20261120.txt",
+      "size": 517,
+      "sha256": "ad7754a92b3c8cdc3f477737a2425532a2591feda402835c6fc266a829e44755"
+    },
+    {
       "path": "evidence/gnome-media-20261119/default-v42-gnome-20261120.json",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/default-v42-gnome-20261120.json",
@@ -296,6 +303,13 @@
       "source": "mainline/evidence/gnome-media-20261119/default-v42-gnome-uart-20261120.log",
       "size": 79934,
       "sha256": "7e269aed40731ed2554d963229e776c3018a03ec97ad7f4a3b6a153526b8a249"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/default-v45-pcie-uart-20261120.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/default-v45-pcie-uart-20261120.log",
+      "size": 84403,
+      "sha256": "6ba6380be9723f56410d5b8f909d5d06b0c91a6f5c2727e5571b2ea774bd491e"
     },
     {
       "path": "evidence/gnome-media-20261119/final-global-vsync-state.json",
@@ -403,11 +417,53 @@
       "sha256": "e7a44eeeaed639d26d0a50fb0cdfa0e2131e2db9f1c0d84f9d509005409e2383"
     },
     {
+      "path": "evidence/gnome-media-20261119/firefox-v45-h2641080p60-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/firefox-v45-h2641080p60-20261120.json",
+      "size": 52756,
+      "sha256": "b450649c1d50123e0b4aa9399ba690c5000f01310b1d786d14d54806a263b4e8"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/firefox-v45-hevc-short-fixture-incomplete-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/firefox-v45-hevc-short-fixture-incomplete-20261120.json",
+      "size": 64848,
+      "sha256": "cc952bcd238af25cab38c83fd6fe70cae441b3b47f770011427b3a7b383d582f"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/firefox-v45-hevc4k30-long-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/firefox-v45-hevc4k30-long-20261120.json",
+      "size": 204702,
+      "sha256": "3682668135f39837e2e78a8ab0daf1c6c1b5e6bb30cc35ad1751b0fb2d6e3eb1"
+    },
+    {
       "path": "evidence/gnome-media-20261119/firefox160-timing-source-manifest.json",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/firefox160-timing-source-manifest.json",
       "size": 1383,
       "sha256": "7a6b97223ec71728271787837b87383707e051ec81fccb16c3d9a379427eda9b"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/gnome-pcie-v43-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/gnome-pcie-v43-20261120.json",
+      "size": 1942,
+      "sha256": "5a6dd7436cb8c3464c80bfdb7f9bc492e6357d3eeb4c44a7e565e0b0e246577d"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/gnome-pcie-v44-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/gnome-pcie-v44-20261120.json",
+      "size": 1186,
+      "sha256": "7962e9d1be3db0b292affdc188504ee93be5ab349236315aebb1d635ad7dccc3"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/gnome-pcie-v45-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/gnome-pcie-v45-20261120.json",
+      "size": 2398,
+      "sha256": "e2f20644d3d41b33bc582978f8e77be7fd66d4a566cfcdcf8bb961b52daf19f3"
     },
     {
       "path": "evidence/gnome-media-20261119/native-1080-v36-texture-ring-cold.json",
@@ -669,6 +725,90 @@
       "sha256": "92996e3794e818c75f41f8aefec7c916fa775fc2f8d03d7e50188adb1871c252"
     },
     {
+      "path": "evidence/gnome-media-20261119/nvme-live-read-gen1-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-live-read-gen1-20261120.json",
+      "size": 815,
+      "sha256": "e95a42c53d6121beac300ef92e0236adfb25f5c4f14710cbf299feb3d90effc0"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v44-aspm-off-read-20261120.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v44-aspm-off-read-20261120.txt",
+      "size": 7448,
+      "sha256": "56493c4594a20550153d22328fc71a7aabc17a77351d368db77120163c4537c4"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-default-boot-20261120.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-default-boot-20261120.txt",
+      "size": 2474,
+      "sha256": "7ddde07dbd62305a33ea55f193d232e8232447b3d07158d0b2f2ac3cf7c1407a"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-default-readonly-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-default-readonly-20261120.json",
+      "size": 1448,
+      "sha256": "2718e5874c9e6f88fda4fc5390b059c7700dedf4264cdae3863ae0363588d944"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-gnu-dd-consistency-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-gnu-dd-consistency-20261120.json",
+      "size": 255,
+      "sha256": "6c1aad43ed1b27a1d41a505e18381a99366b8730e5d0a1a7c3ac0b50c60cf66b"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-gnu-read-performance-20261120.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-gnu-read-performance-20261120.txt",
+      "size": 2062,
+      "sha256": "7b11dc0e1a3fcec01e1bc0b632d4f6d6ba5765cec048da3eac18d34dff830faf"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-preadv-alignments-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-preadv-alignments-20261120.json",
+      "size": 943,
+      "sha256": "899b185e9b0ca188f0731e0819e011b5acab25f06432849a6966d40b2e79dd22"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-preadv-crosscheck-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-preadv-crosscheck-20261120.json",
+      "size": 501,
+      "sha256": "7162936baf42cc80daeafa260f9d66c2ea6e948782ed252812134ab27473755f"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-read-controls-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-read-controls-20261120.json",
+      "size": 808,
+      "sha256": "3080d7d558f071dceb1878a9df2fe7aa1ae9270d99e9e574bced3c2edf37838c"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-readonly-acceptance-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-readonly-acceptance-20261120.json",
+      "size": 1449,
+      "sha256": "5ca0192da24b4bcd17946ef58ef2f897261565288d66c97d4c15913557e60e80"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-uutils-consistency-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-uutils-consistency-20261120.json",
+      "size": 2929,
+      "sha256": "60fa35c997cab7bc2caac42b4ad9815e395901cac40221dc16c451a7cbe21951"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/nvme-v45-uutils-initial-read-20261120.txt",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/nvme-v45-uutils-initial-read-20261120.txt",
+      "size": 1965,
+      "sha256": "3a1d5ab944de60aebd22f8d9fae711339de837bf38b12e4904c719f1f0236af9"
+    },
+    {
       "path": "evidence/gnome-media-20261119/probe-replay-build-r4.log",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/probe-replay-build-r4.log",
@@ -702,6 +842,41 @@
       "source": "mainline/evidence/gnome-media-20261119/summary.json",
       "size": 6971,
       "sha256": "89d753dc87ff27a33a8641c4f0786abe9ab4e644ed291bbcffc1ea480433286c"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/trial-v43-pcie-dma-uart-20261120.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/trial-v43-pcie-dma-uart-20261120.log",
+      "size": 84004,
+      "sha256": "7c9d95cbe48dd25d3358deec2241bfa3bc19d7edef7c8b196ca4a2ec5058e7d7"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/trial-v43-pcie-uart-20261120.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/trial-v43-pcie-uart-20261120.log",
+      "size": 84553,
+      "sha256": "6ff7380708b7f8a307089e45bbc6693583f2e1da52f1d79602fe6d99d8410f73"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/trial-v44-aspm-off-uart-20261120.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/trial-v44-aspm-off-uart-20261120.log",
+      "size": 84113,
+      "sha256": "966b197a91579122719ab15db93eab90c53689cacf89731bf7584eabf7a7500e"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/trial-v44-pcie-uart-20261120.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/trial-v44-pcie-uart-20261120.log",
+      "size": 84176,
+      "sha256": "a73b55fde6661ca2197800f41ad6e6194686103a6c543e365e4395316f395347"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/trial-v45-pcie-uart-20261120.log",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/trial-v45-pcie-uart-20261120.log",
+      "size": 84815,
+      "sha256": "e780e14613377013ddb33b818e59c97926f1d1141f69bcba205a2ab3f246d631"
     },
     {
       "path": "evidence/gnome-media-20261119/v38-boot-oops.log",
@@ -1968,7 +2143,7 @@
       "kind": "source",
       "source": "mainline/tools/build_atlasa1_rc1_broker_update.sh",
       "size": 1501,
-      "sha256": "1994b65c11ee7ee5bc951dc56a0dde221e5a638daf65096cba36191919cc4eb9"
+      "sha256": "68a514081e94042beb442cd916be2d553e6846e8d89cbc243efec4b695c993e4"
     },
     {
       "path": "tools/build_atlasa1_resolute_player.sh",

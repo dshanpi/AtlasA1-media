@@ -1,0 +1,20 @@
+{
+  "kernel": "6.18.63-t736-gnome-v43",
+  "model": "INTEL SSDPEKKW128G8",
+  "size_sectors": 250069680,
+  "link_speed": "2.5 GT/s PCIe",
+  "link_width": "1",
+  "manual_fix": "root bridge COMMAND IO/MEM/MASTER enabled and endpoint BAR restored before rebind; not cold-boot acceptance",
+  "tests": [
+    {
+      "returncode": 0,
+      "seconds": 1.4615573670000117,
+      "stderr": "\n186646528 bytes (187 MB, 178 MiB) copied, 1.00408 s, 186 MB/s\n256+0 records in\n256+0 records out\n268435456 bytes (268 MB, 256 MiB) copied, 1.44091 s, 186 MB/s\n"
+    },
+    {
+      "returncode": 0,
+      "seconds": 1.4360636349999822,
+      "stderr": "\n189792256 bytes (190 MB, 181 MiB) copied, 1.00581 s, 189 MB/s\n256+0 records in\n256+0 records out\n268435456 bytes (268 MB, 256 MiB) copied, 1.42618 s, 188 MB/s\n"
+    }
+  ]
+}

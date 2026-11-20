@@ -1,0 +1,27 @@
+Fri Nov 20 04:40:34 AM UTC 2026
+6.18.63-t736-gnome-v45
+earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
+NAME          SIZE MODEL               FSTYPE MOUNTPOINTS
+nvme0n1     119.2G INTEL SSDPEKKW128G8        
+└─nvme0n1p1 119.2G                     ext4   
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM not supported
+			ClockPM- Surprise- LLActRep+ BwNot+ ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt- FltModeDis-
+	Kernel driver in use: pcieport
+			ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt- FltModeDis-
+		LnkSta:	Speed 2.5GT/s (downgraded), Width x1 (downgraded)
+	Kernel driver in use: nvme
+183500800 bytes (184 MB, 175 MiB) copied, 1.00228 s, 183 MB/s367001600 bytes (367 MB, 350 MiB) copied, 2.00356 s, 183 MB/s547356672 bytes (547 MB, 522 MiB) copied, 3.00476 s, 182 MB/s728760320 bytes (729 MB, 695 MiB) copied, 4.00724 s, 182 MB/s912261120 bytes (912 MB, 870 MiB) copied, 5.00648 s, 182 MB/s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.87963 s, 183 MB/s
+186646528 bytes (187 MB, 178 MiB) copied, 1.00394 s, 186 MB/s374341632 bytes (374 MB, 357 MiB) copied, 2.00229 s, 187 MB/s562036736 bytes (562 MB, 536 MiB) copied, 3.00293 s, 187 MB/s748683264 bytes (749 MB, 714 MiB) copied, 4.00433 s, 187 MB/s935329792 bytes (935 MB, 892 MiB) copied, 5.00262 s, 187 MB/s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.7376 s, 187 MB/s
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+AssertionError: Read mismatch

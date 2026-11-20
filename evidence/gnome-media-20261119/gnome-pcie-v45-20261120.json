@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "kernel": "6.18.63-t736-gnome-v45",
+  "change": "Hide ASPM L0s/L1 and ClockPM on T736 COMBO1 root port before enumeration; retain DMA identity window and PCIEPORTBUS",
+  "archive_sha256": "002f01d2a1d1533bacfa81ec6eb6e3fc3101d0d4a5c632185fe50f003061f1b0",
+  "image_sha256": "beaec567afb9ecc1a5b427e2a0fc73ef391fcd742c45dd5b4240652891595f8a",
+  "dtb_sha256": "a2018f5d02947ea2995829d8333ba72cc04b1293df6b7df0542414050e8b5a6d",
+  "board_initrd_sha256": "3fb874435f030226cdaa8d1a020751be14bd14fbf3361176ccb5d8552d43edd7",
+  "pcie_driver_sha256": "ba7e40f09fbe287b57c483e57f95237cd3c75b3ebbe5e2cfbf2232444527cad4",
+  "build_method": "incremental from v44; public replay recipe updated; no full clean replay in this run",
+  "trial_boot": "passed: namespace enumerated with no pcie_aspm=off bootarg or register recovery",
+  "default_boot": "passed: uninterrupted eMMC cold boot to GDM/GNOME greeter; PVR loaded and NVMe initialized without register recovery",
+  "write_test": false,
+  "link": "Gen1 x1",
+  "unverified": [
+    "Gen2/Gen3",
+    "ASPM exit",
+    "suspend/resume",
+    "SSD writes",
+    "long duration I/O"
+  ],
+  "readonly_acceptance": "nvme-v45-readonly-acceptance-20261120.json",
+  "gnu_read_MB_s": [
+    191,
+    194
+  ],
+  "uutils_direct_read_issue": "Reproducible inconsistent bytes with uutils dd 0.10.0 iflag=direct; GNU dd, buffered reads, and independent preadv controls agree. Cause not established. Raw failure retained.",
+  "gnome_hevc4k30": "firefox-v45-hevc4k30-long-20261120.json",
+  "gnome_h2641080p60": {
+    "wall_seconds": 20.379,
+    "total_frames": 1223,
+    "dropped": 19,
+    "retained_fps": 59.08042592865204,
+    "status": "not_verified"
+  },
+  "rollback": "/var/backups/atlasa1-v45-default-20261120/restore.sh",
+  "default_boot_log": "default-v45-pcie-uart-20261120.log",
+  "default_board_state": "nvme-v45-default-boot-20261120.txt",
+  "default_readonly_acceptance": "nvme-v45-default-readonly-20261120.json",
+  "default_read_MB_s": [
+    200.845,
+    200.933
+  ],
+  "maintenance_tunnel": "first attempt failed while IPv4 route was unavailable; after route appeared, retried successfully without changing network configuration",
+  "gnome_h2641080p60_evidence": "firefox-v45-h2641080p60-20261120.json",
+  "broker_packaging_fix": "1.0-2~resolute1 deployed; existing >= player dependency now applied, payload unchanged and apt-get check passed"
+}

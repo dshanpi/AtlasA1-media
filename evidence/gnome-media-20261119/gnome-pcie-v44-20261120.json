@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "kernel": "6.18.63-t736-gnome-v44",
+  "change": "Enable CONFIG_PCIEPORTBUS with v43 DMA identity window and GNOME v42 changes",
+  "build_method": "Incremental from v43; public clean replay option --pcie-nvme updated",
+  "archive_sha256": "99a6f28277c81f188be093c31a1d7d1f68a1cb44e86c97e6c8cfc8187ac7e347",
+  "dtb_sha256": "a2018f5d02947ea2995829d8333ba72cc04b1293df6b7df0542414050e8b5a6d",
+  "image_sha256": "a336660f1d572f1444123852c63216a0c05160b7f5a0bce9824818652addcf86",
+  "config": {
+    "PCI": true,
+    "PCIEPORTBUS": true,
+    "PCIE_T736": true,
+    "BLK_DEV_NVME": true,
+    "PCIEAER": false
+  },
+  "trial": "failed without pcie_aspm=off: admin QID0 timeout, no namespace",
+  "default_boot": "v42 retained until acceptance",
+  "write_test": false,
+  "control_trial": {
+    "bootarg": "pcie_aspm=off",
+    "result": "cold probe succeeded, nvme0n1p1 enumerated without config writes",
+    "model": "INTEL SSDPEKKW128G8",
+    "read_bytes": 536870912,
+    "read_seconds": 2.78174,
+    "read_MB_s": 193,
+    "write_test": false,
+    "gdm": "active",
+    "uart": "trial-v44-aspm-off-uart-20261120.log",
+    "read_log": "nvme-v44-aspm-off-read-20261120.txt"
+  }
+}

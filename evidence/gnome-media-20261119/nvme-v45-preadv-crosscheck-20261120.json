@@ -1,0 +1,30 @@
+[
+  {
+    "prefill": false,
+    "offset": 0,
+    "bytes": 16777216,
+    "repetitions": 8,
+    "matches_gnu_dd": true
+  },
+  {
+    "prefill": false,
+    "offset": 68719476736,
+    "bytes": 16777216,
+    "repetitions": 8,
+    "matches_gnu_dd": true
+  },
+  {
+    "prefill": true,
+    "offset": 0,
+    "bytes": 16777216,
+    "repetitions": 8,
+    "matches_gnu_dd": true
+  },
+  {
+    "prefill": true,
+    "offset": 68719476736,
+    "bytes": 16777216,
+    "repetitions": 8,
+    "matches_gnu_dd": true
+  }
+]

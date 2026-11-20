@@ -13,7 +13,7 @@ install -d "$stage/DEBIAN" "$stage/usr/lib/atlasa1-cedar" "$stage/usr/lib/system
 install -m 0755 "$broker" "$stage/usr/lib/atlasa1-cedar/cedar-broker"
 cat > "$stage/DEBIAN/control" <<'CONTROL'
 Package: atlasa1-cedar-format-switch
-Version: 1.0-1~resolute1
+Version: 1.0-2~resolute1
 Architecture: arm64
 Maintainer: DshanPI AtlasA1 contributors
 Depends: atlasa1-player (>= 0.1-5~resolute1), systemd

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "kernel": "6.18.63-t736-gnome-v45",
+  "device": "/dev/nvme0n1",
+  "reference_tool": "/usr/bin/gnudd",
+  "write_test": false,
+  "checks": [
+    {
+      "offset_bytes": 0,
+      "bytes_per_read": 16777216,
+      "prefill": false,
+      "matches_reference": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "offset_bytes": 0,
+      "bytes_per_read": 16777216,
+      "prefill": true,
+      "matches_reference": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "offset_bytes": 68719476736,
+      "bytes_per_read": 16777216,
+      "prefill": false,
+      "matches_reference": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "offset_bytes": 68719476736,
+      "bytes_per_read": 16777216,
+      "prefill": true,
+      "matches_reference": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "performance": [
+    {
+      "bytes": 536870912,
+      "seconds": 2.894358198999953,
+      "MB_s": 185.48875954106077
+    },
+    {
+      "bytes": 536870912,
+      "seconds": 2.9053765809999845,
+      "MB_s": 184.78530993569777
+    }
+  ],
+  "capacity_bytes": 128035676160,
+  "passed": true
+}

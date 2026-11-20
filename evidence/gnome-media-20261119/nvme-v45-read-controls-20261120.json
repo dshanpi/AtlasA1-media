@@ -1,0 +1,59 @@
+[
+  {
+    "dev": "/dev/nvme0n1",
+    "flags": "direct",
+    "equal": [
+      false,
+      false
+    ],
+    "diff_bytes": 237,
+    "first_diffs": [
+      774144,
+      774145,
+      774146,
+      774147,
+      774148,
+      774149,
+      774150,
+      774151,
+      774152,
+      774153,
+      774154,
+      774155,
+      774156,
+      774158,
+      774159,
+      774160
+    ]
+  },
+  {
+    "dev": "/dev/nvme0n1",
+    "flags": null,
+    "equal": [
+      true,
+      true
+    ],
+    "diff_bytes": 0,
+    "first_diffs": []
+  },
+  {
+    "dev": "/dev/mmcblk0",
+    "flags": null,
+    "equal": [
+      true,
+      true
+    ],
+    "diff_bytes": 0,
+    "first_diffs": []
+  },
+  {
+    "dev": "/dev/zero",
+    "flags": null,
+    "equal": [
+      true,
+      true
+    ],
+    "diff_bytes": 0,
+    "first_diffs": []
+  }
+]

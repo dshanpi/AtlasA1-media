@@ -1,0 +1,16 @@
+[
+  {
+    "dev": "/dev/nvme0n1",
+    "tool": "GNU dd",
+    "bytes": 16777216,
+    "repetitions": 4,
+    "consistent": true
+  },
+  {
+    "dev": "/dev/mmcblk0",
+    "tool": "GNU dd",
+    "bytes": 16777216,
+    "repetitions": 4,
+    "consistent": true
+  }
+]
