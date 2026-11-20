@@ -155,7 +155,23 @@ v42 的 DRM 跟踪中，1326 次 RCQ 提交有 1324 次在下一次 vblank 收�
 
 最后一次冷启动后，正式入口的 H.264 1080p60 复测为 59.83 fps、1193 帧丢 3 帧；记录的 `waylandVsync=false`，PowerVR / Cedar / RDD 沙箱均确认。GDM 与解码 service/socket 正常，辅助进程持续存活，Shell 使用全部八核，GPU 错误计数全部为 0，生产 FFmpeg 的 SHA-256 未改变。当前桌面为临时 v42/GNOME，默认启动别名和 `uInitrd` 仍为 v30，没有发布新镜像。
 
-2026-11-20 的后续工作仍以 GNOME 为目标。板卡最初已回到默认 v30/Xfce，经串口完成临时 v42 启动并观察到 GNOME 就绪。随后 SSH 上传中断、本机 8771 MCP 服务关闭，当前板卡状态无法继续核实；没有更改默认启动项。已完成一个默认关闭的 Firefox HEVC 4K→1080p 硬件缩放候选编译及公开补丁重放，候选尚未安装、尚无实板播放成绩。详见 [候选构建与启用边界](../tools/browser/FIREFOX_RESOLUTE.md) 和 [2026-11-20 构建记录](../evidence/gnome-media-20261119/firefox-panel-candidate-20261120.json)。
+## 2026-11-20：浏览器 4K 片源硬件缩放与 GNOME 默认启动
+
+连接恢复后，候选库最初安装在独立目录 `/opt/atlasa1-firefox-panel-probe`。设置 `T736_CEDAR_BROWSER_PANEL=1920x1080` 后，HEVC 3840×2160 片源在 Cedar 内输出 1920×1080；Firefox 的 `videoWidth/videoHeight` 保持 3840×2160。三轮约 20 秒的测量分别为 609/609、608/608、593/593 帧，零浏览器丢帧，保留帧率 30.038、30.011、29.963 fps。最后一轮在 H.264 播放后切回 HEVC，复用了既有缩放上下文。RDD 沙箱、PowerVR WebRender、IRQ 与硬件输出尺寸检查均通过。
+
+同一候选的 H.264 1080p60 回归保持原尺寸硬解：1204 帧中丢 3 帧，59.817 fps，严格零丢帧检查仍为 `not_verified`。切回 HEVC 后，测量结束再回拖到第 5 秒，恢复播放 71 帧、零丢帧，IRQ 增加 126。该操作与稳态采样分开，不能让 seek 新会话或帧数混进原先的性能窗口。这是独立浏览器实例之间的格式切换，不是网页自适应码流切换验收。
+
+抓取的测试视频 PNG 没有明显结构损坏，但片源未标注色彩矩阵：默认 FFmpeg 软件转换使用 BT601，而浏览器使用 BT709。指定相同 BT709 转换后色块接近；因缩放算法和采帧时刻也有差别，尚不宣称颜色或逐像素一致性通过。没有截取用户桌面。原尺寸 4K、物理 HDMI 逐帧输出、真实音频、长播放、反复切流和软件回退仍需验证。
+
+实板默认启动现已从 v30/LightDM 改为 v42/GDM，经过断电上电、不打断 U-Boot 的正常启动验证，进入 Wayland GDM 登录界面。保留登录认证，没有开启永久自动登录；随后一次性测试登录已进入用户 GNOME，会话启动后立即恢复原 GDM 配置；之后用户手动重启并确认系统已启动。旧启动别名、DTB 和桌面配置保存在 `/var/backups/atlasa1-gnome-default-20261120`，以其中的 `restore.sh` 恢复后重启可回退。公开镜像配方和已有 Release 尚未改变。
+
+干净 Ubuntu 源码构建出的库随后完成约 89.813 秒持续播放：2693 帧、测量窗口零丢帧、29.985 fps，窗口前启动阶段有 1 帧丢弃；回拖后 72 帧零丢帧。新包的 H.264 回归为 58.558 fps、29/1196 帧丢弃，仍有波动，不能宣称稳定零丢帧。该持续片由测试片以 `-stream_loop 3 -c copy` 拼接而成，文件总时长约 100 秒；不是长电影或直播验收。
+
+实板已安装包含上述干净构建库的 `+panel2` 包，常用 `atlasa1-firefox` 入口在启动时只对 GNOME Wayland 的单物理 1080p60 显示器自动选择缩放。4K 显示器、双屏、X11 或查询失败不启用；不切换 HDMI 模式。显式设置 `T736_CEDAR_BROWSER_PANEL=0` 可关闭，改变显示配置后需重启浏览器。旧包与运行库保存在 `/var/backups/atlasa1-firefox-before-panel2-20261120`，其中 `restore.sh` 可恢复。常用入口安装后的 H.264 1080p60 复测为 59.977 fps，1197 帧丢 1 帧，回拖后 144 帧零丢帧；仍未达到严格零丢帧标准。
+
+首轮自动选择测试因验证器清理环境时漏掉 `XDG_CURRENT_DESKTOP=GNOME`，没有开启缩放，IRQ 为零，已作为失败结果保存。v4 验证器为 GNOME 测试补齐真实桌面标识，不能把此轮软件播放算作硬件通过。
+
+详见 [候选构建与启用边界](../tools/browser/FIREFOX_RESOLUTE.md)、[测量汇总](../evidence/gnome-media-20261119/firefox-panel-candidate-20261120.json) 和 [切换/seek 原始记录](../evidence/gnome-media-20261119/firefox-hevc4k30-panel-switch-seek-20261120.json)。
 
 ## 音频与编码
 
@@ -170,3 +186,5 @@ HDMI 音频需要补齐 T736 I2S3、DMA、音频时钟/复位、ASoC 以及 HDMI
 v35 候选初次安装时，顶层 `lib/` 目录替换了 Ubuntu 的 `/lib -> usr/lib` 链接，造成新程序无法执行。已从现有 v30 initramfs 的恢复 shell 还原链接、保留原目录，并重新验证 SSH、桌面和 PowerVR。此操作没有重刷磁盘镜像。
 
 后续候选使用 `usr/lib/modules/<version>` 布局，先解包到独立暂存目录，再复制该版本的模块和 boot 文件。安装前后检查 `/lib` 仍为链接；不向系统根目录直接解包带顶层 `lib/` 的归档。实验期间默认启动别名保持指向 v30。
+
+用户为接入 PCIe M.2 SSD 手动重启后，常用 Firefox 入口再次自动选择缩放：20.489 秒、615 帧、零丢帧、30.016 fps，回拖恢复通过，RDD 沙箱和硬件输出验证通过。该 JSON 已同步落盘并下载归档。之前通过的 608 帧短测仅保留了命令返回结果；断电后其板上 JSON 为空，不能伪造完整原始记录。验证器现增加 fsync，并在 Wayland 可见窗口中去掉仅适用于 headless 的宽高参数，避免数值被当成 URL 干扰导航。新增 SSD 在 v42 下无 PCIe/NVMe 设备，等待 v43 合并内核验证。

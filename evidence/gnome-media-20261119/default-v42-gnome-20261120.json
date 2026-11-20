@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kernel": "6.18.63-t736-gnome-v42",
+  "display_manager": "/usr/lib/systemd/system/gdm.service",
+  "kernel_alias": "Image-6.18.63-t736-gnome-v42",
+  "initrd_alias": "initrd.img-6.18.63-t736-gnome-v42",
+  "gdm_config": "# GDM configuration storage\n#\n# See /usr/share/gdm/gdm.schemas for a list of available options.\n\n[daemon]\n\n# Enabling automatic login\n#  AutomaticLoginEnable = true\n#  AutomaticLogin = user1\n\n# Enabling timed login\n#  TimedLoginEnable = true\n#  TimedLogin = user1\n#  TimedLoginDelay = 10\n\n[security]\n\n[debug]\n# Uncomment the line below to turn on debugging\n# More verbose logs\n# Additionally lets the X server dump core if it crashes\n#Enable=true\n",
+  "account": "[org.freedesktop.DisplayManager.AccountsService]\nBackgroundFile='/usr/share/backgrounds/armbian/armbian03-Dre0x-Minum-dark-3840x2160.jpg'\n\n[User]\nLanguages=en_US.utf8;\nSession=atlasa1-gnome\nSessionType=wayland\nFormatsLocale=en_US.UTF-8\nXSession=atlasa1-gnome\nIcon=/home/t736/.face\nSystemAccount=false\n\n[InputSource0]\nxkb=us\n\n",
+  "gnome_pid": "7939",
+  "sessions": "SESSION  UID USER SEAT  LEADER CLASS   TTY   IDLE SINCE\n    c17 1000 t736 seat0 7869   user    tty2  no   -\n    c19 1000 t736 -     9313   user    -     no   -\n    c20 1000 t736 -     9743   user    -     no   -\n     c3 1000 t736 -     997    user    ttyS0 no   -\n     c4 1000 t736 -     1548   manager -     no   -\n\n5 sessions listed.",
+  "rollback": "/var/backups/atlasa1-gnome-default-20261120/restore.sh",
+  "acceptance": "uninterrupted default power-cycle reached GDM Wayland greeter; subsequent one-time test login reached user GNOME; normal password login not yet user-confirmed",
+  "temporary_autologin_restored": true,
+  "production_codec_sha256": "a8648fe049859782457f222ce0a446ba1c3e2afb9d2ba638b9a5c0b98c59c1ea"
+}

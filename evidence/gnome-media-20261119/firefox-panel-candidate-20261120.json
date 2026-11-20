@@ -2,30 +2,36 @@
   "schema": 1,
   "date": "2026-11-20",
   "target": "GNOME Wayland on AtlasA1",
-  "status": "candidate_built_board_test_blocked",
+  "status": "scaled_playback_verified_clean_package_deployed",
   "candidate": "Explicit HEVC 3840x2160 to 1920x1080 OMX output in Firefox DR1 allocator",
   "default_enabled": false,
   "runtime_opt_in": "T736_CEDAR_BROWSER_PANEL=1920x1080",
   "build_opt_in": "ATLAS_FIREFOX_PANEL_CANDIDATE=1",
   "build_type": "Incremental ARM64 FFmpeg8 replay2, production source/build restored afterward",
   "public_patch_replay": "After normalizing the Windows input bundle to Git LF, DR1 plus candidate patches apply with zero fuzz and reproduce compiled source bytes",
-  "package_builder": "Shell syntax checked; full clean package build not executed for this candidate",
+  "package_builder": "Full clean ARM64 source build plus packaging-only update for display selector; clean libraries passed 90s GNOME hardware playback",
   "board_test": {
-    "initial_kernel": "6.18.63-t736-media-v30",
     "trial_kernel": "6.18.63-t736-gnome-v42",
-    "gnome_ready_observed": true,
-    "gnome_shell_pid": 4163,
-    "candidate_installed": false,
-    "playback_started": false,
-    "reason": "SFTP dropped during codec upload; SSH reverse tunnel then disappeared and local MCP 127.0.0.1:8771 stopped responding. Do not use partially uploaded codec.",
-    "current_board_state": "Unknown after connection loss",
-    "default_boot_changed": false
+    "candidate_installed": true,
+    "installation_prefix": "/opt/atlasa1-firefox/lib",
+    "production_codec_replaced": true,
+    "playback_started": true,
+    "default_boot_changed": true,
+    "default_boot": "Uninterrupted default power-cycle reached v42/GDM Wayland greeter; subsequent temporary test login reached user GNOME; automatic login config restored",
+    "rollback": "/var/backups/atlasa1-gnome-default-20261120/restore.sh",
+    "installed_version": "8.0.1-1~resolute1+panel2",
+    "automatic_panel_selection": "GNOME Wayland, one physical 1920x1080 monitor at 59-61Hz, detected read-only at browser launch; restart after display changes",
+    "codec_rollback": "/var/backups/atlasa1-firefox-before-panel2-20261120/restore.sh",
+    "user_confirmed_gnome_boot": true,
+    "pcie_ssd_added": "User installed PCIe M.2 SSD; v42 has no PCI/PCIE_T736/BLK_DEV_NVME config; v43 combined candidate building"
   },
   "validation_boundaries": [
-    "not original-size 4K",
-    "no measured panel-candidate fps",
-    "no pixel comparison",
-    "no seeking/format-switch/fallback acceptance"
+    "4K source hardware-scaled to 1080p; not original-size 4K or physical HDMI scanout acceptance",
+    "H2641080p60 retained 59.82 fps with 3/1204 drops; strict zero-drop check not passed",
+    "Format switch uses separate Firefox instances and reused broker contexts; not in-page adaptive switching",
+    "One backward seek passed; no repeated seeking/end-to-end long-run acceptance",
+    "PNG structurally correct; untagged fixture color differs between software BT601 and browser BT709 defaults; no colorimetric acceptance",
+    "Physical audio, encoding, injected hardware-failure fallback and adaptive in-page switching remain pending"
   ],
   "binaries": {
     "libavcodec.so.62": {
@@ -36,5 +42,621 @@
       "size": 72416,
       "sha256": "499504ea4e63f73ba06c41315abba0526237e2e4b43ac940cb02ee6c888d5eec"
     }
+  },
+  "measurements": [
+    {
+      "evidence": "firefox-hevc4k30-panel-first-20261120.json",
+      "result": {
+        "status": "passed",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": true,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true,
+          "explicit_hardware_scale": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "hardware-scaled-to-1080p",
+        "wall_seconds": 20.274,
+        "media_seconds": 20.277977,
+        "total_delta": 609,
+        "dropped_delta": 0,
+        "presented_delta": 609,
+        "browser_retained_fps": 30.03847292098254,
+        "irq_delta": 633,
+        "broker_sessions": [
+          [
+            "1",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "300",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "600",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
+    },
+    {
+      "evidence": "firefox-hevc4k30-panel-repeat-20261120.json",
+      "result": {
+        "status": "passed",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": true,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true,
+          "explicit_hardware_scale": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "hardware-scaled-to-1080p",
+        "wall_seconds": 20.259,
+        "media_seconds": 20.285895,
+        "total_delta": 608,
+        "dropped_delta": 0,
+        "presented_delta": 608,
+        "browser_retained_fps": 30.011352978922947,
+        "irq_delta": 631,
+        "broker_sessions": [
+          [
+            "2",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "900",
+            "2",
+            "1920",
+            "1080"
+          ],
+          [
+            "1200",
+            "2",
+            "1920",
+            "1080"
+          ],
+          [
+            "1500",
+            "2",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
+    },
+    {
+      "evidence": "firefox-h26460-panel-regression-20261120.json",
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "original-size",
+        "wall_seconds": 20.078,
+        "media_seconds": 20.06474,
+        "total_delta": 1204,
+        "dropped_delta": 3,
+        "presented_delta": 1201,
+        "browser_retained_fps": 59.8167148122323,
+        "irq_delta": 1209,
+        "broker_sessions": [
+          [
+            "3",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1800",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "2100",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "2400",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "2700",
+            "3",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
+    },
+    {
+      "evidence": "firefox-hevc4k30-panel-switch-seek-20261120.json",
+      "result": {
+        "status": "passed",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": true,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true,
+          "explicit_hardware_scale": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "hardware-scaled-to-1080p",
+        "wall_seconds": 19.791,
+        "media_seconds": 19.80037,
+        "total_delta": 593,
+        "dropped_delta": 0,
+        "presented_delta": 593,
+        "browser_retained_fps": 29.96311454701632,
+        "irq_delta": 617,
+        "broker_sessions": [
+          [
+            "4",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "3000",
+            "4",
+            "1920",
+            "1080"
+          ],
+          [
+            "3300",
+            "4",
+            "1920",
+            "1080"
+          ]
+        ]
+      }
+    },
+    {
+      "evidence": "firefox-hevc4k30-clean-90s-20261120.json",
+      "result": {
+        "status": "passed",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": true,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true,
+          "explicit_hardware_scale": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "hardware-scaled-to-1080p",
+        "wall_seconds": 89.813,
+        "media_seconds": 89.824931,
+        "total_delta": 2693,
+        "dropped_delta": 0,
+        "presented_delta": 2693,
+        "browser_retained_fps": 29.984523398617124,
+        "irq_delta": 2703,
+        "broker_sessions": [
+          [
+            "1",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "300",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "600",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "900",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "1200",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "1500",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "1800",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "2100",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "2400",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "2700",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "seek_check": {
+        "target": 5,
+        "startTime": 5,
+        "endTime": 7.379773,
+        "total": 72,
+        "dropped": 0,
+        "rate": 1,
+        "error": null,
+        "irq_delta": 129,
+        "status": "passed"
+      }
+    },
+    {
+      "evidence": "firefox-h26460-clean-auto-seek-20261120.json",
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "original-size",
+        "wall_seconds": 19.929,
+        "media_seconds": 19.946674,
+        "total_delta": 1196,
+        "dropped_delta": 29,
+        "presented_delta": 1167,
+        "browser_retained_fps": 58.5578804756887,
+        "irq_delta": 1196,
+        "broker_sessions": [
+          [
+            "2",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "3000",
+            "2",
+            "1920",
+            "1080"
+          ],
+          [
+            "3300",
+            "2",
+            "1920",
+            "1080"
+          ],
+          [
+            "3600",
+            "2",
+            "1920",
+            "1080"
+          ],
+          [
+            "3900",
+            "2",
+            "1920",
+            "1080"
+          ],
+          [
+            "4200",
+            "2",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "seek_check": {
+        "target": 5,
+        "startTime": 5,
+        "endTime": 7.392626,
+        "total": 145,
+        "dropped": 0,
+        "rate": 1,
+        "error": null,
+        "irq_delta": 168,
+        "status": "passed"
+      }
+    },
+    {
+      "evidence": "firefox-h26460-installed-auto-20261120.json",
+      "result": {
+        "status": "not_verified",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": false,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "original-size",
+        "wall_seconds": 19.941,
+        "media_seconds": 19.918869,
+        "total_delta": 1197,
+        "dropped_delta": 1,
+        "presented_delta": 1196,
+        "browser_retained_fps": 59.97693194925029,
+        "irq_delta": 1201,
+        "broker_sessions": [
+          [
+            "3",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "4500",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "4800",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "5100",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "5400",
+            "3",
+            "1920",
+            "1080"
+          ],
+          [
+            "5700",
+            "3",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "seek_check": {
+        "target": 5,
+        "startTime": 5,
+        "endTime": 7.38394,
+        "total": 144,
+        "dropped": 0,
+        "rate": 1,
+        "error": null,
+        "irq_delta": 166,
+        "status": "passed"
+      }
+    },
+    {
+      "evidence": "firefox-hevc4k30-installed-post-reboot-20261120.json",
+      "result": {
+        "status": "passed",
+        "checks": {
+          "window_completed": true,
+          "dimensions": true,
+          "normal_speed": true,
+          "browser_frame_rate": true,
+          "hardware_irq_rate": true,
+          "matching_hardware_session": true,
+          "rdd_seccomp_filter": true,
+          "rdd_hardware_output": true,
+          "no_fallback_logged": true,
+          "explicit_hardware_scale": true
+        },
+        "decoded_size": [
+          1920,
+          1080
+        ],
+        "output_mode": "hardware-scaled-to-1080p",
+        "wall_seconds": 20.489,
+        "media_seconds": 20.473976,
+        "total_delta": 615,
+        "dropped_delta": 0,
+        "presented_delta": 615,
+        "browser_retained_fps": 30.016106203328615,
+        "irq_delta": 634,
+        "broker_sessions": [
+          [
+            "1",
+            "2",
+            "3840",
+            "2160"
+          ]
+        ],
+        "broker_frame_markers": [
+          [
+            "1",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "300",
+            "1",
+            "1920",
+            "1080"
+          ],
+          [
+            "600",
+            "1",
+            "1920",
+            "1080"
+          ]
+        ]
+      },
+      "seek_check": {
+        "target": 5,
+        "startTime": 5,
+        "endTime": 7.384804,
+        "total": 72,
+        "dropped": 0,
+        "rate": 1,
+        "error": null,
+        "irq_delta": 126,
+        "status": "passed"
+      }
+    }
+  ],
+  "seek_check": {
+    "target": 5,
+    "startTime": 5,
+    "endTime": 7.384776,
+    "total": 71,
+    "dropped": 0,
+    "rate": 1,
+    "error": null,
+    "irq_delta": 126,
+    "status": "passed"
+  },
+  "clean_build": {
+    "package": "atlasa1-firefox-cedar",
+    "version": "8.0.1-1~resolute1+panel1",
+    "sha256": "83a461e1cda88fd2cf4c5b079590d39a6c39b565d756e417e143cd4ced8a1eb4",
+    "libavcodec_sha256": "cdcc363ac645fef809ce633b37728f6995fde4959ebfcaef1272a914286e07f4",
+    "client_sha256": "499504ea4e63f73ba06c41315abba0526237e2e4b43ac940cb02ee6c888d5eec",
+    "codec_source_matches_tested_candidate": true,
+    "client_binary_matches_tested_candidate": true,
+    "package_repacked_with_display_selector": {
+      "version": "8.0.1-1~resolute1+panel2",
+      "sha256": "c9671d589ec91ee55f8a1a0060b6e31eaaabf8279a58625859910c7da206dfb5",
+      "codec_unchanged": true
+    }
+  },
+  "subsequent_restart": {
+    "initiated_by_agent": false,
+    "user_confirmed": "manual reboot/power cycle while adding a PCIe M.2 SSD",
+    "abnormal_reset_claim": false
+  },
+  "installed_auto_first_pass": {
+    "evidence_source": "validator stdout preserved in tool transcript",
+    "raw_json_after_user_power_cycle": "zero-byte file; not used as durable raw evidence",
+    "result": {
+      "status": "passed",
+      "wall_seconds": 20.262,
+      "total_delta": 608,
+      "dropped_delta": 0,
+      "browser_retained_fps": 30.00690948573685,
+      "irq_delta": 627
+    },
+    "seek_check": "passed per validator aggregate status"
   }
 }

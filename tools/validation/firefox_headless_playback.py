@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Measure sandboxed Firefox video frames and Cedar IRQs offscreen or on Wayland."""
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -314,7 +315,8 @@ def collect(args, record):
                 raise ValueError('Expected the active GNOME wayland-0 socket')
             env.pop('MOZ_HEADLESS')
             env.update(WAYLAND_DISPLAY='wayland-0', XDG_SESSION_TYPE='wayland',
-                       GDK_BACKEND='wayland', DBUS_SESSION_BUS_ADDRESS='unix:path='+str(runtime_dir/'bus'))
+                       XDG_CURRENT_DESKTOP='GNOME', GDK_BACKEND='wayland',
+                       DBUS_SESSION_BUS_ADDRESS='unix:path='+str(runtime_dir/'bus'))
         srv.prefix = '/' + secrets.token_urlsafe(16) + '/'
         srv.warmup = args.warmup
         srv.clip, srv.seconds, srv.samples, srv.done = args.clip, args.seconds, [], threading.Event()
@@ -322,7 +324,11 @@ def collect(args, record):
         thread.start()
         identity = (dict(user=user.pw_uid,group=user.pw_gid,
                          extra_groups=os.getgrouplist(user.pw_name,user.pw_gid)) if uid == 0 else {})
-        geometry = ['--kiosk', '--width', str(width), '--height', str(height)] if args.screen else []
+        # Kiosk uses the real compositor output on Wayland. Width/height are
+        # headless CLI options; a visible Firefox can treat their bare numeric
+        # arguments as URLs (1920 -> 0.0.7.128), racing diagnostic navigation.
+        geometry = (['--kiosk'] if args.wayland else
+                    ['--kiosk', '--width', str(width), '--height', str(height)]) if args.screen else []
         # The Cedar launcher consumes T736_CEDAR_PROFILE. A stock Firefox
         # needs the same isolated profile and its own process explicitly.
         isolated = ['--no-remote', '--profile', profile] if args.launcher.name == 'firefox' else []
@@ -388,6 +394,73 @@ def collect(args, record):
                         debug_next = float('inf')
             record['firefox_exit_before_cleanup'] = proc.poll()
             record['samples'] = list(srv.samples)
+            playback_journal = journal('--after-cursor', cursor[1], '-u', args.unit) if cursor else ''
+            if args.capture_frame and debug_client is not None and proc.poll() is None:
+                # Capture only after the measured playback window, so readback
+                # does not affect its frame counters. This is the test video,
+                # not a screenshot of the user's desktop.
+                debug_connection.settimeout(10)
+                response = debug_client.command('WebDriver:ExecuteScript', {
+                    'args': [], 'sandbox': 'system', 'newSandbox': True, 'script': '''
+                        const v = document.querySelector('video');
+                        const c = document.createElement('canvas');
+                        c.width=480; c.height=270;
+                        c.getContext('2d').drawImage(v,0,0,c.width,c.height);
+                        return {mediaTime:v.currentTime, paused:v.paused, ended:v.ended,
+                            videoWidth:v.videoWidth, videoHeight:v.videoHeight,
+                            dataUrl:c.toDataURL('image/png')};
+                    '''})
+                capture = response.get('value', response)
+                encoded = capture.pop('dataUrl')
+                if not encoded.startswith('data:image/png;base64,'):
+                    raise ValueError('Expected a PNG frame capture')
+                png = base64.b64decode(encoded.split(',',1)[1], validate=True)
+                capture_path = args.output.with_suffix('.frame.png')
+                with capture_path.open('xb') as image:
+                    image.write(png)
+                capture['file'] = str(capture_path)
+                capture['sha256'] = hashlib.sha256(png).hexdigest()
+                record['frame_capture'] = capture
+            if args.seek_check and debug_client is not None and proc.poll() is None:
+                # Seek after the measurement window. Keep its frames and any
+                # reopened broker session out of the steady-state counters.
+                before_seek_irq = irq_count()
+                debug_connection.settimeout(20)
+                debug_client.command('WebDriver:SetTimeouts', {'script': 15000})
+                response = debug_client.command('WebDriver:ExecuteAsyncScript', {
+                    'args': [], 'sandbox': 'system', 'newSandbox': True, 'script': '''
+                        const finish = arguments[arguments.length-1];
+                        const v = document.querySelector('video');
+                        let done = false;
+                        const end = value => { if (!done) { done=true; v.pause(); finish(value); } };
+                        const timer = setTimeout(() => end({error:'seek/resume timeout'}),12000);
+                        v.addEventListener('seeked', async () => {
+                            try {
+                                const startTime = v.currentTime;
+                                const before = v.getVideoPlaybackQuality();
+                                await v.play();
+                                setTimeout(() => {
+                                    const after = v.getVideoPlaybackQuality();
+                                    clearTimeout(timer);
+                                    end({target:5, startTime, endTime:v.currentTime,
+                                        total:after.totalVideoFrames-before.totalVideoFrames,
+                                        dropped:after.droppedVideoFrames-before.droppedVideoFrames,
+                                        rate:v.playbackRate, error:v.error?.code || null});
+                                },2500);
+                            } catch (e) { clearTimeout(timer); end({error:String(e)}); }
+                        }, {once:true});
+                        v.currentTime=5;
+                    '''})
+                seek = response.get('value', response)
+                after_seek_irq = irq_count()
+                seek['irq_delta'] = (after_seek_irq - before_seek_irq
+                    if after_seek_irq is not None and before_seek_irq is not None else None)
+                seek['status'] = 'passed' if (
+                    not seek.get('error') and abs(seek.get('startTime', -1)-5) < .2
+                    and seek.get('endTime', 0)-seek.get('startTime', 0) >= 2
+                    and seek.get('total', 0) > 0 and seek.get('rate') == 1
+                    and seek['irq_delta'] is not None and seek['irq_delta'] > 0) else 'not_verified'
+                record['seek_check'] = seek
         finally:
             if debug_connection:
                 debug_connection.close()
@@ -405,10 +478,15 @@ def collect(args, record):
         lines = [l.decode('utf-8','replace').strip() for l in log
                  if any(key in l for key in (b'T736_', b'CEDAR_STAGE', b'error', b'failed', b'ERROR', b'cannot be preloaded'))]
         record['firefox_diagnostics'] = lines[-80:]
-        raw = journal('--after-cursor', cursor[1], '-u', args.unit) if cursor else ''
+        raw = playback_journal
         record['broker_log'] = [s for s in raw.splitlines() if 'CEDAR_BROKER:' in s][-80:]
+        if args.seek_check:
+            full_journal = journal('--after-cursor', cursor[1], '-u', args.unit) if cursor else ''
+            record['broker_log_including_seek'] = [s for s in full_journal.splitlines() if 'CEDAR_BROKER:' in s][-80:]
         record['result'] = classify(record['samples'], args.seconds, raw, '\n'.join(lines), info,
                                     record.get('rdd', []), args.decoded_size)
+        if args.seek_check and record.get('seek_check', {}).get('status') != 'passed':
+            record['result']['status'] = 'not_verified'
 
 
 def main():
@@ -419,6 +497,10 @@ def main():
     ap.add_argument('--wayland',action='store_true',help='Play visibly in the current GNOME Wayland session')
     ap.add_argument('--debug-media', action='store_true',
                     help='Read internal drop counters via loopback Marionette in the isolated test profile')
+    ap.add_argument('--capture-frame', action='store_true',
+                    help='After measurement, save a 480x270 PNG of the test video (requires --debug-media)')
+    ap.add_argument('--seek-check', action='store_true',
+                    help='After measurement, seek back to 5 seconds and verify hardware playback resumes')
     ap.add_argument('--rdd-cpus',type=int,nargs='+',help='Diagnostic affinity for this temporary Firefox RDD only')
     ap.add_argument('--seconds',type=int,default=20)
     ap.add_argument('--decoded-size', nargs=2, type=int, metavar=('WIDTH','HEIGHT'),
@@ -435,6 +517,10 @@ def main():
         ap.error('--rdd-cpus must be a subset of the CPUs available to this test')
     if args.wayland and args.xvfb:
         ap.error('--wayland and --xvfb are mutually exclusive')
+    if args.capture_frame and (not args.debug_media or args.output.with_suffix('.frame.png').exists()):
+        ap.error('--capture-frame requires --debug-media and a new frame output path')
+    if args.seek_check and not args.debug_media:
+        ap.error('--seek-check requires --debug-media')
     if not 2 <= args.seconds <= 3600:
         ap.error('measurement window must be 2..3600 seconds')
     if not 0 <= args.warmup <= 120:
@@ -451,6 +537,8 @@ def main():
             record['result'] = {'status':'incomplete','reason':str(exc)}
         json.dump(record,out,indent=2)
         out.write('\n')
+        out.flush()
+        os.fsync(out.fileno())
     print(json.dumps(record['result']))
     return 0 if record['result']['status']=='passed' else 2
 

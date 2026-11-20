@@ -103,7 +103,10 @@ Description: Cedar decoding for Firefox on the AtlasA1 Ubuntu 26.04 image
  Cedar service for supported media in the sandboxed RDD process.
 EOF
 if [[ ${ATLAS_FIREFOX_PANEL_CANDIDATE:-0} == 1 ]]; then
-    sed -i 's/^Version: .*/Version: 8.0.1-1~resolute1+panel1/' "$package/DEBIAN/control"
+    sed -i 's/^Version: .*/Version: 8.0.1-1~resolute1+panel2/' "$package/DEBIAN/control"
+    sed -i '/^Depends: /s/$/, python3, python3-gi/' "$package/DEBIAN/control"
+    install -Dm644 "$here/firefox_panel_mode.py" "$package/usr/lib/atlasa1/firefox_panel_mode.py"
+    printf 'GNOME single physical 1920x1080 at 60Hz; HEVC 4K scaled to panel\n' > "$package/opt/atlasa1-firefox/lib/browser-panel-enabled"
 fi
 cat > "$package/usr/share/applications/atlasa1-firefox.desktop" <<'EOF'
 [Desktop Entry]

@@ -1,0 +1,2138 @@
+{
+  "schema": 1,
+  "kind": "atlasa1-sandboxed-firefox-wayland-playback",
+  "fixture": {
+    "codec_name": "hevc",
+    "width": 3840,
+    "height": 2160,
+    "avg_frame_rate": "30/1",
+    "duration": "25.000000",
+    "sha256": "c8d45acc4599d9593c61803ba65bb2acf369de34ab973e8d5e394806110ea314"
+  },
+  "requested_decoded_size": [
+    1920,
+    1080
+  ],
+  "launcher": "/var/tmp/atlasa1-gnome-media-20261120/firefox-panel-launcher",
+  "launcher_sha256": "7c0769b1131214ed5daf4a9dac3b2e68ffe43266d2fd6ba847ebda4fe4f187f6",
+  "kernel": "6.18.63-t736-gnome-v42",
+  "desktop_uid": 1000,
+  "warmup_seconds": 0,
+  "headless_screen": [
+    1920,
+    1080
+  ],
+  "debug_media": [
+    {
+      "sampleStartMs": 4132,
+      "sampleEndMs": 4134,
+      "mediaTime": 3.404928,
+      "paused": false,
+      "ended": false,
+      "readyState": 4,
+      "width": 3840,
+      "height": 2160,
+      "playbackRate": 1,
+      "parsed": 185,
+      "decoded": 163,
+      "presented": 101,
+      "painted": 96,
+      "frameDelaySeconds": 0.01170925,
+      "qualityTotal": 102,
+      "qualityDropped": 1,
+      "info": {
+        "EMEInfo": {
+          "keySystem": "",
+          "sessionsInfo": ""
+        },
+        "compositorDroppedFrames": 1,
+        "decoder": {
+          "PlayState": "PLAY_STATE_PLAYING",
+          "channels": 1,
+          "containerType": "video/mp4",
+          "hasAudio": true,
+          "hasVideo": true,
+          "instance": "ffff7dbab800",
+          "rate": 48000,
+          "reader": {
+            "audioChannels": 1,
+            "audioDecoderName": "ffmpeg audio decoder (Utility Generic remote)",
+            "audioFramesDecoded": 253,
+            "audioRate": 48000,
+            "audioState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": false,
+              "hasDemuxRequest": false,
+              "hasPromise": false,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 254,
+              "numSamplesOutput": 253,
+              "pending": 0,
+              "queueSize": 1,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "audioType": "audio/mp4a-latm",
+            "frameStats": {
+              "droppedCompositorFrames": 1,
+              "droppedDecodedFrames": 0,
+              "droppedSinkFrames": 0
+            },
+            "totalReadMetadataTimeMs": 16.422099999999997,
+            "totalWaitingForVideoDataTimeMs": 0,
+            "videoDecoderName": "ffmpeg video decoder (RDD remote)",
+            "videoHardwareAccelerated": false,
+            "videoHeight": 2160,
+            "videoNumSamplesOutputTotal": 162,
+            "videoNumSamplesSkippedTotal": 0,
+            "videoRate": 30,
+            "videoState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": true,
+              "hasDemuxRequest": false,
+              "hasPromise": true,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 185,
+              "numSamplesOutput": 162,
+              "pending": 0,
+              "queueSize": 23,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "videoType": "video/hevc",
+            "videoWidth": 3840
+          },
+          "resource": {
+            "cacheStream": {
+              "cacheSuspended": false,
+              "channelEnded": false,
+              "channelOffset": 0,
+              "loadID": 0,
+              "streamLength": 0
+            }
+          },
+          "stateMachine": {
+            "audioCompleted": false,
+            "audioRequestStatus": "idle",
+            "clock": 3419048,
+            "decodedAudioEndTime": 5397333,
+            "decodedVideoEndTime": 5399999,
+            "duration": 25000000,
+            "isPlaying": true,
+            "mediaSink": {
+              "audioSinkWrapper": {
+                "audioEnded": false,
+                "audioSink": {
+                  "audioEnded": false,
+                  "hasErrored": false,
+                  "isPlaying": false,
+                  "isStarted": false,
+                  "lastGoodPosition": 0,
+                  "outputRate": 0,
+                  "playbackComplete": false,
+                  "startTime": 0,
+                  "written": 0
+                },
+                "isPlaying": true,
+                "isStarted": true
+              },
+              "decodedStream": {
+                "audioQueueFinished": false,
+                "audioQueueSize": 0,
+                "data": {
+                  "audioFramesWritten": 0,
+                  "haveSentFinishAudio": false,
+                  "haveSentFinishVideo": false,
+                  "instance": "",
+                  "lastVideoEndTime": 0,
+                  "lastVideoStartTime": 0,
+                  "nextAudioTime": 0,
+                  "streamAudioWritten": 0,
+                  "streamVideoWritten": 0
+                },
+                "instance": "",
+                "lastAudio": 0,
+                "lastOutputTime": 0,
+                "playing": 0,
+                "startTime": 0
+              },
+              "videoSink": {
+                "endPromiseHolderIsEmpty": false,
+                "finished": false,
+                "hasVideo": true,
+                "isPlaying": true,
+                "isStarted": true,
+                "size": 60,
+                "videoFrameEndTime": 3433333,
+                "videoSinkEndRequestExists": false
+              }
+            },
+            "mediaTime": 3404928,
+            "playState": 2,
+            "sentFirstFrameLoadedEvent": true,
+            "state": "",
+            "stateObj": {
+              "isPrerolling": false
+            },
+            "totalBufferingTimeMs": 0,
+            "videoCompleted": false,
+            "videoRequestStatus": "pending"
+          }
+        }
+      }
+    },
+    {
+      "sampleStartMs": 9175,
+      "sampleEndMs": 9176,
+      "mediaTime": 8.449027,
+      "paused": false,
+      "ended": false,
+      "readyState": 4,
+      "width": 3840,
+      "height": 2160,
+      "playbackRate": 1,
+      "parsed": 336,
+      "decoded": 314,
+      "presented": 252,
+      "painted": 248,
+      "frameDelaySeconds": 0.012075453,
+      "qualityTotal": 253,
+      "qualityDropped": 1,
+      "info": {
+        "EMEInfo": {
+          "keySystem": "",
+          "sessionsInfo": ""
+        },
+        "compositorDroppedFrames": 1,
+        "decoder": {
+          "PlayState": "PLAY_STATE_PLAYING",
+          "channels": 1,
+          "containerType": "video/mp4",
+          "hasAudio": true,
+          "hasVideo": true,
+          "instance": "ffff7dbab800",
+          "rate": 48000,
+          "reader": {
+            "audioChannels": 1,
+            "audioDecoderName": "ffmpeg audio decoder (Utility Generic remote)",
+            "audioFramesDecoded": 490,
+            "audioRate": 48000,
+            "audioState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": false,
+              "hasDemuxRequest": false,
+              "hasPromise": false,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 491,
+              "numSamplesOutput": 490,
+              "pending": 0,
+              "queueSize": 1,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "audioType": "audio/mp4a-latm",
+            "frameStats": {
+              "droppedCompositorFrames": 1,
+              "droppedDecodedFrames": 0,
+              "droppedSinkFrames": 0
+            },
+            "totalReadMetadataTimeMs": 16.422099999999997,
+            "totalWaitingForVideoDataTimeMs": 0,
+            "videoDecoderName": "ffmpeg video decoder (RDD remote)",
+            "videoHardwareAccelerated": false,
+            "videoHeight": 2160,
+            "videoNumSamplesOutputTotal": 314,
+            "videoNumSamplesSkippedTotal": 0,
+            "videoRate": 30,
+            "videoState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": false,
+              "hasDemuxRequest": false,
+              "hasPromise": false,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 336,
+              "numSamplesOutput": 314,
+              "pending": 0,
+              "queueSize": 22,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "videoType": "video/hevc",
+            "videoWidth": 3840
+          },
+          "resource": {
+            "cacheStream": {
+              "cacheSuspended": false,
+              "channelEnded": false,
+              "channelOffset": 0,
+              "loadID": 0,
+              "streamLength": 0
+            }
+          },
+          "stateMachine": {
+            "audioCompleted": false,
+            "audioRequestStatus": "idle",
+            "clock": 8462013,
+            "decodedAudioEndTime": 10453333,
+            "decodedVideoEndTime": 10466666,
+            "duration": 25000000,
+            "isPlaying": true,
+            "mediaSink": {
+              "audioSinkWrapper": {
+                "audioEnded": false,
+                "audioSink": {
+                  "audioEnded": false,
+                  "hasErrored": false,
+                  "isPlaying": false,
+                  "isStarted": false,
+                  "lastGoodPosition": 0,
+                  "outputRate": 0,
+                  "playbackComplete": false,
+                  "startTime": 0,
+                  "written": 0
+                },
+                "isPlaying": true,
+                "isStarted": true
+              },
+              "decodedStream": {
+                "audioQueueFinished": false,
+                "audioQueueSize": 0,
+                "data": {
+                  "audioFramesWritten": 0,
+                  "haveSentFinishAudio": false,
+                  "haveSentFinishVideo": false,
+                  "instance": "",
+                  "lastVideoEndTime": 0,
+                  "lastVideoStartTime": 0,
+                  "nextAudioTime": 0,
+                  "streamAudioWritten": 0,
+                  "streamVideoWritten": 0
+                },
+                "instance": "",
+                "lastAudio": 0,
+                "lastOutputTime": 0,
+                "playing": 0,
+                "startTime": 0
+              },
+              "videoSink": {
+                "endPromiseHolderIsEmpty": false,
+                "finished": false,
+                "hasVideo": true,
+                "isPlaying": true,
+                "isStarted": true,
+                "size": 61,
+                "videoFrameEndTime": 8466666,
+                "videoSinkEndRequestExists": false
+              }
+            },
+            "mediaTime": 8449027,
+            "playState": 2,
+            "sentFirstFrameLoadedEvent": true,
+            "state": "",
+            "stateObj": {
+              "isPrerolling": false
+            },
+            "totalBufferingTimeMs": 0,
+            "videoCompleted": false,
+            "videoRequestStatus": "idle"
+          }
+        }
+      }
+    },
+    {
+      "sampleStartMs": 14219,
+      "sampleEndMs": 14221,
+      "mediaTime": 13.494076,
+      "paused": false,
+      "ended": false,
+      "readyState": 4,
+      "width": 3840,
+      "height": 2160,
+      "playbackRate": 1,
+      "parsed": 488,
+      "decoded": 465,
+      "presented": 404,
+      "painted": 399,
+      "frameDelaySeconds": 0.011382669,
+      "qualityTotal": 405,
+      "qualityDropped": 1,
+      "info": {
+        "EMEInfo": {
+          "keySystem": "",
+          "sessionsInfo": ""
+        },
+        "compositorDroppedFrames": 1,
+        "decoder": {
+          "PlayState": "PLAY_STATE_PLAYING",
+          "channels": 1,
+          "containerType": "video/mp4",
+          "hasAudio": true,
+          "hasVideo": true,
+          "instance": "ffff7dbab800",
+          "rate": 48000,
+          "reader": {
+            "audioChannels": 1,
+            "audioDecoderName": "ffmpeg audio decoder (Utility Generic remote)",
+            "audioFramesDecoded": 726,
+            "audioRate": 48000,
+            "audioState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": false,
+              "hasDemuxRequest": false,
+              "hasPromise": false,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 727,
+              "numSamplesOutput": 726,
+              "pending": 0,
+              "queueSize": 1,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "audioType": "audio/mp4a-latm",
+            "frameStats": {
+              "droppedCompositorFrames": 1,
+              "droppedDecodedFrames": 0,
+              "droppedSinkFrames": 0
+            },
+            "totalReadMetadataTimeMs": 16.422099999999997,
+            "totalWaitingForVideoDataTimeMs": 0,
+            "videoDecoderName": "ffmpeg video decoder (RDD remote)",
+            "videoHardwareAccelerated": false,
+            "videoHeight": 2160,
+            "videoNumSamplesOutputTotal": 465,
+            "videoNumSamplesSkippedTotal": 0,
+            "videoRate": 30,
+            "videoState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": true,
+              "hasDemuxRequest": false,
+              "hasPromise": true,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 488,
+              "numSamplesOutput": 465,
+              "pending": 0,
+              "queueSize": 23,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "videoType": "video/hevc",
+            "videoWidth": 3840
+          },
+          "resource": {
+            "cacheStream": {
+              "cacheSuspended": false,
+              "channelEnded": false,
+              "channelOffset": 0,
+              "loadID": 0,
+              "streamLength": 0
+            }
+          },
+          "stateMachine": {
+            "audioCompleted": false,
+            "audioRequestStatus": "idle",
+            "clock": 13506092,
+            "decodedAudioEndTime": 15488000,
+            "decodedVideoEndTime": 15499999,
+            "duration": 25000000,
+            "isPlaying": true,
+            "mediaSink": {
+              "audioSinkWrapper": {
+                "audioEnded": false,
+                "audioSink": {
+                  "audioEnded": false,
+                  "hasErrored": false,
+                  "isPlaying": false,
+                  "isStarted": false,
+                  "lastGoodPosition": 0,
+                  "outputRate": 0,
+                  "playbackComplete": false,
+                  "startTime": 0,
+                  "written": 0
+                },
+                "isPlaying": true,
+                "isStarted": true
+              },
+              "decodedStream": {
+                "audioQueueFinished": false,
+                "audioQueueSize": 0,
+                "data": {
+                  "audioFramesWritten": 0,
+                  "haveSentFinishAudio": false,
+                  "haveSentFinishVideo": false,
+                  "instance": "",
+                  "lastVideoEndTime": 0,
+                  "lastVideoStartTime": 0,
+                  "nextAudioTime": 0,
+                  "streamAudioWritten": 0,
+                  "streamVideoWritten": 0
+                },
+                "instance": "",
+                "lastAudio": 0,
+                "lastOutputTime": 0,
+                "playing": 0,
+                "startTime": 0
+              },
+              "videoSink": {
+                "endPromiseHolderIsEmpty": false,
+                "finished": false,
+                "hasVideo": true,
+                "isPlaying": true,
+                "isStarted": true,
+                "size": 60,
+                "videoFrameEndTime": 13533333,
+                "videoSinkEndRequestExists": false
+              }
+            },
+            "mediaTime": 13494076,
+            "playState": 2,
+            "sentFirstFrameLoadedEvent": true,
+            "state": "",
+            "stateObj": {
+              "isPrerolling": false
+            },
+            "totalBufferingTimeMs": 0,
+            "videoCompleted": false,
+            "videoRequestStatus": "pending"
+          }
+        }
+      }
+    },
+    {
+      "sampleStartMs": 19268,
+      "sampleEndMs": 19271,
+      "mediaTime": 18.533951,
+      "paused": false,
+      "ended": false,
+      "readyState": 4,
+      "width": 3840,
+      "height": 2160,
+      "playbackRate": 1,
+      "parsed": 639,
+      "decoded": 617,
+      "presented": 555,
+      "painted": 551,
+      "frameDelaySeconds": 0.011635884,
+      "qualityTotal": 556,
+      "qualityDropped": 1,
+      "info": {
+        "EMEInfo": {
+          "keySystem": "",
+          "sessionsInfo": ""
+        },
+        "compositorDroppedFrames": 1,
+        "decoder": {
+          "PlayState": "PLAY_STATE_PLAYING",
+          "channels": 1,
+          "containerType": "video/mp4",
+          "hasAudio": true,
+          "hasVideo": true,
+          "instance": "ffff7dbab800",
+          "rate": 48000,
+          "reader": {
+            "audioChannels": 1,
+            "audioDecoderName": "ffmpeg audio decoder (Utility Generic remote)",
+            "audioFramesDecoded": 962,
+            "audioRate": 48000,
+            "audioState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": false,
+              "hasDemuxRequest": false,
+              "hasPromise": false,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 963,
+              "numSamplesOutput": 962,
+              "pending": 0,
+              "queueSize": 1,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "audioType": "audio/mp4a-latm",
+            "frameStats": {
+              "droppedCompositorFrames": 1,
+              "droppedDecodedFrames": 0,
+              "droppedSinkFrames": 0
+            },
+            "totalReadMetadataTimeMs": 16.422099999999997,
+            "totalWaitingForVideoDataTimeMs": 0,
+            "videoDecoderName": "ffmpeg video decoder (RDD remote)",
+            "videoHardwareAccelerated": false,
+            "videoHeight": 2160,
+            "videoNumSamplesOutputTotal": 617,
+            "videoNumSamplesSkippedTotal": 0,
+            "videoRate": 30,
+            "videoState": {
+              "demuxEOS": 0,
+              "demuxQueueSize": 0,
+              "drainState": 0,
+              "hasDecoder": false,
+              "hasDemuxRequest": false,
+              "hasPromise": false,
+              "lastStreamSourceID": 4294967295,
+              "needInput": false,
+              "numSamplesInput": 639,
+              "numSamplesOutput": 617,
+              "pending": 0,
+              "queueSize": 22,
+              "timeTreshold": -1,
+              "timeTresholdHasSeeked": false,
+              "waitingForData": false,
+              "waitingForKey": false,
+              "waitingPromise": false
+            },
+            "videoType": "video/hevc",
+            "videoWidth": 3840
+          },
+          "resource": {
+            "cacheStream": {
+              "cacheSuspended": false,
+              "channelEnded": false,
+              "channelOffset": 0,
+              "loadID": 0,
+              "streamLength": 0
+            }
+          },
+          "stateMachine": {
+            "audioCompleted": false,
+            "audioRequestStatus": "idle",
+            "clock": 18555525,
+            "decodedAudioEndTime": 20522666,
+            "decodedVideoEndTime": 20566666,
+            "duration": 25000000,
+            "isPlaying": true,
+            "mediaSink": {
+              "audioSinkWrapper": {
+                "audioEnded": false,
+                "audioSink": {
+                  "audioEnded": false,
+                  "hasErrored": false,
+                  "isPlaying": false,
+                  "isStarted": false,
+                  "lastGoodPosition": 0,
+                  "outputRate": 0,
+                  "playbackComplete": false,
+                  "startTime": 0,
+                  "written": 0
+                },
+                "isPlaying": true,
+                "isStarted": true
+              },
+              "decodedStream": {
+                "audioQueueFinished": false,
+                "audioQueueSize": 0,
+                "data": {
+                  "audioFramesWritten": 0,
+                  "haveSentFinishAudio": false,
+                  "haveSentFinishVideo": false,
+                  "instance": "",
+                  "lastVideoEndTime": 0,
+                  "lastVideoStartTime": 0,
+                  "nextAudioTime": 0,
+                  "streamAudioWritten": 0,
+                  "streamVideoWritten": 0
+                },
+                "instance": "",
+                "lastAudio": 0,
+                "lastOutputTime": 0,
+                "playing": 0,
+                "startTime": 0
+              },
+              "videoSink": {
+                "endPromiseHolderIsEmpty": false,
+                "finished": false,
+                "hasVideo": true,
+                "isPlaying": true,
+                "isStarted": true,
+                "size": 61,
+                "videoFrameEndTime": 18566666,
+                "videoSinkEndRequestExists": false
+              }
+            },
+            "mediaTime": 18533951,
+            "playState": 2,
+            "sentFirstFrameLoadedEvent": true,
+            "state": "",
+            "stateObj": {
+              "isPrerolling": false
+            },
+            "totalBufferingTimeMs": 0,
+            "videoCompleted": false,
+            "videoRequestStatus": "idle"
+          }
+        }
+      }
+    }
+  ],
+  "display_backend": "GNOME Wayland",
+  "graphics": {
+    "features": {
+      "compositor": "webrender",
+      "hwCompositing": {
+        "status": "available"
+      },
+      "gpuProcess": {
+        "status": "unused"
+      },
+      "webrender": {
+        "status": "available"
+      },
+      "wrCompositor": {
+        "status": "blocklisted:FEATURE_FAILURE_WEBRENDER_COMPOSITOR_DISABLED"
+      },
+      "openglCompositing": {
+        "status": "available"
+      }
+    },
+    "renderer": "PowerVR B-Series BXM-4-64",
+    "waylandVsync": false,
+    "layoutFrameRate": -1
+  },
+  "rdd": [
+    {
+      "pid": 6086,
+      "cpu_affinity_before": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sandbox": [
+        "NoNewPrivs:\t1",
+        "Seccomp:\t2"
+      ],
+      "media_libraries": [
+        "/opt/atlasa1-firefox-panel-probe/libavcodec.so.62",
+        "/opt/atlasa1-firefox-panel-probe/libt736_cedar_client.so",
+        "/usr/lib/aarch64-linux-gnu/libavutil.so.60.8.100"
+      ]
+    }
+  ],
+  "firefox_exit_before_cleanup": null,
+  "samples": [
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 217,
+      "mediaTime": 0,
+      "width": 0,
+      "height": 0,
+      "paused": true,
+      "rate": 1,
+      "total": 0,
+      "dropped": 0,
+      "parsed": 0,
+      "decoded": 0,
+      "presented": 0,
+      "painted": 0,
+      "frameDelaySeconds": 0,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 750
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 764,
+      "mediaTime": 0.041073,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 1,
+      "dropped": 0,
+      "parsed": 19,
+      "decoded": 8,
+      "presented": 1,
+      "painted": 0,
+      "frameDelaySeconds": 0,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 763
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 1294,
+      "mediaTime": 0.567002,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 17,
+      "dropped": 1,
+      "parsed": 44,
+      "decoded": 32,
+      "presented": 16,
+      "painted": 11,
+      "frameDelaySeconds": 0.011657372,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 788
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 1858,
+      "mediaTime": 1.143661,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 34,
+      "dropped": 1,
+      "parsed": 67,
+      "decoded": 55,
+      "presented": 33,
+      "painted": 28,
+      "frameDelaySeconds": 0.011666808,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 810
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 2385,
+      "mediaTime": 1.670094,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 50,
+      "dropped": 1,
+      "parsed": 93,
+      "decoded": 81,
+      "presented": 49,
+      "painted": 44,
+      "frameDelaySeconds": 0.012055514,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 836
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 2908,
+      "mediaTime": 2.154934,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 65,
+      "dropped": 1,
+      "parsed": 120,
+      "decoded": 106,
+      "presented": 64,
+      "painted": 60,
+      "frameDelaySeconds": 0.011793434,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 860
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 3432,
+      "mediaTime": 2.679222,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 81,
+      "dropped": 1,
+      "parsed": 151,
+      "decoded": 132,
+      "presented": 80,
+      "painted": 75,
+      "frameDelaySeconds": 0.011800872,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 886
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 3955,
+      "mediaTime": 3.203519,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 97,
+      "dropped": 1,
+      "parsed": 180,
+      "decoded": 157,
+      "presented": 96,
+      "painted": 91,
+      "frameDelaySeconds": 0.011522262,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 911
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 4473,
+      "mediaTime": 3.73105,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 112,
+      "dropped": 1,
+      "parsed": 195,
+      "decoded": 173,
+      "presented": 111,
+      "painted": 107,
+      "frameDelaySeconds": 0.011856089,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 927
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 4999,
+      "mediaTime": 4.257522,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 128,
+      "dropped": 1,
+      "parsed": 211,
+      "decoded": 189,
+      "presented": 127,
+      "painted": 122,
+      "frameDelaySeconds": 0.01170823,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 943
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 5520,
+      "mediaTime": 4.781469,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 144,
+      "dropped": 1,
+      "parsed": 227,
+      "decoded": 204,
+      "presented": 143,
+      "painted": 138,
+      "frameDelaySeconds": 0.012174636,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 958
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 6039,
+      "mediaTime": 5.305121,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 159,
+      "dropped": 1,
+      "parsed": 242,
+      "decoded": 220,
+      "presented": 158,
+      "painted": 154,
+      "frameDelaySeconds": 0.011335117,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 974
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 6554,
+      "mediaTime": 5.829224,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 175,
+      "dropped": 1,
+      "parsed": 258,
+      "decoded": 235,
+      "presented": 174,
+      "painted": 169,
+      "frameDelaySeconds": 0.012011312,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 989
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 7071,
+      "mediaTime": 6.353028,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 190,
+      "dropped": 1,
+      "parsed": 273,
+      "decoded": 251,
+      "presented": 189,
+      "painted": 185,
+      "frameDelaySeconds": 0.011859788,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1005
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 7589,
+      "mediaTime": 6.836981,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 206,
+      "dropped": 1,
+      "parsed": 289,
+      "decoded": 266,
+      "presented": 205,
+      "painted": 200,
+      "frameDelaySeconds": 0.011461019,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1020
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 8106,
+      "mediaTime": 7.360893,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 221,
+      "dropped": 1,
+      "parsed": 304,
+      "decoded": 282,
+      "presented": 220,
+      "painted": 216,
+      "frameDelaySeconds": 0.011298916,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1036
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 8620,
+      "mediaTime": 7.884834,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 237,
+      "dropped": 1,
+      "parsed": 320,
+      "decoded": 297,
+      "presented": 236,
+      "painted": 231,
+      "frameDelaySeconds": 0.01169882,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1051
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 9142,
+      "mediaTime": 8.408736,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 252,
+      "dropped": 1,
+      "parsed": 335,
+      "decoded": 313,
+      "presented": 251,
+      "painted": 247,
+      "frameDelaySeconds": 0.012120661,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1067
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 9659,
+      "mediaTime": 8.93457,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 268,
+      "dropped": 1,
+      "parsed": 351,
+      "decoded": 328,
+      "presented": 267,
+      "painted": 262,
+      "frameDelaySeconds": 0.011329521,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1083
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 10178,
+      "mediaTime": 9.458396,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 283,
+      "dropped": 1,
+      "parsed": 366,
+      "decoded": 344,
+      "presented": 282,
+      "painted": 278,
+      "frameDelaySeconds": 0.011686306,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1098
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 10697,
+      "mediaTime": 9.98218,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 299,
+      "dropped": 1,
+      "parsed": 382,
+      "decoded": 360,
+      "presented": 298,
+      "painted": 293,
+      "frameDelaySeconds": 0.012136217,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1114
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 11214,
+      "mediaTime": 10.465868,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 315,
+      "dropped": 1,
+      "parsed": 397,
+      "decoded": 375,
+      "presented": 314,
+      "painted": 309,
+      "frameDelaySeconds": 0.011516486,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1129
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 11733,
+      "mediaTime": 10.989895,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 330,
+      "dropped": 1,
+      "parsed": 413,
+      "decoded": 391,
+      "presented": 329,
+      "painted": 325,
+      "frameDelaySeconds": 0.011826463,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1145
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 12247,
+      "mediaTime": 11.513765,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 345,
+      "dropped": 1,
+      "parsed": 428,
+      "decoded": 406,
+      "presented": 344,
+      "painted": 340,
+      "frameDelaySeconds": 0.011784412,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1160
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 12766,
+      "mediaTime": 12.037504,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 361,
+      "dropped": 1,
+      "parsed": 444,
+      "decoded": 422,
+      "presented": 360,
+      "painted": 355,
+      "frameDelaySeconds": 0.011858076,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1176
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 13284,
+      "mediaTime": 12.563814,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 377,
+      "dropped": 1,
+      "parsed": 460,
+      "decoded": 437,
+      "presented": 376,
+      "painted": 371,
+      "frameDelaySeconds": 0.011813318,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1191
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 13806,
+      "mediaTime": 13.050789,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 392,
+      "dropped": 1,
+      "parsed": 475,
+      "decoded": 453,
+      "presented": 391,
+      "painted": 387,
+      "frameDelaySeconds": 0.011701585,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1207
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 14324,
+      "mediaTime": 13.574505,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 408,
+      "dropped": 1,
+      "parsed": 491,
+      "decoded": 468,
+      "presented": 407,
+      "painted": 402,
+      "frameDelaySeconds": 0.011439997,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1222
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 14840,
+      "mediaTime": 14.098356,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 423,
+      "dropped": 1,
+      "parsed": 506,
+      "decoded": 484,
+      "presented": 422,
+      "painted": 418,
+      "frameDelaySeconds": 0.011513181,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1238
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 15357,
+      "mediaTime": 14.622347,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 439,
+      "dropped": 1,
+      "parsed": 522,
+      "decoded": 499,
+      "presented": 438,
+      "painted": 433,
+      "frameDelaySeconds": 0.011815533,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1254
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 15875,
+      "mediaTime": 15.146258,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 454,
+      "dropped": 1,
+      "parsed": 537,
+      "decoded": 515,
+      "presented": 453,
+      "painted": 449,
+      "frameDelaySeconds": 0.011564646,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1269
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 16396,
+      "mediaTime": 15.669972,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 470,
+      "dropped": 1,
+      "parsed": 553,
+      "decoded": 530,
+      "presented": 469,
+      "painted": 464,
+      "frameDelaySeconds": 0.011521366,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1285
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 16915,
+      "mediaTime": 16.195623,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 486,
+      "dropped": 1,
+      "parsed": 569,
+      "decoded": 546,
+      "presented": 485,
+      "painted": 480,
+      "frameDelaySeconds": 0.011612705,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1300
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 17434,
+      "mediaTime": 16.679051,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 501,
+      "dropped": 1,
+      "parsed": 584,
+      "decoded": 562,
+      "presented": 500,
+      "painted": 495,
+      "frameDelaySeconds": 0.011346152,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1316
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 17947,
+      "mediaTime": 17.203814,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 516,
+      "dropped": 1,
+      "parsed": 599,
+      "decoded": 577,
+      "presented": 515,
+      "painted": 511,
+      "frameDelaySeconds": 0.012187042,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1331
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 18466,
+      "mediaTime": 17.727777,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 532,
+      "dropped": 1,
+      "parsed": 615,
+      "decoded": 593,
+      "presented": 531,
+      "painted": 526,
+      "frameDelaySeconds": 0.011925006,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1347
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 18984,
+      "mediaTime": 18.251396,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 548,
+      "dropped": 1,
+      "parsed": 631,
+      "decoded": 608,
+      "presented": 547,
+      "painted": 542,
+      "frameDelaySeconds": 0.012006389,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1362
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 19506,
+      "mediaTime": 18.775541,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 563,
+      "dropped": 1,
+      "parsed": 646,
+      "decoded": 624,
+      "presented": 562,
+      "painted": 558,
+      "frameDelaySeconds": 0.011292043,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1378
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 20026,
+      "mediaTime": 19.299183,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 579,
+      "dropped": 1,
+      "parsed": 662,
+      "decoded": 640,
+      "presented": 578,
+      "painted": 573,
+      "frameDelaySeconds": 0.012076179,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1393
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 20542,
+      "mediaTime": 19.822676,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 594,
+      "dropped": 1,
+      "parsed": 677,
+      "decoded": 655,
+      "presented": 593,
+      "painted": 589,
+      "frameDelaySeconds": 0.012030405,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1409
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 21057,
+      "mediaTime": 20.305781,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 610,
+      "dropped": 1,
+      "parsed": 693,
+      "decoded": 670,
+      "presented": 609,
+      "painted": 604,
+      "frameDelaySeconds": 0.011300953,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1424
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 21577,
+      "mediaTime": 20.829675,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 625,
+      "dropped": 1,
+      "parsed": 708,
+      "decoded": 686,
+      "presented": 624,
+      "painted": 620,
+      "frameDelaySeconds": 0.011974566,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1440
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 22098,
+      "mediaTime": 21.35334,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 641,
+      "dropped": 1,
+      "parsed": 724,
+      "decoded": 702,
+      "presented": 640,
+      "painted": 635,
+      "frameDelaySeconds": 0.012022692,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1456
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 22631,
+      "mediaTime": 21.916769,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 657,
+      "dropped": 1,
+      "parsed": 740,
+      "decoded": 718,
+      "presented": 656,
+      "painted": 651,
+      "frameDelaySeconds": 0.012131273,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1472
+    },
+    {
+      "phase": "tick",
+      "reason": "",
+      "wallMs": 23146,
+      "mediaTime": 22.400505,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 672,
+      "dropped": 1,
+      "parsed": 750,
+      "decoded": 728,
+      "presented": 671,
+      "painted": 667,
+      "frameDelaySeconds": 0.011265093,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1490
+    },
+    {
+      "phase": "end",
+      "reason": "window",
+      "wallMs": 23167,
+      "mediaTime": 22.440829,
+      "width": 3840,
+      "height": 2160,
+      "paused": false,
+      "rate": 1,
+      "total": 673,
+      "dropped": 1,
+      "parsed": 750,
+      "decoded": 728,
+      "presented": 672,
+      "painted": 667,
+      "frameDelaySeconds": 0.011265093,
+      "visible": "visible",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "videoBox": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "irq": 1491
+    }
+  ],
+  "frame_capture": {
+    "mediaTime": 22.440829,
+    "paused": true,
+    "ended": false,
+    "videoWidth": 3840,
+    "videoHeight": 2160,
+    "file": "/var/tmp/atlasa1-gnome-media-20261120/firefox-hevc4k30-panel-repeat.frame.png",
+    "sha256": "302ec7fc9fa8522306dce969d1ef3b5cfc47ed3a4c7a46a6b52c4926b4b26804"
+  },
+  "firefox_diagnostics": [
+    "T736_CEDAR_CLIENT: preconnected protocol=2 readonly-memfd pid=6086 rdd=1",
+    "T736_CEDAR_PROXY: init codec=hevc_cedar input extradata_size=2458 first8=0101600000009000 annexb_parameter_count=0 annexb_parameter_mask=0",
+    "T736_CEDAR_PROXY: init codec=hevc_cedar bsf_output extradata_size=2431 first8=0000000140010c01 annexb_parameter_count=3 annexb_parameter_mask=7",
+    "T736_CEDAR_PROXY: browser_panel input=3840x2160 output=1920x1080 hardware_scale=1",
+    "T736_CEDAR_PROXY: generation=0 first_input bytes=68400 key=1 length_prefix=4 first_nal=20 nals=1 parameter_count=0 parameter_mask=0 irap=1",
+    "T736_CEDAR_PROXY: generation=0 first_filtered bytes=70831 key=1 length_prefix=0 first_nal=32 nals=5 parameter_count=3 parameter_mask=7 irap=1",
+    "T736_CEDAR_PROXY: image_allocator output=1920x1080 strides=3840,1920,1920 opaque=present",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=0 elapsed_us=31560 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=39358 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=25376 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=34894 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=46287 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=25973 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=23519 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=31025 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=23351 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=19099 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=9440 safe_input_empty=1",
+    "T736_CEDAR_PROXY: bounded_batch generation=0 frames=1 inputs=1 elapsed_us=9691 safe_input_empty=1"
+  ],
+  "broker_log": [
+    "CEDAR_BROKER: open session=2 codec=2 3840x2160",
+    "CEDAR_BROKER: hardware frames=900 session=2 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=1200 session=2 visible=1920x1080",
+    "CEDAR_BROKER: hardware frames=1500 session=2 visible=1920x1080",
+    "CEDAR_BROKER: peer left; context retained"
+  ],
+  "result": {
+    "status": "passed",
+    "checks": {
+      "window_completed": true,
+      "dimensions": true,
+      "normal_speed": true,
+      "browser_frame_rate": true,
+      "hardware_irq_rate": true,
+      "matching_hardware_session": true,
+      "rdd_seccomp_filter": true,
+      "rdd_hardware_output": true,
+      "no_fallback_logged": true,
+      "explicit_hardware_scale": true
+    },
+    "decoded_size": [
+      1920,
+      1080
+    ],
+    "output_mode": "hardware-scaled-to-1080p",
+    "wall_seconds": 20.259,
+    "media_seconds": 20.285895,
+    "total_delta": 608,
+    "dropped_delta": 0,
+    "presented_delta": 608,
+    "browser_retained_fps": 30.011352978922947,
+    "irq_delta": 631,
+    "broker_sessions": [
+      [
+        "2",
+        "2",
+        "3840",
+        "2160"
+      ]
+    ],
+    "broker_frame_markers": [
+      [
+        "900",
+        "2",
+        "1920",
+        "1080"
+      ],
+      [
+        "1200",
+        "2",
+        "1920",
+        "1080"
+      ],
+      [
+        "1500",
+        "2",
+        "1920",
+        "1080"
+      ]
+    ]
+  }
+}

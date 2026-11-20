@@ -31,6 +31,15 @@ if [ "${XDG_SESSION_TYPE:-}" = wayland ] && [ -n "${WAYLAND_DISPLAY:-}" ] &&
         printf '\n%s\n' "$pref" >> "$profile/user.js"
     fi
 fi
+# Only the panel-enabled package installs this marker and helper. Detect the
+# physical mode at launch, never force a desktop resolution or affect X11.
+# Explicit environment settings (including 0 to disable) take precedence.
+if [ -z "${T736_CEDAR_BROWSER_PANEL+x}" ] && [ -r "$lib/browser-panel-enabled" ]; then
+    panel=$(python3 /usr/lib/atlasa1/firefox_panel_mode.py 2>/dev/null) || panel=
+    if [ "$panel" = 1920x1080 ]; then
+        export T736_CEDAR_BROWSER_PANEL=$panel
+    fi
+fi
 export LD_LIBRARY_PATH="$lib:${lookup}$gpu/runtime-gles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export LD_PRELOAD="$lib/libt736_cedar_client.so:$lib/libavcodec.so.62${LD_PRELOAD:+:$LD_PRELOAD}"
 export LIBGL_DRIVERS_PATH="${LIBGL_DRIVERS_PATH:-$gpu/lib/dri}"

@@ -55,3 +55,15 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type not
 Xwayland 的 `depth 30 ... Falling back to software` 日志来自单个像素格式的探测；不能据此断言整个 Xwayland 在软件渲染。浏览器 GPU 接通不等于视频硬解、零拷贝或 60fps 播放已通过。后续 GNOME 下的播放器、Firefox 硬解和实际呈现结果见 [GNOME 多媒体验收](GNOME_MEDIA.md)。
 
 本轮保留当前可用的 GNOME 会话，并停用自动回退定时器，避免用户操作中突然切换桌面。保存的开机默认仍是 LightDM/Xfce；未发布新的 GNOME 镜像，也未对 GDM 正常登录和冷启动做完整验收。
+
+## 2026-11-20 实板默认启动更新
+
+完成 v42 浏览器缩放播放测试后，实板已选择 GDM 和 `atlasa1-gnome` 会话作为默认。正常断电上电进入 v42 的 Wayland 登录界面，随后一次性测试登录已进入用户 GNOME，并立即恢复 GDM 配置；之后用户手动重启并确认系统已启动。没有开启永久自动登录；旧 v30/LightDM 配置保留在 `/var/backups/atlasa1-gnome-default-20261120`。这不改变已有 Release 镜像。
+
+安装并验证所需会话文件后，可以显式选择下次启动使用 GNOME：
+
+```sh
+sudo bash tools/activate_atlasa1_gnome.sh t736 /var/backups/atlasa1-before-gnome
+```
+
+该入口要求新的备份目录，保存显示管理器、GDM 和账户会话设置；不重启、不停止当前桌面、不修改内核启动别名，也不启用自动登录。需要另行确保已安装与 GPU 模块匹配并经过实板测试的内核。脚本输出桌面配置的恢复命令。
