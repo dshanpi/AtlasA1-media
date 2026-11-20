@@ -1,5 +1,9 @@
 # AtlasA1 GNOME 50 / Wayland candidate
 
+2026-11-20 补充：Chromium 原先仍使用 llvmpipe。现已单独修复其 PowerVR
+ANGLE GLES 渲染选择；Cedar 视频硬解尚未接入，不能沿用 Firefox 的验收结论。
+配置、实测丢帧和后端缺口见 [Chromium 记录](CHROMIUM.md)。
+
 Ubuntu 26.04 的 GNOME/Wayland 已在实板接通 PowerVR。2026-11-19 用户确认：撤销继承到应用的 CPU 绑核限制后，桌面明显改善，可以正常使用。该配置仍是候选：浏览器动画和 HDMI 呈现尚未达到稳定 60 fps，现有 RC1/v34 Release 镜像仍默认 Xfce。
 
 本轮测试为 Linux `6.18.63-t736-media-v30`、1920×1080@60、IMG DDK `24.2.6603887`、GNOME 50.1。未修改内核或烧写 eMMC。完整测量摘要见 [实板记录](../evidence/atlasa1-gnome-wayland-20261119.json)。

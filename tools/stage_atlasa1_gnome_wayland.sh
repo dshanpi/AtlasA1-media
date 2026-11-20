@@ -14,6 +14,7 @@ install -Dm644 "$profile/61-atlasa1-gnome.rules" "$root/etc/udev/rules.d/61-atla
 install -Dm644 "$profile/50-atlasa1-wayland.conf" "$root/etc/systemd/user/org.gnome.Shell@.service.d/50-atlasa1-wayland.conf"
 install -Dm755 "$profile/atlasa1-gnome-session" "$root/usr/local/bin/atlasa1-gnome-session"
 install -Dm644 "$profile/atlasa1-gnome.desktop" "$root/usr/share/wayland-sessions/atlasa1-gnome.desktop"
+install -Dm644 "$profile/90-atlasa1-pvr" "$root/etc/chromium.d/90-atlasa1-pvr"
 
 # Keep the package-owned helper upgradeable behind a narrowly scoped wrapper.
 helper=/usr/libexec/mutter-x11-frames

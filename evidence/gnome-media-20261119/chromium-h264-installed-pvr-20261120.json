@@ -1,0 +1,575 @@
+{
+  "schema": 1,
+  "status": "MEASURED_NOT_HARDWARE_ACCEPTANCE",
+  "fixture": "/var/tmp/atlas-rc1-fes-qa/h264-1080p60-aac.mp4",
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "Main",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 42,
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 384000,
+        "duration": "25.000000",
+        "bit_rate": "10394040",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1500",
+        "extradata_size": 41,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc61.28.100 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 1,
+        "channel_layout": "mono",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 1200000,
+        "duration": "25.000000",
+        "bit_rate": "96173",
+        "nb_frames": "1173",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/var/tmp/atlas-rc1-fes-qa/h264-1080p60-aac.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "25.000000",
+      "size": "32819855",
+      "bit_rate": "10502353",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.9.102"
+      }
+    }
+  },
+  "kernel": "6.18.63-t736-gnome-v45",
+  "flags": [],
+  "command": [
+    "chromium",
+    "--user-data-dir=/tmp/atlasa1-chromium-j_d3vxdv/profile",
+    "--remote-debugging-address=127.0.0.1",
+    "--remote-debugging-port=0",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--autoplay-policy=no-user-gesture-required",
+    "--ozone-platform=wayland",
+    "--window-size=1280,800",
+    "--enable-logging=stderr",
+    "about:blank"
+  ],
+  "version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.73",
+    "revision": "@2f9a11097447f226133bc1a31c787291a5eeab98",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.25"
+  },
+  "gpu": {
+    "gpu": {
+      "devices": [
+        {
+          "vendorId": 0,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Imagination Technologies)",
+          "deviceString": "ANGLE (Imagination Technologies, PowerVR B-Series BXM-4-64, OpenGL ES 3.2 build 24.2@6603887)",
+          "driverVendor": "Imagination Technologies",
+          "driverVersion": "24.2"
+        }
+      ],
+      "auxAttributes": {
+        "amdSwitchable": false,
+        "canSupportThreadedTextureMailbox": false,
+        "directRenderingVersion": "",
+        "displayType": "ANGLE_OPENGLES",
+        "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_compressed_texture_etc GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_multisample GL_ANGLE_translated_shader_source GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_array GL_EXT_YUV_target GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_compressed_ETC1_RGB8_sub_texture GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_discard_framebuffer GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_float_blend GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_memory_object GL_EXT_memory_object_fd GL_EXT_multisampled_render_to_texture GL_EXT_multisampled_render_to_texture2 GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_robustness GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_shader_framebuffer_fetch GL_EXT_shader_texture_lod GL_EXT_shadow_samplers GL_EXT_texture_border_clamp GL_EXT_texture_format_BGRA8888 GL_EXT_texture_rg GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_debug GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_read_depth GL_NV_read_stencil GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_EGL_sync GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth24 GL_OES_draw_buffers_indexed GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_3D GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object ",
+        "glImplementationParts": "(gl=egl-angle,angle=opengles)",
+        "glRenderer": "ANGLE (Imagination Technologies, PowerVR B-Series BXM-4-64, OpenGL ES 3.2 build 24.2@6603887)",
+        "glResetNotificationStrategy": 33362,
+        "glVendor": "Google Inc. (Imagination Technologies)",
+        "glVersion": "OpenGL ES 3.0 (ANGLE 2.1 git hash: unknown hash)",
+        "glWsExtensions": "EGL_EXT_create_context_robustness EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_EXT_image_gl_colorspace EGL_KHR_gl_colorspace EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_texture_3D_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_fence_sync EGL_KHR_wait_sync EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_KHR_swap_buffers_with_damage EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANDROID_native_fence_sync EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_EXT_image_dma_buf_import EGL_EXT_image_dma_buf_import_modifiers EGL_KHR_reusable_sync EGL_ANGLE_external_context_and_surface EGL_EXT_buffer_age EGL_ANGLE_context_virtualization EGL_ANGLE_memory_usage_report EGL_ANGLE_create_context_passthrough_shaders ",
+        "glWsVendor": "Google Inc. (Imagination Technologies)",
+        "glWsVersion": "1.5 (ANGLE 2.1 git hash: unknown hash)",
+        "hardwareSupportsVulkan": false,
+        "inProcessGpu": false,
+        "initializationTime": 0.418311,
+        "isAsan": false,
+        "isClangCoverage": false,
+        "jpegDecodeAcceleratorSupported": false,
+        "maxMsaaSamples": "4",
+        "optimus": false,
+        "passthroughCmdDecoder": true,
+        "pixelShaderVersion": "3.00",
+        "processCrashCount": 0,
+        "sandboxed": true,
+        "skiaBackendType": "GaneshGL",
+        "subpixelFontRendering": true,
+        "targetCpuBits": 64,
+        "vertexShaderVersion": "3.00",
+        "visibilityCallbackCallCount": 0
+      },
+      "featureStatus": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled_force",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "disabled_off",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "disabled_software",
+        "vulkan": "disabled_off",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webgpu_on_vk_via_gl_interop": "disabled_off",
+        "webnn": "disabled_off"
+      },
+      "driverBugWorkarounds": [
+        "enable_webgl_timer_query_extensions",
+        "exit_on_context_lost",
+        "round_up_3d_texture_size_to_pot_for_limit",
+        "use_tex_sub_image_for_client_data_npot_uploads",
+        "disabled_extension_GL_KHR_blend_equation_advanced",
+        "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+      ],
+      "videoDecoding": [],
+      "videoEncoding": []
+    },
+    "modelName": "",
+    "modelVersion": "",
+    "commandLine": "/usr/lib/chromium/chromium --use-gl=angle --use-angle=gles --render-node-override=/dev/dri/renderD128 --enable-features=AcceleratedVideoDecoder --show-component-extension-options --enable-gpu-rasterization --no-default-browser-check --disable-pings --media-router=0 --disable-dev-shm-usage --enable-remote-extensions --load-extension --user-data-dir=/tmp/atlasa1-chromium-j_d3vxdv/profile --remote-debugging-address=127.0.0.1 --remote-debugging-port=0 --no-first-run --no-default-browser-check --autoplay-policy=no-user-gesture-required --ozone-platform=wayland --window-size=1280,800 --enable-logging=stderr --flag-switches-begin --flag-switches-end about:blank"
+  },
+  "start": {
+    "time": 3980.6999999999534,
+    "currentTime": 2.154818,
+    "duration": 25,
+    "width": 1920,
+    "height": 1080,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "error": null,
+    "quality": {
+      "total": 133,
+      "dropped": 36
+    },
+    "callbacks": 82,
+    "lastFrame": {
+      "mediaTime": 2.133333,
+      "presentedFrames": 99
+    }
+  },
+  "last": {
+    "time": 22041.299999999814,
+    "currentTime": 19.639288,
+    "duration": 25,
+    "width": 1920,
+    "height": 1080,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "error": null,
+    "quality": {
+      "total": 1182,
+      "dropped": 182
+    },
+    "callbacks": 907,
+    "lastFrame": {
+      "mediaTime": 19.616667,
+      "presentedFrames": 1137
+    }
+  },
+  "measurement": {
+    "seconds": 18.06059999999986,
+    "total": 1049,
+    "dropped": 146,
+    "presented_fps": 49.99833892561748,
+    "video_seconds": 17.48447,
+    "callbacks": 825
+  },
+  "media_events": [
+    {
+      "method": "Media.playerCreated",
+      "params": {
+        "player": {
+          "playerId": "EC16B1DF9B39040F455AB278DABD47BA"
+        }
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1303.475462,
+            "value": "{\"created\":\"2026-11-20 05:12:38.318177 UTC\",\"event\":\"kMediaLogCreated\"}"
+          },
+          {
+            "timestamp": 1303.713548,
+            "value": "{\"event\":\"kWebMediaPlayerCreated\",\"origin_url\":\"http://127.0.0.1:42943/\"}"
+          },
+          {
+            "timestamp": 1303.714609,
+            "value": "{\"event\":\"kLoad\",\"url\":\"http://127.0.0.1:42943/fixture.mp4\"}"
+          },
+          {
+            "timestamp": 1303.843601,
+            "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kStarting\"}"
+          },
+          {
+            "timestamp": 1304.258824,
+            "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kPlaying\"}"
+          },
+          {
+            "timestamp": 1304.334462,
+            "value": "{\"dimensions\":\"1920x1080\",\"event\":\"kVideoSizeChanged\"}"
+          },
+          {
+            "timestamp": 1303.878569,
+            "value": "{\"duration\":25.0,\"event\":\"kDurationChanged\"}"
+          },
+          {
+            "timestamp": 1304.417759,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+          },
+          {
+            "timestamp": 1304.379554,
+            "value": "{\"audio_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"},\"event\":\"kBufferingStateChanged\"}"
+          },
+          {
+            "timestamp": 1304.418158,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"pipeline_buffering_state\":{\"for_suspended_start\":false,\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+          },
+          {
+            "timestamp": 1303.883409,
+            "value": "{\"event\":\"kPlay\"}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerPropertiesChanged",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "properties": [
+          {
+            "name": "kVideoDecoderName",
+            "value": "FFmpegVideoDecoder"
+          },
+          {
+            "name": "kIsStreaming",
+            "value": "true"
+          },
+          {
+            "name": "kFrameUrl",
+            "value": "http://127.0.0.1:42943/player.html"
+          },
+          {
+            "name": "kAudioTracks",
+            "value": "[{\"bytes per channel\":4,\"bytes per frame\":4,\"channel layout\":\"MONO\",\"channels\":1,\"codec\":\"aac\",\"codec delay\":0,\"discard decoder delay\":true,\"encryption scheme\":\"Unencrypted\",\"has extra data\":true,\"profile\":\"unknown\",\"sample format\":\"Float 32-bit planar\",\"samples per second\":48000,\"seek preroll\":\"0us\"}]"
+          },
+          {
+            "name": "kResolution",
+            "value": "1920x1080"
+          },
+          {
+            "name": "kRendererName",
+            "value": "RendererImpl"
+          },
+          {
+            "name": "kTotalBytes",
+            "value": "0x1f4ca8f"
+          },
+          {
+            "name": "kMaxDuration",
+            "value": "25.0"
+          },
+          {
+            "name": "kFrameTitle",
+            "value": "AtlasA1 Chromium playback test"
+          },
+          {
+            "name": "kIsPlatformAudioDecoder",
+            "value": "false"
+          },
+          {
+            "name": "kAudioDecoderName",
+            "value": "FFmpegAudioDecoder"
+          },
+          {
+            "name": "kVideoTracks",
+            "value": "[{\"alpha mode\":\"is_opaque\",\"codec\":\"h264\",\"coded size\":\"1920x1080\",\"color space\":{\"matrix\":\"BT709\",\"primaries\":\"BT709\",\"range\":\"LIMITED\",\"transfer\":\"BT709\"},\"encryption scheme\":\"Unencrypted\",\"has extra data\":true,\"hdr metadata\":{},\"natural size\":\"1920x1080\",\"orientation\":\"0\u00b0\",\"profile\":\"h264 main\",\"visible rect\":\"0,0 1920x1080\"}]"
+          },
+          {
+            "name": "kIsRangeHeaderSupported",
+            "value": "false"
+          },
+          {
+            "name": "kIsVideoDecryptingDemuxerStream",
+            "value": "false"
+          },
+          {
+            "name": "kStartTime",
+            "value": "-0.021333"
+          },
+          {
+            "name": "kBitrate",
+            "value": "10502353"
+          },
+          {
+            "name": "kIsPlatformVideoDecoder",
+            "value": "false"
+          },
+          {
+            "name": "kIsSingleOrigin",
+            "value": "true"
+          },
+          {
+            "name": "kIsAudioDecryptingDemuxerStream",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerMessagesLogged",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "messages": [
+          {
+            "level": "info",
+            "message": "FFmpegDemuxer: created video stream, config codec: h264, profile: h264 main, level: not available, alpha_mode: is_opaque, coded size: [1920,1080], visible rect: [0,0,1920,1080], natural size: [1920,1080], has extra data: true, encryption scheme: Unencrypted, rotation: 0\u00b0, flipped: 0, color space: {primaries:BT709, transfer:BT709, matrix:BT709, range:LIMITED}, spatial format: [projection_type: none, stereo_mode: mono]"
+          },
+          {
+            "level": "info",
+            "message": "FFmpegDemuxer: created audio stream, config codec: aac, profile: unknown, bytes_per_channel: 4, channel_layout: MONO, channels: 1, samples_per_second: 48000, sample_format: Float 32-bit planar, bytes_per_frame: 4, seek_preroll: 0us, codec_delay: 0, has extra data: true, encryption scheme: Unencrypted, discard decoder delay: true, target_output_channel_layout: NONE, target_output_sample_format: Unknown sample format"
+          },
+          {
+            "level": "info",
+            "message": "Effective playback rate changed from 0 to 1"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select SymphoniaAudioDecoder for audio decoding. status=DecoderStatus::Codes::kUnsupportedCodec"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select IamfAudioDecoder for audio decoding. status=DecoderStatus::Codes::kUnsupportedCodec"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select OpusAudioDecoder for audio decoding. status=DecoderStatus::Codes::kUnsupportedConfig"
+          },
+          {
+            "level": "info",
+            "message": "Selected FFmpegAudioDecoder for audio decoding, config: codec: aac, profile: unknown, bytes_per_channel: 4, channel_layout: MONO, channels: 1, samples_per_second: 48000, sample_format: Float 32-bit planar, bytes_per_frame: 4, seek_preroll: 0us, codec_delay: 0, has extra data: true, encryption scheme: Unencrypted, discard decoder delay: true, target_output_channel_layout: STEREO, target_output_sample_format: Unknown sample format"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select VaapiVideoDecoder for video decoding. status=DecoderStatus::Codes::kUnsupportedConfig"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select DecryptingVideoDecoder for video decoding. status=DecoderStatus::Codes::kUnsupportedEncryptionMode"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select VpxVideoDecoder for video decoding. status=DecoderStatus::Codes::kUnsupportedConfig"
+          },
+          {
+            "level": "info",
+            "message": "Cannot select Dav1dVideoDecoder for video decoding. status=DecoderStatus::Codes::kUnsupportedCodec"
+          },
+          {
+            "level": "info",
+            "message": "Selected FFmpegVideoDecoder for video decoding, config: codec: h264, profile: h264 main, level: not available, alpha_mode: is_opaque, coded size: [1920,1080], visible rect: [0,0,1920,1080], natural size: [1920,1080], has extra data: true, encryption scheme: Unencrypted, rotation: 0\u00b0, flipped: 0, color space: {primaries:BT709, transfer:BT709, matrix:BT709, range:LIMITED}, spatial format: [projection_type: none, stereo_mode: mono]"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1304.758241,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"reason\":\"DEMUXER_UNDERFLOW\",\"state\":\"BUFFERING_HAVE_NOTHING\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1305.873543,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1307.446293,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1313.066735,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"reason\":\"DECODER_UNDERFLOW\",\"state\":\"BUFFERING_HAVE_NOTHING\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1313.161193,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1323.542793,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"reason\":\"DEMUXER_UNDERFLOW\",\"state\":\"BUFFERING_HAVE_NOTHING\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "method": "Media.playerEventsAdded",
+      "params": {
+        "playerId": "EC16B1DF9B39040F455AB278DABD47BA",
+        "events": [
+          {
+            "timestamp": 1323.718303,
+            "value": "{\"event\":\"kBufferingStateChanged\",\"video_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+          }
+        ]
+      }
+    }
+  ]
+}

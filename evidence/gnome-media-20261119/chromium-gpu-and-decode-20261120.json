@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-20",
+  "kernel": "6.18.63-t736-gnome-v45",
+  "chromium": "156.0.8078.73-1xtradeb1.2604.1",
+  "gpu_rendering": "PowerVR ANGLE GLES verified; next full browser launch picks installed config",
+  "hardware_decode": "NOT_IMPLEMENTED: software H264; HEVC video track skipped",
+  "user_browser_restarted": false,
+  "desktop_resolution_changed": false,
+  "gpu_sandbox_disabled": false,
+  "full_image_published": false,
+  "configuration": "/etc/chromium.d/90-atlasa1-pvr",
+  "rollback": "Move only /etc/chromium.d/90-atlasa1-pvr aside and fully restart Chromium",
+  "screenshot_sha256": "ce484179b65de1f5d442c65db7a0ff607ee0372094538a00acc4781e95d808b8",
+  "screenshot_inspection": "Correct synthetic video test pattern; not a frame-exact pixel comparison",
+  "results": [
+    {
+      "raw": "chromium-h264-baseline-20261120.json",
+      "sha256": "3c9c57d63cc29cb8faa014e92bfd6b815f9741ac6f2cefbb726d79d508980c56",
+      "status": "MEASURED_NOT_HARDWARE_ACCEPTANCE",
+      "measurement": {
+        "seconds": 18.48589999999991,
+        "total": 1003,
+        "dropped": 544,
+        "presented_fps": 24.829735095397155,
+        "video_seconds": 16.705718,
+        "callbacks": 491
+      },
+      "error": null,
+      "decoder": "FFmpegVideoDecoder",
+      "platform_decoder": "false",
+      "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 128 bits), OpenGL ES 3.2 Mesa 26.0.8-1ubuntu0.3)",
+      "gpu_sandboxed": false
+    },
+    {
+      "raw": "chromium-h264-pvr-angle-gles-20261120.json",
+      "sha256": "67bc2b6e5ce0e8e1ddf536cc0e07ca0d893d7ebb2a894bc3622c3a9061a280d6",
+      "status": "MEASURED_NOT_HARDWARE_ACCEPTANCE",
+      "measurement": {
+        "seconds": 18.44459999999986,
+        "total": 1095,
+        "dropped": 86,
+        "presented_fps": 54.704357915054146,
+        "video_seconds": 18.264561,
+        "callbacks": 829
+      },
+      "error": null,
+      "decoder": "FFmpegVideoDecoder",
+      "platform_decoder": "false",
+      "renderer": "ANGLE (Imagination Technologies, PowerVR B-Series BXM-4-64, OpenGL ES 3.2 build 24.2@6603887)",
+      "gpu_sandboxed": true
+    },
+    {
+      "raw": "chromium-h264-installed-pvr-20261120.json",
+      "sha256": "5dc7027d3b4b5fd47e45d320b3a2f1a9db809cfd5b4bdce694efa985cd21df56",
+      "status": "MEASURED_NOT_HARDWARE_ACCEPTANCE",
+      "measurement": {
+        "seconds": 18.06059999999986,
+        "total": 1049,
+        "dropped": 146,
+        "presented_fps": 49.99833892561748,
+        "video_seconds": 17.48447,
+        "callbacks": 825
+      },
+      "error": null,
+      "decoder": "FFmpegVideoDecoder",
+      "platform_decoder": "false",
+      "renderer": "ANGLE (Imagination Technologies, PowerVR B-Series BXM-4-64, OpenGL ES 3.2 build 24.2@6603887)",
+      "gpu_sandboxed": true
+    },
+    {
+      "raw": "chromium-h264-installed-visual-20261120.json",
+      "sha256": "e6a0d2e509ca3a90a0718012f54534975443f9274b72a43468d9805e79b706a8",
+      "status": "MEASURED_NOT_HARDWARE_ACCEPTANCE",
+      "measurement": {
+        "seconds": 18.484699999999954,
+        "total": 1064,
+        "dropped": 124,
+        "presented_fps": 50.852867506640756,
+        "video_seconds": 17.743688000000002,
+        "callbacks": 831
+      },
+      "error": null,
+      "decoder": "FFmpegVideoDecoder",
+      "platform_decoder": "false",
+      "renderer": "ANGLE (Imagination Technologies, PowerVR B-Series BXM-4-64, OpenGL ES 3.2 build 24.2@6603887)",
+      "gpu_sandboxed": true
+    },
+    {
+      "raw": "chromium-hevc4k-track-validation-20261120.json",
+      "sha256": "4263da1d6f7e18adc7f386ecda05de22990d52a736bd7001ce71b6f0bc8fb48d",
+      "status": "FAILED_NO_VIDEO",
+      "measurement": null,
+      "error": "media clock advanced without a decoded video track",
+      "decoder": null,
+      "platform_decoder": null,
+      "renderer": "ANGLE (Imagination Technologies, PowerVR B-Series BXM-4-64, OpenGL ES 3.2 build 24.2@6603887)",
+      "gpu_sandboxed": true
+    }
+  ]
+}

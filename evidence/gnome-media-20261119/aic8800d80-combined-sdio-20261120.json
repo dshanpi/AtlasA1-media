@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-20",
+  "kernel": "6.18.63-t736-gnome-v45",
+  "module_identity": "AW869C/AIC8800D80, user confirmed",
+  "test": "RTC32k gate + BT enable + WLAN settling",
+  "status": "NO_SDIO_RESPONSE",
+  "driver_restored": "sunxi-mmc",
+  "driver_override_after": "(null)",
+  "rfkill0_soft_after": 1,
+  "diagnostic_module_unloaded": true,
+  "shared_3v3_rail_cycled": false,
+  "raw_stdout": "Fri Nov 20 05:05:43 AM UTC 2026\n6.18.63-t736-gnome-v45\nclock:\t\t0 Hz\nvdd:\t\t0 (invalid)\nbus mode:\t2 (push-pull)\nchip select:\t0 (don't care)\npower mode:\t0 (off)\nbus width:\t0 (1 bits)\ntiming spec:\t0 (legacy)\nsignal voltage:\t1 (1.80 V)\ndriver type:\t0 (driver type B)\natlasa1-sdio-diag 4021000.mmc: pad voltage select/control readback G=0aaaaaaa/00000000/01154540 M=000aaaaa/00000000/00000001\natlasa1-sdio-diag 4021000.mmc: roc32k trial rtc32out 00000000->00000001\natlasa1-sdio-diag 4021000.mmc: allocated mmc-pwrseq\natlasa1-sdio-diag 4021000.mmc: initialized, max. request size: 1024 KB, uses new timings mode\natlasa1-sdio-diag 4021000.mmc: probe CMD52 arg=00000c00 clk=400000 clkcr=00010000 ntsr=81710000 pgmux=22222222 pgdata=00000000 pmmux=00f1fff1 pmdata=00000011 rtc32out=00000001\natlasa1-sdio-diag 4021000.mmc: probe CMD52 failed IRQ=00000104 resp0=00000000\natlasa1-sdio-diag 4021000.mmc: probe CMD52 arg=80000c08 clk=400000 clkcr=00010000 ntsr=81710000 pgmux=22222222 pgdata=00000000 pmmux=00f1fff1 pmdata=00000011 rtc32out=00000001\natlasa1-sdio-diag 4021000.mmc: probe CMD52 failed IRQ=00000104 resp0=00000000\natlasa1-sdio-diag 4021000.mmc: probe CMD5 arg=00000000 clk=400000 clkcr=00010000 ntsr=81710000 pgmux=22222222 pgdata=00000000 pmmux=00f1fff1 pmdata=00000011 rtc32out=00000001\natlasa1-sdio-diag 4021000.mmc: probe CMD5 failed IRQ=00000104 resp0=00000000\natlasa1-sdio-diag 4021000.mmc: probe CMD5 arg=00000000 clk=400000 clkcr=00010000 ntsr=81710000 pgmux=22222222 pgdata=00000000 pmmux=00f1fff1 pmdata=00000011 rtc32out=00000001\natlasa1-sdio-diag 4021000.mmc: probe CMD5 failed IRQ=00000104 resp0=00000000\natlasa1-sdio-diag 4021000.mmc: probe CMD5 arg=00000000 clk=400000 clkcr=00010000 ntsr=81710000 pgmux=22222222 pgdata=00000000 pmmux=00f1fff1 pmdata=00000011 rtc32out=00000001\natlasa1-sdio-diag 4021000.mmc: probe CMD5 failed IRQ=00000104 resp0=00000000\natlasa1-sdio-diag 4021000.mmc: probe CMD5 arg=00000000 clk=400000 clkcr=00010000 ntsr=81710000 pgmux=22222222 pgdata=00000000 pmmux=00f1fff1 pmdata=00000011 rtc32out=00000001\natlasa1-sdio-diag 4021000.mmc: probe CMD5 failed IRQ=00000104 resp0=00000000\nNAME          SIZE\nnvme0n1     119.2G\n\u2514\u2500nvme0n1p1 119.2G\n"
+}

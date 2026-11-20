@@ -1,0 +1,9 @@
+# Sourced by /usr/bin/chromium. GPU rendering only: this does not provide a
+# Cedar VA-API/V4L2 decoder. Do not disable the Chromium or GPU sandbox.
+if [ "${XDG_SESSION_TYPE:-}" = wayland ] && [ -n "${WAYLAND_DISPLAY:-}" ] &&
+   [ -r /opt/atlasa1-img-wayland/runtime-gles/libEGL.so.1 ] &&
+   [ -r /opt/atlasa1-img-wayland/firefox-gles/libGL.so.1 ]; then
+    export LD_LIBRARY_PATH="/opt/atlasa1-img-wayland/firefox-gles:/opt/atlasa1-img-wayland/runtime-gles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    export LIBGL_DRIVERS_PATH=/opt/atlasa1-img-wayland/lib/dri
+    export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --use-gl=angle --use-angle=gles --render-node-override=/dev/dri/renderD128"
+fi
