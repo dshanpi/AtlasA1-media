@@ -155,6 +155,8 @@ v42 的 DRM 跟踪中，1326 次 RCQ 提交有 1324 次在下一次 vblank 收�
 
 最后一次冷启动后，正式入口的 H.264 1080p60 复测为 59.83 fps、1193 帧丢 3 帧；记录的 `waylandVsync=false`，PowerVR / Cedar / RDD 沙箱均确认。GDM 与解码 service/socket 正常，辅助进程持续存活，Shell 使用全部八核，GPU 错误计数全部为 0，生产 FFmpeg 的 SHA-256 未改变。当前桌面为临时 v42/GNOME，默认启动别名和 `uInitrd` 仍为 v30，没有发布新镜像。
 
+2026-11-20 的后续工作仍以 GNOME 为目标。板卡最初已回到默认 v30/Xfce，经串口完成临时 v42 启动并观察到 GNOME 就绪。随后 SSH 上传中断、本机 8771 MCP 服务关闭，当前板卡状态无法继续核实；没有更改默认启动项。已完成一个默认关闭的 Firefox HEVC 4K→1080p 硬件缩放候选编译及公开补丁重放，候选尚未安装、尚无实板播放成绩。详见 [候选构建与启用边界](../tools/browser/FIREFOX_RESOLUTE.md) 和 [2026-11-20 构建记录](../evidence/gnome-media-20261119/firefox-panel-candidate-20261120.json)。
+
 ## 音频与编码
 
 当前 PipeWire 仅有 `Dummy Output`，内核没有 ALSA 声卡。AAC 解码和时钟推进不等于实际出声；新版验证器会单独记录 sink，并在只有虚拟设备时拒绝把会话音频标为通过。

@@ -177,7 +177,7 @@ def journal(*args):
     return p.stdout if p.returncode == 0 else ''
 
 
-def classify(samples, seconds, journal_lines, firefox_lines, info, rdd=()):
+def classify(samples, seconds, journal_lines, firefox_lines, info, rdd=(), decoded_size=None):
     window = [p for p in samples if p['mediaTime'] >= 2]
     if len(window) < 2:
         return {'status':'incomplete', 'reason':'video did not reach the measurement window'}
@@ -191,12 +191,13 @@ def classify(samples, seconds, journal_lines, firefox_lines, info, rdd=()):
     irq = b['irq'] - a['irq'] if a['irq'] is not None and b['irq'] is not None else None
     codec = {'h264':1, 'hevc':2}.get(info['codec_name'], 0)
     width, height = info['width'], info['height']
+    decoded_width, decoded_height = decoded_size or (width, height)
     target_fps = rational(info['avg_frame_rate'])
     opens = re.findall(r'CEDAR_BROKER: open session=(\d+) codec=(\d+) (\d+)x(\d+)', journal_lines)
     markers = re.findall(r'CEDAR_BROKER: hardware frames=(\d+) session=(\d+) visible=(\d+)x(\d+)', journal_lines)
     matched = [s for s,c,w,h in opens if (int(c),int(w),int(h)) == (codec,width,height)]
     hw_marker = len(opens) == len(matched) == 1 and any(
-        s in matched and (int(w),int(h)) == (width,height) for _,s,w,h in markers)
+        s in matched and (int(w),int(h)) == (decoded_width,decoded_height) for _,s,w,h in markers)
     rate = (total - dropped)/wall if wall > 0 else 0
     checks = {'window_completed': b['phase']=='end' and b['reason'] in ('window','eos')
               and wall >= seconds-1 and media >= seconds-1,
@@ -212,7 +213,13 @@ def classify(samples, seconds, journal_lines, firefox_lines, info, rdd=()):
                   r'T736_CEDAR_CLIENT: preconnected .* rdd=1', firefox_lines))
               and 'T736_CEDAR_PROXY: bounded_batch' in firefox_lines,
               'no_fallback_logged': 'native fallback=' not in firefox_lines}
+    if decoded_size:
+        checks['explicit_hardware_scale'] = (
+            'T736_CEDAR_PROXY: browser_panel input=3840x2160 output=1920x1080 hardware_scale=1' in firefox_lines
+            and 'image_allocator output=1920x1080' in firefox_lines)
     return {'status':'passed' if all(checks.values()) else 'not_verified', 'checks':checks,
+            'decoded_size':[decoded_width,decoded_height],
+            'output_mode':'hardware-scaled-to-1080p' if decoded_size else 'original-size',
             'wall_seconds':wall, 'media_seconds':media, 'total_delta':total,
             'dropped_delta':dropped, 'presented_delta':presented, 'browser_retained_fps':rate,
             'irq_delta':irq, 'broker_sessions':opens, 'broker_frame_markers':markers}
@@ -264,6 +271,9 @@ def collect(args, record):
     if info['codec_name'] not in ('h264','hevc') or rational(info['avg_frame_rate']) <= 0:
         raise ValueError(f'unsupported fixture {info}')
     record['fixture'] = info
+    if args.decoded_size and (info['codec_name'],info['width'],info['height'],args.decoded_size) != ('hevc',3840,2160,[1920,1080]):
+        raise ValueError('Only the explicit HEVC 3840x2160 to 1920x1080 candidate is supported')
+    record['requested_decoded_size'] = args.decoded_size
     record['launcher'] = str(args.launcher)
     record['launcher_sha256'] = hashlib.sha256(args.launcher.read_bytes()).hexdigest()
     record['kernel'] = os.uname().release
@@ -398,7 +408,7 @@ def collect(args, record):
         raw = journal('--after-cursor', cursor[1], '-u', args.unit) if cursor else ''
         record['broker_log'] = [s for s in raw.splitlines() if 'CEDAR_BROKER:' in s][-80:]
         record['result'] = classify(record['samples'], args.seconds, raw, '\n'.join(lines), info,
-                                    record.get('rdd', []))
+                                    record.get('rdd', []), args.decoded_size)
 
 
 def main():
@@ -411,6 +421,8 @@ def main():
                     help='Read internal drop counters via loopback Marionette in the isolated test profile')
     ap.add_argument('--rdd-cpus',type=int,nargs='+',help='Diagnostic affinity for this temporary Firefox RDD only')
     ap.add_argument('--seconds',type=int,default=20)
+    ap.add_argument('--decoded-size', nargs=2, type=int, metavar=('WIDTH','HEIGHT'),
+                    help='Explicitly validate the HEVC 4K-to-1080p candidate; never count it as original-size output')
     ap.add_argument('--warmup', type=int, default=0,
                     help='Wait on the test page before playback to separate browser startup load')
     ap.add_argument('--screen', nargs=2, type=int, metavar=('WIDTH', 'HEIGHT'),

@@ -1,0 +1,125 @@
+--- a/libavcodec/ffmpeg_cedar.c
++++ b/libavcodec/ffmpeg_cedar.c
+@@ -26,6 +26,8 @@
+ typedef struct CedarAPI {
+     int (*available)(void);
+     int (*open)(int, unsigned, unsigned);
++    int (*panel_requested)(void);
++    int (*open_panel)(int, unsigned, unsigned);
+     int (*push)(int, const uint8_t *, size_t, int64_t, int64_t);
+     int (*pull)(int, uint8_t *, size_t, struct t736_frame *, unsigned);
+     int (*pull_to)(int, size_t, struct t736_frame *, unsigned, t736_copy_picture, void *);
+@@ -52,6 +54,9 @@
+     int session, delivered, fatal_error;
+     int offset_set;
+     int64_t offset_us, drain_started, backpressure_started, first_frame_wait_started;
++    unsigned source_width, source_height;
++    int fit_panel;
++    size_t pixel_capacity;
+     AVBufferPool *pixel_pool;
+     AVBufferRef *receive_buffer;
+     unsigned generation;
+@@ -297,6 +302,7 @@
+ {
+ #define LOAD(field) *(void **)(&api->field) = dlsym(RTLD_DEFAULT, "t736_client_" #field)
+     LOAD(available); LOAD(open); LOAD(push); LOAD(pull); LOAD(pull_to);
++    LOAD(panel_requested); LOAD(open_panel);
+     LOAD(drain); LOAD(flush); LOAD(close);
+ #undef LOAD
+     return api->available && api->open && api->push && api->pull &&
+@@ -339,6 +345,11 @@
+     if (s->delivered)
+         return reason < 0 ? reason : AVERROR(EIO);
+     stop_hardware(s);
++    if (s->fit_panel) {
++        avctx->width = s->source_width;
++        avctx->height = s->source_height;
++        s->fit_panel = 0;
++    }
+     if (s->input_in_replay) {
+         av_packet_unref(s->input);
+         s->input_pending = s->input_in_replay = 0;
+@@ -498,7 +509,7 @@
+     const int use_allocator = avctx->get_buffer2 != avcodec_default_get_buffer2;
+     if (use_allocator && s->api.pull_to) {
+         CedarImageTarget target = {avctx, frame};
+-        ret = s->api.pull_to(s->session, T736_MAX_FRAME, &picture, timeout_ms,
++        ret = s->api.pull_to(s->session, s->pixel_capacity, &picture, timeout_ms,
+                              copy_to_image, &target);
+         if (ret < 0)
+             av_frame_unref(frame);
+@@ -507,7 +518,7 @@
+             s->receive_buffer = av_buffer_pool_get(s->pixel_pool);
+         if (!s->receive_buffer)
+             return AVERROR(ENOMEM);
+-        ret = s->api.pull(s->session, s->receive_buffer->data, T736_MAX_FRAME,
++        ret = s->api.pull(s->session, s->receive_buffer->data, s->pixel_capacity,
+                           &picture, timeout_ms);
+         if (ret == 1 && use_allocator) {
+             CedarImageTarget target = {avctx, frame};
+@@ -524,7 +535,8 @@
+         picture.height > T736_MAX_HEIGHT || (picture.width | picture.height) & 1)
+         return AVERROR(EPROTO);
+     expected = (size_t)picture.width * picture.height * 3 / 2;
+-    if (picture.bytes_written != expected)
++    if (picture.bytes_written != expected || expected > s->pixel_capacity ||
++        (s->fit_panel && (picture.width != 1920 || picture.height != 1080)))
+         return AVERROR(EPROTO);
+     if (picture.pts_us != INT64_MIN &&
+         (picture.pts_us < 0 || picture.pts_us > INT64_MAX / 1000 ||
+@@ -532,9 +544,16 @@
+         return AVERROR(EPROTO);
+     pts = picture.pts_us == INT64_MIN ? AV_NOPTS_VALUE :
+           av_rescale_q(picture.pts_us - s->offset_us, AV_TIME_BASE_Q, packet_timebase(avctx));
+-    ret = ff_set_dimensions(avctx, picture.width, picture.height);
+-    if (ret < 0)
+-        return ret;
++    if (s->fit_panel) {
++        /* Keep original coded size; the image handed to Firefox is scaled.
++         * Firefox CreateFromImage retains the track's original display size. */
++        avctx->width = picture.width;
++        avctx->height = picture.height;
++    } else {
++        ret = ff_set_dimensions(avctx, picture.width, picture.height);
++        if (ret < 0)
++            return ret;
++    }
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     frame->format = AV_PIX_FMT_YUV420P;
+     frame->width = picture.width;
+@@ -837,6 +856,8 @@
+     const AVBitStreamFilter *filter;
+     int ret;
+     log_extradata(avctx, "input", avctx->extradata, avctx->extradata_size);
++    s->source_width = avctx->width;
++    s->source_height = avctx->height;
+     s->input = av_packet_alloc();
+     s->filtered = av_packet_alloc();
+     if (!s->input || !s->filtered)
+@@ -856,14 +877,24 @@
+         return start_software(avctx, ret);
+     log_extradata(avctx, "bsf_output", s->bsf->par_out->extradata,
+                   s->bsf->par_out->extradata_size);
+-    s->pixel_pool = av_buffer_pool_init(T736_MAX_FRAME + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
++    s->fit_panel = avctx->codec_id == AV_CODEC_ID_HEVC &&
++                   avctx->width == 3840 && avctx->height == 2160 &&
++                   avctx->get_buffer2 != avcodec_default_get_buffer2 &&
++                   s->api.panel_requested && s->api.open_panel && s->api.panel_requested();
++    s->pixel_capacity = s->fit_panel ? 1920U * 1080U * 3U / 2U : T736_MAX_FRAME;
++    s->pixel_pool = av_buffer_pool_init(s->pixel_capacity + AV_INPUT_BUFFER_PADDING_SIZE, NULL);
+     if (!s->pixel_pool)
+         return start_software(avctx, AVERROR(ENOMEM));
+-    ret = s->api.open(avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
++    ret = (s->fit_panel ? s->api.open_panel : s->api.open)(avctx->codec_id == AV_CODEC_ID_H264 ? T736_CODEC_H264 : T736_CODEC_HEVC,
+                       avctx->width, avctx->height);
+     if (ret <= 0)
+         return start_software(avctx, ret < 0 ? ret : AVERROR(EPROTO));
+     s->session = ret;
++    if (s->fit_panel) {
++        avctx->width = 1920;
++        avctx->height = 1080;
++        fprintf(stderr, "T736_CEDAR_PROXY: browser_panel input=3840x2160 output=1920x1080 hardware_scale=1\n");
++    }
+     avctx->pix_fmt = avctx->sw_pix_fmt = AV_PIX_FMT_YUV420P;
+     av_log(avctx, AV_LOG_INFO, "T736_CEDAR_PROXY: broker session=%d codec=%s %dx%d ordinary-I420\n",
+            s->session, avctx->codec->name, avctx->width, avctx->height);

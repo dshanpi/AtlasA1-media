@@ -25,6 +25,33 @@ The private FFmpeg build uses LGPL-2.1-or-later components. The Cedar client use
 
 A clean rebuild with the release build path produced a byte-identical `.deb` with SHA-256 `0e360b0c309f61a6b6562387026ea8bfe3fb7f3248672972dbc7c9781c1c29cb`. FFmpeg includes its absolute source directory in assertion strings, so a different output directory changes the package digest.
 
+## Optional GNOME 1080p-panel candidate (not hardware-validated)
+
+`ATLAS_FIREFOX_PANEL_CANDIDATE=1 bash tools/browser/build_firefox_resolute_ffmpeg.sh INPUT NEW_OUTPUT`
+adds an experimental HEVC 3840×2160 to 1920×1080 Cedar output path, with package
+version `8.0.1-1~resolute1+panel1`. The default build does not apply these patches.
+Even in this candidate, scaling is disabled unless the RDD inherits
+`T736_CEDAR_BROWSER_PANEL=1920x1080`. This is an explicit choice for a 1080p
+display, not a full-resolution 4K mode or automatic monitor detection.
+
+The authenticated RDD requests the existing broker's panel flag; no hardware
+handle enters Firefox, and socket authentication, read-only SHM and the RDD
+sandbox are preserved. The image allocator receives 1920×1080 buffers while
+the original coded dimensions remain available. Firefox's source uses the
+track display dimensions in `CreateFromImage`; runtime dimensions and pixels
+still need verification. Software replay before the first delivered frame
+restores the source dimensions. H.264 and other dimensions retain their existing
+path. This candidate shares the native player's scaled HEVC context; it does
+not fix retained DMA allocations or increase the context limit.
+
+On 2026-11-20 the candidate compiled for ARM64, and applying the public patches
+to the DR1 source reproduced the compiled sources byte for byte. The existing
+incremental build tree was restored. Board transfer was interrupted when both
+SSH and the MCP service disconnected, before installation or playback. Do not
+claim frame rate, pixel correctness, seeking, or fallback acceptance yet.
+Validation must explicitly pass `--decoded-size 1920 1080`; such a result is
+labelled `hardware-scaled-to-1080p`, separately from original-size 4K.
+
 ## Playback measurement
 
 The current launcher uses Firefox's global refresh clock on the AtlasA1 Wayland DDK. On GNOME/v42 at 1080p60, two controlled runs retained 59.93 and 59.41 fps, with 1/1209 and 12/1227 frames dropped; restoring the per-window Wayland clock retained 53.37 fps with 133/1203 drops. A fresh profile playing immediately after browser launch retained 53.04 fps. These are browser counters, not physical HDMI scanout acceptance, and zero-drop acceptance has not passed. [GNOME results and remaining limits](../../docs/GNOME_MEDIA.md)

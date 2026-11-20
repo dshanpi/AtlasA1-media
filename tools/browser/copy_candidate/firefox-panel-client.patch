@@ -1,0 +1,53 @@
+--- a/shm_v2/cedar_client.c
++++ b/shm_v2/cedar_client.c
+@@ -18,7 +18,7 @@
+ static int connection = -1;
+ static uint32_t serial_number;
+ static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-static int trace;
++static int trace, browser_panel;
+ static unsigned trace_push, trace_pull;
+ static const uint8_t *shared_pixels;
+ static pid_t connected_pid;
+@@ -121,6 +121,8 @@
+     } else if (!rdd && (!test || strcmp(test, "1"))) {
+         return;
+     }
++    const char *panel = getenv("T736_CEDAR_BROWSER_PANEL");
++    browser_panel = rdd && panel && !strcmp(panel, "1920x1080");
+     struct sockaddr_un address = { .sun_family = AF_UNIX };
+     struct timeval deadline = { .tv_sec = 15 };
+     struct passwd account, *resolved = NULL;
+@@ -206,7 +208,9 @@
+     if (!error) error = reply.status;
+     if (!error && op == T736_OPEN) {
+         const struct t736_open *args = prefix;
+-        active_session = reply.session; active_width = args->width; active_height = args->height;
++        active_session = reply.session;
++        active_width = args->reserved ? args->width / 2 : args->width;
++        active_height = args->reserved ? args->height / 2 : args->height;
+         error = (int)reply.session;
+     }
+     if (!error && op == T736_CLOSE && (uint32_t)session == active_session)
+@@ -221,6 +225,21 @@
+         !width || !height || width > T736_MAX_WIDTH || height > T736_MAX_HEIGHT ||
+         ((width | height) & 1)) return -EINVAL;
+     struct t736_open args = { (uint32_t)codec, width, height, 0 };
++    return simple(T736_OPEN, 0, &args, sizeof(args), NULL, 0);
++}
++
++/* Protocol-v2 flag 1 is provided by the existing panel-aware broker.
++ * The candidate is opt-in for an authenticated RDD, never a sandbox bypass. */
++int t736_client_panel_requested(void)
++{
++    return browser_panel && current_process();
++}
++
++int t736_client_open_panel(int codec, unsigned width, unsigned height)
++{
++    if (!t736_client_panel_requested() || codec != T736_CODEC_HEVC ||
++        width != 3840 || height != 2160) return -EINVAL;
++    struct t736_open args = { (uint32_t)codec, width, height, 1U };
+     return simple(T736_OPEN, 0, &args, sizeof(args), NULL, 0);
+ }
+ 

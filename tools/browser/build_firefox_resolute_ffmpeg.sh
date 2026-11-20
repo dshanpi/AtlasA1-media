@@ -29,6 +29,14 @@ test "$(head -n1 "$source_tree/debian/changelog" | cut -d' ' -f2)" = '(7:8.0.1-3
 cp "$here/ffmpeg_cedar.c" "$here/cedar_client.h" "$work/cedar/"
 cp "$here/shm_v2/"{cedar_client.c,cedar_client.h,cedar_protocol.h,cedar_shm.h} "$work/cedar/shm_v2/"
 patch --fuzz=0 -d "$work/cedar" -p3 < "$here/copy_candidate/firefox-dr1-output.patch"
+case ${ATLAS_FIREFOX_PANEL_CANDIDATE:-0} in
+    0) ;;
+    1)
+        patch --fuzz=0 -d "$work/cedar" -p2 < "$here/copy_candidate/firefox-panel-output.patch"
+        patch --fuzz=0 -d "$work/cedar" -p1 < "$here/copy_candidate/firefox-panel-client.patch"
+        ;;
+    *) echo 'ATLAS_FIREFOX_PANEL_CANDIDATE must be 0 or 1' >&2; exit 2 ;;
+esac
 aarch64-linux-gnu-gcc -O2 -fPIC -shared -pthread -Wl,-z,relro,-z,now \
     -Wl,-soname,libt736_cedar_client.so -o "$work/lib/libt736_cedar_client.so" "$work/cedar/shm_v2/cedar_client.c"
 cd "$work/src"
@@ -94,6 +102,9 @@ Description: Cedar decoding for Firefox on the AtlasA1 Ubuntu 26.04 image
  An additional Firefox profile and a private libavcodec62 use the board's
  Cedar service for supported media in the sandboxed RDD process.
 EOF
+if [[ ${ATLAS_FIREFOX_PANEL_CANDIDATE:-0} == 1 ]]; then
+    sed -i 's/^Version: .*/Version: 8.0.1-1~resolute1+panel1/' "$package/DEBIAN/control"
+fi
 cat > "$package/usr/share/applications/atlasa1-firefox.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application

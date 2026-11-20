@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "date": "2026-11-20",
+  "target": "GNOME Wayland on AtlasA1",
+  "status": "candidate_built_board_test_blocked",
+  "candidate": "Explicit HEVC 3840x2160 to 1920x1080 OMX output in Firefox DR1 allocator",
+  "default_enabled": false,
+  "runtime_opt_in": "T736_CEDAR_BROWSER_PANEL=1920x1080",
+  "build_opt_in": "ATLAS_FIREFOX_PANEL_CANDIDATE=1",
+  "build_type": "Incremental ARM64 FFmpeg8 replay2, production source/build restored afterward",
+  "public_patch_replay": "After normalizing the Windows input bundle to Git LF, DR1 plus candidate patches apply with zero fuzz and reproduce compiled source bytes",
+  "package_builder": "Shell syntax checked; full clean package build not executed for this candidate",
+  "board_test": {
+    "initial_kernel": "6.18.63-t736-media-v30",
+    "trial_kernel": "6.18.63-t736-gnome-v42",
+    "gnome_ready_observed": true,
+    "gnome_shell_pid": 4163,
+    "candidate_installed": false,
+    "playback_started": false,
+    "reason": "SFTP dropped during codec upload; SSH reverse tunnel then disappeared and local MCP 127.0.0.1:8771 stopped responding. Do not use partially uploaded codec.",
+    "current_board_state": "Unknown after connection loss",
+    "default_boot_changed": false
+  },
+  "validation_boundaries": [
+    "not original-size 4K",
+    "no measured panel-candidate fps",
+    "no pixel comparison",
+    "no seeking/format-switch/fallback acceptance"
+  ],
+  "binaries": {
+    "libavcodec.so.62": {
+      "size": 12853856,
+      "sha256": "af127604807691def8afe038e6ef5da93bd1f682f02a912af919629cf59deeda"
+    },
+    "libt736_cedar_client.so": {
+      "size": 72416,
+      "sha256": "499504ea4e63f73ba06c41315abba0526237e2e4b43ac940cb02ee6c888d5eec"
+    }
+  }
+}

@@ -112,8 +112,8 @@
       "path": "docs/GNOME_MEDIA.md",
       "kind": "source",
       "source": "mainline/docs/GNOME_MEDIA.md",
-      "size": 19913,
-      "sha256": "9635a8f2de24770b5cb76316f7f58ff2eba05c5444e55c2bae6a1eb90c8b9a52"
+      "size": 20521,
+      "sha256": "0c51f10094066ef2a72914a70fbd72f4d5f8bf9b4fbf50ac568f5a53aced373b"
     },
     {
       "path": "docs/GNOME_WAYLAND.md",
@@ -317,6 +317,13 @@
       "source": "mainline/evidence/gnome-media-20261119/firefox-1080-wayland.json",
       "size": 26335,
       "sha256": "430bcb2fda50bd3cd561d0246d6e08f1d54cdd6757d7ca1f0b8a4d8d0321dfba"
+    },
+    {
+      "path": "evidence/gnome-media-20261119/firefox-panel-candidate-20261120.json",
+      "kind": "source",
+      "source": "mainline/evidence/gnome-media-20261119/firefox-panel-candidate-20261120.json",
+      "size": 1723,
+      "sha256": "e2f760d483bfa7805d3684588e327dff0e9ab3735c2db4cdb04df9a71431d885"
     },
     {
       "path": "evidence/gnome-media-20261119/firefox160-timing-source-manifest.json",
@@ -1414,8 +1421,8 @@
       "path": "tools/browser/FIREFOX_RESOLUTE.md",
       "kind": "source",
       "source": "mainline/tools/browser/FIREFOX_RESOLUTE.md",
-      "size": 4823,
-      "sha256": "b60ff1ed86a37d8e9efaa6bb5d2f149f1de84cf4c6955c5c361198c52cb6b8ee"
+      "size": 6591,
+      "sha256": "97ff5e014d8ba850f1559f43423f182629d366340ec3e1bfe49a332852bc79f7"
     },
     {
       "path": "tools/browser/README.md",
@@ -1435,8 +1442,8 @@
       "path": "tools/browser/build_firefox_resolute_ffmpeg.sh",
       "kind": "source",
       "source": "mainline/tools/browser/build_firefox_resolute_ffmpeg.sh",
-      "size": 5211,
-      "sha256": "b971bdd6e877fc9fa826905d2e311ed562c3cfa6faec779a6669f2b458a41c0e"
+      "size": 5702,
+      "sha256": "229b52e335bd89cc0962e7e9013bedd79cb724e0b20f45a18ffcf49c7268fe7b"
     },
     {
       "path": "tools/browser/cedar-service",
@@ -1521,6 +1528,20 @@
       "source": "mainline/tools/browser/copy_candidate/firefox-dr1-output.patch",
       "size": 11619,
       "sha256": "4feeddfe26a5981dd3be609a86b193ce730795a24641020faa7b2562f003b415"
+    },
+    {
+      "path": "tools/browser/copy_candidate/firefox-panel-client.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/copy_candidate/firefox-panel-client.patch",
+      "size": 2169,
+      "sha256": "dbc0316dbc6fe2b57c7be0f227504f3c12c8b1c14a408c4e199b2dfc19e59d24"
+    },
+    {
+      "path": "tools/browser/copy_candidate/firefox-panel-output.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/copy_candidate/firefox-panel-output.patch",
+      "size": 5936,
+      "sha256": "f5b3e77a72828a2a80ddc9211d97951af70bd9ce69733a9949d4476cb0a2d950"
     },
     {
       "path": "tools/browser/copy_candidate/firefox-stage-timing.patch",
@@ -2205,8 +2226,8 @@
       "path": "tools/validation/firefox_headless_playback.py",
       "kind": "source",
       "source": "mainline/tools/validation/firefox_headless_playback.py",
-      "size": 22789,
-      "sha256": "aab42dd7a5b576692c233f8130467ffe37fec8af3242551a5d652b209cf449d9"
+      "size": 23800,
+      "sha256": "3696e583f68aec855034ee7da23e5572735c2e338ad92b1ce4665ed24c0b7bf8"
     },
     {
       "path": "tools/validation/firefox_renderer_probe.py",
