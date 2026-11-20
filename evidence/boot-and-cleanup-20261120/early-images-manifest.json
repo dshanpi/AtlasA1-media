@@ -1,0 +1,235 @@
+{
+  "remote_root": "/home/ubuntu/t736-mainline/output",
+  "files": [
+    {
+      "name": "rootfs-armbian-raw-v10.ext4",
+      "size": 7802716160,
+      "allocated": 664915968,
+      "mtime_ns": 1794568410917139518,
+      "sha256": "b247ef1d51451c8c6dfaa9bdeee5c80312e6ec28165d5e9a462023f01ac1d61e"
+    },
+    {
+      "name": "rootfs-armbian-raw-v11.ext4",
+      "size": 7802716160,
+      "allocated": 664915968,
+      "mtime_ns": 1794569531827961609,
+      "sha256": "41c84fc742914ed1b19b12601b740a986156eca1f0675678e0267564a8483af4"
+    },
+    {
+      "name": "rootfs-armbian-raw-v6.ext4",
+      "size": 7802716160,
+      "allocated": 639578112,
+      "mtime_ns": 1794557837055831097,
+      "sha256": "f883e516b60f0848954b9ba5b3bbd316411237bba577bb03554b05bf8d331712"
+    },
+    {
+      "name": "rootfs-armbian-raw-v7.ext4",
+      "size": 7802716160,
+      "allocated": 664899584,
+      "mtime_ns": 1794564924922273286,
+      "sha256": "c77d31cb45ea279083e350360b1af4a6428bde63e19f4a498a30d600584a7622"
+    },
+    {
+      "name": "rootfs-armbian-raw-v8.ext4",
+      "size": 7802716160,
+      "allocated": 664899584,
+      "mtime_ns": 1794566127531516746,
+      "sha256": "a59c9997e81408970b66e90495d17a20b410a29fbcbd7f0a02b76fe101aca9ee"
+    },
+    {
+      "name": "rootfs-armbian-raw-v9.ext4",
+      "size": 7802716160,
+      "allocated": 664899584,
+      "mtime_ns": 1794566741836217201,
+      "sha256": "2a65ff543a9f4d6ad49689088939ab1e3aea5d08a4e9a8b2e25318e2da6f1302"
+    },
+    {
+      "name": "rootfs-armbian-source-v1.ext4",
+      "size": 7802716160,
+      "allocated": 597778432,
+      "mtime_ns": 1794647358464254763,
+      "sha256": "2a2db9d822ec89c7bc11d7b288e24e0e4ffdc0621de34926856c7909240c402e"
+    },
+    {
+      "name": "rootfs-armbian-source-v10.ext4",
+      "size": 7802716160,
+      "allocated": 3247882240,
+      "mtime_ns": 1794827779531182072,
+      "sha256": "935a58e933ec831c470a5ef20c89dd5f0f675f417d4fa43bbe0a831e91414469"
+    },
+    {
+      "name": "rootfs-armbian-source-v5.ext4",
+      "size": 7802716160,
+      "allocated": 667340800,
+      "mtime_ns": 1794653812962751705,
+      "sha256": "937fd211c70aeb529d64bbb50a9d6b83f91736c80a5cd608d541c1f02ad6a21e"
+    },
+    {
+      "name": "rootfs-armbian-source-v6.ext4",
+      "size": 7802716160,
+      "allocated": 671019008,
+      "mtime_ns": 1794655284417781531,
+      "sha256": "b68942b741988cef35a8bece83a3c3209498ba111aec6e7bf58056c6ef5e187f"
+    },
+    {
+      "name": "rootfs-armbian-source-v7.ext4",
+      "size": 7802716160,
+      "allocated": 3156819968,
+      "mtime_ns": 1794801366979818667,
+      "sha256": "a157f764cdd7a9e09be36579e8f93217ac10f02a2111e67e052fc43d21a79873"
+    },
+    {
+      "name": "rootfs-armbian-source-v8.ext4",
+      "size": 7802716160,
+      "allocated": 3187433472,
+      "mtime_ns": 1794811852334374223,
+      "sha256": "862fb1cd2ac9aaf04afc0c22d85950a95a79d24b845fbff512a1e6c71b642a83"
+    },
+    {
+      "name": "rootfs-armbian-source-v9.ext4",
+      "size": 7802716160,
+      "allocated": 3191218176,
+      "mtime_ns": 1794819097952844565,
+      "sha256": "d3c56757a3ab03aff75c6796e92c4acb64396f5d144fc659466aed6c4f2b2d9a"
+    },
+    {
+      "name": "rootfs-armbian-t736-v2.ext4",
+      "size": 7802716160,
+      "allocated": 599105536,
+      "mtime_ns": 1794511683200449775,
+      "sha256": "c5b0a42f409af3cc0463c3668b32f0ea660efe775df10f57f0329c74e5004007"
+    },
+    {
+      "name": "rootfs-armbian-t736-v3.ext4",
+      "size": 7802716160,
+      "allocated": 609112064,
+      "mtime_ns": 1794539555787903359,
+      "sha256": "a9672570505a653a130e54355cafb99648c37ca335a277dd558acaa13f4b2421"
+    },
+    {
+      "name": "rootfs-armbian-t736.ext4",
+      "size": 7802716160,
+      "allocated": 632885248,
+      "mtime_ns": 1794511387288076435,
+      "sha256": "c7cf8cf8fe909a48fd23684bf73282af3f322af60b32b7313078c9c7b50a81e2"
+    },
+    {
+      "name": "t736-armbian-source-v1.raw.img",
+      "size": 8589934592,
+      "allocated": 705196032,
+      "mtime_ns": 1794647389916579226,
+      "sha256": "fc6044e2b25a74c7405c66dfd6464885fb26af0b329959c7f17a22a0c017f079"
+    },
+    {
+      "name": "t736-armbian-source-v10.raw.img",
+      "size": 8589934592,
+      "allocated": 3634143232,
+      "mtime_ns": 1794827922397429135,
+      "sha256": "5af964ac3f24b747151bc4f3f292dcae943e6be28bc2d4cabe17dc876547cecf"
+    },
+    {
+      "name": "t736-armbian-source-v2.raw.img",
+      "size": 8589934592,
+      "allocated": 705196032,
+      "mtime_ns": 1794648291686122665,
+      "sha256": "64fec54b74b6cc1491eac7e6ebf7fcd1daed54ccc2fc185dc5e57c70583796d3"
+    },
+    {
+      "name": "t736-armbian-source-v3.raw.img",
+      "size": 8589934592,
+      "allocated": 705196032,
+      "mtime_ns": 1794650747527352568,
+      "sha256": "911951b5cbcbc667a68506bc0bc1bdd4929e3edcafff136af3d42cccd3b721a6"
+    },
+    {
+      "name": "t736-armbian-source-v4.raw.img",
+      "size": 8589934592,
+      "allocated": 705196032,
+      "mtime_ns": 1794652807002352572,
+      "sha256": "5a12219a0dc8f39b3d06d5eaa19b2324da33e308f23fe9f028e64a1a33ce69dc"
+    },
+    {
+      "name": "t736-armbian-source-v5.raw.img",
+      "size": 8589934592,
+      "allocated": 782004224,
+      "mtime_ns": 1794653843265188902,
+      "sha256": "9170068457e68fbeb58e6243735799cd4887e2e3baa4eea3ada43671c782c561"
+    },
+    {
+      "name": "t736-armbian-source-v6.raw.img",
+      "size": 8589934592,
+      "allocated": 798781440,
+      "mtime_ns": 1794655314649203025,
+      "sha256": "5e36cd917e6c49c51e5946faecd838394dce0161dd0926c095b848236729d377"
+    },
+    {
+      "name": "t736-armbian-source-v7.raw.img",
+      "size": 8589934592,
+      "allocated": 3491524608,
+      "mtime_ns": 1794801440751905389,
+      "sha256": "3fae1e69f666cb84b1559f2639a123c941d1bcaf981c292c6c6899a117598eb7"
+    },
+    {
+      "name": "t736-armbian-source-v8.raw.img",
+      "size": 8589934592,
+      "allocated": 3575410688,
+      "mtime_ns": 1794811900201402141,
+      "sha256": "6c32027b4137783316467824d371e8a88fca1f55661170b64d70f35018921bb9"
+    },
+    {
+      "name": "t736-armbian-source-v9.raw.img",
+      "size": 8589934592,
+      "allocated": 3575410688,
+      "mtime_ns": 1794819165129370663,
+      "sha256": "831e8ea5679d3adb6f3616027114ddaa4cfb83c0032c24fb847ad81a94b73f0e"
+    },
+    {
+      "name": "t736-armbian-v10.raw.img",
+      "size": 8589934592,
+      "allocated": 733839360,
+      "mtime_ns": 1794568436145715009,
+      "sha256": "0f0b617c47e7280857260ae94dbf69cec725b7faebdf9251e86133658c17f354"
+    },
+    {
+      "name": "t736-armbian-v11.raw.img",
+      "size": 8589934592,
+      "allocated": 733839360,
+      "mtime_ns": 1794569557236557574,
+      "sha256": "341685b90e944cc82861f4f89693110ee491a34992e4808c74b6ae1a22d80b6e"
+    },
+    {
+      "name": "t736-armbian-v6.raw.img",
+      "size": 8589934592,
+      "allocated": 708673536,
+      "mtime_ns": 1794562347270071495,
+      "sha256": "d0d099b5dbeb57f455e1934828fafd623fcbd32e310f60394940ca57db483756"
+    },
+    {
+      "name": "t736-armbian-v7.raw.img",
+      "size": 8589934592,
+      "allocated": 733839360,
+      "mtime_ns": 1794564972332517184,
+      "sha256": "8c1f0990b3c2ecdb54d044dc38d86376b1ab48a7462c13ec1d061f835d696e33"
+    },
+    {
+      "name": "t736-armbian-v8.raw.img",
+      "size": 8589934592,
+      "allocated": 733839360,
+      "mtime_ns": 1794566171733969240,
+      "sha256": "f021201beb4818eaf401327fa7fb757740376d612c048bef830a0a5334660202"
+    },
+    {
+      "name": "t736-armbian-v9.raw.img",
+      "size": 8589934592,
+      "allocated": 733839360,
+      "mtime_ns": 1794566767290851333,
+      "sha256": "12c8b6e8c01828bf4a0bd73abd629401adbfc0f712eb3f431b9d9f1cff7dc998"
+    }
+  ],
+  "archive": "local-offline-backup/t736-early-images-v1-v11.tar.gz",
+  "archive_sha256": "9b324fa5a5c3e210d245e526bf93c8e77a585459ac74a738f8432b9ac2e2ea42",
+  "archive_size": 18798649505,
+  "all_file_contents_verified": true,
+  "remote_files_deleted": true,
+  "recovery": "Extract the verified sparse tar archive with GNU tar --sparse into the original output directory if needed."
+}

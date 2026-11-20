@@ -1,0 +1,6 @@
+2.89 helper-enter
+2.90 daemon-ready
+4.38 splash-ready
+4.39 local-premount
+11.10 helper-enter
+11.10 already-running

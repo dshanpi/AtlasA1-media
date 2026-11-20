@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Atlas A1
+Description=Atlas A1 Armbian boot screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/atlasa1
+ScriptFile=/usr/share/plymouth/themes/atlasa1/atlasa1.script

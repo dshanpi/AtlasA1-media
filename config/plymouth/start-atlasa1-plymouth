@@ -1,0 +1,24 @@
+#!/bin/sh
+# Called from initramfs or systemd. Keep UART logs and honor rescue/disable modes.
+set -eu
+trace() {
+    if [ -d /run/initramfs ]; then
+        read -r uptime unused < /proc/uptime
+        printf '%s %s\n' "$uptime" "$1" >> /run/initramfs/atlasa1-plymouth-timing
+    fi
+}
+test -e /etc/plymouth/atlasa1-enabled || exit 0
+for arg in $(cat /proc/cmdline); do
+    case "$arg" in
+        nosplash*|plymouth.enable=0|single|rescue|emergency|systemd.unit=rescue.target|systemd.unit=emergency.target)
+            exit 0 ;;
+    esac
+done
+trace helper-enter
+/usr/bin/plymouth --ping 2>/dev/null && { trace already-running; exit 0; }
+mkdir -p /run/plymouth
+/usr/sbin/plymouthd --mode=boot --ignore-serial-consoles --graphical-boot \
+    --pid-file=/run/plymouth/pid --attach-to-session
+trace daemon-ready
+/usr/bin/plymouth show-splash
+trace splash-ready

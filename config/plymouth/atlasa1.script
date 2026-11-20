@@ -1,0 +1,63 @@
+# Text and vector-like primitives: no binary artwork or extra font dependency.
+Window.SetBackgroundTopColor(0.025, 0.035, 0.055);
+Window.SetBackgroundBottomColor(0.025, 0.035, 0.055);
+
+title.image = Image.Text("ATLAS A1", 0.94, 0.96, 0.98, 1, "Ubuntu Bold 44");
+title.sprite = Sprite(title.image);
+subtitle.image = Image.Text("Armbian  /  Ubuntu", 0.52, 0.60, 0.68, 1, "Ubuntu 15");
+subtitle.sprite = Sprite(subtitle.image);
+accent.image = Image.Text("_", 0.20, 0.75, 0.82, 1, "Ubuntu Bold 16").Scale(60, 4);
+accent.sprite = Sprite(accent.image);
+for (i = 0; i < 3; i++) {
+    dots[i].image = Image.Text("•", 0.20, 0.75, 0.82, 1, "Ubuntu 22");
+    dots[i].sprite = Sprite(dots[i].image);
+}
+message.image = Image.Text("", 0.65, 0.70, 0.76, 1, "Ubuntu 13");
+message.sprite = Sprite(message.image);
+phase = 0;
+mode = "normal";
+
+fun place_center(sprite, image, y) {
+    sprite.SetPosition(Window.GetX() + (Window.GetWidth() - image.GetWidth()) / 2,
+                       Window.GetY() + y, 10);
+}
+
+fun refresh() {
+    global.phase += 0.07;
+    local.middle = Window.GetHeight() * 0.44;
+    place_center(title.sprite, title.image, middle - title.image.GetHeight());
+    place_center(accent.sprite, accent.image, middle + 20);
+    place_center(subtitle.sprite, subtitle.image, middle + 46);
+    place_center(message.sprite, message.image, middle + 160);
+    for (i = 0; i < 3; i++) {
+        dots[i].sprite.SetPosition(Window.GetX() + Window.GetWidth()/2 - 30 + i*24,
+                                  Window.GetY() + middle + 104, 10);
+        if (mode == "normal")
+            dots[i].sprite.SetOpacity(0.25 + 0.75*(Math.Cos(phase - i*0.8)+1)/2);
+        else
+            dots[i].sprite.SetOpacity(0);
+    }
+}
+Plymouth.SetRefreshFunction(refresh);
+
+fun set_message(text) {
+    global.message.image = Image.Text(text, 0.65, 0.70, 0.76, 1, "Ubuntu 13");
+    if (message.image.GetWidth() > Window.GetWidth()*0.85) {
+        global.message.image = message.image.Scale(Window.GetWidth()*0.85,
+            message.image.GetHeight()*Window.GetWidth()*0.85/message.image.GetWidth());
+    }
+    message.sprite.SetImage(message.image);
+}
+fun display_message(text) { if (mode == "normal") set_message(text); }
+fun display_normal() { global.mode = "normal"; set_message(""); }
+fun display_question(prompt, entry) { global.mode = "question"; set_message(prompt + "  " + entry); }
+fun display_password(prompt, bullets) {
+    global.mode = "password";
+    local.mask = "";
+    for (i = 0; i < bullets; i++) mask += "•";
+    set_message(prompt + "  " + mask);
+}
+Plymouth.SetMessageFunction(display_message);
+Plymouth.SetDisplayNormalFunction(display_normal);
+Plymouth.SetDisplayQuestionFunction(display_question);
+Plymouth.SetDisplayPasswordFunction(display_password);

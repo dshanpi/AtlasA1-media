@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+case "${1:-}" in prereqs) exit 0;; esac
+. /usr/share/initramfs-tools/hook-functions
+copy_exec /usr/lib/initramfs-tools/bin/wait-for-root /usr/sbin/wait-for-root.atlasa1-original
+mkdir -p "$DESTDIR/usr/sbin"
+cp /usr/lib/atlasa1/wait-for-root "$DESTDIR/usr/sbin/wait-for-root"
+chmod 755 "$DESTDIR/usr/sbin/wait-for-root"

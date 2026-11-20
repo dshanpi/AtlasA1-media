@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+PREREQ="plymouth"
+case "${1:-}" in prereqs) echo "$PREREQ"; exit 0;; esac
+. /usr/share/initramfs-tools/hook-functions
+test -e /etc/plymouth/atlasa1-enabled || exit 0
+copy_exec /usr/lib/atlasa1/start-plymouth
+mkdir -p "$DESTDIR/etc/plymouth"
+cp /etc/plymouth/atlasa1-enabled "$DESTDIR/etc/plymouth/"

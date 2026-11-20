@@ -1,0 +1,46 @@
+--- a/cedar_client.c
++++ b/cedar_client.c
+@@ -101,6 +101,27 @@
+            executable.st_uid == 0 && !(executable.st_mode & (S_IWGRP | S_IWOTH));
+ }
+ 
++static int is_chromium_gpu(int argc, char **argv)
++{
++    char path[PATH_MAX];
++    struct stat executable;
++    int gpu = 0;
++    if (!getuid() || getuid() != geteuid()) return 0;
++    for (int i = 1; i < argc; ++i)
++        if (!strncmp(argv[i], "--type=", 7)) {
++            if (strcmp(argv[i], "--type=gpu-process") || gpu) return 0;
++            gpu = 1;
++        }
++    if (!gpu) return 0;
++    ssize_t length = readlink("/proc/self/exe", path, sizeof(path) - 1);
++    if (length <= 0 || length >= (ssize_t)sizeof(path) - 1) return 0;
++    path[length] = '\0';
++    if (strcmp(path, "/usr/lib/chromium/chromium") &&
++        strcmp(path, "/opt/atlasa1-chromium/chrome")) return 0;
++    return !stat("/proc/self/exe", &executable) && S_ISREG(executable.st_mode) &&
++           executable.st_uid == 0 && !(executable.st_mode & (S_IWGRP | S_IWOTH));
++}
++
+ /* glibc invokes init-array functions with the original process arguments.
+  * Firefox's forkserver must be disabled by the isolated launcher, so RDD has
+  * its own exec and constructor. Browser/content/utility processes never connect.
+@@ -112,11 +133,14 @@
+     const char *enabled = getenv("T736_CEDAR_ENABLE");
+     const char *test = getenv("T736_CEDAR_TEST_CLIENT");
+     const char *native = getenv("T736_CEDAR_NATIVE_PLAYER");
++    const char *chromium = getenv("T736_CEDAR_CHROMIUM");
+     const char *trace_env = getenv("T736_CEDAR_TRACE");
+     trace = trace_env && !strcmp(trace_env, "1");
+     int rdd = argc > 1 && !strcmp(argv[argc - 1], "rdd");
+     if (!enabled || strcmp(enabled, "1")) return;
+-    if (native && !strcmp(native, "1")) {
++    if (chromium && !strcmp(chromium, "1")) {
++        if (!is_chromium_gpu(argc, argv)) return;
++    } else if (native && !strcmp(native, "1")) {
+         if (!is_native_player()) return;
+     } else if (!rdd && (!test || strcmp(test, "1"))) {
+         return;

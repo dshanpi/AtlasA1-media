@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-20",
+  "kernel": "6.18.63-t736-gnome-v45",
+  "distribution": "Ubuntu 26.04",
+  "initramfs_tools_bin": "0.151ubuntu1",
+  "symptom": "PARTUUID root device appears during udev monitoring but wait-for-root times out",
+  "source_reference": "https://git.launchpad.net/ubuntu/+source/initramfs-tools/plain/wait-for-root.c",
+  "upstream_source_observation": "main maps PARTUUID to a symlink for stat; matching_device lacks PARTUUID handling for subsequent events",
+  "before": {
+    "kernel_seconds": 35.047,
+    "userspace_seconds": 16.263,
+    "total_seconds": 51.311,
+    "wait_start_seconds": 4.51,
+    "wait_end_seconds": 34.51,
+    "wait_exit_code": 1
+  },
+  "fixed_cold_boots": [
+    {
+      "kernel_seconds": 7.671,
+      "userspace_seconds": 16.525,
+      "total_seconds": 24.196,
+      "root_mount_seconds": 7.465793
+    },
+    {
+      "kernel_seconds": 7.631,
+      "userspace_seconds": 16.404,
+      "total_seconds": 24.036,
+      "root_mount_seconds": 7.42773,
+      "diagnostic_hooks_removed": true,
+      "gdm_wayland_greeter": "active",
+      "cedar_socket": "active",
+      "systemd_failed_units": 0,
+      "pvr": "24.2.6603887, BVNC 36.56.104.183"
+    }
+  ],
+  "measurement_scope": "Linux kernel and initramfs entry through systemd graphical.target; excludes SPL/U-Boot, user login, and application readiness",
+  "fix": "Translate PARTUUID to /dev/disk/by-partuuid for the unmodified distribution wait-for-root helper within initramfs",
+  "preserved": [
+    "root partition identity",
+    "original timeout",
+    "fsck",
+    "HS400",
+    "Plymouth",
+    "serial console"
+  ],
+  "boot_artifacts": {
+    "Image_sha256": "beaec567afb9ecc1a5b427e2a0fc73ef391fcd742c45dd5b4240652891595f8a",
+    "initrd_sha256": "52e5b063d088be98d313cb529e6d1d4b70b119801fa052ab3cb461c3e63f83ee",
+    "dtb_sha256": "a2018f5d02947ea2995829d8333ba72cc04b1293df6b7df0542414050e8b5a6d"
+  },
+  "separate_unresolved_issue": "Foreign Tina RAM kernel reset left CPU power state incompatible with current U-Boot precondition; cold power cycle restored 1014MHz. Do not repeat that trial until warm-reset compatibility is fixed.",
+  "release_image_rebuilt": false,
+  "source_sha256": {
+    "config/initramfs/atlasa1-root-wait": "66270cd41af7ae22ecfaff86c7858ebaaffd01240d6b6b4999ce0c1139695707",
+    "config/initramfs/wait-for-root": "64126875e885dffbc7767d9e1c15cb259ef76e27c1ec08ad49528f90acb6b068"
+  }
+}

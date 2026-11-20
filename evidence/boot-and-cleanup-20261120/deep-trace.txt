@@ -1,0 +1,12 @@
+4.42 ENTER /scripts/local-premount/atlas-timing
+4.42 EXIT /scripts/local-premount/atlas-timing
+4.43 ENTER /scripts/local-premount/btrfs
+4.49 EXIT /scripts/local-premount/btrfs
+4.50 ENTER /scripts/local-premount/fixrtc
+4.50 EXIT /scripts/local-premount/fixrtc
+4.50 ENTER /scripts/local-premount/ntfs_3g
+4.50 EXIT /scripts/local-premount/ntfs_3g
+4.51 ENTER /scripts/local-premount/resume
+4.51 EXIT /scripts/local-premount/resume
+4.51 WAIT PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 30
+34.51 DONE 1 PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 30

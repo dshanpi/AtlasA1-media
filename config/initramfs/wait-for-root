@@ -1,0 +1,12 @@
+#!/bin/sh
+# Ubuntu 0.151ubuntu1 resolves an existing PARTUUID= device, but does not
+# match PARTUUID= against later udev events. Pass the equivalent stable
+# symlink so its event matcher can finish as soon as the partition appears.
+if [ "$#" -eq 2 ]; then
+    case "$1" in
+        PARTUUID=*)
+            exec /usr/sbin/wait-for-root.atlasa1-original "/dev/disk/by-partuuid/${1#PARTUUID=}" "$2"
+            ;;
+    esac
+fi
+exec /usr/sbin/wait-for-root.atlasa1-original "$@"

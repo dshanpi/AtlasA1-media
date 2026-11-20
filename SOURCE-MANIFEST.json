@@ -102,11 +102,74 @@
       "sha256": "deb9040372042c06745d8fbcd60da9b929ad70396f16bfa600e69cf30cbab40d"
     },
     {
+      "path": "config/initramfs/atlasa1-root-wait",
+      "kind": "source",
+      "source": "mainline/config/initramfs/atlasa1-root-wait",
+      "size": 337,
+      "sha256": "66270cd41af7ae22ecfaff86c7858ebaaffd01240d6b6b4999ce0c1139695707"
+    },
+    {
+      "path": "config/initramfs/wait-for-root",
+      "kind": "source",
+      "source": "mainline/config/initramfs/wait-for-root",
+      "size": 473,
+      "sha256": "64126875e885dffbc7767d9e1c15cb259ef76e27c1ec08ad49528f90acb6b068"
+    },
+    {
+      "path": "config/plymouth/50-atlasa1.conf",
+      "kind": "source",
+      "source": "mainline/config/plymouth/50-atlasa1.conf",
+      "size": 397,
+      "sha256": "8bbfd399be4dc9ad9c16f93f7778df66f115a7ea9b9d5e3b263319550a7f8744"
+    },
+    {
+      "path": "config/plymouth/atlasa1.plymouth",
+      "kind": "source",
+      "source": "mainline/config/plymouth/atlasa1.plymouth",
+      "size": 205,
+      "sha256": "25019e460941e2b152788906ace8f0495de0eab3cc24c8c4cdbe60ed56a69b40"
+    },
+    {
+      "path": "config/plymouth/atlasa1.script",
+      "kind": "source",
+      "source": "mainline/config/plymouth/atlasa1.script",
+      "size": 2754,
+      "sha256": "1e8b4f355da7db17d46821311a68986eec5725f7a3f1df6928dd2e7ea85f0a2b"
+    },
+    {
+      "path": "config/plymouth/init-premount",
+      "kind": "source",
+      "source": "mainline/config/plymouth/init-premount",
+      "size": 276,
+      "sha256": "467c30eac482f964152ec7f3cc73d2bfdc7f4340862efb19ba247dcbb5f3b307"
+    },
+    {
+      "path": "config/plymouth/initramfs-hook",
+      "kind": "source",
+      "source": "mainline/config/plymouth/initramfs-hook",
+      "size": 316,
+      "sha256": "48a162837a123130815eb4c3df6ec93db6f1f464c5cde09df1e0aac193d97a4c"
+    },
+    {
+      "path": "config/plymouth/start-atlasa1-plymouth",
+      "kind": "source",
+      "source": "mainline/config/plymouth/start-atlasa1-plymouth",
+      "size": 853,
+      "sha256": "f3fd3a81b08b4e4176ccf6c21a937ed28769f0d1aefda24b548987dca8864b3e"
+    },
+    {
       "path": "docs/BACKUP_MEDIA_V28_20261117.md",
       "kind": "source",
       "source": "mainline/docs/BACKUP_MEDIA_V28_20261117.md",
       "size": 2525,
       "sha256": "9d1e6b54a79fe65621018eea5f6aa2260c0e5330236522f793563af7faf88a56"
+    },
+    {
+      "path": "docs/BOOT_SPLASH.md",
+      "kind": "source",
+      "source": "mainline/docs/BOOT_SPLASH.md",
+      "size": 3932,
+      "sha256": "464a4d6bc9ea0c5b1556d28c07199ef3f22de59d2385afda4de97cfdcc4bb560"
     },
     {
       "path": "docs/CEDAR_BRIDGE.md",
@@ -119,8 +182,8 @@
       "path": "docs/CHROMIUM.md",
       "kind": "source",
       "source": "mainline/docs/CHROMIUM.md",
-      "size": 4749,
-      "sha256": "4d5ed291c8e05765f0c979aebd4fd09d3084415873149e2789ae6ddace241ab0"
+      "size": 5245,
+      "sha256": "47ab9473e666c9b995cca515e6bd12de66ce8f9006ac7c5950bf46712ff389f8"
     },
     {
       "path": "docs/GNOME_MEDIA.md",
@@ -233,6 +296,76 @@
       "source": "mainline/evidence/atlasa1-ubuntu26-rc1-installed-validation-20261118.json",
       "size": 18186,
       "sha256": "d90ada8c92d8e27c34cb84df810886dfd781562ec28f4fbf0e1762782678e4ed"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/boot-latency.json",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/boot-latency.json",
+      "size": 2406,
+      "sha256": "5f2af48e6ee3e83249d67c8c97162cdb279c0beb0692c25a195cd82e76cbeafe"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/deep-plymouth.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/deep-plymouth.txt",
+      "size": 115,
+      "sha256": "4244dfe3f18863b8f4e8cef5361fb6ac99934f1885098c3f8c787aa691f2bf7d"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/deep-systemd-time.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/deep-systemd-time.txt",
+      "size": 123,
+      "sha256": "9bd580d8b366ac7fa71c73cedc5a0fd0bec2427ae385326f920ef9710c4b92b6"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/deep-trace.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/deep-trace.txt",
+      "size": 548,
+      "sha256": "21be7139bba44ed97a85aa3abb0a3b80dcdb21aed0bb8001fa86903a48a1315d"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/early-images-manifest.json",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/early-images-manifest.json",
+      "size": 8034,
+      "sha256": "e7c1e6070b27a98e8ad5dc07c24e9be346df2e80505b346c5f1ed46548f85012"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/final-kernel-selected.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/final-kernel-selected.txt",
+      "size": 839,
+      "sha256": "03fc260c37e217fb30b0aa7612968cb0b41900464701eb096f2b20759699bbff"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/final-plymouth.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/final-plymouth.txt",
+      "size": 95,
+      "sha256": "5aa38dc039556231ee36f875e2425a53c9bcdd5e87019de7ae7359d73398c615"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/final-time.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/final-time.txt",
+      "size": 122,
+      "sha256": "56c16942898a331464d62b0fe0697ffe7e65594d452c9777baf147b7bb428b34"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/fixed-plymouth.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/fixed-plymouth.txt",
+      "size": 115,
+      "sha256": "7dc3750b922732fe10138a3ab15daa7fa34cec0ae7dcf4a3744efcc5869d7c96"
+    },
+    {
+      "path": "evidence/boot-and-cleanup-20261120/fixed-time.txt",
+      "kind": "source",
+      "source": "mainline/evidence/boot-and-cleanup-20261120/fixed-time.txt",
+      "size": 122,
+      "sha256": "a7f573a56dd824d85ab4c7c62e93790adc59f98fabdbc66858652dcf3119a992"
     },
     {
       "path": "evidence/cedar-direct-slot-build-20261118.json",
@@ -1831,6 +1964,41 @@
       "sha256": "df9f8915fca4e773efd5760caee71c521d7c50fba364270fb896c1e112a2ee4a"
     },
     {
+      "path": "tools/browser/chromium156/README.md",
+      "kind": "source",
+      "source": "mainline/tools/browser/chromium156/README.md",
+      "size": 1127,
+      "sha256": "14d4676fec7d0c39f70ec29ed0c647e442f2aed23dad2155ec916ef516801f96"
+    },
+    {
+      "path": "tools/browser/chromium156/apply_candidate.py",
+      "kind": "source",
+      "source": "mainline/tools/browser/chromium156/apply_candidate.py",
+      "size": 3746,
+      "sha256": "66acd430061eff17930aefd8fec6ffa7fbca886bfb200d75b3d71623341e942d"
+    },
+    {
+      "path": "tools/browser/chromium156/cedar_video_decoder.cc",
+      "kind": "source",
+      "source": "mainline/tools/browser/chromium156/cedar_video_decoder.cc",
+      "size": 9286,
+      "sha256": "f1d59eee7c89fbdbce88b9311b88e3a5efecbc876b3864dd170844d5a2d7906f"
+    },
+    {
+      "path": "tools/browser/chromium156/cedar_video_decoder.h",
+      "kind": "source",
+      "source": "mainline/tools/browser/chromium156/cedar_video_decoder.h",
+      "size": 1657,
+      "sha256": "c98ab449a53ce8039f0caaf75c277b926d9a4903f47afc41cdcffc58a998733f"
+    },
+    {
+      "path": "tools/browser/chromium156/client-preconnect.patch",
+      "kind": "source",
+      "source": "mainline/tools/browser/chromium156/client-preconnect.patch",
+      "size": 2029,
+      "sha256": "968fb5d36cfd24847ed93eaf7479e4a149b568b42900e205944ec06de0201d07"
+    },
+    {
       "path": "tools/browser/copy_candidate/backend5-planar-contiguous.patch",
       "kind": "source",
       "source": "mainline/tools/browser/copy_candidate/backend5-planar-contiguous.patch",
@@ -2431,6 +2599,13 @@
       "source": "mainline/tools/stage_atlasa1_gnome_wayland.sh",
       "size": 1476,
       "sha256": "380f295d9162629b322c2c1bece21a13ae602fb5e5cf81604037fe1c0c7a305c"
+    },
+    {
+      "path": "tools/stage_atlasa1_plymouth.sh",
+      "kind": "source",
+      "source": "mainline/tools/stage_atlasa1_plymouth.sh",
+      "size": 1516,
+      "sha256": "f0d3e7ee624912bf9565d6c48eaf6c829f897ee6822f0a7a86ce32dbde050336"
     },
     {
       "path": "tools/validation/README.md",
