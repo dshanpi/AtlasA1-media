@@ -49,8 +49,8 @@
       "path": "config/gnome-wayland/atlasa1-display-default",
       "kind": "source",
       "source": "mainline/config/gnome-wayland/atlasa1-display-default",
-      "size": 1866,
-      "sha256": "315913d144050c6f44f38b6422b084298bcca4c6c96407f483dd84a7809b3d4b"
+      "size": 3630,
+      "sha256": "0d7c7d2f12118f4269b51815ac7a413430b6e45465d21801c23ef6b673076851"
     },
     {
       "path": "config/gnome-wayland/atlasa1-display-default.desktop",

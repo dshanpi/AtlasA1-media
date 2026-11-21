@@ -3,7 +3,9 @@
 from pathlib import Path
 import os
 import sys
+import tempfile
 import time
+import xml.etree.ElementTree as ET
 
 
 def main():
@@ -31,12 +33,38 @@ def main():
                 return
             mode = min(candidates, key=lambda m: abs(m[3] - 60))
             props = {'layout-mode': GLib.Variant('u', properties.get('layout-mode', 1))}
+            # Apply temporarily without GNOME's interactive keep/revert dialog.
+            # Store this first-login default ourselves after a successful apply.
             args = GLib.Variant('(uua(iiduba(ssa{sv}))a{sv})',
-                                (serial, 2, [(0, 0, 1.0, 0, True, [(spec[0], mode[0], {})])], props))
+                                (serial, 1, [(0, 0, 1.0, 0, True, [(spec[0], mode[0], {})])], props))
             if dry_run:
                 print(args)
                 return
             call('ApplyMonitorsConfig', args)
+            document = ET.Element('monitors', version='2')
+            configuration = ET.SubElement(document, 'configuration')
+            ET.SubElement(configuration, 'layoutmode').text = 'logical' if properties.get('layout-mode', 1) == 1 else 'physical'
+            logical_monitor = ET.SubElement(configuration, 'logicalmonitor')
+            for name, value in [('x', '0'), ('y', '0'), ('scale', '1'), ('primary', 'yes')]:
+                ET.SubElement(logical_monitor, name).text = value
+            monitor = ET.SubElement(logical_monitor, 'monitor')
+            monitor_spec = ET.SubElement(monitor, 'monitorspec')
+            for name, value in zip(('connector', 'vendor', 'product', 'serial'), spec):
+                ET.SubElement(monitor_spec, name).text = value
+            monitor_mode = ET.SubElement(monitor, 'mode')
+            for name, value in [('width', '1920'), ('height', '1080'), ('rate', f'{mode[3]:.3f}')]:
+                ET.SubElement(monitor_mode, name).text = value
+            config.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile(dir=config, prefix='.atlas-monitor-', delete=False) as stream:
+                temporary = Path(stream.name)
+                stream.write(ET.tostring(document, encoding='utf-8') + b'\n')
+            try:
+                # Never overwrite a configuration saved concurrently by the user.
+                os.link(temporary, config / 'monitors.xml')
+            except FileExistsError:
+                pass
+            finally:
+                temporary.unlink()
             return
         except GLib.Error as error:
             if attempt == 11:
