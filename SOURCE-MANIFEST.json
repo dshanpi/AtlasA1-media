@@ -46,6 +46,20 @@
       "sha256": "71d91e65d626236ab8fd003c24f9e964fb92956946aeea541fa68e90677927ab"
     },
     {
+      "path": "config/gnome-wayland/atlasa1-display-default",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/atlasa1-display-default",
+      "size": 1866,
+      "sha256": "315913d144050c6f44f38b6422b084298bcca4c6c96407f483dd84a7809b3d4b"
+    },
+    {
+      "path": "config/gnome-wayland/atlasa1-display-default.desktop",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/atlasa1-display-default.desktop",
+      "size": 180,
+      "sha256": "1fac1e6f872505a88134116e25ba18275dff6f104ec5367960e994f7b8bbcf35"
+    },
+    {
       "path": "config/gnome-wayland/atlasa1-gnome-session",
       "kind": "source",
       "source": "mainline/config/gnome-wayland/atlasa1-gnome-session",
@@ -2695,8 +2709,8 @@
       "path": "tools/prepare_atlasa1_resolute_media.py",
       "kind": "source",
       "source": "mainline/tools/prepare_atlasa1_resolute_media.py",
-      "size": 7435,
-      "sha256": "4d5f1bc95a56759919949e9a9e03e530e0b56c2533c45f4a03d7a538ea7c32e0"
+      "size": 7461,
+      "sha256": "c5a85d632a60c2117675a3c9be1d4defc97a9811e30efdfc4d3e33318ce94d12"
     },
     {
       "path": "tools/prepare_atlasa1_sdl_sysroot.sh",
@@ -2723,8 +2737,8 @@
       "path": "tools/stage_atlasa1_gnome_wayland.sh",
       "kind": "source",
       "source": "mainline/tools/stage_atlasa1_gnome_wayland.sh",
-      "size": 1476,
-      "sha256": "380f295d9162629b322c2c1bece21a13ae602fb5e5cf81604037fe1c0c7a305c"
+      "size": 1822,
+      "sha256": "d05d9482f7061c32107010cc78e15fbb20e44f41bee975c7a7d6ba54259f9c18"
     },
     {
       "path": "tools/stage_atlasa1_plymouth.sh",

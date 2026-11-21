@@ -15,6 +15,9 @@ install -Dm644 "$profile/50-atlasa1-wayland.conf" "$root/etc/systemd/user/org.gn
 install -Dm755 "$profile/atlasa1-gnome-session" "$root/usr/local/bin/atlasa1-gnome-session"
 install -Dm644 "$profile/atlasa1-gnome.desktop" "$root/usr/share/wayland-sessions/atlasa1-gnome.desktop"
 install -Dm644 "$profile/90-atlasa1-pvr" "$root/etc/chromium.d/90-atlasa1-pvr"
+install -Dm755 "$profile/atlasa1-display-default" "$root/usr/local/libexec/atlasa1-display-default"
+install -Dm644 "$profile/atlasa1-display-default.desktop" "$root/etc/xdg/autostart/atlasa1-display-default.desktop"
+install -Dm644 "$profile/atlasa1-display-default.desktop" "$root/usr/share/gdm/greeter/autostart/atlasa1-display-default.desktop"
 
 # Keep the package-owned helper upgradeable behind a narrowly scoped wrapper.
 helper=/usr/libexec/mutter-x11-frames

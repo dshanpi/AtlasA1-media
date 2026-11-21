@@ -126,7 +126,7 @@ def prepare(args, root, tmp):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--kernel-release', choices=[RELEASE, '6.18.63-t736-hw-v34'], default=RELEASE)
+    parser.add_argument('--kernel-release', choices=[RELEASE, '6.18.63-t736-hw-v34', '6.18.63-t736-gnome-v47'], default=RELEASE)
     for name in ('wc-archive', 'service-build', 'omx-vdec', 'pvr-module', 'gpu-deb', 'output'):
         parser.add_argument('--'+name, required=True, type=Path)
     args = parser.parse_args()

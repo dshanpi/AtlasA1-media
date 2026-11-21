@@ -1,0 +1,49 @@
+#!/usr/bin/python3
+"""Choose 1080p60 once for a new GNOME account, using its connected monitor."""
+from pathlib import Path
+import os
+import sys
+import time
+
+
+def main():
+    from gi.repository import Gio, GLib
+    config = Path(os.environ.get('XDG_CONFIG_HOME', str(Path.home() / '.config')))
+    dry_run = sys.argv[1:] == ['--dry-run']
+    if (config / 'monitors.xml').exists() and not dry_run:
+        return
+    bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+
+    def call(method, args=None):
+        return bus.call_sync('org.gnome.Mutter.DisplayConfig',
+                             '/org/gnome/Mutter/DisplayConfig',
+                             'org.gnome.Mutter.DisplayConfig', method, args,
+                             None, Gio.DBusCallFlags.NONE, 1500, None)
+
+    for attempt in range(12):
+        try:
+            serial, monitors, logical, properties = call('GetCurrentState').unpack()
+            if len(monitors) != 1 or len(logical) != 1:
+                return
+            spec, modes, _ = monitors[0]
+            candidates = [m for m in modes if tuple(m[1:3]) == (1920, 1080) and 59 <= m[3] <= 61]
+            if not candidates:
+                return
+            mode = min(candidates, key=lambda m: abs(m[3] - 60))
+            props = {'layout-mode': GLib.Variant('u', properties.get('layout-mode', 1))}
+            args = GLib.Variant('(uua(iiduba(ssa{sv}))a{sv})',
+                                (serial, 2, [(0, 0, 1.0, 0, True, [(spec[0], mode[0], {})])], props))
+            if dry_run:
+                print(args)
+                return
+            call('ApplyMonitorsConfig', args)
+            return
+        except GLib.Error as error:
+            if attempt == 11:
+                print(f'AtlasA1 display default: {error}', file=sys.stderr)
+                return
+            time.sleep(1)
+
+
+if __name__ == '__main__':
+    main()
