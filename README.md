@@ -4,4 +4,4 @@ Cedar/OMX/PVR media integration for AtlasA1 / T736. The Ubuntu 26.04 native play
 
 Earlier board measurements cover Cedar hardware decoding and the PowerVR GLES2 renderer. [Native player](tools/player/README.md) · [Playback measurements and display status](docs/PLAYBACK.md)
 
-GNOME 50 / Wayland 候选已接通 PowerVR 和 Firefox 硬件 WebRender，恢复八核调度后用户确认桌面可以正常使用。实板已设置并验证 GNOME 冷启动；HEVC 4K30 片源在 1080p 屏上硬件缩放播放通过，1080p60 仍有少量丢帧。GNOME 新整盘镜像尚未发布，现有 Release 默认 Xfce。[候选构建、实测与限制](docs/GNOME_WAYLAND.md)
+GNOME 50 / Wayland v47 完整镜像已发布，并于 2026-11-22 完成 eMMC 整盘写入、8 GiB SHA-256 回读和断电启动。PowerVR WebRender 与 Cedar 硬解已接通，但不能宣称浏览器 1080p60 或全链路零丢帧通过。主分支另修复首次显示配置与自动校时；已发布 RC1 镜像保持原始字节，安装后修复和实测限制见 [发行记录](https://github.com/dshanpi/AtlasA1-build/releases/tag/v2026.11.21-ubuntu26.04-gnome-v47-rc1)。

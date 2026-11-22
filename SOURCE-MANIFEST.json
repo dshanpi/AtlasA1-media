@@ -14,8 +14,8 @@
       "path": "README.md",
       "kind": "generated",
       "source": "generated/AtlasA1-media/README.md",
-      "size": 1070,
-      "sha256": "cb5c50491a8556386d1c67dae274d0e212fec53771fba99e237d2b48e29de0d1"
+      "size": 1163,
+      "sha256": "3e5ddd20752a7d1ef04935237902997f34e41b02b039785527644b63cb194fdc"
     },
     {
       "path": "config/atlasa1-resolute-vendor-files.json",
@@ -30,6 +30,13 @@
       "source": "mainline/config/gnome-wayland/50-atlasa1-wayland.conf",
       "size": 552,
       "sha256": "2c3ebe0ec2236f181f778a64d01e43c84375cee9934420cbc2a9d683db30d6f2"
+    },
+    {
+      "path": "config/gnome-wayland/60-atlasa1-greeter-display.conf",
+      "kind": "source",
+      "source": "mainline/config/gnome-wayland/60-atlasa1-greeter-display.conf",
+      "size": 220,
+      "sha256": "cc4e2345cf205ef7cf80d736a620609ca2d18d4799c0f4c10111a258a4e82373"
     },
     {
       "path": "config/gnome-wayland/61-atlasa1-gnome.rules",
@@ -56,8 +63,8 @@
       "path": "config/gnome-wayland/atlasa1-display-default.desktop",
       "kind": "source",
       "source": "mainline/config/gnome-wayland/atlasa1-display-default.desktop",
-      "size": 180,
-      "sha256": "1fac1e6f872505a88134116e25ba18275dff6f104ec5367960e994f7b8bbcf35"
+      "size": 143,
+      "sha256": "ecf058ecbd8665a7400baa42f6d45ca43f1ac879ace13ff0d8a1d75c3b5ddbfd"
     },
     {
       "path": "config/gnome-wayland/atlasa1-gnome-session",
@@ -217,8 +224,8 @@
       "path": "docs/GNOME_WAYLAND.md",
       "kind": "source",
       "source": "mainline/docs/GNOME_WAYLAND.md",
-      "size": 6713,
-      "sha256": "a8a3098ac37aaa826d615ec57f0100706aab083f7e60fc8d2a152291235177fc"
+      "size": 7250,
+      "sha256": "e7fcc86a4b39c0ef51bdac2ceaa4790a6722af8d21d54bc078a5d026fefe641c"
     },
     {
       "path": "docs/PLAYBACK.md",
@@ -2737,8 +2744,8 @@
       "path": "tools/stage_atlasa1_gnome_wayland.sh",
       "kind": "source",
       "source": "mainline/tools/stage_atlasa1_gnome_wayland.sh",
-      "size": 1822,
-      "sha256": "d05d9482f7061c32107010cc78e15fbb20e44f41bee975c7a7d6ba54259f9c18"
+      "size": 1967,
+      "sha256": "d8d9b97cf0876c8b0e6bb7ea50e77c296d73f9425b42da9fd84f24134a053f53"
     },
     {
       "path": "tools/stage_atlasa1_plymouth.sh",

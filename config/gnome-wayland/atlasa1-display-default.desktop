@@ -4,4 +4,3 @@ Name=AtlasA1 display default
 Exec=/usr/local/libexec/atlasa1-display-default
 OnlyShowIn=GNOME;
 NoDisplay=true
-X-GNOME-Autostart-Phase=Applications

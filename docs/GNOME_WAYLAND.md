@@ -1,5 +1,7 @@
 # AtlasA1 GNOME 50 / Wayland candidate
 
+2026-11-22 更新：v47 GNOME 整盘镜像已发布，并完成 eMMC 写入、完整 8 GiB 回读和断电启动。首次显示默认值与自动校时的问题已在主分支和板上修复，原始 RC1 镜像未改写。浏览器 1080p60 空闲复测约 59.39 fps、丢 12 帧；4K HEVC 缩放至 1080p 约 29.92 fps、丢 1 帧，严格零丢帧仍未通过。[最新发行验收和安装后修复](https://github.com/dshanpi/AtlasA1-build/blob/main/docs/UBUNTU_26_04.md#2026-11-21-gnome-v47-构建)。以下为早期候选记录。
+
 2026-11-20 补充：Chromium 原先仍使用 llvmpipe。现已单独修复其 PowerVR
 ANGLE GLES 渲染选择；Cedar 视频硬解尚未接入，不能沿用 Firefox 的验收结论。
 配置、实测丢帧和后端缺口见 [Chromium 记录](CHROMIUM.md)。
