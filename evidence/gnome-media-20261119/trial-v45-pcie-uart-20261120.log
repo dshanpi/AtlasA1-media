@@ -1,1047 +1,1047 @@
-
-Broadcast message from root@atlasa1 (Fri 2026-11-20 04:38:24 UTC):
-
-The system will power off now!
-
-         Stopping [0;1;39msession-c1.scope[0m - Session c1 of User gdm-greeter...
-[?2004l         Stopping [0;1;39msession-c3.scope[0m - Session c3 of User t736...
-[[0;32m  OK  [0m] Removed slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
-[[0;32m  OK  [0m] Removed slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
-[[0;32m  OK  [0m] Stopped target [0;1;39mgraphical.target[0m - Graphical Interface.
-[[0;32m  OK  [0m] Stopped target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
-[[0;32m  OK  [0m] Stopped target [0;1;39mrpc_pipefs.target[0m.
-[[0;32m  OK  [0m] Stopped target [0;1;39mrpcbind.target[0m - RPC Port Mapper.
-[[0;32m  OK  [0m] Stopped target [0;1;39mtimers.target[0m - Timer Units.
-[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
-[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily.timer[0m - Daily apt download activities.
-[[0;32m  OK  [0m] Stopped [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
-[[0;32m  OK  [0m] Stopped [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
-[[0;32m  OK  [0m] Stopped [0;1;39mfake-hwclock-save.timer[0m - Periodically save current clock.
-[[0;32m  OK  [0m] Stopped [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
-[[0;32m  OK  [0m] Stopped [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
-[[0;32m  OK  [0m] Stopped [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
-[[0;32m  OK  [0m] Stopped [0;1;39mman-db.timer[0m - Daily man-db regeneration.
-[[0;32m  OK  [0m] Stopped [0;1;39mmotd-news.timer[0m - Message of the Day.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
-[[0;32m  OK  [0m] Closed [0;1;39msystemd-rfkill.socket[0m - Loa…ll Switch Status /dev/rfkill Watch.
-         Stopping [0;1;39maccounts-daemon.service[0m - Accounts Service...
-         Stopping [0;1;39marmbian-led-state.service[0m - Armbian leds state...
-         Stopping [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config...
-         Stopping [0;1;39mcolord.service[0m - Manage, …tall and Generate Color Profiles...
-         Starting [0;1;39mfake-hwclock-save.service[0m - Save the current clock...
-         Stopping [0;1;39mgdm.service[0m - GNOME Display Manager...
-         Stopping [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon...
-         Stopping [0;1;39mrtkit-daemon.service[0m - Re…imeKit Scheduling Policy Service...
-         Stopping [0;1;39mssh.service[0m - OpenBSD Secure Shell server...
-         Stopping [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-udev-load-credenti…[0m- Load udev Rules from Credentials.
-         Stopping [0;1;39mudisks2.service[0m - Disk Manager...
-         Stopping [0;1;39mupower.service[0m - Daemon for power management...
-[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-60578-doc.mount[0m - /run/user/60578/doc.
-[[0;32m  OK  [0m] Stopped [0;1;39maccounts-daemon.service[0m - Accounts Service.
-[[0;32m  OK  [0m] Stopped [0;1;39mrtkit-daemon.service[0m - RealtimeKit Scheduling Policy Service.
-[[0;32m  OK  [0m] Stopped [0;1;39mcolord.service[0m - Manage, Install and Generate Color Profiles.
-[[0;32m  OK  [0m] Stopped [0;1;39mupower.service[0m - Daemon for power management.
-[[0;32m  OK  [0m] Stopped [0;1;39mssh.service[0m - OpenBSD Secure Shell server.
-[[0;32m  OK  [0m] Stopped [0;1;39msession-c1.scope[0m - Session c1 of User gdm-greeter.
-[[0;32m  OK  [0m] Stopped [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
-[[0;32m  OK  [0m] Stopped [0;1;39mudisks2.service[0m - Disk Manager.
-[[0;32m  OK  [0m] Stopped [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config.
-[[0;32m  OK  [0m] Finished [0;1;39mfake-hwclock-save.service[0m - Save the current clock.
-[[0;32m  OK  [0m] Stopped [0;1;39marmbian-led-state.service[0m - Armbian leds state.
-[[0;32m  OK  [0m] Stopped target [0;1;39mmulti-user.target[0m - Multi-User System.
-[[0;32m  OK  [0m] Stopped target [0;1;39mgetty.target[0m - Login Prompts.
-         Stopping [0;1;39mModemManager.service[0m - Modem Manager...
-         Stopping [0;1;39mcron.service[0m - Regular ba…ground program processing daemon...
-         Stopping [0;1;39mcups.service[0m - CUPS Scheduler...
-[[0;32m  OK  [0m] Stopped [0;1;39mlm-sensors.service[0m - Initialize hardware monitoring sensors.
-[[0;32m  OK  [0m] Stopped [0;1;39mopenvpn.service[0m - OpenVPN service.
-         Stopping [0;1;39mrsyslog.service[0m - System Logging Service...
-         Stopping [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0...
-         Stopping [0;1;39msmartmontools.service[0m - S…orting Technology (SMART) Daemon...
-         Stopping [0;1;39muser@60578.service[0m - User Manager for UID 60578...
-         Stopping [0;1;39mvnstat.service[0m - vnStat network traffic monitor...
-[[0;32m  OK  [0m] Stopped [0;1;39mcron.service[0m - Regular background program processing daemon.
-[[0;32m  OK  [0m] Stopped [0;1;39mgdm.service[0m - GNOME Display Manager.
-[[0;32m  OK  [0m] Stopped [0;1;39msmartmontools.service[0m - Se…eporting Technology (SMART) Daemon.
-[[0;32m  OK  [0m] Stopped [0;1;39mrsyslog.service[0m - System Logging Service.
-[[0;32m  OK  [0m] Stopped [0;1;39mcups.service[0m - CUPS Scheduler.
-[[0;32m  OK  [0m] Removed slice [0;1;39msystem-cups.slice[0m - CUPS Slice.
-[[0;32m  OK  [0m] Stopped target [0;1;39mtime-set.target[0m - System Time Set.
-[[0;32m  OK  [0m] Stopped [0;1;39mModemManager.service[0m - Modem Manager.
-[[0;32m  OK  [0m] Stopped [0;1;39mvnstat.service[0m - vnStat network traffic monitor.
-         Stopping [0;1;39mpolkit.service[0m - Authorization Manager...
-[[0;32m  OK  [0m] Stopped [0;1;39mpolkit.service[0m - Authorization Manager.
-[?2004h[?2004l
-[?2004h[?2004l
-]3008;end=3eeb87fb991f442db11cf17a1b18cb87\[[0;32m  OK  [0m] Stopped [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
-[!p]104\[0m[?7h[1G[0J[6n[32766;32766H[6n]3008;end=79514[[0;32m  OK  [0m] Stopped [0;1;39msession-c3.scope[0m - Session c3 of User t736.
-[[0;32m  OK  [0m] Removed slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
-[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit-wait.service[0m…old until boot process finishes up.
-         Stopping [0;1;39muser@1000.service[0m - User Manager for UID 1000...
-[[0m[0;31m*     [0m] (1 of 2) Job user@1000.service/stop…ce/stop running (1s / 1min 30s)...
-M[K[[0;1;31m*[0m[0;31m*    [0m] (1 of 2) Job user@1000.service/stop…ce/stop running (2s / 1min 30s)...
-M[K[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-1000-psd-t736\x…[0m- /run/user/1000/psd/t736-chromium.
-[K[[0;32m  OK  [0m] Stopped [0;1;39muser@60578.service[0m - User Manager for UID 60578.
-         Stopping [0;1;39muser-runtime-dir@60578.se…[0muntime Directory /run/user/60578...
-[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-60578.mount[0m - /run/user/60578.
-[[0;32m  OK  [0m] Stopped [0;1;39muser-runtime-dir@60578.ser…[0m Runtime Directory /run/user/60578.
-[[0;32m  OK  [0m] Removed slice [0;1;39muser-60578.slice[0m - User Slice of UID 60578.
-[[0;32m  OK  [0m] Stopped [0;1;39muser@1000.service[0m - User Manager for UID 1000.
-         Stopping [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
-         Stopping [0;1;39muser-runtime-dir@1000.ser…[0mRuntime Directory /run/user/1000...
-[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-1000.mount[0m - /run/user/1000.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
-[[0;32m  OK  [0m] Stopped [0;1;39muser-runtime-dir@1000.serv…[0mr Runtime Directory /run/user/1000.
-[[0;32m  OK  [0m] Removed slice [0;1;39muser-1000.slice[0m - User Slice of UID 1000.
-[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork.target[0m - Network.
-[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs.target[0m - Remote File Systems.
-[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
-[[0;32m  OK  [0m] Stopped target [0;1;39mnfs-client.target[0m - NFS client services.
-         Stopping [0;1;39mNetworkManager.service[0m - Network Manager...
-         Stopping [0;1;39msystemd-logind.service[0m - User Login Management...
-         Stopping [0;1;39mwpa_supplicant.service[0m - WPA supplicant...
-[[0;32m  OK  [0m] Stopped [0;1;39mwpa_supplicant.service[0m - WPA supplicant.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-logind.service[0m - User Login Management.
-[[0;32m  OK  [0m] Stopped [0;1;39mNetworkManager.service[0m - Network Manager.
-[[0;32m  OK  [0m] Stopped target [0;1;39mbasic.target[0m - Basic System.
-[[0;32m  OK  [0m] Stopped target [0;1;39mpaths.target[0m - Path Units.
-[[0;32m  OK  [0m] Stopped [0;1;39mcups.path[0m - CUPS Scheduler.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
-[[0;32m  OK  [0m] Stopped target [0;1;39mslices.target[0m - Slice Units.
-[[0;32m  OK  [0m] Removed slice [0;1;39muser.slice[0m - User and Session Slice.
-[[0;32m  OK  [0m] Stopped target [0;1;39msockets.target[0m - Socket Units.
-[[0;32m  OK  [0m] Closed [0;1;39mcups.socket[0m - CUPS Scheduler.
-[[0;32m  OK  [0m] Closed [0;1;39mpolkit-agent-helper.socket[0m …Authorization Manager Agent Helper.
-[[0;32m  OK  [0m] Closed [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
-[[0;32m  OK  [0m] Closed [0;1;39msshd-unix-local.socket[0m - Op…temd-ssh-generator, AF_UNIX Local).
-[[0;32m  OK  [0m] Closed [0;1;39msyslog.socket[0m - Syslog Socket.
-[[0;32m  OK  [0m] Closed [0;1;39msystemd-hostnamed.socket[0m - Hostname Service Socket.
-[[0;32m  OK  [0m] Closed [0;1;39msystemd-logind-varlink.sock…[0mer Login Management Varlink Socket.
-[[0;32m  OK  [0m] Closed [0;1;39msystemd-mute-console.socket[0m…nsole Output Muting Service Socket.
-[[0;32m  OK  [0m] Closed [0;1;39mt736-cedar.socket[0m - T736 Cedar decoder socket.
-[[0;32m  OK  [0m] Stopped target [0;1;39msysinit.target[0m - System Initialization.
-[[0;32m  OK  [0m] Stopped target [0;1;39mimports.target[0m - Image Downloads.
-[[0;32m  OK  [0m] Stopped [0;1;39mnetplan-configure.service[0m - Netplan Backend Configuration.
-         Stopping [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
-         Stopping [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
-         Stopping [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization...
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup.ser…[0mreate System Files and Directories.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
-[[0;32m  OK  [0m] Unset automount [0;1;39mproc-sys-fs-binfmt…[0mormats File System Automount Point.
-[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs.target[0m - Local File Systems.
-[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
-[[0;32m  OK  [0m] Closed [0;1;39msystemd-resolved-monitor.so…t[0m - Resolve Monitor Varlink Socket.
-[[0;32m  OK  [0m] Closed [0;1;39msystemd-resolved-varlink.so…t[0m - Resolve Service Varlink Socket.
-         Unmounting [0;1;39mtmp.mount[0m - Temporary Directory /tmp...
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-remount-fs.service[0m…mount Root and Kernel File Systems.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mCreate Static Device Nodes in /dev.
-[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mic Device Nodes in /dev gracefully.
-[[0;32m  OK  [0m] Unmounted [0;1;39mtmp.mount[0m - Temporary Directory /tmp.
-[[0;32m  OK  [0m] Stopped target [0;1;39mswap.target[0m - Swaps.
-[[0;32m  OK  [0m] Reached target [0;1;39mshutdown.target[0m - System Shutdown.
-[[0;32m  OK  [0m] Reached target [0;1;39mumount.target[0m - Unmount All Filesystems.
-[[0;32m  OK  [0m] Reached target [0;1;39mfinal.target[0m - Late Shutdown Services.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-poweroff.service[0m - System Power Off.
-[[0;32m  OK  [0m] Reached target [0;1;39mpoweroff.target[0m - System Power Off.
-]3008;end=6aaa73d46371436582330b0a09a7c9b3\reboot: Power down
-T736 source SRAM host + authorized libdram v1
-init_DRAM begin seed tpr3=110000 tpr13=6063
-DRAM BOOT DRIVE INFO: V0.6035
-DDR rail dcdc8 requested=1100 effective=1100 rc=0
-DDR rail eldo1 requested=660 effective=650 rc=0
-DRAM_VCC set to 1100 mv
-DRAM CLK =1800 MHZ
-DRAM Type =8 (8:LPDDR4,9:LPDDR5)
-Training result is = 7
-DRAM Pstate 0 training, frequency is 1800 Mhz
-DRAM SIZE =8192 MBytes, para1 = 311a, para2 = a0001001, dram_tpr13 = 6063
-DRAM simple test OK.
-init_DRAM returned 8192 MiB, ticks=78696312
-MEM PASS: 8 x 64KiB windows, 4 address/data patterns, 524288 words checked; upper physical RAM pending
-BOARD power rc=0 DCDC1 en=ff voltage=17 DC1SW1=17->1f DLDO2=d->d LDO_EN3=40->42
-CCU after DDR: PERI0=ff126310 AHB=3000002 APB0=3000005
-SPL eMMC open rc=0 sectors=122142720 irq=0 r1=900
-SPL load addr=47000000 bytes=5040 LBA=24577
-SPL load addr=48000000 bytes=53924 LBA=24587
-SPL load addr=52000000 bytes=265640 LBA=24693
-SPL payload CRCs passed; source AArch64 handoff
+
+Broadcast message from root@atlasa1 (Fri 2026-11-20 04:38:24 UTC):
+
+The system will power off now!
+
+         Stopping [0;1;39msession-c1.scope[0m - Session c1 of User gdm-greeter...
+[?2004l         Stopping [0;1;39msession-c3.scope[0m - Session c3 of User t736...
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgraphical.target[0m - Graphical Interface.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
+[[0;32m  OK  [0m] Stopped target [0;1;39mrpc_pipefs.target[0m.
+[[0;32m  OK  [0m] Stopped target [0;1;39mrpcbind.target[0m - RPC Port Mapper.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Stopped [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Stopped [0;1;39mfake-hwclock-save.timer[0m - Periodically save current clock.
+[[0;32m  OK  [0m] Stopped [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Stopped [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Stopped [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Stopped [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Stopped [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-rfkill.socket[0m - Loa…ll Switch Status /dev/rfkill Watch.
+         Stopping [0;1;39maccounts-daemon.service[0m - Accounts Service...
+         Stopping [0;1;39marmbian-led-state.service[0m - Armbian leds state...
+         Stopping [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config...
+         Stopping [0;1;39mcolord.service[0m - Manage, …tall and Generate Color Profiles...
+         Starting [0;1;39mfake-hwclock-save.service[0m - Save the current clock...
+         Stopping [0;1;39mgdm.service[0m - GNOME Display Manager...
+         Stopping [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon...
+         Stopping [0;1;39mrtkit-daemon.service[0m - Re…imeKit Scheduling Policy Service...
+         Stopping [0;1;39mssh.service[0m - OpenBSD Secure Shell server...
+         Stopping [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-udev-load-credenti…[0m- Load udev Rules from Credentials.
+         Stopping [0;1;39mudisks2.service[0m - Disk Manager...
+         Stopping [0;1;39mupower.service[0m - Daemon for power management...
+[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-60578-doc.mount[0m - /run/user/60578/doc.
+[[0;32m  OK  [0m] Stopped [0;1;39maccounts-daemon.service[0m - Accounts Service.
+[[0;32m  OK  [0m] Stopped [0;1;39mrtkit-daemon.service[0m - RealtimeKit Scheduling Policy Service.
+[[0;32m  OK  [0m] Stopped [0;1;39mcolord.service[0m - Manage, Install and Generate Color Profiles.
+[[0;32m  OK  [0m] Stopped [0;1;39mupower.service[0m - Daemon for power management.
+[[0;32m  OK  [0m] Stopped [0;1;39mssh.service[0m - OpenBSD Secure Shell server.
+[[0;32m  OK  [0m] Stopped [0;1;39msession-c1.scope[0m - Session c1 of User gdm-greeter.
+[[0;32m  OK  [0m] Stopped [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
+[[0;32m  OK  [0m] Stopped [0;1;39mudisks2.service[0m - Disk Manager.
+[[0;32m  OK  [0m] Stopped [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config.
+[[0;32m  OK  [0m] Finished [0;1;39mfake-hwclock-save.service[0m - Save the current clock.
+[[0;32m  OK  [0m] Stopped [0;1;39marmbian-led-state.service[0m - Armbian leds state.
+[[0;32m  OK  [0m] Stopped target [0;1;39mmulti-user.target[0m - Multi-User System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty.target[0m - Login Prompts.
+         Stopping [0;1;39mModemManager.service[0m - Modem Manager...
+         Stopping [0;1;39mcron.service[0m - Regular ba…ground program processing daemon...
+         Stopping [0;1;39mcups.service[0m - CUPS Scheduler...
+[[0;32m  OK  [0m] Stopped [0;1;39mlm-sensors.service[0m - Initialize hardware monitoring sensors.
+[[0;32m  OK  [0m] Stopped [0;1;39mopenvpn.service[0m - OpenVPN service.
+         Stopping [0;1;39mrsyslog.service[0m - System Logging Service...
+         Stopping [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0...
+         Stopping [0;1;39msmartmontools.service[0m - S…orting Technology (SMART) Daemon...
+         Stopping [0;1;39muser@60578.service[0m - User Manager for UID 60578...
+         Stopping [0;1;39mvnstat.service[0m - vnStat network traffic monitor...
+[[0;32m  OK  [0m] Stopped [0;1;39mcron.service[0m - Regular background program processing daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mgdm.service[0m - GNOME Display Manager.
+[[0;32m  OK  [0m] Stopped [0;1;39msmartmontools.service[0m - Se…eporting Technology (SMART) Daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mrsyslog.service[0m - System Logging Service.
+[[0;32m  OK  [0m] Stopped [0;1;39mcups.service[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-cups.slice[0m - CUPS Slice.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-set.target[0m - System Time Set.
+[[0;32m  OK  [0m] Stopped [0;1;39mModemManager.service[0m - Modem Manager.
+[[0;32m  OK  [0m] Stopped [0;1;39mvnstat.service[0m - vnStat network traffic monitor.
+         Stopping [0;1;39mpolkit.service[0m - Authorization Manager...
+[[0;32m  OK  [0m] Stopped [0;1;39mpolkit.service[0m - Authorization Manager.
+[?2004h[?2004l
+[?2004h[?2004l
+]3008;end=3eeb87fb991f442db11cf17a1b18cb87\[[0;32m  OK  [0m] Stopped [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+[!p]104\[0m[?7h[1G[0J[6n[32766;32766H[6n]3008;end=79514[[0;32m  OK  [0m] Stopped [0;1;39msession-c3.scope[0m - Session c3 of User t736.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
+[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit-wait.service[0m…old until boot process finishes up.
+         Stopping [0;1;39muser@1000.service[0m - User Manager for UID 1000...
+[[0m[0;31m*     [0m] (1 of 2) Job user@1000.service/stop…ce/stop running (1s / 1min 30s)...
+M[K[[0;1;31m*[0m[0;31m*    [0m] (1 of 2) Job user@1000.service/stop…ce/stop running (2s / 1min 30s)...
+M[K[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-1000-psd-t736\x…[0m- /run/user/1000/psd/t736-chromium.
+[K[[0;32m  OK  [0m] Stopped [0;1;39muser@60578.service[0m - User Manager for UID 60578.
+         Stopping [0;1;39muser-runtime-dir@60578.se…[0muntime Directory /run/user/60578...
+[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-60578.mount[0m - /run/user/60578.
+[[0;32m  OK  [0m] Stopped [0;1;39muser-runtime-dir@60578.ser…[0m Runtime Directory /run/user/60578.
+[[0;32m  OK  [0m] Removed slice [0;1;39muser-60578.slice[0m - User Slice of UID 60578.
+[[0;32m  OK  [0m] Stopped [0;1;39muser@1000.service[0m - User Manager for UID 1000.
+         Stopping [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+         Stopping [0;1;39muser-runtime-dir@1000.ser…[0mRuntime Directory /run/user/1000...
+[[0;32m  OK  [0m] Unmounted [0;1;39mrun-user-1000.mount[0m - /run/user/1000.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+[[0;32m  OK  [0m] Stopped [0;1;39muser-runtime-dir@1000.serv…[0mr Runtime Directory /run/user/1000.
+[[0;32m  OK  [0m] Removed slice [0;1;39muser-1000.slice[0m - User Slice of UID 1000.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork.target[0m - Network.
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnfs-client.target[0m - NFS client services.
+         Stopping [0;1;39mNetworkManager.service[0m - Network Manager...
+         Stopping [0;1;39msystemd-logind.service[0m - User Login Management...
+         Stopping [0;1;39mwpa_supplicant.service[0m - WPA supplicant...
+[[0;32m  OK  [0m] Stopped [0;1;39mwpa_supplicant.service[0m - WPA supplicant.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Stopped [0;1;39mNetworkManager.service[0m - Network Manager.
+[[0;32m  OK  [0m] Stopped target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Stopped [0;1;39mcups.path[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Stopped target [0;1;39mslices.target[0m - Slice Units.
+[[0;32m  OK  [0m] Removed slice [0;1;39muser.slice[0m - User and Session Slice.
+[[0;32m  OK  [0m] Stopped target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Closed [0;1;39mcups.socket[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Closed [0;1;39mpolkit-agent-helper.socket[0m …Authorization Manager Agent Helper.
+[[0;32m  OK  [0m] Closed [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
+[[0;32m  OK  [0m] Closed [0;1;39msshd-unix-local.socket[0m - Op…temd-ssh-generator, AF_UNIX Local).
+[[0;32m  OK  [0m] Closed [0;1;39msyslog.socket[0m - Syslog Socket.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-hostnamed.socket[0m - Hostname Service Socket.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-logind-varlink.sock…[0mer Login Management Varlink Socket.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-mute-console.socket[0m…nsole Output Muting Service Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mt736-cedar.socket[0m - T736 Cedar decoder socket.
+[[0;32m  OK  [0m] Stopped target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Stopped target [0;1;39mimports.target[0m - Image Downloads.
+[[0;32m  OK  [0m] Stopped [0;1;39mnetplan-configure.service[0m - Netplan Backend Configuration.
+         Stopping [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
+         Stopping [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
+         Stopping [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup.ser…[0mreate System Files and Directories.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Unset automount [0;1;39mproc-sys-fs-binfmt…[0mormats File System Automount Point.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-resolved-monitor.so…t[0m - Resolve Monitor Varlink Socket.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-resolved-varlink.so…t[0m - Resolve Service Varlink Socket.
+         Unmounting [0;1;39mtmp.mount[0m - Temporary Directory /tmp...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-remount-fs.service[0m…mount Root and Kernel File Systems.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mCreate Static Device Nodes in /dev.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mic Device Nodes in /dev gracefully.
+[[0;32m  OK  [0m] Unmounted [0;1;39mtmp.mount[0m - Temporary Directory /tmp.
+[[0;32m  OK  [0m] Stopped target [0;1;39mswap.target[0m - Swaps.
+[[0;32m  OK  [0m] Reached target [0;1;39mshutdown.target[0m - System Shutdown.
+[[0;32m  OK  [0m] Reached target [0;1;39mumount.target[0m - Unmount All Filesystems.
+[[0;32m  OK  [0m] Reached target [0;1;39mfinal.target[0m - Late Shutdown Services.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-poweroff.service[0m - System Power Off.
+[[0;32m  OK  [0m] Reached target [0;1;39mpoweroff.target[0m - System Power Off.
+]3008;end=6aaa73d46371436582330b0a09a7c9b3\reboot: Power down
+T736 source SRAM host + authorized libdram v1
+init_DRAM begin seed tpr3=110000 tpr13=6063
+DRAM BOOT DRIVE INFO: V0.6035
+DDR rail dcdc8 requested=1100 effective=1100 rc=0
+DDR rail eldo1 requested=660 effective=650 rc=0
+DRAM_VCC set to 1100 mv
+DRAM CLK =1800 MHZ
+DRAM Type =8 (8:LPDDR4,9:LPDDR5)
+Training result is = 7
+DRAM Pstate 0 training, frequency is 1800 Mhz
+DRAM SIZE =8192 MBytes, para1 = 311a, para2 = a0001001, dram_tpr13 = 6063
+DRAM simple test OK.
+init_DRAM returned 8192 MiB, ticks=78696312
+MEM PASS: 8 x 64KiB windows, 4 address/data patterns, 524288 words checked; upper physical RAM pending
+BOARD power rc=0 DCDC1 en=ff voltage=17 DC1SW1=17->1f DLDO2=d->d LDO_EN3=40->42
+CCU after DDR: PERI0=ff126310 AHB=3000002 APB0=3000005
+SPL eMMC open rc=0 sectors=122142720 irq=0 r1=900
+SPL load addr=47000000 bytes=5040 LBA=24577
+SPL load addr=48000000 bytes=53924 LBA=24587
+SPL load addr=52000000 bytes=265640 LBA=24693
+SPL payload CRCs passed; source AArch64 handoff
 H00c51838 81000000 47000000 00000001 00000000 
-AT736 A64 source handoff EL=000000000000000c
-A64 MEM PASS 262144 x 64-bit checks, including RAM above 4GiB and final 64KiB
-Entering source TF-A 0x48000000
-NOTICE:  BL31: v2.15.0(debug):t736-independent-candidate-7d322909
-NOTICE:  BL31: Built : 06:57:46, Nov 13 2026
-INFO:    GICv3 without legacy support detected.
-INFO:    ARM GICv3 driver initialized in EL3
-INFO:    Maximum SPI INTID supported: 287
-NOTICE:  BL31: Detected Allwinner A733 SoC (1903)
-NOTICE:  BL31: Found U-Boot DTB at 0x5203fab0, model: T736 custom board RAM bring-up
-INFO:    Configuring SPC Controller
-INFO:    BL31: Platform setup done
-INFO:    BL31: Initializing runtime services
-INFO:    BL31: cortex_a55: CPU workaround for erratum 1530923 was applied
-INFO:    PSCI: Suspend is unavailable
-INFO:    BL31: Preparing for EL3 exit to normal world
-INFO:    Entry point address = 0x52000000
-INFO:    SPSR = 0x3c9
-INFO:    Changed devicetree.
-
-<debug_uart>
-
-
-U-Boot 2026.10-t736-bringup (Nov 18 2026 - 00:00:00 +0000)
-
-Model: T736 custom board RAM bring-up
-Board: T736 source boot candidate; authorized vendor DDR library
-DRAM:  8 GiB
-Core:  4 devices, 4 uclasses, devicetree: separate
-CPU-D A76 step=1 reg=201c before=00000000 desired=00010000 actual=00010000 CTRL=40801400 STAT=40801400 CLK=00010000 rc=0
-CPU-D A76 step=2 reg=2000 before=40801400 desired=40801400 actual=40801400 CTRL=40801400 STAT=40801400 CLK=00010000 rc=0
-CPU-D A76 step=3 reg=2000 before=40801400 desired=48801400 actual=48801400 CTRL=48801400 STAT=48801400 CLK=00010000 rc=0
-CPU-D A76 step=4 reg=2000 before=48801400 desired=48802000 actual=48801400 CTRL=48801400 STAT=48802000 CLK=00010000 rc=0
-CPU-D A76 step=5 reg=2000 before=48801400 desired=c8802000 actual=c8801400 CTRL=c8801400 STAT=c8802000 CLK=00010000 rc=0
-CPU-D A76 step=6 reg=2000 before=c8802000 desired=e8802000 actual=e8802000 CTRL=e8802000 STAT=e8802000 CLK=00010000 rc=0
-CPU-D A76 step=7 reg=2000 before=f8802000 desired=ec802000 actual=f8802000 CTRL=f8802000 STAT=f8802000 CLK=00010000 rc=0
-CPU-D A76 step=8 reg=2000 before=f8802000 desired=f8802000 actual=f8802000 CTRL=f8802000 STAT=f8802000 CLK=00010000 rc=0
-CPU-D A76 step=9 reg=201c before=00010000 desired=03010000 actual=03010000 CTRL=f8802000 STAT=f8802000 CLK=03010000 rc=0
-CPU-D A76 step=10 reg=201c before=03010000 desired=00000000 actual=00000000 CTRL=f8802000 STAT=f8802000 CLK=00000000 rc=0
-CPU-D A76 step=11 reg=2000 before=f8802000 desired=e0802000 actual=f0802000 CTRL=f0802000 STAT=f0802000 CLK=00000000 rc=0
-CPU-D A76 step=12 reg=2000 before=f0802000 desired=c0802000 actual=c0802000 CTRL=c0802000 STAT=c0802000 CLK=00000000 rc=0
-CPU-D A76 step=13 reg=2000 before=c0802000 desired=c0802700 actual=c0802000 CTRL=c0802700 STAT=c0802700 CLK=00000000 rc=0
-CPU-D A76 step=14 reg=2000 before=c0802700 desired=e0802700 actual=e0802700 CTRL=e0802700 STAT=e0802700 CLK=00000000 rc=0
-CPU-D A76 step=15 reg=2000 before=f0802700 desired=e4802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
-CPU-D A76 step=16 reg=2000 before=f0802700 desired=f0802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
-CPU-D A76 step=17 reg=2000 before=f0802700 desired=e8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
-CPU-D A76 step=18 reg=2000 before=f8802700 desired=f8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
-CPU-D A76 step=19 reg=201c before=00000000 desired=03000000 actual=03000000 CTRL=f8802700 STAT=f8802700 CLK=03000000 rc=0
-CPU-D: A76 rc=0 stage=8 CTRL=f8802700 STAT=f8802700 CLK=03000000 mutation=1 rollback=0/0 slow=0 guard=0 trace=19
-CPU-D: A76 PMIC 03/ff/28/28/00/00 -> 03/ff/28/28/00/00
-CPU-D: A76 cold416 then warm1014 PASS
-CPU-D A55 step=1 reg=101c before=03000000 desired=00000000 actual=00000000 CTRL=f8801300 STAT=f8801300 CLK=00000000 rc=0
-CPU-D A55 step=2 reg=1000 before=f8801300 desired=e0801300 actual=f0801300 CTRL=f0801300 STAT=f0801300 CLK=00000000 rc=0
-CPU-D A55 step=3 reg=1000 before=f0801300 desired=c0801300 actual=c0801300 CTRL=c0801300 STAT=c0801300 CLK=00000000 rc=0
-CPU-D A55 step=4 reg=1000 before=c0801300 desired=c0802700 actual=c0802700 CTRL=c0802700 STAT=c0802700 CLK=00000000 rc=0
-CPU-D A55 step=5 reg=1000 before=c0802700 desired=e0802700 actual=e0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
-CPU-D A55 step=6 reg=1000 before=f0802700 desired=e4802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
-CPU-D A55 step=7 reg=1000 before=f0802700 desired=f0802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
-CPU-D A55 step=8 reg=1000 before=f0802700 desired=e8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
-CPU-D A55 step=9 reg=1000 before=f8802700 desired=f8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
-CPU-D A55 step=10 reg=101c before=00000000 desired=03000000 actual=03000000 CTRL=f8802700 STAT=f8802700 CLK=03000000 rc=0
-CPU-D A55 step=11 reg=101c before=03000000 desired=03000000 actual=03000000 CTRL=f8802700 STAT=f8802700 CLK=03000000 rc=0
-CPU-D: A55 rc=0 stage=8 core=412fd050/81000000 CNT=24000000 DAIF=2c0/2c0
-CPU-D: A55 f8801300/f8801300/03000000 -> f8802700/f8802700/03000000 mutation=1 rollback=0 slow=0 guard=0
-CPU-D: PMIC 03/ff/28/28/00/00 -> 03/ff/28/28/00/00
-CPU-D: A55/A76 configured N39/1=1014MHz; DSU and PMIC unchanged
-MMC:   T736 SMHC3 read-only PIO: 0
-Loading Environment from nowhere...Loading Environment from nowhere... OK
-In:    serial@2500000
-Out:   serial@2500000
-Err:   serial@2500000
-[2KHit any key to stop autoboot: 3[2KHit any key to stop autoboot: 0
-T736-mainline=> setenv kernel_comp_addr_r 0x68000000
-T736-mainline=> setenv bootargs earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
-T736-mainline=> mmc dev 0
-switch to partitions #0, OK
-mmc0(part 0) is current device
-T736-mainline=> ext4load mmc 0:4 0x60000000 /boot/Image-6.18.63-t736-gnome-v45
-14125064 bytes read in 2791 ms (4.8 MiB/s)
-T736-mainline=> setenv kernel_comp_size ${filesize}
-T736-mainline=> ext4load mmc 0:4 0x64000000 /boot/initrd.img-6.18.63-t736-gnome-v45
-18691885 bytes read in 3677 ms (4.8 MiB/s)
-T736-mainline=> setenv rdsize ${filesize}
-T736-mainline=> ext4load mmc 0:4 0x63000000 /boot/t736-gnome-v45.dtb
-16696 bytes read in 5 ms (3.2 MiB/s)
-T736-mainline=> booti 0x60000000 0x64000000:${rdsize} 0x63000000
-## Flattened Device Tree blob at 63000000
-   Booting using the fdt blob at 0x63000000
-Working FDT set to 63000000
-   Loading Ramdisk to ad5bd000, end ae79072d ... OK
-   Loading Device Tree to 00000000ad5b5000, end 00000000ad5bc137 ... OK
-Working FDT set to ad5b5000
-
-Starting kernel ...
-
-Booting Linux on physical CPU 0x0000000000 [0x412fd050]
-Linux version 6.18.63-t736-gnome-v45 (ubuntu@ubuntu2404) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #45 SMP 2026-11-19 00:00:00 UTC
-Machine model: T736 custom board mainline bring-up
-earlycon: uart8250 at MMIO32 0x0000000002500000 (options '')
-printk: legacy bootconsole [uart8250] enabled
-OF: reserved mem: Reserved memory: No reserved-memory node in the DT
-Zone ranges:
-  DMA      [mem 0x0000000040000000-0x00000000ffffffff]
-  DMA32    empty
-  Normal   [mem 0x0000000100000000-0x000000023fffffff]
-Movable zone start for each node
-Early memory node ranges
-  node   0: [mem 0x0000000040000000-0x000000023fffffff]
-Initmem setup node 0 [mem 0x0000000040000000-0x000000023fffffff]
-cma: Reserved 512 MiB at 0x00000000db800000
-psci: probing for conduit method from DT.
-psci: PSCIv1.1 detected in firmware.
-psci: Using standard PSCI v0.2 function IDs
-psci: MIGRATE_INFO_TYPE not supported.
-psci: SMC Calling Convention v1.5
-percpu: Embedded 26 pages/cpu s67480 r8192 d30824 u106496
-Detected VIPT I-cache on CPU0
-CPU features: detected: GICv3 CPU interface
-CPU features: detected: Virtualization Host Extensions
-CPU features: kernel page table isolation disabled by kernel configuration
-alternatives: applying boot alternatives
-Kernel command line: earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
-printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
-Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
-Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
-software IO TLB: area num 8.
-software IO TLB: mapped [mem 0x00000000d7800000-0x00000000db800000] (64MB)
-Built 1 zonelists, mobility grouping on.  Total pages: 2097152
-mem auto-init: stack:all(zero), heap alloc:off, heap free:off
-SLUB: HWalign=64, Order=0-1, MinObjects=0, CPUs=8, Nodes=1
-ftrace: allocating 35389 entries in 139 pages
-ftrace: allocated 139 pages with 4 groups
-rcu: Hierarchical RCU implementation.
-	Rude variant of Tasks RCU enabled.
-	Tracing variant of Tasks RCU enabled.
-rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
-RCU Tasks Rude: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
-RCU Tasks Trace: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
-NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
-GICv3: GIC: Using split EOI/Deactivate mode
-GICv3: 256 SPIs implemented
-GICv3: 0 Extended SPIs implemented
-Root IRQ handler: gic_handle_irq
-GICv3: GICv3 features: 16 PPIs
-GICv3: GICD_CTLR.DS=0, SCR_EL3.FIQ=0
-GICv3: CPU0: found redistributor 0 region 0:0x0000000003460000
-ITS: No ITS available, not enabling LPIs
-rcu: srcu_init: Setting srcu_struct sizes based on contention.
-clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-arch_timer: cp15 timer running at 24.00MHz (phys).
-clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
-sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
-Console: colour dummy device 80x25
-Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
-pid_max: default: 32768 minimum: 301
-LSM: initializing lsm=capability
-Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
-Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
-rcu: Hierarchical SRCU implementation.
-rcu: 	Max phase no-delay instances is 1000.
-smp: Bringing up secondary CPUs ...
-Detected VIPT I-cache on CPU1
-GICv3: CPU1: found redistributor 100 region 0:0x0000000003480000
-CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
-Detected VIPT I-cache on CPU2
-GICv3: CPU2: found redistributor 200 region 0:0x00000000034a0000
-CPU2: Booted secondary processor 0x0000000200 [0x412fd050]
-Detected VIPT I-cache on CPU3
-GICv3: CPU3: found redistributor 300 region 0:0x00000000034c0000
-CPU3: Booted secondary processor 0x0000000300 [0x412fd050]
-Detected VIPT I-cache on CPU4
-GICv3: CPU4: found redistributor 400 region 0:0x00000000034e0000
-CPU4: Booted secondary processor 0x0000000400 [0x412fd050]
-Detected VIPT I-cache on CPU5
-GICv3: CPU5: found redistributor 500 region 0:0x0000000003500000
-CPU5: Booted secondary processor 0x0000000500 [0x412fd050]
-CPU features: detected: Spectre-v4
-CPU features: detected: Spectre-BHB
-Detected PIPT I-cache on CPU6
-GICv3: CPU6: found redistributor 600 region 0:0x0000000003520000
-CPU6: Booted secondary processor 0x0000000600 [0x414fd0b1]
-Detected PIPT I-cache on CPU7
-GICv3: CPU7: found redistributor 700 region 0:0x0000000003540000
-CPU7: Booted secondary processor 0x0000000700 [0x414fd0b1]
-smp: Brought up 1 node, 8 CPUs
-SMP: Total of 8 processors activated.
-CPU: All CPU(s) started at EL2
-CPU features: detected: 32-bit EL0 Support
-CPU features: detected: Data cache clean to the PoU not required for I/D coherence
-CPU features: detected: CRC32 instructions
-CPU features: detected: RCpc load-acquire (LDAPR)
-CPU features: detected: Speculative Store Bypassing Safe (SSBS)
-alternatives: applying system-wide alternatives
-Memory: 7382612K/8388608K available (7552K kernel code, 2594K rwdata, 2800K rodata, 768K init, 308K bss, 476544K reserved, 524288K cma-reserved)
-devtmpfs: initialized
-posixtimers hash table entries: 4096 (order: 4, 65536 bytes, linear)
-futex hash table entries: 2048 (131072 bytes on 1 NUMA nodes, total 128 KiB, linear).
-29216 pages in range for non-PLT usage
-520736 pages in range for PLT usage
-pinctrl core: initialized pinctrl subsystem
-NET: Registered PF_NETLINK/PF_ROUTE protocol family
-DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
-DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
-DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
-ASID allocator initialised with 65536 entries
-/display-engine@5000000: Fixed dependency cycle(s) with /tcon@5730000
-/tcon@5730000: Fixed dependency cycle(s) with /display-engine@5000000
-/tcon@5730000: Fixed dependency cycle(s) with /hdmi@5520000
-/hdmi@5520000: Fixed dependency cycle(s) with /tcon@5730000
-/pcie@6000000: Fixed dependency cycle(s) with /pcie@6000000/legacy-interrupt-controller
-SCSI subsystem initialized
-usbcore: registered new interface driver usbfs
-usbcore: registered new interface driver hub
-usbcore: registered new device driver usb
-vgaarb: loaded
-clocksource: Switched to clocksource arch_sys_counter
-NET: Registered PF_INET protocol family
-IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
-tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
-Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
-TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
-TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
-TCP: Hash tables configured (established 65536 bind 65536)
-UDP hash table entries: 4096 (order: 6, 262144 bytes, linear)
-UDP-Lite hash table entries: 4096 (order: 6, 262144 bytes, linear)
-NET: Registered PF_UNIX/PF_LOCAL protocol family
-PCI: CLS 0 bytes, default 64
-Trying to unpack rootfs image as initramfs...
-Initialise system trusted keyrings
-workingset: timestamp_bits=46 max_order=21 bucket_order=0
-fuse: init (API version 7.45)
-NET: Registered PF_ALG protocol family
-Key type asymmetric registered
-Asymmetric key parser 'x509' registered
-Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
-io scheduler mq-deadline registered
-io scheduler kyber registered
-io scheduler bfq registered
-t736-display-ccu 2002a00.clock-controller: DE PLL locked at 600 MHz; HDMI PHY reference is board DCXO 26 MHz
-t736-gpu-ccu 2002b20.clock-controller: GPU fixed PERI400 clock with independent PLL_GPU0 power prerequisite
-t736-ve-power 7062000.power-controller: VE_DEC PPU=ON, 400MHz, DEC0/1 bypass verified; reset held
-t736-gpu-supply 7083000.regulator: AXP8191 DCDC5 verified at 900000 uV, fixed GPU supply policy
-t736-gpu-supply 7083000.regulator: DLDO5 1800000 uV: voltage 0d->0d enable 42->52
-Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
-printk: legacy console [ttyS0] disabled
-2500000.serial: ttyS0 at MMIO 0x2500000 (irq = 13, base_baud = 1500000) is a 16550A
-printk: legacy console [ttyS0] enabled
-printk: legacy console [ttyS0] enabled
-printk: legacy bootconsole [uart8250] disabled
-printk: legacy bootconsole [uart8250] disabled
-[drm] [TCON_TOP]sunxi_tcon_top_probe start
-[drm] [SUNXI-DE] offline_mode not found, used def val
-[drm] de use no display sys
-[drm] [TCON] sunxi_tcon_probe start
-[drm] [SUNXI-TCON] sunxi_tcon_of_get_id 4
-[drm] [TCON] sunxi_tcon_probe ret = 0
-[drm] sunxi_drm_platform_probe start
-[drm] sunxi_drm_match_add start
-[drm] sunxi_drm_match_add finish
-[drm] sunxi_drm_bind start
-[drm] [TCON_TOP]sunxi_tcon_top_bind start
-sunxi-drm sunxi-drm: bound 5510000.tcon-top (ops 0xffff8000807fe570)
-[drm] [SUNXI-DE] sunxi_de_bind start
-[drm] sunxi_de_bind crtc init for de 0 ok
-sunxi-drm sunxi-drm: bound 5000000.display-engine (ops 0xffff8000807fbae8)
-[drm] [SUNXI-TCON] sunxi_tcon_of_get_id 4
-[drm] sunxi-hdmi: hdmi drv init dts done
-[drm] sunxi-hdmi: [warn] not set hdmi notify node!
-[drm] sunxi-hdmi: hdmi drv enable resource done
-[drm] sunxi-hdmi: hdmi drv init resource done
-[drm] sunxi-hdmi: hdmi drv init i2c adapter finish
-[drm] sunxi-hdmi: drm hdmi connector create finish
-[drm] sunxi-hdmi: hdmi devices bind done <<<<<<<<<<
-
-sunxi-drm sunxi-drm: bound 5520000.hdmi (ops 0xffff8000807fec28)
-sunxi-drm sunxi-drm: bound 5730000.tcon (ops 0xffff8000807fe278)
-[drm] HDMI-A-1 Not connected, start hot-plug monitoring
-[drm] start HDMI-A-1 monitor monitoring, interval: 100ms
-[drm:commit_init_connecting.isra.0] *ERROR* offline mode: init connecting not found sunxi_drm_offline_mode_pre_init
-[drm] Initialized sunxi-drm 3.0.0 for sunxi-drm on minor 0
-[drm] sunxi_drm_bind ok
-[drm] sunxi-hdmi: hdmi drv detect hpd connect
-brd: module loaded
-loop: module loaded
-t736-cedar-wc 1c0e000.video-codec: Cedar decoder + private 32-bit WC heap; budget 256 MiB; root-only, fixed-frequency bring-up
-usbcore: registered new interface driver usb-storage
-usbcore: registered new interface driver usbhid
-usbhid: USB HID core driver
-NET: Registered PF_INET6 protocol family
-Segment Routing with IPv6
-In-situ OAM (IOAM) with IPv6
-sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
-NET: Registered PF_PACKET protocol family
-Loading compiled-in X.509 certificates
-gpio gpiochip0: Static allocation of GPIO base is deprecated, use dynamic allocation.
-t736-r-pinctrl 7025000.pinctrl: initialized sunXi PIO driver
-gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
-t736-pinctrl 2000000.pinctrl: initialized sunXi PIO driver
-t736-pcie 6000000.pcie: COMBO1 internal REFCLK locked
-t736-pcie 6000000.pcie: host bridge /pcie@6000000 ranges:
-t736-pcie 6000000.pcie:       IO 0x0021000000..0x0021ffffff -> 0x0021000000
-t736-pcie 6000000.pcie:      MEM 0x0022000000..0x0027ffffff -> 0x0022000000
-t736-pcie 6000000.pcie:      MEM 0x0440000000..0x053fffffff -> 0x0440000000
-t736-pcie 6000000.pcie:   IB MEM 0x0040000000..0x023fffffff -> 0x0040000000
-t736-pcie 6000000.pcie: ASPM disabled for fixed COMBO1 REFCLK path
-t736-pcie 6000000.pcie: iATU: unroll T, 16 ob, 16 ib, align 4K, limit 32G
-t736-pcie 6000000.pcie: eDMA: unroll T, 4 wr, 4 rd
-Freeing initrd memory: 18252K
-t736-pcie 6000000.pcie: PCIe Gen.1 x1 link up
-t736-pcie 6000000.pcie: PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [bus 00-ff]
-pci_bus 0000:00: root bus resource [io  0x0000-0xffffff] (bus address [0x21000000-0x21ffffff])
-pci_bus 0000:00: root bus resource [mem 0x22000000-0x27ffffff]
-pci_bus 0000:00: root bus resource [mem 0x440000000-0x53fffffff pref]
-pci 0000:00:00.0: [1f6d:abcd] type 01 class 0x060400 PCIe Root Port
-pci 0000:00:00.0: BAR 0 [mem 0x00000000-0x000fffff]
-pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-pci 0000:00:00.0: supports D1
-pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-pci 0000:01:00.0: [8086:f1a6] type 00 class 0x010802 PCIe Endpoint
-pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
-pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
-pci 0000:00:00.0: BAR 0 [mem 0x22000000-0x220fffff]: assigned
-pci 0000:00:00.0: bridge window [mem 0x22100000-0x221fffff]: assigned
-pci 0000:00:00.0: ROM [mem 0x22200000-0x2220ffff pref]: assigned
-pci 0000:01:00.0: BAR 0 [mem 0x22100000-0x22103fff 64bit]: assigned
-pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-pci 0000:00:00.0:   bridge window [mem 0x22100000-0x221fffff]
-pci_bus 0000:00: resource 4 [io  0x0000-0xffffff]
-pci_bus 0000:00: resource 5 [mem 0x22000000-0x27ffffff]
-pci_bus 0000:00: resource 6 [mem 0x440000000-0x53fffffff pref]
-pci_bus 0000:01: resource 1 [mem 0x22100000-0x221fffff]
-pcieport 0000:00:00.0: PME: Signaling with IRQ 426
-nvme nvme0: pci function 0000:01:00.0
-t736-gpu-power 7065000.power-controller: GPU_TOP/CORE ACK=8; PLL_GPU0 ready, GPU=400000000 Hz, DCDC5=900000 uV, reset verified
-nvme 0000:01:00.0: enabling device (0000 -> 0002)
-[drm] sunxi-hdmi: dw edid unsupport parser desc type: 255
-[drm] sunxi-hdmi: dw edid unsupport parser desc type: 253
-[drm] sunxi-hdmi: sunxi hdmi edid parse block0 finish
-2501000.serial: ttyS1 at MMIO 0x2501000 (irq = 427, base_baud = 1500000) is a 16550A
-[drm] sunxi-hdmi: [error] dw edid parse dtd timing pixel clock[0KHz] invalid!
-t736-dwmac 4500000.ethernet: IRQ eth_wake_irq not found
-[drm] sunxi-hdmi: sunxi hdmi edid parse block1 finish
-t736-dwmac 4500000.ethernet: IRQ sfty not found
-t736-dwmac 4500000.ethernet: PTP uses main clock
-t736-dwmac 4500000.ethernet: RGMII MAC delays TX=13 RX=10, PHY clock 25 MHz
-t736-dwmac 4500000.ethernet: User ID: 0x20, Synopsys ID: 0x53
-t736-dwmac 4500000.ethernet: 	DWMAC4/5
-t736-dwmac 4500000.ethernet: DMA HW capability register supported
-t736-dwmac 4500000.ethernet: RX Checksum Offload Engine supported
-t736-dwmac 4500000.ethernet: TX Checksum insertion supported
-t736-dwmac 4500000.ethernet: Wake-Up On Lan supported
-t736-dwmac 4500000.ethernet: Enable RX Mitigation via HW Watchdog Timer
-t736-dwmac 4500000.ethernet: device MAC address a2:4d:a8:3d:c0:98
-t736-dwmac 4500000.ethernet: Enabled RFS Flow TC (entries=10)
-t736-dwmac 4500000.ethernet: Using 32/40 bits DMA host/device width
-[drm] HDMI-A-1 connection detected
-[drm] sunxi-hdmi: drm get edid support modes: 42
-[drm] HDMI-A-1: Configuration mode 2560x1440@60Hz
-[drm] sunxi-hdmi: drm hdmi set mode change when disp info change
-[drm] sunxi-hdmi: drm hdmi check mode: change >>>>>>>>>>>>>>>>
-[drm] sunxi-hdmi: sunxi hdmi select vic 0 use hdmi14 vsif
-[drm] sunxi-hdmi: drm hdmi mode set: 2560*1440 >>>>>>>>>>>>>>>>
-[drm] [SUNXI-CRTC]sunxi_crtc_atomic_enable
-[drm] sunxi_de_enable index 0
-[drm] sunxi_de_enable finish sw en=0
-[drm] suxni tcon hdmi set rate: 241500000Hz and get diff: 241500000Hz
-[drm] sunxi-hdmi: dw audio get n = 6144
-[drm] sunxi-hdmi: top phy auto calculate done
-[drm] sunxi-hdmi: [top phy]
-[drm] sunxi-hdmi:  - pixel clock 241500KHz
-[drm] sunxi-hdmi:    - pll: 0xE8064000, 0x00035000, 0x00000000, 0x30000000
-[drm] sunxi-hdmi: top phy config done
-[drm] sunxi-hdmi: [warn] snps phy check clk: 241500Hz is match in [237600Hz-288000Hz] and change use: 237600Hz
-[drm] sunxi-hdmi: [snps phy]
-[drm] sunxi-hdmi:  - refer clock: 237600KHz, color bits: 8, repeat: 0
-[drm] sunxi-hdmi:     - mpll: 0x0000, 0x3040, 0x0605
-[drm] sunxi-hdmi:  - refer clock: 241500KHz. [185625KHz~340000KHz]
-[drm] sunxi-hdmi:     - drive: 0x0004, 0x8040, 0x8e85
-[drm] sunxi-hdmi: snps phy state: lock
-t736-dwmac 4500000.ethernet: RGMII configuration retained after MAC reset: 0x11545
-sunxi-mmc 4021000.mmc: allocated mmc-pwrseq
-[drm] sunxi-hdmi: dw audio check: triger cts re-calculate
-[drm] sunxi-hdmi: hdmi drv enable output done
-[drm] sunxi-hdmi: drm hdmi atomic enable >>>>>>>>>>>>>>>>
-t736-smhc3-pio 4023000.mmc: STORE_MBUS addr=0x00000000020025e0 value=f1055803 (read-only)
-t736-smhc3-pio 4023000.mmc: MSI_LITE1 addr=0x000000000200259c value=00030001 (read-only)
-t736-smhc3-pio 4023000.mmc: SMHC 050610: IDMA descriptors=0x000000004000a000 data=0x00000000dbbf0000 (shift2, mask32)
-Console: switching to colour frame buffer device 320x90
-nvme nvme0: 8/0/0 default/read/poll queues
- nvme0n1: p1
-[drm] HDMI-A-1: Configuration complete
-t736-smhc3-pio 4023000.mmc: timing=0 card=400000 parent=24000000 mux=0 M=30 N=1 module=8000001d sample=0 signal=1 (no rail writes)
-t736-smhc3-pio 4023000.mmc: HS400 draft: v23 IDMA, HS cap=25000000, HS200=1 cap=200000000, HS400=1 cap=200000000, fixed1.8V; no ES/CQE
-rfkill_gpio bluetooth-power: atlasa1-bluetooth device registered.
-t736-r-pinctrl 7025000.pinctrl: supply vcc-pl not found, using dummy regulator
-clk: Not disabling unused clocks
-ehci-platform 4200000.usb: EHCI Host Controller
-ohci-platform 4200400.usb: Generic Platform OHCI controller
-ohci-platform 4200400.usb: new USB bus registered, assigned bus number 1
-PM: genpd: Disabling unused power domains
-ohci-platform 4200400.usb: irq 442, io mem 0x04200400
-ehci-platform 4200000.usb: new USB bus registered, assigned bus number 2
-ehci-platform 4200000.usb: irq 441, io mem 0x04200000
-ehci-platform 4200000.usb: USB 2.0 started, EHCI 1.00
-hub 2-0:1.0: USB hub found
-hub 2-0:1.0: 1 port detected
-hub 1-0:1.0: USB hub found
-hub 1-0:1.0: 1 port detected
-sunxi-mmc 4021000.mmc: initialized, max. request size: 1024 KB, uses new timings mode
-Freeing unused kernel memory: 768K
-Run /init as init process
-Loading, please wait...
-Starting systemd-udevd version 259.9-0ubuntu0.1
-mmc1: Failed to initialize a non-removable card
-usb 2-1: new high-speed USB device number 2 using ehci-platform
-t736-smhc3-pio 4023000.mmc: first IDMA request completed: CMD8 bytes=512 IRQ=0000002c IDST=00000002
-hub 2-1:1.0: USB hub found
-hub 2-1:1.0: 4 ports detected
-t736-dwmac 4500000.ethernet end0: renamed from eth0
-usb 2-1.4: new high-speed USB device number 3 using ehci-platform
-hub 2-1.4:1.0: USB hub found
-hub 2-1.4:1.0: 6 ports detected
-Begin: Loading essential drivers ... done.
-Begin: Running /scripts/init-premount ... done.
-Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
-Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
-done.
-usb 2-1.4.4: new high-speed USB device number 4 using ehci-platform
-t736-smhc3-pio 4023000.mmc: timing=9 card=400000 parent=24000000 mux=0 M=30 N=1 module=8000001d sample=0 signal=1 (no rail writes)
-t736-smhc3-pio 4023000.mmc: timing=9 card=50000000 parent=800000000 mux=1 M=8 N=1 module=81000007 sample=32 signal=1 (no rail writes)
-t736-smhc3-pio 4023000.mmc: timing=9 card=200000000 parent=800000000 mux=1 M=2 N=1 module=81000001 sample=49 signal=1 (no rail writes)
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
-usb 2-1.4.6: new high-speed USB device number 5 using ehci-platform
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000e4 STATUS=0020a903 FIFO_words=16 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts not-valid-before-data-complete OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
-input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.0/0003:1A86:8022.0001/input/input0
-hid-generic 0003:1A86:8022.0001: input: USB HID v1.10 Keyboard [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input0
-t736-smhc3-pio 4023000.mmc: HS200 tuning card=200000000 pass=ffffffc07fffffff abort_err=0000003f80000000 window=0+31 tap=15 verified=16x128 THLD=00800001 SFC=00000006
-input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.1/0003:1A86:8022.0002/input/input1
-hid-generic 0003:1A86:8022.0002: input: USB HID v1.10 Mouse [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input1
-input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.2/0003:1A86:8022.0003/input/input2
-hid-generic 0003:1A86:8022.0003: input: USB HID v1.10 Device [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input2
-t736-smhc3-pio 4023000.mmc: timing=1 card=25000000 parent=800000000 mux=1 M=16 N=1 module=8100000f sample=0 signal=1 (no rail writes)
-usb 2-1.4.5: new high-speed USB device number 6 using ehci-platform
-usb-storage 2-1.4.5:1.0: USB Mass Storage device detected
-scsi host0: usb-storage 2-1.4.5:1.0
-t736-smhc3-pio 4023000.mmc: timing=10 card=50000000 parent=800000000 mux=1 M=8 N=1 module=81000007 sample=32 signal=1 (no rail writes)
-t736-smhc3-pio 4023000.mmc: timing=10 card=200000000 parent=800000000 mux=1 M=2 N=1 module=81000001 sample=14 signal=1 (no rail writes)
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000080ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-scsi 0:0:0:0: CD-ROM            wch.cn   KMFU             1.00 PQ: 0 ANSI: 5
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
-t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
-t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
-t736-smhc3-pio 4023000.mmc: HS400 tuned card=200000000 cmd_pass=fffffff8ffffffff cmd_window=0+32 cmd=15 ds_pass=0000000003fffff0 ds_window=4+22 ds=14 abort_err=fffffffffc00000f verified=16xCMD13+16x512 EXT_CSD=03/06 R1=00000900 THLD=02000001 SFC=00000006
-mmc0: new HS400 MMC card at address 0001
-mmcblk0: mmc0:0001 A31Y5C 58.2 GiB
- mmcblk0: p1 p2 p3 p4 p5 p6
-mmcblk0boot0: mmc0:0001 A31Y5C 4.00 MiB
-mmcblk0boot1: mmc0:0001 A31Y5C 4.00 MiB
-t736-gpu-power 7065000.power-controller: sync_state() pending due to 1800000.gpu
-Begin: Will now check root file system ... fsck from util-linux 2.41.3
-[/usr/sbin/fsck.ext4 (1) -- /dev/mmcblk0p4] fsck.ext4 -a -C0 /dev/mmcblk0p4 
-rootfs: clean, 115018/476720 files, 1646425/1904960 blocks
-done.
-EXT4-fs (mmcblk0p4): mounted filesystem 4d8c73ce-75f9-4794-bef2-664d7cecbbbb r/w with ordered data mode. Quota mode: disabled.
-done.
-Begin: Running /scripts/local-bottom ... done.
-Begin: Running /scripts/init-bottom ... done.
-systemd[1]: System time advanced to timestamp on /var/lib/systemd/timesync/clock: Fri 2026-11-20 04:38:31 UTC
-P+q6E616D65\[6n[32766;32766H[6n[!p]104\[0m[?7h[1G[0Jsystemd[1]: systemd 259.9-0ubuntu0.1 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +IPE +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF -XKBCOMMON -UTMP +SYSVINIT +LIBARCHIVE)
-systemd[1]: Detected architecture arm64.
-
-[0;1;39mWelcome to [0m[1mArmbian-unofficial 26.11.0-trunk resolute[0m[0;1;39m![0m
+AT736 A64 source handoff EL=000000000000000c
+A64 MEM PASS 262144 x 64-bit checks, including RAM above 4GiB and final 64KiB
+Entering source TF-A 0x48000000
+NOTICE:  BL31: v2.15.0(debug):t736-independent-candidate-7d322909
+NOTICE:  BL31: Built : 06:57:46, Nov 13 2026
+INFO:    GICv3 without legacy support detected.
+INFO:    ARM GICv3 driver initialized in EL3
+INFO:    Maximum SPI INTID supported: 287
+NOTICE:  BL31: Detected Allwinner A733 SoC (1903)
+NOTICE:  BL31: Found U-Boot DTB at 0x5203fab0, model: T736 custom board RAM bring-up
+INFO:    Configuring SPC Controller
+INFO:    BL31: Platform setup done
+INFO:    BL31: Initializing runtime services
+INFO:    BL31: cortex_a55: CPU workaround for erratum 1530923 was applied
+INFO:    PSCI: Suspend is unavailable
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x52000000
+INFO:    SPSR = 0x3c9
+INFO:    Changed devicetree.
 
-systemd[1]: Hostname set to <atlasa1>.
-]3008;start=4f06bbed316c4daa8051392d8324ca72;user=root;hostname=atlasa1;machineid=8a50f23fcdf249f083516259a0626cf9;bootid=7b382be97102486ebbf17d87b68dfec7;pid=1;pidfdid=2;comm=systemd;type=boot\systemd[1]: bpf-restrict-fs: BPF LSM hook not enabled in the kernel, BPF LSM not supported.
-systemd[1]: Queued start job for default target graphical.target.
-systemd[1]: Created slice system-cups.slice - CUPS Slice.
-[[0;32m  OK  [0m] Created slice [0;1;39msystem-cups.slice[0m - CUPS Slice.
-systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
-[[0;32m  OK  [0m] Created slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
-systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
-[[0;32m  OK  [0m] Created slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
-systemd[1]: Created slice user.slice - User and Session Slice.
-[[0;32m  OK  [0m] Created slice [0;1;39muser.slice[0m - User and Session Slice.
-systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
-[[0;32m  OK  [0m] Started [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
-systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
-[[0;32m  OK  [0m] Set up automount [0;1;39mproc-sys-fs-binfm…[0mormats File System Automount Point.
-systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
-         Expecting device [0;1;39mdev-ttyS0.device[0m - /dev/ttyS0...
-systemd[1]: Reached target imports.target - Image Downloads.
-[[0;32m  OK  [0m] Reached target [0;1;39mimports.target[0m - Image Downloads.
-systemd[1]: Reached target slices.target - Slice Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mslices.target[0m - Slice Units.
-systemd[1]: Reached target swap.target - Swaps.
-[[0;32m  OK  [0m] Reached target [0;1;39mswap.target[0m - Swaps.
-systemd[1]: Listening on rpcbind.socket - RPCbind Server Activation Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mrpcbind.socket[0m - RPCbind Server Activation Socket.
-systemd[1]: Listening on syslog.socket - Syslog Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msyslog.socket[0m - Syslog Socket.
-systemd[1]: Listening on systemd-ask-password.socket - Query the User Interactively for a Password.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-ask-password.…[0m User Interactively for a Password.
-systemd[1]: Listening on systemd-creds.socket - Credential Encryption/Decryption.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-creds.socket[0m - Credential Encryption/Decryption.
-systemd[1]: Listening on systemd-factory-reset.socket - Factory Reset Management.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-factory-reset.socket[0m - Factory Reset Management.
-systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-journald-dev-…socket[0m - Journal Socket (/dev/log).
-systemd[1]: Listening on systemd-journald.socket - Journal Sockets.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-journald.socket[0m - Journal Sockets.
-systemd[1]: Listening on systemd-mute-console.socket - Console Output Muting Service Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-mute-console.…[0mnsole Output Muting Service Socket.
-systemd[1]: systemd-pcrextend.socket - TPM PCR Measurements skipped, unmet condition check ConditionSecurity=measured-uki
-systemd[1]: systemd-pcrlock.socket - Make TPM PCR Policy skipped, unmet condition check ConditionSecurity=measured-uki
-systemd[1]: Listening on systemd-resolved-monitor.socket - Resolve Monitor Varlink Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-resolved-moni…t[0m - Resolve Monitor Varlink Socket.
-systemd[1]: Listening on systemd-resolved-varlink.socket - Resolve Service Varlink Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-resolved-varl…t[0m - Resolve Service Varlink Socket.
-systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-udevd-control.socket[0m - udev Control Socket.
-systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-udevd-kernel.socket[0m - udev Kernel Socket.
-systemd[1]: Listening on systemd-udevd-varlink.socket - udev Varlink Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-udevd-varlink.socket[0m - udev Varlink Socket.
-systemd[1]: dev-hugepages.mount - Huge Pages File System skipped, unmet condition check ConditionPathExists=/sys/kernel/mm/hugepages
-systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
-         Mounting [0;1;39mdev-mqueue.mount[0m - POSIX Message Queue File System...
-systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
-         Mounting [0;1;39msys-kernel-debug.mount[0m - Kernel Debug File System...
-systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
-         Mounting [0;1;39msys-kernel-tracing.mount[0m - Kernel Trace File System...
-systemd[1]: tmp.mount: x-systemd.graceful-option=usrquota specified, but option is not available, suppressing.
-systemd[1]: Mounting tmp.mount - Temporary Directory /tmp...
-         Mounting [0;1;39mtmp.mount[0m - Temporary Directory /tmp...
-systemd[1]: Starting systemd-journald.service - Journal Service...
-         Starting [0;1;39msystemd-journald.service[0m - Journal Service...
-systemd[1]: auth-rpcgss-module.service - Kernel Module supporting RPCSEC_GSS skipped, unmet condition check ConditionPathExists=/etc/krb5.keytab
-systemd[1]: Starting fake-hwclock-load.service - Restore the current clock...
-         Starting [0;1;39mfake-hwclock-load.service[0m - Restore the current clock...
-systemd[1]: Starting keyboard-setup.service - Set the console keyboard layout...
-         Starting [0;1;39mkeyboard-setup.service[0m - Set the console keyboard layout...
-systemd-journald[276]: Collecting audit messages is disabled.
-systemd[1]: kmod-static-nodes.service - Create List of Static Device Nodes skipped, unmet condition check ConditionFileNotEmpty=/lib/modules/6.18.63-t736-gnome-v45/modules.devname
-systemd[1]: modprobe@configfs.service - Load Kernel Module configfs skipped, unmet condition check ConditionKernelModuleLoaded=!configfs
-systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
-         Mounting [0;1;39msys-kernel-config.mount[0m - Kernel Configuration File System...
-systemd-journald[276]: Time jumped backwards, rotating.
-systemd[1]: modprobe@drm.service - Load Kernel Module drm skipped, unmet condition check ConditionKernelModuleLoaded=!drm
-systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
-         Starting [0;1;39mmodprobe@efi_pstore.servi…[0m - Load Kernel Module efi_pstore...
-systemd[1]: modprobe@fuse.service - Load Kernel Module fuse skipped, unmet condition check ConditionKernelModuleLoaded=!fuse
-systemd[1]: Mounting sys-fs-fuse-connections.mount - FUSE Control File System...
-         Mounting [0;1;39msys-fs-fuse-connections.mount[0m - FUSE Control File System...
-systemd[1]: systemd-hibernate-clear.service - Clear Stale Hibernate Storage Info skipped, unmet condition check ConditionPathExists=/sys/firmware/efi/efivars/HibernateLocation-8cf2644b-4b0b-428f-9387-6d876050dc67
-systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
-         Startinsystemd[1]: systemd-pcrmachine.service - TPM PCR Machine ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
-g [0;1;39msystemd-modules-load.systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
-service[0m - Load Kernel Modules...
-         Startinsystemd[1]: systemd-tpm2-setup-early.service - Early TPM SRK Setup skipped, unmet condition check ConditionSecurity=measured-uki
-g [0;1;39msystesystemd[1]: systemd-pcrnvdone.service - TPM PCR NvPCR Initialization Separator skipped, unmet condition check ConditionPathExists=/etc/initrd-release
-md-tmpfiles-setusystemd[1]: systemd-pcrproduct.service - TPM NvPCR Product ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
-p-de…[0m Device Nodes in /dev gracefully...systemd[1]: Starting systemd-udev-load-credentials.service - Load udev Rules from Credentials...
+<debug_uart>
+
+
+U-Boot 2026.10-t736-bringup (Nov 18 2026 - 00:00:00 +0000)
+
+Model: T736 custom board RAM bring-up
+Board: T736 source boot candidate; authorized vendor DDR library
+DRAM:  8 GiB
+Core:  4 devices, 4 uclasses, devicetree: separate
+CPU-D A76 step=1 reg=201c before=00000000 desired=00010000 actual=00010000 CTRL=40801400 STAT=40801400 CLK=00010000 rc=0
+CPU-D A76 step=2 reg=2000 before=40801400 desired=40801400 actual=40801400 CTRL=40801400 STAT=40801400 CLK=00010000 rc=0
+CPU-D A76 step=3 reg=2000 before=40801400 desired=48801400 actual=48801400 CTRL=48801400 STAT=48801400 CLK=00010000 rc=0
+CPU-D A76 step=4 reg=2000 before=48801400 desired=48802000 actual=48801400 CTRL=48801400 STAT=48802000 CLK=00010000 rc=0
+CPU-D A76 step=5 reg=2000 before=48801400 desired=c8802000 actual=c8801400 CTRL=c8801400 STAT=c8802000 CLK=00010000 rc=0
+CPU-D A76 step=6 reg=2000 before=c8802000 desired=e8802000 actual=e8802000 CTRL=e8802000 STAT=e8802000 CLK=00010000 rc=0
+CPU-D A76 step=7 reg=2000 before=f8802000 desired=ec802000 actual=f8802000 CTRL=f8802000 STAT=f8802000 CLK=00010000 rc=0
+CPU-D A76 step=8 reg=2000 before=f8802000 desired=f8802000 actual=f8802000 CTRL=f8802000 STAT=f8802000 CLK=00010000 rc=0
+CPU-D A76 step=9 reg=201c before=00010000 desired=03010000 actual=03010000 CTRL=f8802000 STAT=f8802000 CLK=03010000 rc=0
+CPU-D A76 step=10 reg=201c before=03010000 desired=00000000 actual=00000000 CTRL=f8802000 STAT=f8802000 CLK=00000000 rc=0
+CPU-D A76 step=11 reg=2000 before=f8802000 desired=e0802000 actual=f0802000 CTRL=f0802000 STAT=f0802000 CLK=00000000 rc=0
+CPU-D A76 step=12 reg=2000 before=f0802000 desired=c0802000 actual=c0802000 CTRL=c0802000 STAT=c0802000 CLK=00000000 rc=0
+CPU-D A76 step=13 reg=2000 before=c0802000 desired=c0802700 actual=c0802000 CTRL=c0802700 STAT=c0802700 CLK=00000000 rc=0
+CPU-D A76 step=14 reg=2000 before=c0802700 desired=e0802700 actual=e0802700 CTRL=e0802700 STAT=e0802700 CLK=00000000 rc=0
+CPU-D A76 step=15 reg=2000 before=f0802700 desired=e4802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
+CPU-D A76 step=16 reg=2000 before=f0802700 desired=f0802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
+CPU-D A76 step=17 reg=2000 before=f0802700 desired=e8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
+CPU-D A76 step=18 reg=2000 before=f8802700 desired=f8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
+CPU-D A76 step=19 reg=201c before=00000000 desired=03000000 actual=03000000 CTRL=f8802700 STAT=f8802700 CLK=03000000 rc=0
+CPU-D: A76 rc=0 stage=8 CTRL=f8802700 STAT=f8802700 CLK=03000000 mutation=1 rollback=0/0 slow=0 guard=0 trace=19
+CPU-D: A76 PMIC 03/ff/28/28/00/00 -> 03/ff/28/28/00/00
+CPU-D: A76 cold416 then warm1014 PASS
+CPU-D A55 step=1 reg=101c before=03000000 desired=00000000 actual=00000000 CTRL=f8801300 STAT=f8801300 CLK=00000000 rc=0
+CPU-D A55 step=2 reg=1000 before=f8801300 desired=e0801300 actual=f0801300 CTRL=f0801300 STAT=f0801300 CLK=00000000 rc=0
+CPU-D A55 step=3 reg=1000 before=f0801300 desired=c0801300 actual=c0801300 CTRL=c0801300 STAT=c0801300 CLK=00000000 rc=0
+CPU-D A55 step=4 reg=1000 before=c0801300 desired=c0802700 actual=c0802700 CTRL=c0802700 STAT=c0802700 CLK=00000000 rc=0
+CPU-D A55 step=5 reg=1000 before=c0802700 desired=e0802700 actual=e0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
+CPU-D A55 step=6 reg=1000 before=f0802700 desired=e4802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
+CPU-D A55 step=7 reg=1000 before=f0802700 desired=f0802700 actual=f0802700 CTRL=f0802700 STAT=f0802700 CLK=00000000 rc=0
+CPU-D A55 step=8 reg=1000 before=f0802700 desired=e8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
+CPU-D A55 step=9 reg=1000 before=f8802700 desired=f8802700 actual=f8802700 CTRL=f8802700 STAT=f8802700 CLK=00000000 rc=0
+CPU-D A55 step=10 reg=101c before=00000000 desired=03000000 actual=03000000 CTRL=f8802700 STAT=f8802700 CLK=03000000 rc=0
+CPU-D A55 step=11 reg=101c before=03000000 desired=03000000 actual=03000000 CTRL=f8802700 STAT=f8802700 CLK=03000000 rc=0
+CPU-D: A55 rc=0 stage=8 core=412fd050/81000000 CNT=24000000 DAIF=2c0/2c0
+CPU-D: A55 f8801300/f8801300/03000000 -> f8802700/f8802700/03000000 mutation=1 rollback=0 slow=0 guard=0
+CPU-D: PMIC 03/ff/28/28/00/00 -> 03/ff/28/28/00/00
+CPU-D: A55/A76 configured N39/1=1014MHz; DSU and PMIC unchanged
+MMC:   T736 SMHC3 read-only PIO: 0
+Loading Environment from nowhere...Loading Environment from nowhere... OK
+In:    serial@2500000
+Out:   serial@2500000
+Err:   serial@2500000
+[2KHit any key to stop autoboot: 3[2KHit any key to stop autoboot: 0
+T736-mainline=> setenv kernel_comp_addr_r 0x68000000
+T736-mainline=> setenv bootargs earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
+T736-mainline=> mmc dev 0
+switch to partitions #0, OK
+mmc0(part 0) is current device
+T736-mainline=> ext4load mmc 0:4 0x60000000 /boot/Image-6.18.63-t736-gnome-v45
+14125064 bytes read in 2791 ms (4.8 MiB/s)
+T736-mainline=> setenv kernel_comp_size ${filesize}
+T736-mainline=> ext4load mmc 0:4 0x64000000 /boot/initrd.img-6.18.63-t736-gnome-v45
+18691885 bytes read in 3677 ms (4.8 MiB/s)
+T736-mainline=> setenv rdsize ${filesize}
+T736-mainline=> ext4load mmc 0:4 0x63000000 /boot/t736-gnome-v45.dtb
+16696 bytes read in 5 ms (3.2 MiB/s)
+T736-mainline=> booti 0x60000000 0x64000000:${rdsize} 0x63000000
+## Flattened Device Tree blob at 63000000
+   Booting using the fdt blob at 0x63000000
+Working FDT set to 63000000
+   Loading Ramdisk to ad5bd000, end ae79072d ... OK
+   Loading Device Tree to 00000000ad5b5000, end 00000000ad5bc137 ... OK
+Working FDT set to ad5b5000
+
+Starting kernel ...
+
+Booting Linux on physical CPU 0x0000000000 [0x412fd050]
+Linux version 6.18.63-t736-gnome-v45 (ubuntu@ubuntu2404) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #45 SMP 2026-11-19 00:00:00 UTC
+Machine model: T736 custom board mainline bring-up
+earlycon: uart8250 at MMIO32 0x0000000002500000 (options '')
+printk: legacy bootconsole [uart8250] enabled
+OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+Zone ranges:
+  DMA      [mem 0x0000000040000000-0x00000000ffffffff]
+  DMA32    empty
+  Normal   [mem 0x0000000100000000-0x000000023fffffff]
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000040000000-0x000000023fffffff]
+Initmem setup node 0 [mem 0x0000000040000000-0x000000023fffffff]
+cma: Reserved 512 MiB at 0x00000000db800000
+psci: probing for conduit method from DT.
+psci: PSCIv1.1 detected in firmware.
+psci: Using standard PSCI v0.2 function IDs
+psci: MIGRATE_INFO_TYPE not supported.
+psci: SMC Calling Convention v1.5
+percpu: Embedded 26 pages/cpu s67480 r8192 d30824 u106496
+Detected VIPT I-cache on CPU0
+CPU features: detected: GICv3 CPU interface
+CPU features: detected: Virtualization Host Extensions
+CPU features: kernel page table isolation disabled by kernel configuration
+alternatives: applying boot alternatives
+Kernel command line: earlycon=uart8250,mmio32,0x02500000 console=ttyS0,115200 root=PARTUUID=a0085546-4166-744a-a353-fca9272b8e48 rootwait rw clk_ignore_unused t736_mmc_pio.enable_hs200=1 t736_mmc_pio.hs200_max_hz=200000000 t736_mmc_pio.enable_hs400=1 t736_mmc_pio.hs400_max_hz=200000000 t736_cedar_wc.heap_limit_mib=256
+printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
+Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+software IO TLB: area num 8.
+software IO TLB: mapped [mem 0x00000000d7800000-0x00000000db800000] (64MB)
+Built 1 zonelists, mobility grouping on.  Total pages: 2097152
+mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+SLUB: HWalign=64, Order=0-1, MinObjects=0, CPUs=8, Nodes=1
+ftrace: allocating 35389 entries in 139 pages
+ftrace: allocated 139 pages with 4 groups
+rcu: Hierarchical RCU implementation.
+	Rude variant of Tasks RCU enabled.
+	Tracing variant of Tasks RCU enabled.
+rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+RCU Tasks Rude: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
+RCU Tasks Trace: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
+NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+GICv3: GIC: Using split EOI/Deactivate mode
+GICv3: 256 SPIs implemented
+GICv3: 0 Extended SPIs implemented
+Root IRQ handler: gic_handle_irq
+GICv3: GICv3 features: 16 PPIs
+GICv3: GICD_CTLR.DS=0, SCR_EL3.FIQ=0
+GICv3: CPU0: found redistributor 0 region 0:0x0000000003460000
+ITS: No ITS available, not enabling LPIs
+rcu: srcu_init: Setting srcu_struct sizes based on contention.
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+arch_timer: cp15 timer running at 24.00MHz (phys).
+clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+Console: colour dummy device 80x25
+Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+pid_max: default: 32768 minimum: 301
+LSM: initializing lsm=capability
+Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+rcu: Hierarchical SRCU implementation.
+rcu: 	Max phase no-delay instances is 1000.
+smp: Bringing up secondary CPUs ...
+Detected VIPT I-cache on CPU1
+GICv3: CPU1: found redistributor 100 region 0:0x0000000003480000
+CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
+Detected VIPT I-cache on CPU2
+GICv3: CPU2: found redistributor 200 region 0:0x00000000034a0000
+CPU2: Booted secondary processor 0x0000000200 [0x412fd050]
+Detected VIPT I-cache on CPU3
+GICv3: CPU3: found redistributor 300 region 0:0x00000000034c0000
+CPU3: Booted secondary processor 0x0000000300 [0x412fd050]
+Detected VIPT I-cache on CPU4
+GICv3: CPU4: found redistributor 400 region 0:0x00000000034e0000
+CPU4: Booted secondary processor 0x0000000400 [0x412fd050]
+Detected VIPT I-cache on CPU5
+GICv3: CPU5: found redistributor 500 region 0:0x0000000003500000
+CPU5: Booted secondary processor 0x0000000500 [0x412fd050]
+CPU features: detected: Spectre-v4
+CPU features: detected: Spectre-BHB
+Detected PIPT I-cache on CPU6
+GICv3: CPU6: found redistributor 600 region 0:0x0000000003520000
+CPU6: Booted secondary processor 0x0000000600 [0x414fd0b1]
+Detected PIPT I-cache on CPU7
+GICv3: CPU7: found redistributor 700 region 0:0x0000000003540000
+CPU7: Booted secondary processor 0x0000000700 [0x414fd0b1]
+smp: Brought up 1 node, 8 CPUs
+SMP: Total of 8 processors activated.
+CPU: All CPU(s) started at EL2
+CPU features: detected: 32-bit EL0 Support
+CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+CPU features: detected: CRC32 instructions
+CPU features: detected: RCpc load-acquire (LDAPR)
+CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+alternatives: applying system-wide alternatives
+Memory: 7382612K/8388608K available (7552K kernel code, 2594K rwdata, 2800K rodata, 768K init, 308K bss, 476544K reserved, 524288K cma-reserved)
+devtmpfs: initialized
+posixtimers hash table entries: 4096 (order: 4, 65536 bytes, linear)
+futex hash table entries: 2048 (131072 bytes on 1 NUMA nodes, total 128 KiB, linear).
+29216 pages in range for non-PLT usage
+520736 pages in range for PLT usage
+pinctrl core: initialized pinctrl subsystem
+NET: Registered PF_NETLINK/PF_ROUTE protocol family
+DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+ASID allocator initialised with 65536 entries
+/display-engine@5000000: Fixed dependency cycle(s) with /tcon@5730000
+/tcon@5730000: Fixed dependency cycle(s) with /display-engine@5000000
+/tcon@5730000: Fixed dependency cycle(s) with /hdmi@5520000
+/hdmi@5520000: Fixed dependency cycle(s) with /tcon@5730000
+/pcie@6000000: Fixed dependency cycle(s) with /pcie@6000000/legacy-interrupt-controller
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+vgaarb: loaded
+clocksource: Switched to clocksource arch_sys_counter
+NET: Registered PF_INET protocol family
+IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+TCP: Hash tables configured (established 65536 bind 65536)
+UDP hash table entries: 4096 (order: 6, 262144 bytes, linear)
+UDP-Lite hash table entries: 4096 (order: 6, 262144 bytes, linear)
+NET: Registered PF_UNIX/PF_LOCAL protocol family
+PCI: CLS 0 bytes, default 64
+Trying to unpack rootfs image as initramfs...
+Initialise system trusted keyrings
+workingset: timestamp_bits=46 max_order=21 bucket_order=0
+fuse: init (API version 7.45)
+NET: Registered PF_ALG protocol family
+Key type asymmetric registered
+Asymmetric key parser 'x509' registered
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+io scheduler mq-deadline registered
+io scheduler kyber registered
+io scheduler bfq registered
+t736-display-ccu 2002a00.clock-controller: DE PLL locked at 600 MHz; HDMI PHY reference is board DCXO 26 MHz
+t736-gpu-ccu 2002b20.clock-controller: GPU fixed PERI400 clock with independent PLL_GPU0 power prerequisite
+t736-ve-power 7062000.power-controller: VE_DEC PPU=ON, 400MHz, DEC0/1 bypass verified; reset held
+t736-gpu-supply 7083000.regulator: AXP8191 DCDC5 verified at 900000 uV, fixed GPU supply policy
+t736-gpu-supply 7083000.regulator: DLDO5 1800000 uV: voltage 0d->0d enable 42->52
+Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+printk: legacy console [ttyS0] disabled
+2500000.serial: ttyS0 at MMIO 0x2500000 (irq = 13, base_baud = 1500000) is a 16550A
+printk: legacy console [ttyS0] enabled
+printk: legacy console [ttyS0] enabled
+printk: legacy bootconsole [uart8250] disabled
+printk: legacy bootconsole [uart8250] disabled
+[drm] [TCON_TOP]sunxi_tcon_top_probe start
+[drm] [SUNXI-DE] offline_mode not found, used def val
+[drm] de use no display sys
+[drm] [TCON] sunxi_tcon_probe start
+[drm] [SUNXI-TCON] sunxi_tcon_of_get_id 4
+[drm] [TCON] sunxi_tcon_probe ret = 0
+[drm] sunxi_drm_platform_probe start
+[drm] sunxi_drm_match_add start
+[drm] sunxi_drm_match_add finish
+[drm] sunxi_drm_bind start
+[drm] [TCON_TOP]sunxi_tcon_top_bind start
+sunxi-drm sunxi-drm: bound 5510000.tcon-top (ops 0xffff8000807fe570)
+[drm] [SUNXI-DE] sunxi_de_bind start
+[drm] sunxi_de_bind crtc init for de 0 ok
+sunxi-drm sunxi-drm: bound 5000000.display-engine (ops 0xffff8000807fbae8)
+[drm] [SUNXI-TCON] sunxi_tcon_of_get_id 4
+[drm] sunxi-hdmi: hdmi drv init dts done
+[drm] sunxi-hdmi: [warn] not set hdmi notify node!
+[drm] sunxi-hdmi: hdmi drv enable resource done
+[drm] sunxi-hdmi: hdmi drv init resource done
+[drm] sunxi-hdmi: hdmi drv init i2c adapter finish
+[drm] sunxi-hdmi: drm hdmi connector create finish
+[drm] sunxi-hdmi: hdmi devices bind done <<<<<<<<<<
+
+sunxi-drm sunxi-drm: bound 5520000.hdmi (ops 0xffff8000807fec28)
+sunxi-drm sunxi-drm: bound 5730000.tcon (ops 0xffff8000807fe278)
+[drm] HDMI-A-1 Not connected, start hot-plug monitoring
+[drm] start HDMI-A-1 monitor monitoring, interval: 100ms
+[drm:commit_init_connecting.isra.0] *ERROR* offline mode: init connecting not found sunxi_drm_offline_mode_pre_init
+[drm] Initialized sunxi-drm 3.0.0 for sunxi-drm on minor 0
+[drm] sunxi_drm_bind ok
+[drm] sunxi-hdmi: hdmi drv detect hpd connect
+brd: module loaded
+loop: module loaded
+t736-cedar-wc 1c0e000.video-codec: Cedar decoder + private 32-bit WC heap; budget 256 MiB; root-only, fixed-frequency bring-up
+usbcore: registered new interface driver usb-storage
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+NET: Registered PF_INET6 protocol family
+Segment Routing with IPv6
+In-situ OAM (IOAM) with IPv6
+sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+NET: Registered PF_PACKET protocol family
+Loading compiled-in X.509 certificates
+gpio gpiochip0: Static allocation of GPIO base is deprecated, use dynamic allocation.
+t736-r-pinctrl 7025000.pinctrl: initialized sunXi PIO driver
+gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+t736-pinctrl 2000000.pinctrl: initialized sunXi PIO driver
+t736-pcie 6000000.pcie: COMBO1 internal REFCLK locked
+t736-pcie 6000000.pcie: host bridge /pcie@6000000 ranges:
+t736-pcie 6000000.pcie:       IO 0x0021000000..0x0021ffffff -> 0x0021000000
+t736-pcie 6000000.pcie:      MEM 0x0022000000..0x0027ffffff -> 0x0022000000
+t736-pcie 6000000.pcie:      MEM 0x0440000000..0x053fffffff -> 0x0440000000
+t736-pcie 6000000.pcie:   IB MEM 0x0040000000..0x023fffffff -> 0x0040000000
+t736-pcie 6000000.pcie: ASPM disabled for fixed COMBO1 REFCLK path
+t736-pcie 6000000.pcie: iATU: unroll T, 16 ob, 16 ib, align 4K, limit 32G
+t736-pcie 6000000.pcie: eDMA: unroll T, 4 wr, 4 rd
+Freeing initrd memory: 18252K
+t736-pcie 6000000.pcie: PCIe Gen.1 x1 link up
+t736-pcie 6000000.pcie: PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [bus 00-ff]
+pci_bus 0000:00: root bus resource [io  0x0000-0xffffff] (bus address [0x21000000-0x21ffffff])
+pci_bus 0000:00: root bus resource [mem 0x22000000-0x27ffffff]
+pci_bus 0000:00: root bus resource [mem 0x440000000-0x53fffffff pref]
+pci 0000:00:00.0: [1f6d:abcd] type 01 class 0x060400 PCIe Root Port
+pci 0000:00:00.0: BAR 0 [mem 0x00000000-0x000fffff]
+pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
+pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
+pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+pci 0000:00:00.0: supports D1
+pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+pci 0000:01:00.0: [8086:f1a6] type 00 class 0x010802 PCIe Endpoint
+pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
+pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
+pci 0000:00:00.0: BAR 0 [mem 0x22000000-0x220fffff]: assigned
+pci 0000:00:00.0: bridge window [mem 0x22100000-0x221fffff]: assigned
+pci 0000:00:00.0: ROM [mem 0x22200000-0x2220ffff pref]: assigned
+pci 0000:01:00.0: BAR 0 [mem 0x22100000-0x22103fff 64bit]: assigned
+pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+pci 0000:00:00.0:   bridge window [mem 0x22100000-0x221fffff]
+pci_bus 0000:00: resource 4 [io  0x0000-0xffffff]
+pci_bus 0000:00: resource 5 [mem 0x22000000-0x27ffffff]
+pci_bus 0000:00: resource 6 [mem 0x440000000-0x53fffffff pref]
+pci_bus 0000:01: resource 1 [mem 0x22100000-0x221fffff]
+pcieport 0000:00:00.0: PME: Signaling with IRQ 426
+nvme nvme0: pci function 0000:01:00.0
+t736-gpu-power 7065000.power-controller: GPU_TOP/CORE ACK=8; PLL_GPU0 ready, GPU=400000000 Hz, DCDC5=900000 uV, reset verified
+nvme 0000:01:00.0: enabling device (0000 -> 0002)
+[drm] sunxi-hdmi: dw edid unsupport parser desc type: 255
+[drm] sunxi-hdmi: dw edid unsupport parser desc type: 253
+[drm] sunxi-hdmi: sunxi hdmi edid parse block0 finish
+2501000.serial: ttyS1 at MMIO 0x2501000 (irq = 427, base_baud = 1500000) is a 16550A
+[drm] sunxi-hdmi: [error] dw edid parse dtd timing pixel clock[0KHz] invalid!
+t736-dwmac 4500000.ethernet: IRQ eth_wake_irq not found
+[drm] sunxi-hdmi: sunxi hdmi edid parse block1 finish
+t736-dwmac 4500000.ethernet: IRQ sfty not found
+t736-dwmac 4500000.ethernet: PTP uses main clock
+t736-dwmac 4500000.ethernet: RGMII MAC delays TX=13 RX=10, PHY clock 25 MHz
+t736-dwmac 4500000.ethernet: User ID: 0x20, Synopsys ID: 0x53
+t736-dwmac 4500000.ethernet: 	DWMAC4/5
+t736-dwmac 4500000.ethernet: DMA HW capability register supported
+t736-dwmac 4500000.ethernet: RX Checksum Offload Engine supported
+t736-dwmac 4500000.ethernet: TX Checksum insertion supported
+t736-dwmac 4500000.ethernet: Wake-Up On Lan supported
+t736-dwmac 4500000.ethernet: Enable RX Mitigation via HW Watchdog Timer
+t736-dwmac 4500000.ethernet: device MAC address a2:4d:a8:3d:c0:98
+t736-dwmac 4500000.ethernet: Enabled RFS Flow TC (entries=10)
+t736-dwmac 4500000.ethernet: Using 32/40 bits DMA host/device width
+[drm] HDMI-A-1 connection detected
+[drm] sunxi-hdmi: drm get edid support modes: 42
+[drm] HDMI-A-1: Configuration mode 2560x1440@60Hz
+[drm] sunxi-hdmi: drm hdmi set mode change when disp info change
+[drm] sunxi-hdmi: drm hdmi check mode: change >>>>>>>>>>>>>>>>
+[drm] sunxi-hdmi: sunxi hdmi select vic 0 use hdmi14 vsif
+[drm] sunxi-hdmi: drm hdmi mode set: 2560*1440 >>>>>>>>>>>>>>>>
+[drm] [SUNXI-CRTC]sunxi_crtc_atomic_enable
+[drm] sunxi_de_enable index 0
+[drm] sunxi_de_enable finish sw en=0
+[drm] suxni tcon hdmi set rate: 241500000Hz and get diff: 241500000Hz
+[drm] sunxi-hdmi: dw audio get n = 6144
+[drm] sunxi-hdmi: top phy auto calculate done
+[drm] sunxi-hdmi: [top phy]
+[drm] sunxi-hdmi:  - pixel clock 241500KHz
+[drm] sunxi-hdmi:    - pll: 0xE8064000, 0x00035000, 0x00000000, 0x30000000
+[drm] sunxi-hdmi: top phy config done
+[drm] sunxi-hdmi: [warn] snps phy check clk: 241500Hz is match in [237600Hz-288000Hz] and change use: 237600Hz
+[drm] sunxi-hdmi: [snps phy]
+[drm] sunxi-hdmi:  - refer clock: 237600KHz, color bits: 8, repeat: 0
+[drm] sunxi-hdmi:     - mpll: 0x0000, 0x3040, 0x0605
+[drm] sunxi-hdmi:  - refer clock: 241500KHz. [185625KHz~340000KHz]
+[drm] sunxi-hdmi:     - drive: 0x0004, 0x8040, 0x8e85
+[drm] sunxi-hdmi: snps phy state: lock
+t736-dwmac 4500000.ethernet: RGMII configuration retained after MAC reset: 0x11545
+sunxi-mmc 4021000.mmc: allocated mmc-pwrseq
+[drm] sunxi-hdmi: dw audio check: triger cts re-calculate
+[drm] sunxi-hdmi: hdmi drv enable output done
+[drm] sunxi-hdmi: drm hdmi atomic enable >>>>>>>>>>>>>>>>
+t736-smhc3-pio 4023000.mmc: STORE_MBUS addr=0x00000000020025e0 value=f1055803 (read-only)
+t736-smhc3-pio 4023000.mmc: MSI_LITE1 addr=0x000000000200259c value=00030001 (read-only)
+t736-smhc3-pio 4023000.mmc: SMHC 050610: IDMA descriptors=0x000000004000a000 data=0x00000000dbbf0000 (shift2, mask32)
+Console: switching to colour frame buffer device 320x90
+nvme nvme0: 8/0/0 default/read/poll queues
+ nvme0n1: p1
+[drm] HDMI-A-1: Configuration complete
+t736-smhc3-pio 4023000.mmc: timing=0 card=400000 parent=24000000 mux=0 M=30 N=1 module=8000001d sample=0 signal=1 (no rail writes)
+t736-smhc3-pio 4023000.mmc: HS400 draft: v23 IDMA, HS cap=25000000, HS200=1 cap=200000000, HS400=1 cap=200000000, fixed1.8V; no ES/CQE
+rfkill_gpio bluetooth-power: atlasa1-bluetooth device registered.
+t736-r-pinctrl 7025000.pinctrl: supply vcc-pl not found, using dummy regulator
+clk: Not disabling unused clocks
+ehci-platform 4200000.usb: EHCI Host Controller
+ohci-platform 4200400.usb: Generic Platform OHCI controller
+ohci-platform 4200400.usb: new USB bus registered, assigned bus number 1
+PM: genpd: Disabling unused power domains
+ohci-platform 4200400.usb: irq 442, io mem 0x04200400
+ehci-platform 4200000.usb: new USB bus registered, assigned bus number 2
+ehci-platform 4200000.usb: irq 441, io mem 0x04200000
+ehci-platform 4200000.usb: USB 2.0 started, EHCI 1.00
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+sunxi-mmc 4021000.mmc: initialized, max. request size: 1024 KB, uses new timings mode
+Freeing unused kernel memory: 768K
+Run /init as init process
+Loading, please wait...
+Starting systemd-udevd version 259.9-0ubuntu0.1
+mmc1: Failed to initialize a non-removable card
+usb 2-1: new high-speed USB device number 2 using ehci-platform
+t736-smhc3-pio 4023000.mmc: first IDMA request completed: CMD8 bytes=512 IRQ=0000002c IDST=00000002
+hub 2-1:1.0: USB hub found
+hub 2-1:1.0: 4 ports detected
+t736-dwmac 4500000.ethernet end0: renamed from eth0
+usb 2-1.4: new high-speed USB device number 3 using ehci-platform
+hub 2-1.4:1.0: USB hub found
+hub 2-1.4:1.0: 6 ports detected
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+done.
+usb 2-1.4.4: new high-speed USB device number 4 using ehci-platform
+t736-smhc3-pio 4023000.mmc: timing=9 card=400000 parent=24000000 mux=0 M=30 N=1 module=8000001d sample=0 signal=1 (no rail writes)
+t736-smhc3-pio 4023000.mmc: timing=9 card=50000000 parent=800000000 mux=1 M=8 N=1 module=81000007 sample=32 signal=1 (no rail writes)
+t736-smhc3-pio 4023000.mmc: timing=9 card=200000000 parent=800000000 mux=1 M=2 N=1 module=81000001 sample=49 signal=1 (no rail writes)
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+usb 2-1.4.6: new high-speed USB device number 5 using ehci-platform
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000e4 STATUS=0020a903 FIFO_words=16 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts not-valid-before-data-complete OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD21 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=0000a906 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=128 host=128 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000080 36efc000 00000000
+input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.0/0003:1A86:8022.0001/input/input0
+hid-generic 0003:1A86:8022.0001: input: USB HID v1.10 Keyboard [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input0
+t736-smhc3-pio 4023000.mmc: HS200 tuning card=200000000 pass=ffffffc07fffffff abort_err=0000003f80000000 window=0+31 tap=15 verified=16x128 THLD=00800001 SFC=00000006
+input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.1/0003:1A86:8022.0002/input/input1
+hid-generic 0003:1A86:8022.0002: input: USB HID v1.10 Mouse [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input1
+input: wch.cn KMFU HID as /devices/platform/4200000.usb/usb2/2-1/2-1.4/2-1.4.6/2-1.4.6:1.2/0003:1A86:8022.0003/input/input2
+hid-generic 0003:1A86:8022.0003: input: USB HID v1.10 Device [wch.cn KMFU HID] on usb-4200000.usb-1.4.6/input2
+t736-smhc3-pio 4023000.mmc: timing=1 card=25000000 parent=800000000 mux=1 M=16 N=1 module=8100000f sample=0 signal=1 (no rail writes)
+usb 2-1.4.5: new high-speed USB device number 6 using ehci-platform
+usb-storage 2-1.4.5:1.0: USB Mass Storage device detected
+scsi host0: usb-storage 2-1.4.5:1.0
+t736-smhc3-pio 4023000.mmc: timing=10 card=50000000 parent=800000000 mux=1 M=8 N=1 module=81000007 sample=32 signal=1 (no rail writes)
+t736-smhc3-pio 4023000.mmc: timing=10 card=200000000 parent=800000000 mux=1 M=2 N=1 module=81000001 sample=14 signal=1 (no rail writes)
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000080ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+scsi 0:0:0:0: CD-ROM            wch.cn   KMFU             1.00 PQ: 0 ANSI: 5
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: DMA snapshot CMD8 CTRL=20000020 DMAC=00000080 DLBA=10002800 IDIE=00000032 IDST=00000022 RINT=000000ac STATUS=00004106 FIFO_words=0 FTH=300f00f0 owned=0/1
+t736-smhc3-pio 4023000.mmc: DMA bytecounts card=512 host=512 OWN_bitmap=00000000:00000000
+t736-smhc3-pio 4023000.mmc: DMA desc0 0000000c 00000200 36efc000 00000000
+t736-smhc3-pio 4023000.mmc: HS400 tuned card=200000000 cmd_pass=fffffff8ffffffff cmd_window=0+32 cmd=15 ds_pass=0000000003fffff0 ds_window=4+22 ds=14 abort_err=fffffffffc00000f verified=16xCMD13+16x512 EXT_CSD=03/06 R1=00000900 THLD=02000001 SFC=00000006
+mmc0: new HS400 MMC card at address 0001
+mmcblk0: mmc0:0001 A31Y5C 58.2 GiB
+ mmcblk0: p1 p2 p3 p4 p5 p6
+mmcblk0boot0: mmc0:0001 A31Y5C 4.00 MiB
+mmcblk0boot1: mmc0:0001 A31Y5C 4.00 MiB
+t736-gpu-power 7065000.power-controller: sync_state() pending due to 1800000.gpu
+Begin: Will now check root file system ... fsck from util-linux 2.41.3
+[/usr/sbin/fsck.ext4 (1) -- /dev/mmcblk0p4] fsck.ext4 -a -C0 /dev/mmcblk0p4 
+rootfs: clean, 115018/476720 files, 1646425/1904960 blocks
+done.
+EXT4-fs (mmcblk0p4): mounted filesystem 4d8c73ce-75f9-4794-bef2-664d7cecbbbb r/w with ordered data mode. Quota mode: disabled.
+done.
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... done.
+systemd[1]: System time advanced to timestamp on /var/lib/systemd/timesync/clock: Fri 2026-11-20 04:38:31 UTC
+P+q6E616D65\[6n[32766;32766H[6n[!p]104\[0m[?7h[1G[0Jsystemd[1]: systemd 259.9-0ubuntu0.1 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +IPE +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF -XKBCOMMON -UTMP +SYSVINIT +LIBARCHIVE)
+systemd[1]: Detected architecture arm64.
+
+[0;1;39mWelcome to [0m[1mArmbian-unofficial 26.11.0-trunk resolute[0m[0;1;39m![0m
+
+systemd[1]: Hostname set to <atlasa1>.
+]3008;start=4f06bbed316c4daa8051392d8324ca72;user=root;hostname=atlasa1;machineid=8a50f23fcdf249f083516259a0626cf9;bootid=7b382be97102486ebbf17d87b68dfec7;pid=1;pidfdid=2;comm=systemd;type=boot\systemd[1]: bpf-restrict-fs: BPF LSM hook not enabled in the kernel, BPF LSM not supported.
+systemd[1]: Queued start job for default target graphical.target.
+systemd[1]: Created slice system-cups.slice - CUPS Slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-cups.slice[0m - CUPS Slice.
+systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
+systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
+systemd[1]: Created slice user.slice - User and Session Slice.
+[[0;32m  OK  [0m] Created slice [0;1;39muser.slice[0m - User and Session Slice.
+systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
+systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+[[0;32m  OK  [0m] Set up automount [0;1;39mproc-sys-fs-binfm…[0mormats File System Automount Point.
+systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+         Expecting device [0;1;39mdev-ttyS0.device[0m - /dev/ttyS0...
+systemd[1]: Reached target imports.target - Image Downloads.
+[[0;32m  OK  [0m] Reached target [0;1;39mimports.target[0m - Image Downloads.
+systemd[1]: Reached target slices.target - Slice Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mslices.target[0m - Slice Units.
+systemd[1]: Reached target swap.target - Swaps.
+[[0;32m  OK  [0m] Reached target [0;1;39mswap.target[0m - Swaps.
+systemd[1]: Listening on rpcbind.socket - RPCbind Server Activation Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mrpcbind.socket[0m - RPCbind Server Activation Socket.
+systemd[1]: Listening on syslog.socket - Syslog Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msyslog.socket[0m - Syslog Socket.
+systemd[1]: Listening on systemd-ask-password.socket - Query the User Interactively for a Password.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-ask-password.…[0m User Interactively for a Password.
+systemd[1]: Listening on systemd-creds.socket - Credential Encryption/Decryption.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-creds.socket[0m - Credential Encryption/Decryption.
+systemd[1]: Listening on systemd-factory-reset.socket - Factory Reset Management.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-factory-reset.socket[0m - Factory Reset Management.
+systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-journald-dev-…socket[0m - Journal Socket (/dev/log).
+systemd[1]: Listening on systemd-journald.socket - Journal Sockets.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-journald.socket[0m - Journal Sockets.
+systemd[1]: Listening on systemd-mute-console.socket - Console Output Muting Service Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-mute-console.…[0mnsole Output Muting Service Socket.
+systemd[1]: systemd-pcrextend.socket - TPM PCR Measurements skipped, unmet condition check ConditionSecurity=measured-uki
+systemd[1]: systemd-pcrlock.socket - Make TPM PCR Policy skipped, unmet condition check ConditionSecurity=measured-uki
+systemd[1]: Listening on systemd-resolved-monitor.socket - Resolve Monitor Varlink Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-resolved-moni…t[0m - Resolve Monitor Varlink Socket.
+systemd[1]: Listening on systemd-resolved-varlink.socket - Resolve Service Varlink Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-resolved-varl…t[0m - Resolve Service Varlink Socket.
+systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-udevd-control.socket[0m - udev Control Socket.
+systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-udevd-kernel.socket[0m - udev Kernel Socket.
+systemd[1]: Listening on systemd-udevd-varlink.socket - udev Varlink Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-udevd-varlink.socket[0m - udev Varlink Socket.
+systemd[1]: dev-hugepages.mount - Huge Pages File System skipped, unmet condition check ConditionPathExists=/sys/kernel/mm/hugepages
+systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+         Mounting [0;1;39mdev-mqueue.mount[0m - POSIX Message Queue File System...
+systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+         Mounting [0;1;39msys-kernel-debug.mount[0m - Kernel Debug File System...
+systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+         Mounting [0;1;39msys-kernel-tracing.mount[0m - Kernel Trace File System...
+systemd[1]: tmp.mount: x-systemd.graceful-option=usrquota specified, but option is not available, suppressing.
+systemd[1]: Mounting tmp.mount - Temporary Directory /tmp...
+         Mounting [0;1;39mtmp.mount[0m - Temporary Directory /tmp...
+systemd[1]: Starting systemd-journald.service - Journal Service...
+         Starting [0;1;39msystemd-journald.service[0m - Journal Service...
+systemd[1]: auth-rpcgss-module.service - Kernel Module supporting RPCSEC_GSS skipped, unmet condition check ConditionPathExists=/etc/krb5.keytab
+systemd[1]: Starting fake-hwclock-load.service - Restore the current clock...
+         Starting [0;1;39mfake-hwclock-load.service[0m - Restore the current clock...
+systemd[1]: Starting keyboard-setup.service - Set the console keyboard layout...
+         Starting [0;1;39mkeyboard-setup.service[0m - Set the console keyboard layout...
+systemd-journald[276]: Collecting audit messages is disabled.
+systemd[1]: kmod-static-nodes.service - Create List of Static Device Nodes skipped, unmet condition check ConditionFileNotEmpty=/lib/modules/6.18.63-t736-gnome-v45/modules.devname
+systemd[1]: modprobe@configfs.service - Load Kernel Module configfs skipped, unmet condition check ConditionKernelModuleLoaded=!configfs
+systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+         Mounting [0;1;39msys-kernel-config.mount[0m - Kernel Configuration File System...
+systemd-journald[276]: Time jumped backwards, rotating.
+systemd[1]: modprobe@drm.service - Load Kernel Module drm skipped, unmet condition check ConditionKernelModuleLoaded=!drm
+systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+         Starting [0;1;39mmodprobe@efi_pstore.servi…[0m - Load Kernel Module efi_pstore...
+systemd[1]: modprobe@fuse.service - Load Kernel Module fuse skipped, unmet condition check ConditionKernelModuleLoaded=!fuse
+systemd[1]: Mounting sys-fs-fuse-connections.mount - FUSE Control File System...
+         Mounting [0;1;39msys-fs-fuse-connections.mount[0m - FUSE Control File System...
+systemd[1]: systemd-hibernate-clear.service - Clear Stale Hibernate Storage Info skipped, unmet condition check ConditionPathExists=/sys/firmware/efi/efivars/HibernateLocation-8cf2644b-4b0b-428f-9387-6d876050dc67
+systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+         Startinsystemd[1]: systemd-pcrmachine.service - TPM PCR Machine ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
+g [0;1;39msystemd-modules-load.systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+service[0m - Load Kernel Modules...
+         Startinsystemd[1]: systemd-tpm2-setup-early.service - Early TPM SRK Setup skipped, unmet condition check ConditionSecurity=measured-uki
+g [0;1;39msystesystemd[1]: systemd-pcrnvdone.service - TPM PCR NvPCR Initialization Separator skipped, unmet condition check ConditionPathExists=/etc/initrd-release
+md-tmpfiles-setusystemd[1]: systemd-pcrproduct.service - TPM NvPCR Product ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
+p-de…[0m Device Nodes in /dev gracefully...systemd[1]: Starting systemd-udev-load-credentials.service - Load udev Rules from Credentials...
 
-         Startinpvrsrvkm: loading out-of-tree module taints kernel.
-g [0;1;39msystesystemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
-md-udev-load-credent…[0mLoad udev Rules from Credentials...
-[sunxi bxm]SysDevInit start!
-pvrsrvkm 1800000.gpu: T736 GPU fixed 400000000 Hz, supply 900000 uV, CCF/genpd enabled
-[sunxi bxm]SysDevInit end!
-PVR_K:  298: Read BVNC 36.56.104.183 from HW device registers
-         StartinPVR_K:  298: RGX Device registered BVNC 36.56.104.183 with 1 core in the system
-g [0;1;39msystesystemd[1]: Started systemd-journald.service - Journal Service.
-md-udev-trigger.[drm] Initialized pvr 24.2.6603887 for 1800000.gpu on minor 1
-service[0m - Coldplug All udev Devices...
-[[0;32m  OK  [0m] Started [0;1;39msystemd-journald.service[0m - Journal Service.
-[[0;32m  OK  [0m] Mounted [0;1;39mdev-mqueue.mount[0m - POSIX Message Queue File System.
-[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-debug.mount[0m - Kernel Debug File System.
-[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-tracing.mount[0m - Kernel Trace File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mtmp.mount[0m - Temporary Directory /tmp.
-[[0;32m  OK  [0m] Finished [0;1;39mfake-hwclock-load.service[0m - Restore the current clock.
-[[0;32m  OK  [0m] Finished [0;1;39mkeyboard-setup.service[0m - Set the console keyboard layout.
-[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-config.mount[0m - Kernel Configuration File System.
-[[0;32m  OK  [0m] Finished [0;1;39mmodprobe@efi_pstore.service[0m - Load Kernel Module efi_pstore.
-[[0;32m  OK  [0m] Mounted [0;1;39msys-fs-fuse-connections.mount[0m - FUSE Control File System.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup-de…[0mic Device Nodes in /dev gracefully.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-udev-load-credent…[0m- Load udev Rules from Credentials.
-         Starting [0;1;39msystemd-remount-fs.servic…[0munt Root and Kernel File Systems...
-         Starting [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables...
-EXT4-fs (mmcblk0p4): re-mounted 4d8c73ce-75f9-4794-bef2-664d7cecbbbb.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-remount-fs.servic…[0mmount Root and Kernel File Systems.
-         Starting [0;1;39msystemd-journal-flush.ser…[0msh Journal to Persistent Storage...
-         Starting [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
-         Starting [0;1;39msystemd-sysusers.service[0m - Create System Users...
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-udev-trigger.service[0m - Coldplug All udev Devices.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-sysusers.service[0m - Create System Users.
-         Starting [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
-         Starting [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization...
-         Starting [0;1;39msystemd-tmpfiles-setup-de…[0meate Static Device Nodes in /dev...
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup-de…[0mCreate Static Device Nodes in /dev.
-[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
-[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs.target[0m - Local File Systems.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-sysext.socket[0m… System Extension Image Management.
-         Starting [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config...
-         Starting [0;1;39mconsole-setup.service[0m - Set console font and keymap...
-         Starting [0;1;39mnetplan-configure.service[0m - Netplan Backend Configuration...
-         Starting [0;1;39mplymouth-read-write.servi…[0mymouth To Write Out Runtime Data...
-         Starting [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
-         Starting [0;1;39msystemd-udevd.service[0m - R…ager for Device Events and Files...
-[[0;32m  OK  [0m] Started [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-journal-flush.ser…[0mlush Journal to Persistent Storage.
-[[0;32m  OK  [0m] Finished [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config.
-[[0;32m  OK  [0m] Finished [0;1;39mconsole-setup.service[0m - Set console font and keymap.
-[[0;32m  OK  [0m] Finished [0;1;39mplymouth-read-write.servi…[0mPlymouth To Write Out Runtime Data.
-[[0;32m  OK  [0m] Reached target [0;1;39mtime-set.target[0m - System Time Set.
-         Mounting [0;1;39mproc-sys-fs-binfmt_misc.m…[0mcutable File Formats File System...
-         Starting [0;1;39msystemd-tmpfiles-setup.se…[0mate System Files and Directories...
-[[0;32m  OK  [0m] Mounted [0;1;39mproc-sys-fs-binfmt_misc.mo…[0mxecutable File Formats File System.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup.se…[0mreate System Files and Directories.
-[[0;32m  OK  [0m] Reached target [0;1;39mrpc_pipefs.target[0m.
-         Starting [0;1;39mldconfig.service[0m - Rebuild Dynamic Linker Cache...
-[[0;32m  OK  [0m] Reached target [0;1;39mnfs-client.target[0m - NFS client services.
-         Starting [0;1;39mrpcbind.service[0m - RPC bind portmap service...
-         Starting [0;1;39msystemd-journal-catalog-u…ervice[0m - Rebuild Journal Catalog...
-[[0;32m  OK  [0m] Started [0;1;39mrpcbind.service[0m - RPC bind portmap service.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
-[[0;32m  OK  [0m] Started [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
-[[0;32m  OK  [0m] Reached target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
-[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
-[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs.target[0m - Remote File Systems.
-[[0;32m  OK  [0m] Reached target [0;1;39mrpcbind.target[0m - RPC Port Mapper.
-         Starting [0;1;39mrpc-statd-notify.service[0m - Notify NFS peers of a restart...
-[[0;32m  OK  [0m] Started [0;1;39msystemd-udevd.service[0m - Ru…anager for Device Events and Files.
-[[0;32m  OK  [0m] Finished [0;1;39mldconfig.service[0m - Rebuild Dynamic Linker Cache.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-journal-catalog-u….service[0m - Rebuild Journal Catalog.
-[[0;32m  OK  [0m] Started [0;1;39mrpc-statd-notify.service[0m - Notify NFS peers of a restart.
-[[0;32m  OK  [0m] Started [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
-         Starting [0;1;39msystemd-update-done.service[0m - Update is Completed...
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-update-done.service[0m - Update is Completed.
-[[0;32m  OK  [0m] Reached target [0;1;39msysinit.target[0m - System Initialization.
-[[0;32m  OK  [0m] Started [0;1;39mcups.path[0m - CUPS Scheduler.
-[[0;32m  OK  [0m] Started [0;1;39mapt-daily.timer[0m - Daily apt download activities.
-[[0;32m  OK  [0m] Started [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
-[[0;32m  OK  [0m] Started [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
-[[0;32m  OK  [0m] Started [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
-[[0;32m  OK  [0m] Started [0;1;39mfake-hwclock-save.timer[0m - Periodically save current clock.
-[[0;32m  OK  [0m] Started [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
-[[0;32m  OK  [0m] Started [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
-[[0;32m  OK  [0m] Started [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
-[[0;32m  OK  [0m] Started [0;1;39mman-db.timer[0m - Daily man-db regeneration.
-[[0;32m  OK  [0m] Started [0;1;39mmotd-news.timer[0m - Message of the Day.
-[[0;32m  OK  [0m] Started [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
-[[0;32m  OK  [0m] Reached target [0;1;39mpaths.target[0m - Path Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
-[[0;32m  OK  [0m] Listening on [0;1;39mcups.socket[0m - CUPS Scheduler.
-[[0;32m  OK  [0m] Listening on [0;1;39mdbus.socket[0m - D-Bus System Message Bus Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mpolkit-agent-helper.s…[0mAuthorization Manager Agent Helper.
-[[0;32m  OK  [0m] Listening on [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msshd-unix-local.socke…[0mtemd-ssh-generator, AF_UNIX Local).
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-hostnamed.socket[0m - Hostname Service Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-logind-varlin…[0mer Login Management Varlink Socket.
-         Starting [0;1;39mt736-cedar.socket[0m - T736 Cedar decoder socket...
-         Starting [0;1;39marmbian-hardware-monitor.…ce[0m - Armbian hardware monitoring...
-         Starting [0;1;39marmbian-hardware-optimize…[0m - Armbian hardware optimization...
-         Starting [0;1;39marmbian-led-state.service[0m - Armbian leds state...
-[[0;32m  OK  [0m] Finished [0;1;39mnetplan-configure.service[0m - Netplan Backend Configuration.
-[[0;32m  OK  [0m] Listening on [0;1;39mt736-cedar.socket[0m - T736 Cedar decoder socket.
-[[0;32m  OK  [0m] Finished [0;1;39marmbian-hardware-monitor.…vice[0m - Armbian hardware monitoring.
-[[0;32m  OK  [0m] Finished [0;1;39marmbian-led-state.service[0m - Armbian leds state.
-[[0;32m  OK  [0m] Finished [0;1;39marmbian-hardware-optimize…ce[0m - Armbian hardware optimization.
-[[0;32m  OK  [0m] Found device [0;1;39mdev-ttyS0.device[0m - /dev/ttyS0.
-[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
-[[0;32m  OK  [0m] Listening on [0;1;39msystemd-rfkill.socket[0m…ll Switch Status /dev/rfkill Watch.
-         Starting [0;1;39maccounts-daemon.service[0m - Accounts Service...
-[[0;32m  OK  [0m] Started [0;1;39mcron.service[0m - Regular background program processing daemon.
-         Starting [0;1;39mdbus.service[0m - D-Bus System Message Bus...
-[[0;32m  OK  [0m] Started [0;1;39mdmesg.service[0m - Save initial kernel messages after boot.
-         Starting [0;1;39me2scrub_reap.service[0m - Re…ne ext4 Metadata Check Snapshots...
-         Starting [0;1;39mlm-sensors.service[0m - Init…lize hardware monitoring sensors...
-         Starting [0;1;39mpolkit.service[0m - Authorization Manager...
-         Starting [0;1;39mrng-tools-debian.service[0m …gatherer daemon (Debian variant)...
-         Starting [0;1;39mrsyslog.service[0m - System Logging Service...
-         Starting [0;1;39msmartmontools.service[0m - S…orting Technology (SMART) Daemon...
-         Starting [0;1;39msystemd-logind.service[0m - User Login Management...
-         Starting [0;1;39mudisks2.service[0m - Disk Manager...
-[[0;32m  OK  [0m] Finished [0;1;39me2scrub_reap.service[0m - Re…line ext4 Metadata Check Snapshots.
-         Starting [0;1;39msystemd-rfkill.service[0m - Load/Save RF Kill Switch Status...
-[[0;32m  OK  [0m] Started [0;1;39msystemd-rfkill.service[0m - Load/Save RF Kill Switch Status.
-[[0;32m  OK  [0m] Started [0;1;39msmartmontools.service[0m - Se…eporting Technology (SMART) Daemon.
-[[0;32m  OK  [0m] Started [0;1;39msystemd-logind.service[0m - User Login Management.
-[[0;32m  OK  [0m] Finished [0;1;39mlm-sensors.service[0m - Initialize hardware monitoring sensors.
-[[0;32m  OK  [0m] Started [0;1;39mdbus.service[0m - D-Bus System Message Bus.
-         Starting [0;1;39mNetworkManager.service[0m - Network Manager...
-         Starting [0;1;39mwpa_supplicant.service[0m - WPA supplicant...
-[[0;32m  OK  [0m] Started [0;1;39mrsyslog.service[0m - System Logging Service.
-[[0;32m  OK  [0m] Started [0;1;39mpolkit.service[0m - Authorization Manager.
-         Starting [0;1;39mModemManager.service[0m - Modem Manager...
-[[0;32m  OK  [0m] Started [0;1;39mwpa_supplicant.service[0m - WPA supplicant.
-[[0;32m  OK  [0m] Started [0;1;39maccounts-daemon.service[0m - Accounts Service.
-         Starting [0;1;39msystemd-hostnamed.service[0m - Hostname Service...
-[[0;32m  OK  [0m] Started [0;1;39mudisks2.service[0m - Disk Manager.
-[[0;32m  OK  [0m] Started [0;1;39msystemd-hostnamed.service[0m - Hostname Service.
-[[0;32m  OK  [0m] Started [0;1;39mModemManager.service[0m - Modem Manager.
-         Starting [0;1;39mNetworkManager-dispatcher…[0manager Script Dispatcher Service...
-[[0;32m  OK  [0m] Started [0;1;39mNetworkManager-dispatcher.…[0m Manager Script Dispatcher Service.
-[[0;32m  OK  [0m] Started [0;1;39mNetworkManager.service[0m - Network Manager.
-[[0;32m  OK  [0m] Reached target [0;1;39mnetwork.target[0m - Network.
-         Starting [0;1;39mcups.service[0m - CUPS Scheduler...
-         Starting [0;1;39mopenvpn.service[0m - OpenVPN service...
-         Starting [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
-[[0;32m  OK  [0m] Started [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
-[[0;32m  OK  [0m] Started [0;1;39mvnstat.service[0m - vnStat network traffic monitor.
-[[0;32m  OK  [0m] Finished [0;1;39mopenvpn.service[0m - OpenVPN service.
-[[0;32m  OK  [0m] Finished [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
-[[0;32m  OK  [0m] Started [0;1;39mcups.service[0m - CUPS Scheduler.
-         Starting [0;1;39mgdm.service[0m - GNOME Display Manager...
-         Starting [0;1;39mplymouth-quit-wait.servic…[0md until boot process finishes up...
-[[0;32m  OK  [0m] Finished [0;1;39mplymouth-quit-wait.servic…[0mold until boot process finishes up.
-[[0;32m  OK  [0m] Started [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
-[[0;32m  OK  [0m] Reached target [0;1;39mgetty.target[0m - Login Prompts.
-[[0;32m  OK  [0m] Reached target [0;1;39mmulti-user.target[0m - Multi-User System.
-         Starting [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon...
-         Starting [0;1;39msetvtrgb.service[0m - Set console scheme...
-[[0;32m  OK  [0m] Finished [0;1;39msetvtrgb.service[0m - Set console scheme.
-[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
-[[0;32m  OK  [0m] Started [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon.
-[[0;32m  OK  [0m] Started [0;1;39mgdm.service[0m - GNOME Display Manager.
-[[0;32m  OK  [0m] Reached target [0;1;39mgraphical.target[0m - Graphical Interface.
-[!p]104\[0m[?7h[1G[0J[6n[32766;32766H[6n[!p]104\[0m[?7h[1G[0J[6n[32766;32766H[6n]3008;start=f403d33105e742da9fbf07213459d796;user=root;hostname=atlasa1;machineid=8a50f23fcdf249f083516259a0626cf9;bootid=7b382be97102486ebbf17d87b68dfec7;pid=1020;pidfdid=1021;comm=(agetty);servicename=seri
-Armbian-unofficial 26.11.0-trunk resolute ttyS0 
-
+         Startinpvrsrvkm: loading out-of-tree module taints kernel.
+g [0;1;39msystesystemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+md-udev-load-credent…[0mLoad udev Rules from Credentials...
+[sunxi bxm]SysDevInit start!
+pvrsrvkm 1800000.gpu: T736 GPU fixed 400000000 Hz, supply 900000 uV, CCF/genpd enabled
+[sunxi bxm]SysDevInit end!
+PVR_K:  298: Read BVNC 36.56.104.183 from HW device registers
+         StartinPVR_K:  298: RGX Device registered BVNC 36.56.104.183 with 1 core in the system
+g [0;1;39msystesystemd[1]: Started systemd-journald.service - Journal Service.
+md-udev-trigger.[drm] Initialized pvr 24.2.6603887 for 1800000.gpu on minor 1
+service[0m - Coldplug All udev Devices...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-journald.service[0m - Journal Service.
+[[0;32m  OK  [0m] Mounted [0;1;39mdev-mqueue.mount[0m - POSIX Message Queue File System.
+[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-debug.mount[0m - Kernel Debug File System.
+[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-tracing.mount[0m - Kernel Trace File System.
+[[0;32m  OK  [0m] Mounted [0;1;39mtmp.mount[0m - Temporary Directory /tmp.
+[[0;32m  OK  [0m] Finished [0;1;39mfake-hwclock-load.service[0m - Restore the current clock.
+[[0;32m  OK  [0m] Finished [0;1;39mkeyboard-setup.service[0m - Set the console keyboard layout.
+[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-config.mount[0m - Kernel Configuration File System.
+[[0;32m  OK  [0m] Finished [0;1;39mmodprobe@efi_pstore.service[0m - Load Kernel Module efi_pstore.
+[[0;32m  OK  [0m] Mounted [0;1;39msys-fs-fuse-connections.mount[0m - FUSE Control File System.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup-de…[0mic Device Nodes in /dev gracefully.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-udev-load-credent…[0m- Load udev Rules from Credentials.
+         Starting [0;1;39msystemd-remount-fs.servic…[0munt Root and Kernel File Systems...
+         Starting [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables...
+EXT4-fs (mmcblk0p4): re-mounted 4d8c73ce-75f9-4794-bef2-664d7cecbbbb.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-remount-fs.servic…[0mmount Root and Kernel File Systems.
+         Starting [0;1;39msystemd-journal-flush.ser…[0msh Journal to Persistent Storage...
+         Starting [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
+         Starting [0;1;39msystemd-sysusers.service[0m - Create System Users...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-udev-trigger.service[0m - Coldplug All udev Devices.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-sysusers.service[0m - Create System Users.
+         Starting [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
+         Starting [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization...
+         Starting [0;1;39msystemd-tmpfiles-setup-de…[0meate Static Device Nodes in /dev...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup-de…[0mCreate Static Device Nodes in /dev.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-sysext.socket[0m… System Extension Image Management.
+         Starting [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config...
+         Starting [0;1;39mconsole-setup.service[0m - Set console font and keymap...
+         Starting [0;1;39mnetplan-configure.service[0m - Netplan Backend Configuration...
+         Starting [0;1;39mplymouth-read-write.servi…[0mymouth To Write Out Runtime Data...
+         Starting [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
+         Starting [0;1;39msystemd-udevd.service[0m - R…ager for Device Events and Files...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-timesyncd.service[0m - Network Time Synchronization.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-journal-flush.ser…[0mlush Journal to Persistent Storage.
+[[0;32m  OK  [0m] Finished [0;1;39marmbian-zram-config.service[0m - Armbian ZRAM config.
+[[0;32m  OK  [0m] Finished [0;1;39mconsole-setup.service[0m - Set console font and keymap.
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-read-write.servi…[0mPlymouth To Write Out Runtime Data.
+[[0;32m  OK  [0m] Reached target [0;1;39mtime-set.target[0m - System Time Set.
+         Mounting [0;1;39mproc-sys-fs-binfmt_misc.m…[0mcutable File Formats File System...
+         Starting [0;1;39msystemd-tmpfiles-setup.se…[0mate System Files and Directories...
+[[0;32m  OK  [0m] Mounted [0;1;39mproc-sys-fs-binfmt_misc.mo…[0mxecutable File Formats File System.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup.se…[0mreate System Files and Directories.
+[[0;32m  OK  [0m] Reached target [0;1;39mrpc_pipefs.target[0m.
+         Starting [0;1;39mldconfig.service[0m - Rebuild Dynamic Linker Cache...
+[[0;32m  OK  [0m] Reached target [0;1;39mnfs-client.target[0m - NFS client services.
+         Starting [0;1;39mrpcbind.service[0m - RPC bind portmap service...
+         Starting [0;1;39msystemd-journal-catalog-u…ervice[0m - Rebuild Journal Catalog...
+[[0;32m  OK  [0m] Started [0;1;39mrpcbind.service[0m - RPC bind portmap service.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
+[[0;32m  OK  [0m] Reached target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
+[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mrpcbind.target[0m - RPC Port Mapper.
+         Starting [0;1;39mrpc-statd-notify.service[0m - Notify NFS peers of a restart...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-udevd.service[0m - Ru…anager for Device Events and Files.
+[[0;32m  OK  [0m] Finished [0;1;39mldconfig.service[0m - Rebuild Dynamic Linker Cache.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-journal-catalog-u….service[0m - Rebuild Journal Catalog.
+[[0;32m  OK  [0m] Started [0;1;39mrpc-statd-notify.service[0m - Notify NFS peers of a restart.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
+         Starting [0;1;39msystemd-update-done.service[0m - Update is Completed...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-update-done.service[0m - Update is Completed.
+[[0;32m  OK  [0m] Reached target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Started [0;1;39mcups.path[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Started [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Started [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Started [0;1;39mfake-hwclock-save.timer[0m - Periodically save current clock.
+[[0;32m  OK  [0m] Started [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Started [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Started [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Started [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Started [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Reached target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Listening on [0;1;39mcups.socket[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Listening on [0;1;39mdbus.socket[0m - D-Bus System Message Bus Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mpolkit-agent-helper.s…[0mAuthorization Manager Agent Helper.
+[[0;32m  OK  [0m] Listening on [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msshd-unix-local.socke…[0mtemd-ssh-generator, AF_UNIX Local).
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-hostnamed.socket[0m - Hostname Service Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-logind-varlin…[0mer Login Management Varlink Socket.
+         Starting [0;1;39mt736-cedar.socket[0m - T736 Cedar decoder socket...
+         Starting [0;1;39marmbian-hardware-monitor.…ce[0m - Armbian hardware monitoring...
+         Starting [0;1;39marmbian-hardware-optimize…[0m - Armbian hardware optimization...
+         Starting [0;1;39marmbian-led-state.service[0m - Armbian leds state...
+[[0;32m  OK  [0m] Finished [0;1;39mnetplan-configure.service[0m - Netplan Backend Configuration.
+[[0;32m  OK  [0m] Listening on [0;1;39mt736-cedar.socket[0m - T736 Cedar decoder socket.
+[[0;32m  OK  [0m] Finished [0;1;39marmbian-hardware-monitor.…vice[0m - Armbian hardware monitoring.
+[[0;32m  OK  [0m] Finished [0;1;39marmbian-led-state.service[0m - Armbian leds state.
+[[0;32m  OK  [0m] Finished [0;1;39marmbian-hardware-optimize…ce[0m - Armbian hardware optimization.
+[[0;32m  OK  [0m] Found device [0;1;39mdev-ttyS0.device[0m - /dev/ttyS0.
+[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-rfkill.socket[0m…ll Switch Status /dev/rfkill Watch.
+         Starting [0;1;39maccounts-daemon.service[0m - Accounts Service...
+[[0;32m  OK  [0m] Started [0;1;39mcron.service[0m - Regular background program processing daemon.
+         Starting [0;1;39mdbus.service[0m - D-Bus System Message Bus...
+[[0;32m  OK  [0m] Started [0;1;39mdmesg.service[0m - Save initial kernel messages after boot.
+         Starting [0;1;39me2scrub_reap.service[0m - Re…ne ext4 Metadata Check Snapshots...
+         Starting [0;1;39mlm-sensors.service[0m - Init…lize hardware monitoring sensors...
+         Starting [0;1;39mpolkit.service[0m - Authorization Manager...
+         Starting [0;1;39mrng-tools-debian.service[0m …gatherer daemon (Debian variant)...
+         Starting [0;1;39mrsyslog.service[0m - System Logging Service...
+         Starting [0;1;39msmartmontools.service[0m - S…orting Technology (SMART) Daemon...
+         Starting [0;1;39msystemd-logind.service[0m - User Login Management...
+         Starting [0;1;39mudisks2.service[0m - Disk Manager...
+[[0;32m  OK  [0m] Finished [0;1;39me2scrub_reap.service[0m - Re…line ext4 Metadata Check Snapshots.
+         Starting [0;1;39msystemd-rfkill.service[0m - Load/Save RF Kill Switch Status...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-rfkill.service[0m - Load/Save RF Kill Switch Status.
+[[0;32m  OK  [0m] Started [0;1;39msmartmontools.service[0m - Se…eporting Technology (SMART) Daemon.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Finished [0;1;39mlm-sensors.service[0m - Initialize hardware monitoring sensors.
+[[0;32m  OK  [0m] Started [0;1;39mdbus.service[0m - D-Bus System Message Bus.
+         Starting [0;1;39mNetworkManager.service[0m - Network Manager...
+         Starting [0;1;39mwpa_supplicant.service[0m - WPA supplicant...
+[[0;32m  OK  [0m] Started [0;1;39mrsyslog.service[0m - System Logging Service.
+[[0;32m  OK  [0m] Started [0;1;39mpolkit.service[0m - Authorization Manager.
+         Starting [0;1;39mModemManager.service[0m - Modem Manager...
+[[0;32m  OK  [0m] Started [0;1;39mwpa_supplicant.service[0m - WPA supplicant.
+[[0;32m  OK  [0m] Started [0;1;39maccounts-daemon.service[0m - Accounts Service.
+         Starting [0;1;39msystemd-hostnamed.service[0m - Hostname Service...
+[[0;32m  OK  [0m] Started [0;1;39mudisks2.service[0m - Disk Manager.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-hostnamed.service[0m - Hostname Service.
+[[0;32m  OK  [0m] Started [0;1;39mModemManager.service[0m - Modem Manager.
+         Starting [0;1;39mNetworkManager-dispatcher…[0manager Script Dispatcher Service...
+[[0;32m  OK  [0m] Started [0;1;39mNetworkManager-dispatcher.…[0m Manager Script Dispatcher Service.
+[[0;32m  OK  [0m] Started [0;1;39mNetworkManager.service[0m - Network Manager.
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork.target[0m - Network.
+         Starting [0;1;39mcups.service[0m - CUPS Scheduler...
+         Starting [0;1;39mopenvpn.service[0m - OpenVPN service...
+         Starting [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+[[0;32m  OK  [0m] Started [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
+[[0;32m  OK  [0m] Started [0;1;39mvnstat.service[0m - vnStat network traffic monitor.
+[[0;32m  OK  [0m] Finished [0;1;39mopenvpn.service[0m - OpenVPN service.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+[[0;32m  OK  [0m] Started [0;1;39mcups.service[0m - CUPS Scheduler.
+         Starting [0;1;39mgdm.service[0m - GNOME Display Manager...
+         Starting [0;1;39mplymouth-quit-wait.servic…[0md until boot process finishes up...
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-quit-wait.servic…[0mold until boot process finishes up.
+[[0;32m  OK  [0m] Started [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+[[0;32m  OK  [0m] Reached target [0;1;39mgetty.target[0m - Login Prompts.
+[[0;32m  OK  [0m] Reached target [0;1;39mmulti-user.target[0m - Multi-User System.
+         Starting [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon...
+         Starting [0;1;39msetvtrgb.service[0m - Set console scheme...
+[[0;32m  OK  [0m] Finished [0;1;39msetvtrgb.service[0m - Set console scheme.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+[[0;32m  OK  [0m] Started [0;1;39mpower-profiles-daemon.service[0m - Power Profiles daemon.
+[[0;32m  OK  [0m] Started [0;1;39mgdm.service[0m - GNOME Display Manager.
+[[0;32m  OK  [0m] Reached target [0;1;39mgraphical.target[0m - Graphical Interface.
+[!p]104\[0m[?7h[1G[0J[6n[32766;32766H[6n[!p]104\[0m[?7h[1G[0J[6n[32766;32766H[6n]3008;start=f403d33105e742da9fbf07213459d796;user=root;hostname=atlasa1;machineid=8a50f23fcdf249f083516259a0626cf9;bootid=7b382be97102486ebbf17d87b68dfec7;pid=1020;pidfdid=1021;comm=(agetty);servicename=seri
+Armbian-unofficial 26.11.0-trunk resolute ttyS0 
+
 atlasa1 login: 

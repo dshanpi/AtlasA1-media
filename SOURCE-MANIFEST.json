@@ -4,6 +4,13 @@
   "generated_from": "workspace/mainline",
   "files": [
     {
+      "path": ".gitattributes",
+      "kind": "generated",
+      "source": "generated/AtlasA1-media/.gitattributes",
+      "size": 65,
+      "sha256": "f14219346a815eb876f13e889d6cfc638aef76e56bc630e234c6975a1b63bc6c"
+    },
+    {
       "path": ".gitignore",
       "kind": "generated",
       "source": "generated/AtlasA1-media/.gitignore",
@@ -651,8 +658,8 @@
       "path": "evidence/gnome-media-20261119/default-v45-pcie-uart-20261120.log",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/default-v45-pcie-uart-20261120.log",
-      "size": 84403,
-      "sha256": "6ba6380be9723f56410d5b8f909d5d06b0c91a6f5c2727e5571b2ea774bd491e"
+      "size": 85438,
+      "sha256": "e0b19f6206ff25933c1e35c0366fec1020e4332101ef32f4830b4747fccdd56f"
     },
     {
       "path": "evidence/gnome-media-20261119/final-global-vsync-state.json",
@@ -1204,22 +1211,22 @@
       "path": "evidence/gnome-media-20261119/trial-v44-aspm-off-uart-20261120.log",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/trial-v44-aspm-off-uart-20261120.log",
-      "size": 84113,
-      "sha256": "966b197a91579122719ab15db93eab90c53689cacf89731bf7584eabf7a7500e"
+      "size": 85151,
+      "sha256": "f2d3b26010cd6c336d353a2188de0440111d46294bbcd7503296378088c5b98c"
     },
     {
       "path": "evidence/gnome-media-20261119/trial-v44-pcie-uart-20261120.log",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/trial-v44-pcie-uart-20261120.log",
-      "size": 84176,
-      "sha256": "a73b55fde6661ca2197800f41ad6e6194686103a6c543e365e4395316f395347"
+      "size": 85214,
+      "sha256": "af0d035c74ef054da68784b5e0e227b2d8a97bdd6d51350be00788ebe9f5973c"
     },
     {
       "path": "evidence/gnome-media-20261119/trial-v45-pcie-uart-20261120.log",
       "kind": "source",
       "source": "mainline/evidence/gnome-media-20261119/trial-v45-pcie-uart-20261120.log",
-      "size": 84815,
-      "sha256": "e780e14613377013ddb33b818e59c97926f1d1141f69bcba205a2ab3f246d631"
+      "size": 85861,
+      "sha256": "d9628e1a8c60c0c17166fe02dbe56a3e3493897def44eafb83825450b9e8e2c1"
     },
     {
       "path": "evidence/gnome-media-20261119/v38-boot-oops.log",
@@ -3005,6 +3012,13 @@
       "source": "mainline/tools/verify_atlasa1_resolute_media.sh",
       "size": 2925,
       "sha256": "1814c4f957756c21934b0ce05487b91ddd6f151cae442345f5c08dff08af0b24"
+    },
+    {
+      "path": "tools/verify_source_manifest.py",
+      "kind": "source",
+      "source": "mainline/tools/verify_source_manifest.py",
+      "size": 3593,
+      "sha256": "6a189d8f2c86a87c3c16a4a511981316584d219c97347e58416038f3dbbec21f"
     }
   ]
 }

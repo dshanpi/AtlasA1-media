@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.log -text
+*.gz -text
+*.xz -text
+*.zst -text
