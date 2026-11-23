@@ -9,7 +9,11 @@ version=2.32.4+dfsg-1
 origin=https://deb.debian.org/debian/pool/main/libs/libsdl2
 cd "$work"
 for pkg in libsdl2-2.0-0 libsdl2-dev; do
-    curl --fail --location --retry 3 --output "$pkg.deb" "$origin/${pkg}_${version}_arm64.deb"
+    if [[ -n ${ATLAS_SOURCE_CACHE:-} ]]; then
+        cp "$ATLAS_SOURCE_CACHE/sdl/${pkg}_${version}_arm64.deb" "$pkg.deb"
+    else
+        curl --fail --location --retry 3 --output "$pkg.deb" "$origin/${pkg}_${version}_arm64.deb"
+    fi
 done
 sha256sum --check <<'SUMS'
 6312ccbc29645ac5cc9dde9f9ed8bd5c85a0233690c270c83c963b49f8cd49d5  libsdl2-2.0-0.deb

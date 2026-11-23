@@ -2548,8 +2548,8 @@
       "path": "tools/build_cedar_4k_omx.py",
       "kind": "source",
       "source": "mainline/tools/build_cedar_4k_omx.py",
-      "size": 2062,
-      "sha256": "fa783eec374644f6c42e2aaaa8f94ba7ae5f4cf2878a8fac0ef9473c4ca4026d"
+      "size": 4765,
+      "sha256": "8031c55004430203df7171432f78393cbe548a34ea6c77d12de3607cbff19a92"
     },
     {
       "path": "tools/build_cedar_bridge.py",
@@ -2730,8 +2730,8 @@
       "path": "tools/prepare_atlasa1_sdl_sysroot.sh",
       "kind": "source",
       "source": "mainline/tools/prepare_atlasa1_sdl_sysroot.sh",
-      "size": 1261,
-      "sha256": "3b622376c9603c835b7b8c7fdd1f5b3dafafc4d65af6a4764754085693f6811a"
+      "size": 1403,
+      "sha256": "f97f3be803a4160ee0b63dfc12ec4f20e9bf27e0a08d438b34f13f3378f0d070"
     },
     {
       "path": "tools/prepare_media_kernel.py",
