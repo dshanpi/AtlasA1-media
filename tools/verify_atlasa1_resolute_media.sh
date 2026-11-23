@@ -9,8 +9,8 @@ for codec in h264 hevc; do
     encoder=libx264
     settings=(-threads 1)
     if [[ $codec == hevc ]]; then encoder=libx265; settings=(-x265-params pools=none:frame-threads=1:log-level=error); fi
-    ffmpeg -nostdin -loglevel error -f lavfi -i color=c=blue:s=64x64:r=1 \
-        -frames:v 1 -c:v "$encoder" "${settings[@]}" -f "$codec" "$scratch/$codec.stream"
+    chroot "$root" ffmpeg -nostdin -loglevel error -f lavfi -i color=c=blue:s=64x64:r=1 \
+        -frames:v 1 -c:v "$encoder" "${settings[@]}" -f "$codec" "${scratch#"$root"}/$codec.stream"
 done
 chroot "$root" /bin/sh -s -- "${scratch#"$root"}" "${2:-6.18.63-t736-media-v30}" <<'EOS'
 set -eu

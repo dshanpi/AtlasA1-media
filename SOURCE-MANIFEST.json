@@ -3010,8 +3010,8 @@
       "path": "tools/verify_atlasa1_resolute_media.sh",
       "kind": "source",
       "source": "mainline/tools/verify_atlasa1_resolute_media.sh",
-      "size": 2925,
-      "sha256": "1814c4f957756c21934b0ce05487b91ddd6f151cae442345f5c08dff08af0b24"
+      "size": 2950,
+      "sha256": "3ae341371d20858284864a0e6f130d0fbc8963d944b77b91f1c5d04a2d1259a3"
     },
     {
       "path": "tools/verify_source_manifest.py",
