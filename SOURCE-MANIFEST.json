@@ -2723,8 +2723,8 @@
       "path": "tools/prepare_atlasa1_resolute_media.py",
       "kind": "source",
       "source": "mainline/tools/prepare_atlasa1_resolute_media.py",
-      "size": 7461,
-      "sha256": "c5a85d632a60c2117675a3c9be1d4defc97a9811e30efdfc4d3e33318ce94d12"
+      "size": 7488,
+      "sha256": "0171c6d3d74e58c58540b5f8a0c99fa3d5eee574fce99131ec9a0c4403e4c061"
     },
     {
       "path": "tools/prepare_atlasa1_sdl_sysroot.sh",
