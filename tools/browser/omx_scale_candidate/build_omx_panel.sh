@@ -38,7 +38,8 @@ cp "$browser/omx_scale_candidate/test_omx_panel.c" "$stage/tree/tests/test_omx_p
 cc "${ccflags[@]}" -g -fsanitize=address,undefined -no-pie "$stage/tree/tests/test_omx_panel.c" -o "$stage/transport-host"
 "$cross" "${ccflags[@]}" "$stage/tree/tests/test_omx_panel.c" -o "$stage/transport-arm"
 "$stage/transport-host" > "$stage/transport-host.log" 2>&1
-qemu-aarch64-static -L "$sysroot" "$stage/transport-arm" > "$stage/transport-arm.log" 2>&1
+# Match the board's little cores; Armbian exports the older Cortex-A53 model.
+QEMU_CPU=cortex-a55 qemu-aarch64-static -L "$sysroot" "$stage/transport-arm" > "$stage/transport-arm.log" 2>&1
 tail -n1 "$stage"/transport-{host,arm}.log
 cd "$stage"
 sha256sum cedar-broker libcedar_backend.so

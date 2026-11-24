@@ -2331,8 +2331,8 @@
       "path": "tools/browser/omx_scale_candidate/build_omx_panel.sh",
       "kind": "source",
       "source": "mainline/tools/browser/omx_scale_candidate/build_omx_panel.sh",
-      "size": 2780,
-      "sha256": "31897712264891a64f44da75a8ebfc7328dee02dbdd03f1aef475ea289eeb519"
+      "size": 2878,
+      "sha256": "4bb622f273496abddf8d20a7068a2d789d917bde12a8300a64b68dc3a24f0a64"
     },
     {
       "path": "tools/browser/omx_scale_candidate/omx-panel.patch",
